@@ -8,8 +8,8 @@
     "userInterfaceStyle": "light",
     "splash": {
       "backgroundImage": "./assets/images/traffic-bg.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#000030"
+      "resizeMode": "contain",
+      "backgroundColor": "transparent"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

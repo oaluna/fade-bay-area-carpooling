@@ -18,7 +18,7 @@ import { mapStyle } from "../global/mapStyle";
 
 const { PROVIDER_GOOGLE } = MapView;
 
-const SCREEN_WIDTH = Dimensions.get("screen").width;
+const { height, width } = Dimensions.get("screen");
 
 const HomeScreen = ({ navigation }) => {
   const [latlng, setLatLng] = React.useState({});
@@ -62,14 +62,16 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.header}>
         <View style={styles.icon1}>
           <Image
-            source={require("../assets/images/icon-menu.png")}
-            style={{ resizeMode: "contain", width: 40, height: 40, flex: 1 }}
+          
+            source={require("../assets/images/fade-logo.png")}
+            style={{ resizeMode: "contain", width: 200, flex: 1 }}
           />
+         
         </View>
       </View>
       <ScrollView bounces={false}>
         <View style={styles.home}>
-          <Text style={styles.text1}>Crack down on traffic congestion.</Text>
+          <Text style={styles.text1}>Welcome!</Text>
           <View style={styles.view1}>
             <View style={styles.view8}>
               <Text style={styles.text2}>
@@ -85,11 +87,12 @@ const HomeScreen = ({ navigation }) => {
                 </View>
               </TouchableOpacity>
             </View>
-            <View>
+            <View style={{marginRight: 15}}>
               <Image
                 style={styles.image1}
-                source={require("../assets/images/icon-carpool.png")}
+                source={require("../assets/images/app-icon.png")}
               />
+               <Text style={{color: colors.white, marginTop: 5, fontSize: 10, width: 96}}>Swipe right to open menu.</Text>
             </View>
           </View>
         </View>
@@ -120,10 +123,10 @@ const HomeScreen = ({ navigation }) => {
               source={require("../assets/images/icon-clock.png")}
               style={{ resizeMode: "contain", width: 26 }}
             />
-            <Text style={{ marginLeft: 5 }}>Now</Text>
+            <Text style={{ marginLeft: 5, color: colors.white }}>Now</Text>
             <Image
               source={require("../assets/images/icon-chevron-down.png")}
-              style={{ resizeMode: "contain", width: 26 }}
+              style={{ resizeMode: "contain", width: 18, marginLeft: 15 }}
             />
           </View>
         </View>
@@ -136,11 +139,11 @@ const HomeScreen = ({ navigation }) => {
               />
             </View>
             <View>
-              <Text style={{ fontSize: 18, color: colors.black }}>
-                32 Olivia Rd
+            <Text style={{ fontSize: 18, color: colors.white }}>
+                415 Mission Street
               </Text>
               <Text style={{ color: colors.grey3 }}>
-                Klipfontein 83-Ir, Boksburg
+                San Francisco, CA 94102
               </Text>
             </View>
           </View>
@@ -161,11 +164,11 @@ const HomeScreen = ({ navigation }) => {
               />
             </View>
             <View>
-              <Text style={{ fontSize: 18, color: colors.black }}>
-                32 Olivia Rd
+              <Text style={{ fontSize: 18, color: colors.white }}>
+                701 London Street
               </Text>
               <Text style={{ color: colors.grey3 }}>
-                Klipfontein 83-Ir, Boksburg
+                San Francisco, CA 94112
               </Text>
             </View>
           </View>
@@ -180,7 +183,7 @@ const HomeScreen = ({ navigation }) => {
         <Text style={styles.text4}> Around you</Text>
 
         <View style={{ alignItems: "center", justifyContent: "center" }}>
-          {/*    <MapView
+          <MapView
             ref={_map}
             provider={PROVIDER_GOOGLE}
             style={styles.map}
@@ -192,16 +195,7 @@ const HomeScreen = ({ navigation }) => {
               latitudeDelta: 0.008,
               longitudeDelta: 0.008,
             }}
-          >
-            {carsAround.map((item, index) => (
-              <MapView.Marker coordinate={item} key={index.toString()}>
-                <Image
-                  source={require("../assets/images/icon-location.png")}
-                  style={[styles.carsAround, { resizeMode: "cover" }]}
-                />
-              </MapView.Marker>
-            ))}
-          </MapView> */}
+        /> 
         </View>
       </ScrollView>
     </View>
@@ -226,9 +220,9 @@ const styles = StyleSheet.create({
     width: 72,
     marginHorizontal: 16,
     flex: 1,
-    alignItems:"flex-start",
+    alignItems: "flex-start",
     resizeMode: "cover",
-    overflow:"visible"
+    overflow: "visible",
   },
 
   image2: {
@@ -246,7 +240,7 @@ const styles = StyleSheet.create({
 
   text1: {
     color: colors.white,
-    fontSize: 32,
+    fontSize: 42,
     paddingBottom: 20,
     paddingTop: 20,
   },
@@ -265,7 +259,7 @@ const styles = StyleSheet.create({
   button1: {
     height: 40,
     width: 150,
-    backgroundColor: colors.black,
+   backgroundColor: "rgba(255,255,255,0.21)",
     borderRadius: 20,
     borderColor: colors.blue,
     borderWidth: 1,
@@ -281,7 +275,7 @@ const styles = StyleSheet.create({
   },
   card: {
     alignItems: "center",
-    margin: SCREEN_WIDTH / 22,
+    margin:  width / 22,
   },
 
   view2: { marginBottom: 5, borderRadius: 15, backgroundColor: colors.grey6 },
@@ -305,11 +299,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginRight: 15,
-    backgroundColor: colors.black,
+    backgroundColor: "rgba(255,255,255,0.21)",
+    borderColor: colors.blue,
+    borderWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 2,
     borderRadius: 20,
-    height: 32
+    height: 32,
   },
 
   view5: {
@@ -342,9 +338,9 @@ const styles = StyleSheet.create({
   },
 
   map: {
-    height: 150,
+    height: 400,
     marginVertical: 0,
-    width: SCREEN_WIDTH * 0.92,
+    width: width,
   },
 
   text4: {
@@ -354,7 +350,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 
-  icon1: { marginLeft: 10, marginTop: 5 },
+  icon1: { alignSelf:"flex-start", marginLeft: 15, marginTop: 15 },
 
   view8: { flex: 4, marginTop: -25 },
   carsAround: {
@@ -371,7 +367,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  view9: { width: 4, height: 4, borderRadius: 2, backgroundColor: colors.black },
+  view9: {
+    width: 4,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: colors.black,
+  },
 });
 
 export default HomeScreen;

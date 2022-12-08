@@ -122,23 +122,22 @@ export const rideOptions = [
 ];
 
 export const paymentOptions = [
-  { image: require("../assets/images/icon-creditcards.png"), text: "Visa ...0476" },
+  {
+    image: require("../assets/images/icon-creditcards.png"),
+    text: "Visa ...0476",
+  },
   { image: require("../assets/images/icon-cash.png"), text: "Cash" },
 ];
 
 export const availableServices = [
-  "Uber Go",
-  "UberX",
-  "Uber connect",
-  "Uber Black",
-  "Uber Van",
-  "Uber Assist",
+  "Start a Carpool",
+  "Join a Carpool",
 ];
 
 export const carsAround = [
-  { latitude: -26.207487, longitude: 28.236226 },
-  { latitude: -26.202616, longitude: 28.227718 },
-  { latitude: -26.202424, longitude: 28.236612 },
-  { latitude: -26.208565, longitude: 28.237191 },
-  { latitude: -26.203598, longitude: 28.239509 },
+  { index: "0", latitude: 37.781504, longitude: -122.4114176 },
+  { index: "1", latitude: 37.7179141, longitude: -122.4408362 },
+  { index: "2", latitude: 37.7900621, longitude: -122.3991231 },
+  { index: "3", latitude: 37.7877451, longitude: -122.3967486 },
+  { index: "4", latitude: 37.7877398, longitude: -122.932488 },
 ];

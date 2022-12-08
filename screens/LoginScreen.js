@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import PropTypes from "prop-types";
 import { colors } from "../global/styles";
+import { carsAround } from "../global/data";
 
 const { width, height } = Dimensions.get("screen");
 const SignIn = ({ navigation }) => {
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   formInput: {
-    backgroundColor: "rgba(255,255,255,0.1)",
+    backgroundColor: "rgba(255,255,255,0.31)",
     borderColor: colors.blue,
     borderRadius: 15,
     width: 300,
