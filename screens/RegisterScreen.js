@@ -6,23 +6,38 @@ import {
   StyleSheet,
   TextInput,
   Button,
-  SafeAreaView,
   Pressable,
+  ScrollView,
   Dimensions,
 } from "react-native";
-import PropTypes from "prop-types";
+import FadeLogo from "../assets/images/fade-logo.png";
+
 import { colors } from "../global/styles";
 
-const { width, height } = Dimensions.get("screen");
-const SignIn = ({ navigation }) => {
+const { height, width } = Dimensions.get("screen");
+
+const RegisterScreen = ({ navigation }) => {
   const fields = [
+    { id: 0, fieldName: "First Name" },
     {
-      id: 0,
+      id: 1,
+      fieldName: "Last Name",
+    },
+    {
+      id: 2,
+      fieldName: "Phone Number",
+    },
+    {
+      id: 3,
       fieldName: "Email",
     },
     {
-      id: 1,
+      id: 4,
       fieldName: "Password",
+    },
+    {
+      id: 5,
+      fieldName: "Confirm Password",
     },
   ];
   const [text, onChangeText] = React.useState("");
@@ -30,25 +45,22 @@ const SignIn = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <Image
-          source={require("../assets/images/fade-logo.png")}
-          style={styles.fadeLogo}
-        />
+        <Image source={FadeLogo} style={styles.fadeLogo} />
       </View>
       <View style={styles.formContainer}>
-        <Text style={styles.headerText}>Sign In to your Fade Account</Text>
+        <Text style={styles.headerText}>Sign up for Fade today!</Text>
 
-        <SafeAreaView>
+        <ScrollView>
           {fields.map((text) => (
             <TextInput
               key={text.id}
               style={styles.formInput}
               onChangeText={onChangeText}
               placeholder={text.fieldName}
-              secureTextEntry={text.id === 1 ? true : false}
+              secureTextEntry={text.id === 4 || text.id === 5 ? true : false}
             />
           ))}
-        </SafeAreaView>
+        </ScrollView>
 
         <Pressable
           style={styles.submitBtn}
@@ -61,26 +73,24 @@ const SignIn = ({ navigation }) => {
               textAlign: "center",
               display: "flex",
               flexDirection: "row",
+              marginTop: 0,
             }}
           >
-            Sign In
+            Register
           </Text>
         </Pressable>
-        <View>
-          <Text style={styles.dividerText}>OR</Text>
-        </View>
-        <Pressable onPress={() => navigation.navigate("RegisterScreen")}>
+        <Pressable onPress={() => navigation.navigate("LoginScreen")}>
           <Text
             style={{
               color: colors.white,
-              
               textAlign: "center",
-              display: "flex",
-              flexDirection: "row",
-              marginTop: 15
+              marginVertical: 0,
+              position: "absolute",
+              bottom: 100,
+              alignSelf: "center",
             }}
           >
-            Click here to sign up
+            Already have an account? Click here.
           </Text>
         </Pressable>
       </View>
@@ -88,88 +98,66 @@ const SignIn = ({ navigation }) => {
   );
 };
 
-SignIn.propTypes = {
-  // required
-  onPress: PropTypes.func.isRequired,
-};
-
 const styles = StyleSheet.create({
   container: {
-    alignSelf: "center",
-
+    alignItems: "center",
     backgroundColor: colors.black,
-    display: "flex",
-    flexDirection: "column",
-    flexWrap: "wrap",
+
     height: height,
-    justifyContent: "space-evenly",
     margin: 0,
-    paddingLeft: 15,
-    paddingTop: 15,
     width: width,
   },
-  dividerText: {
-    color: colors.white,
-    textAlign: "center",
-  },
   logoContainer: {
-    flex: 1,
-    marginBottom: 45,
-    padding: 15,
     alignSelf: "center",
+    marginBottom: 0,
+    padding: 15,
   },
   fadeLogo: {
-    marginTop: 100,
+    marginTop: 80,
     resizeMode: "contain",
     width: 300,
-    alignSelf: "center",
   },
   formContainer: {
-    alignSelf: "center",
-
+    alignItems: "center",
     color: colors.white,
     display: "flex",
     flex: 2,
     flexDirection: "column",
     height: 400,
-    width: 300,
-    marginVertical: 25,
-
-    width: 300,
+    marginVertical: 5,
+    paddingTop: 25,
+    width: 350,
   },
   headerText: {
     color: colors.white,
     fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
+    marginBottom: 15,
   },
   formInput: {
-    backgroundColor: "rgba(255,255,255,0.1)",
+    backgroundColor: "rgba(255,255,255,0.21)",
     borderColor: colors.blue,
     borderRadius: 15,
-    width: 300,
     borderWidth: 1,
     color: colors.white,
     fontSize: 16,
-    paddingHorizontal: 15,
-    alignSelf: "center",
-
     height: 50,
-    marginVertical: 25,
+    paddingHorizontal: 15,
+    marginVertical: 8,
     width: 300,
   },
 
   submitBtn: {
+    backgroundColor: colors.black,
     height: 50,
-    width: 300,
     alignSelf: "center",
-    marginVertical: 20,
-    paddingVertical: 10,
+    width: 300,
     borderColor: colors.blue,
     borderWidth: 1,
     borderRadius: 15,
-    alignSelf: "center",
+    marginBottom: 150,
+    paddingVertical: 10,
+    width: 300,
   },
 });
 
-export default SignIn;
+export default RegisterScreen;
