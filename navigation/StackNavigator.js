@@ -7,6 +7,7 @@ import RequestScreen from "../screens/RequestScreen";
 import DestinationScreen from "../screens/DestinationScreen";
 
 const Home = createNativeStackNavigator();
+const Settings = createNativeStackNavigator();
 
 export function HomeStack() {
   return (
@@ -37,5 +38,16 @@ export function HomeStack() {
         options={{ headerShown: false }}
       />
     </Home.Navigator>
+  );
+}
+export function SettingsStack() {
+  return (
+    <Settings.Navigator>
+    <Settings.Screen
+      name="SettingsScreen"
+      component={SettingsScreen}
+      options={{ headerShown: false }}
+    />
+    </Settings.Navigator>
   );
 }

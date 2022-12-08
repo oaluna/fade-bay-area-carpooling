@@ -62,11 +62,9 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.header}>
         <View style={styles.icon1}>
           <Image
-          
             source={require("../assets/images/fade-logo.png")}
             style={{ resizeMode: "contain", width: 200, flex: 1 }}
           />
-         
         </View>
       </View>
       <ScrollView bounces={false}>
@@ -87,12 +85,21 @@ const HomeScreen = ({ navigation }) => {
                 </View>
               </TouchableOpacity>
             </View>
-            <View style={{marginRight: 15}}>
+            <View style={{ marginRight: 15 }}>
               <Image
                 style={styles.image1}
                 source={require("../assets/images/app-icon.png")}
               />
-               <Text style={{color: colors.white, marginTop: 5, fontSize: 10, width: 96}}>Swipe right to open menu.</Text>
+              <Text
+                style={{
+                  color: colors.white,
+                  marginTop: 5,
+                  fontSize: 10,
+                  width: 96,
+                }}
+              >
+                Swipe right to open menu.
+              </Text>
             </View>
           </View>
         </View>
@@ -106,18 +113,18 @@ const HomeScreen = ({ navigation }) => {
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <View style={styles.card}>
-                <View style={styles.view2}>
-                  <Image style={styles.image2} source={item.image} />
-                </View>
-                <View>
+                <View style={styles.cardHeader}>
+                  <Image style={styles.cardImage} source={item.image} />
+               
                   <Text style={styles.title}>{item.name}</Text>
+            
                 </View>
               </View>
             )}
           />
         </View>
         <View style={styles.view3}>
-          <Text style={styles.text3}> Where to ?</Text>
+          <Text style={styles.text3}>Recent Carpools</Text>
           <View style={styles.view4}>
             <Image
               source={require("../assets/images/icon-clock.png")}
@@ -139,7 +146,7 @@ const HomeScreen = ({ navigation }) => {
               />
             </View>
             <View>
-            <Text style={{ fontSize: 18, color: colors.white }}>
+              <Text style={{ fontSize: 18, color: colors.white }}>
                 415 Mission Street
               </Text>
               <Text style={{ color: colors.grey3 }}>
@@ -195,7 +202,7 @@ const HomeScreen = ({ navigation }) => {
               latitudeDelta: 0.008,
               longitudeDelta: 0.008,
             }}
-        /> 
+          />
         </View>
       </ScrollView>
     </View>
@@ -216,21 +223,20 @@ const styles = StyleSheet.create({
   },
 
   image1: {
-    height: 72,
-    width: 72,
-    marginHorizontal: 16,
+    height: 64,
+    width: 64,
+    marginHorizontal: 20,
     flex: 1,
     alignItems: "flex-start",
     resizeMode: "cover",
     overflow: "visible",
   },
 
-  image2: {
-    height: 60,
-    width: 60,
-    borderRadius: 50,
-    borderColor: colors.blue,
+  cardImage: {
+    height: 64,
+    width: 64,
     borderWidth: 1,
+    alignSelf: "center",
   },
 
   home: {
@@ -259,7 +265,7 @@ const styles = StyleSheet.create({
   button1: {
     height: 40,
     width: 150,
-   backgroundColor: "rgba(255,255,255,0.21)",
+    backgroundColor: "rgba(255,255,255,0.21)",
     borderRadius: 20,
     borderColor: colors.blue,
     borderWidth: 1,
@@ -275,25 +281,38 @@ const styles = StyleSheet.create({
   },
   card: {
     alignItems: "center",
-    margin:  width / 22,
+    margin: width / 120,
+    paddingTop: 15,
   },
 
-  view2: { marginBottom: 5, borderRadius: 15, backgroundColor: colors.grey6 },
+  cardHeader: {
+    marginBottom: 5,
+    borderRadius: 15,
+    backgroundColor: "rgba(255,255,255,0.11)",
+    width: 80,
+    height: 110,
+    borderColor: colors.blue,
+    
+    borderWidth: 1,
+  },
 
   title: {
-    color: colors.black,
-    fontSize: 16,
+    color: colors.white,
+    fontSize: 12,
+    margin:5,
+    textAlign:"center"
   },
   view3: {
     flexDirection: "row",
-    marginTop: 5,
+    marginTop: 15,
     height: 50,
     backgroundColor: colors.black,
     alignItems: "center",
     justifyContent: "space-between",
     marginHorizontal: 15,
+   
   },
-  text3: { marginLeft: 15, fontSize: 20, color: colors.white },
+  text3: { fontSize: 24, color: colors.white },
 
   view4: {
     flexDirection: "row",
@@ -306,6 +325,7 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     borderRadius: 20,
     height: 32,
+    
   },
 
   view5: {
@@ -350,7 +370,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 
-  icon1: { alignSelf:"flex-start", marginLeft: 15, marginTop: 15 },
+  icon1: { alignSelf: "flex-start", marginLeft: 15, marginTop: 15 },
 
   view8: { flex: 4, marginTop: -25 },
   carsAround: {
