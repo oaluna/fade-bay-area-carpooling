@@ -7,9 +7,9 @@
     "icon": "./assets/images/app-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundImage": "./assets/images/traffic-bg.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#000030"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,7 +23,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/app-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#000030"
       }
     },
     "web": {
