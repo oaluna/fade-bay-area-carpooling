@@ -3,6 +3,7 @@ import {
   View,
   Text,
   Image,
+  ImageBackground,
   StyleSheet,
   TextInput,
   Button,
@@ -44,62 +45,68 @@ const RegisterScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image source={FadeLogo} style={styles.fadeLogo} />
-      </View>
-      <View style={styles.formContainer}>
-        <Text style={styles.headerText}>Sign up for Fade today!</Text>
+      <ImageBackground
+        source={require("../assets/images/background.jpeg")}
+        style={{ height: height, width: width }}
+      >
+        <View style={styles.logoContainer}>
+          <Image source={FadeLogo} style={styles.fadeLogo} />
+        </View>
+        <View style={styles.formContainer}>
+          <Text style={styles.headerText}>Sign up for Fade today!</Text>
 
-        <ScrollView>
-          {fields.map((text) => (
-            <TextInput
-              key={text.id}
-              style={styles.formInput}
-              onChangeText={onChangeText}
-              placeholder={text.fieldName}
-              secureTextEntry={text.id === 4 || text.id === 5 ? true : false}
-            />
-          ))}
-        </ScrollView>
+          <ScrollView>
+            {fields.map((text) => (
+              <TextInput
+                key={text.id}
+                style={styles.formInput}
+                onChangeText={onChangeText}
+                placeholder={text.fieldName}
+                secureTextEntry={text.id === 4 || text.id === 5 ? true : false}
+              />
+            ))}
+          </ScrollView>
 
-        <Pressable
-          style={styles.submitBtn}
-          onPress={() => navigation.navigate("HomeScreen")}
-        >
-          <Text
-            style={{
-              color: colors.white,
-              fontSize: 24,
-              textAlign: "center",
-              display: "flex",
-              flexDirection: "row",
-              marginTop: 0,
-            }}
+          <Pressable
+            style={styles.submitBtn}
+            onPress={() => navigation.navigate("HomeScreen")}
           >
-            Register
-          </Text>
-        </Pressable>
-        <Pressable onPress={() => navigation.navigate("LoginScreen")}>
-          <Text
-            style={{
-              color: colors.white,
-              textAlign: "center",
-              marginVertical: 0,
-              position: "absolute",
-              bottom: 100,
-              alignSelf: "center",
-            }}
-          >
-            Already have an account? Click here.
-          </Text>
-        </Pressable>
-      </View>
+            <Text
+              style={{
+                color: colors.white,
+                fontSize: 24,
+                textAlign: "center",
+                display: "flex",
+                flexDirection: "row",
+                marginTop: 0,
+              }}
+            >
+              Register
+            </Text>
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate("LoginScreen")}>
+            <Text
+              style={{
+                color: colors.white,
+                textAlign: "center",
+                marginVertical: 0,
+                position: "absolute",
+                bottom: 100,
+                alignSelf: "center",
+              }}
+            >
+              Already have an account? Click here.
+            </Text>
+          </Pressable>
+        </View>
+      </ImageBackground>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    alignSelf: "center",
     alignItems: "center",
     backgroundColor: colors.black,
 
@@ -134,7 +141,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   formInput: {
-    backgroundColor: "rgba(255,255,255,0.21)",
+   
+    backgroundColor: "rgba(255,255,255,0.71)",
     borderColor: colors.blue,
     borderRadius: 15,
     borderWidth: 1,

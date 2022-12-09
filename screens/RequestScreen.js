@@ -17,6 +17,7 @@ import {
 import BottomSheet, {
   BottomSheetFlatList,
   BottomSheetSectionList,
+  useBottomSheetSpringConfigs,
 } from "@gorhom/bottom-sheet";
 import { Avatar, Icon } from "react-native-elements";
 import MapComponent from "../components/MapComponent";
@@ -33,6 +34,7 @@ export default function RequestScreen({ navigation, route }) {
     latitude: origin.latitude,
     longitude: origin.longitude,
   });
+  const [isOpen, setIsOpen] = useState(false);
   const { destination, dispatchDestination } = useContext(DestinationContext);
   const [userDestination, setUserDestination] = useState({
     latitude: destination.latitude,
@@ -41,8 +43,8 @@ export default function RequestScreen({ navigation, route }) {
 
   const bottomsheet1 = useRef(1);
 
-  const snapPoints1 = useMemo(() => ["70%"], []);
-  const handleSheetChange1 = useCallback((index) => {}, []);
+  const snapPoints1 = useMemo(() => ["6%", "55%"]);
+  const handleSheetChange1 = () => setIsOpen(!isOpen);
 
   useEffect(() => {
     setUserOrigin({ latitude: origin.latitude, longitude: origin.longitude });
@@ -64,11 +66,11 @@ export default function RequestScreen({ navigation, route }) {
               size={18}
             />
           </View>
-          <View>
-            <Text style={{ fontSize: 15, color: colors.grey1 }}>
+          <View style={{ backgroundColor: colors.black }}>
+            <Text style={{ fontSize: 15, color: colors.white }}>
               {item.street}
             </Text>
-            <Text style={{ color: colors.grey4 }}>{item.area}</Text>
+            <Text style={{ color: colors.white }}>{item.area}</Text>
           </View>
         </View>
       </View>
@@ -82,7 +84,7 @@ export default function RequestScreen({ navigation, route }) {
         <Icon
           type="material-community"
           name="arrow-left"
-          color={colors.grey1}
+          color={colors.white}
           size={32}
         />
       </View>
@@ -95,11 +97,11 @@ export default function RequestScreen({ navigation, route }) {
               size={30}
               source={require("../assets/images/icon-account.png")}
             />
-            <Text style={{ marginLeft: 5 }}>For Someone</Text>
+            <Text style={{ marginLeft: 5, color: colors.white}}>For Someone</Text>
             <Icon
               type="material-community"
               name="chevron-down"
-              color={colors.grey1}
+              color={colors.white}
               size={26}
             />
           </View>
@@ -129,7 +131,7 @@ export default function RequestScreen({ navigation, route }) {
                 <Icon
                   type="material-community"
                   name="plus-thick"
-                  color={colors.black}
+                  color={colors.blue}
                   size={25}
                 />
               </View>
@@ -139,27 +141,20 @@ export default function RequestScreen({ navigation, route }) {
       </View>
       <MapComponent userOrigin={userOrigin} userDestination={userDestination} />
       <BottomSheet
+      animationConfigs={useBottomSheetSpringConfigs} 
         ref={bottomsheet1}
         index={route.params.state}
         snapPoints={snapPoints1}
-        onChange={handleSheetChange1}
+        onChange={() => handleSheetChange1}
       >
         <BottomSheetFlatList
-          keyboardShouldPersistTaps="always"
+          
           data={rideData}
           keyExtractor={(item) => item.id}
           renderItem={renderFlatListItems}
           contentContainerStyle={styles.contentContainer}
           ListHeaderComponent={
             <View style={styles.view10}>
-              <View style={styles.view11}>
-                <Icon
-                  type="material-community"
-                  name="star"
-                  color={colors.white}
-                  size={20}
-                />
-              </View>
               <View>
                 <Text style={styles.text9}>Saved Places</Text>
               </View>
@@ -202,25 +197,30 @@ export default function RequestScreen({ navigation, route }) {
 }
 
 const styles = StyleSheet.create({
-  container1: { flex: 1, paddingTop: parameters.statusBarHeight },
+  container1: { flex: 1, paddingTop: parameters.statusBarHeight, backgroundColor: colors.black },
 
   container: {
     flex: 1,
-    paddingTop: parameters.statusBarHeight,
+    paddingTop: 40,
+    backgroundColor: colors.black,
+    height: 400
   },
   contentContainer: {
     flex: 1,
     alignItems: "center",
+    backgroundColor:colors.black
   },
 
   view1: {
     position: "absolute",
     top: 25,
     left: 12,
-    backgroundColor: colors.white,
+    backgroundColor: "rgba(255,255,255,0.31)",
     height: 40,
     width: 40,
     borderRadius: 20,
+    borderColor: colors.blue,
+    borderWidth: 1,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 2,
@@ -231,7 +231,7 @@ const styles = StyleSheet.create({
     height: SCREEN_HEIGHT * 0.21,
     alignItems: "center",
     zIndex: 5,
-    backgroundColor: colors.white,
+    backgroundColor: colors.black,
   },
 
   view3: {
@@ -239,36 +239,48 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 2,
     marginBottom: 10,
-    backgroundColor: colors.white,
-    //height:30,
+    backgroundColor: 'rgba(255,255,255,0.31)',
+    borderRadius: 20,
+    borderColor: colors.blue,
+    borderWidth: 1,
+    height:36,
+    paddingHorizontal: 5,
     zIndex: 10,
   },
   view4: {
     flexDirection: "row",
     alignItems: "center",
+    backgroundColor: colors.black
   },
   view5: {
-    backgroundColor: colors.grey7,
+    backgroundColor: "rgba(255,255,255,0.31)",
+    color: colors.white,
     width: SCREEN_WIDTH * 0.7,
     height: 40,
     justifyContent: "center",
     marginTop: 10,
+
+    borderRadius: 15,
+    elevation: 2
   },
   view6: {
-    backgroundColor: colors.grey6,
+    backgroundColor: "rgba(255,255,255,0.31)",
     width: SCREEN_WIDTH * 0.7,
     height: 40,
     justifyContent: "center",
     marginTop: 10,
     paddingLeft: 0,
+
+    borderRadius: 15,
+    elevation: 2
   },
   text1: {
     marginLeft: 10,
     fontSize: 16,
-    color: colors.grey1,
+    color: colors.white,
   },
 
-  image1: { height: 70, width: 30, marginRight: 10, marginTop: 10 },
+  image1: { height: 50, width: 50, marginRight: 10, marginTop: 10 },
   view7: {
     flexDirection: "row",
     alignItems: "center",
@@ -279,14 +291,19 @@ const styles = StyleSheet.create({
   view10: {
     alignItems: "center",
     flex: 5,
+    backgroundColor: colors.black,
     flexDirection: "row",
     paddingVertical: 10,
-    borderBottomColor: colors.grey5,
+    color: colors.white,
+    borderBottomColor: colors.grey1,
     borderBottomWidth: 1,
     paddingHorizontal: 15,
   },
   view11: {
-    backgroundColor: colors.grey,
+    backgroundColor: "rgba(255,255,255,0.31)",
+    color: colors.blue,
+    borderColor: colors.blue,
+    borderWidth: 1,
     height: 30,
     width: 30,
     borderRadius: 15,
@@ -297,28 +314,29 @@ const styles = StyleSheet.create({
   },
 
   contentContainer: {
-    backgroundColor: "white",
+    backgroundColor: colors.black,
+    
   },
 
   view12: {
     alignItems: "center",
     paddingVertical: 10,
     borderBottomWidth: 1,
-    borderBottomColor: colors.grey4,
+    borderBottomColor: colors.blue,
   },
 
   text2: {
     fontSize: 18,
-    color: colors.grey1,
+    color: colors.white,
   },
   text3: {
     fontSize: 16,
-    color: colors.black,
+    color: colors.white,
     fontWeight: "bold",
     marginRight: 5,
   },
 
-  text4: { color: colors.grey2, marginTop: 4 },
+  text4: { color: colors.white, marginTop: 4 },
 
   view13: {
     flexDirection: "row",
@@ -331,7 +349,7 @@ const styles = StyleSheet.create({
   button1: {
     height: 40,
     width: 100,
-    backgroundColor: colors.grey6,
+    backgroundColor: colors.blue,
     borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
@@ -340,7 +358,7 @@ const styles = StyleSheet.create({
 
   button2: {
     height: 50,
-    backgroundColor: colors.grey10,
+    backgroundColor: colors.blue,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 20,
@@ -350,7 +368,7 @@ const styles = StyleSheet.create({
   button1Text: {
     fontSize: 17,
     marginTop: -2,
-    color: colors.black,
+    color: colors.white,
   },
 
   button2Text: {

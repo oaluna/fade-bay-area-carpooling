@@ -3,6 +3,7 @@ import {
   View,
   Text,
   Image,
+  ImageBackground,
   StyleSheet,
   TextInput,
   Button,
@@ -30,6 +31,7 @@ const SignIn = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+    <ImageBackground source={require("../assets/images/background.jpeg")} style={{height: height, width: width}}>
       <View style={styles.logoContainer}>
         <Image
           source={require("../assets/images/fade-logo.png")}
@@ -74,7 +76,7 @@ const SignIn = ({ navigation }) => {
           <Text
             style={{
               color: colors.white,
-              
+              fontSize: 24,
               textAlign: "center",
               display: "flex",
               flexDirection: "row",
@@ -85,6 +87,7 @@ const SignIn = ({ navigation }) => {
           </Text>
         </Pressable>
       </View>
+      </ImageBackground>
     </View>
   );
 };
@@ -105,8 +108,7 @@ const styles = StyleSheet.create({
     height: height,
     justifyContent: "space-evenly",
     margin: 0,
-    paddingLeft: 15,
-    paddingTop: 15,
+   
     width: width,
   },
   dividerText: {
@@ -145,15 +147,16 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   formInput: {
-    backgroundColor: "rgba(255,255,255,0.31)",
+    backgroundColor: "rgba(255,255,255,0.81)",
     borderColor: colors.blue,
     borderRadius: 15,
     width: 300,
-    borderWidth: 1,
+    borderWidth: 2,
     color: colors.white,
     fontSize: 16,
     paddingHorizontal: 15,
     alignSelf: "center",
+    elevation: 2,
 
     height: 50,
     marginVertical: 25,
@@ -166,8 +169,10 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginVertical: 20,
     paddingVertical: 10,
+    backgroundColor: colors.black,
     borderColor: colors.blue,
     borderWidth: 1,
+    elevation: 2,
     borderRadius: 15,
     alignSelf: "center",
   },
