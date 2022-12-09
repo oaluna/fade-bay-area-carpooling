@@ -3,31 +3,37 @@ export const filterData = [
     name: "Start a Carpool",
     image: require("../assets/images/icon-pickup.png"),
     id: "0",
+    onPress: "RequestScreen",
   },
   {
     name: "Join a Carpool",
     image: require("../assets/images/icon-carpool.png"),
     id: "1",
+    onPress: "DestinationScreen",
   },
   {
     name: "Scheduled Rides",
     image: require("../assets/images/icon-calendar.png"),
     id: "2",
+    onPress: "HomeScreen",
   },
   {
     name: "Subscribed Rides",
     image: require("../assets/images/icon-favorites.png"),
     id: "3",
+    onPress: "HomeScreen",
   },
   {
     name: "View Profile",
     image: require("../assets/images/icon-account.png"),
     id: "4",
+    onPress: "HomeScreen",
   },
   {
     name: "Settings",
     image: require("../assets/images/icon-settings.png"),
     id: "5",
+    onPress: "SettingsScreen",
   },
 ];
 
@@ -52,7 +58,7 @@ export const carTypeData = [
         promotion: 5,
         time: "20:19",
         id: "0",
-      }
+      },
     ],
   },
 
@@ -69,9 +75,8 @@ export const carTypeData = [
         time: "20:31",
         id: "3",
       },
-     
     ],
-  }
+  },
 ];
 
 export const requestData = [

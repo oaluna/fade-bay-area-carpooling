@@ -5,6 +5,7 @@ import {
   View,
   Dimensions,
   ScrollView,
+  Pressable,
   Image,
   FlatList,
   TouchableOpacity,
@@ -72,9 +73,7 @@ const HomeScreen = ({ navigation }) => {
           <Text style={styles.text1}>Welcome!</Text>
           <View style={styles.view1}>
             <View style={styles.view8}>
-              <Text style={styles.text2}>
-                And get rid of that weird carpool doll.
-              </Text>
+              <Text style={styles.text2}></Text>
               <TouchableOpacity
                 onPress={() => {
                   navigation.navigate("RequestScreen", { state: 0 });
@@ -112,14 +111,16 @@ const HomeScreen = ({ navigation }) => {
             data={filterData}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
-              <View style={styles.card}>
+              <Pressable
+                style={styles.card}
+                onPress={() => navigation.navigate(item.onPress)}
+              >
                 <View style={styles.cardHeader}>
                   <Image style={styles.cardImage} source={item.image} />
-               
+
                   <Text style={styles.title}>{item.name}</Text>
-            
                 </View>
-              </View>
+              </Pressable>
             )}
           />
         </View>
@@ -292,15 +293,15 @@ const styles = StyleSheet.create({
     width: 80,
     height: 110,
     borderColor: colors.blue,
-    
+
     borderWidth: 1,
   },
 
   title: {
     color: colors.white,
     fontSize: 12,
-    margin:5,
-    textAlign:"center"
+    margin: 5,
+    textAlign: "center",
   },
   view3: {
     flexDirection: "row",
@@ -310,7 +311,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     marginHorizontal: 15,
-   
   },
   text3: { fontSize: 24, color: colors.white },
 
@@ -325,7 +325,6 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     borderRadius: 20,
     height: 32,
-    
   },
 
   view5: {

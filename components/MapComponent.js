@@ -7,10 +7,8 @@ import MapViewDirections from "react-native-maps-directions";
 import { GOOGLE_MAPS_APIKEY } from "../config";
 
 export default class MapComponent extends Component {
-  constructor() {
-    super();
-    this.state = {};
-
+  constructor(props) {
+    super(props);
     this._map = React.createRef(35);
   }
 
@@ -27,7 +25,6 @@ export default class MapComponent extends Component {
       }
     }, 500);
   }
-
   render() {
     return (
       <View>
@@ -36,6 +33,8 @@ export default class MapComponent extends Component {
           style={styles.map}
           customMapStyle={mapStyle}
           ref={this._map}
+          showsUserLocation={true}
+          followsUserLocation={true}
         >
           {this.props.userOrigin.latitude != null && (
             <MapView.Marker

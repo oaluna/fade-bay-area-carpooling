@@ -17,7 +17,6 @@ export default function DrawerNavigator() {
         component={HomeStack}
         options={{
           title: "Home",
-          
           drawerContentContainerStyle: {
             backgroundColor: colors.black,
             color: colors.blue,

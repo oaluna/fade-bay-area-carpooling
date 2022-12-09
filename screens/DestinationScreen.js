@@ -15,7 +15,7 @@ import { OriginContext, DestinationContext } from "../context/Context";
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
-const DestinationScreen = ({ navigation }) => {
+const DestinationScreen = ({ data, navigation }) => {
   const { dispatchOrigin } = useContext(OriginContext);
   const { dispatchDestination } = useContext(DestinationContext);
 
@@ -65,7 +65,7 @@ const DestinationScreen = ({ navigation }) => {
           currentLocation={true}
           ref={textInput1}
           minLength={2}
-          enablePoweredByContainer={false}
+          enablePoweredByContainer={true}
           fetchDetails={true}
           autoFocus={true}
           styles={autoComplete}
