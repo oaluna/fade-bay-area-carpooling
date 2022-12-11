@@ -23,13 +23,13 @@ export const colors = {
   cardComment: "#888888",
   cardBackground: "#dedede",
   statusbar: "#ff8c52",
-  headerText: "#000030",
+  headerText: "rgba(255, 255, 255, 0.71)",
   lightgreen: "#4fc8b0",
   blue: "#2afbff",
-  black: "#000030",
-  white: "#dedede",
+  black: "#1b263b",
+  white: "#F4F2F3",
   darkBlue: "#213fb2",
-  pageBackground: "#000030",
+  pageBackground: "rgba(255, 255, 255, 0.71)",
 };
 
 export const parameters = {
@@ -37,11 +37,11 @@ export const parameters = {
   headerHeight: 70,
 
   styledButton: {
-    backgroundColor: "#000030",
+    backgroundColor: "rgba(255, 255, 255, 0.71)",
     alignContent: "center",
     justifyContent: "center",
     borderRadius: 12,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: "#2afbff",
     height: 50,
     paddingHorizontal: 20,
@@ -59,7 +59,7 @@ export const parameters = {
 };
 
 export const title = {
-  color: "#000030",
+  color: "rgba(255, 255, 255, 0.71)",
   fontSize: 20,
   fontWeight: "bold",
 };

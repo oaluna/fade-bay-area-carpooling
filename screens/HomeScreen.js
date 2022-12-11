@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
   cardImage: {
     height: 64,
     width: 64,
-    borderWidth: 1,
+    borderWidth: 2,
     alignSelf: "center",
   },
 
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,0.21)",
     borderRadius: 20,
     borderColor: colors.blue,
-    borderWidth: 1,
+    borderWidth: 2,
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 20,
@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
     height: 110,
     borderColor: colors.blue,
 
-    borderWidth: 1,
+    borderWidth: 2,
   },
 
   title: {
@@ -320,7 +320,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
     backgroundColor: "rgba(255,255,255,0.21)",
     borderColor: colors.blue,
-    borderWidth: 1,
+    borderWidth: 2,
     paddingHorizontal: 10,
     paddingVertical: 2,
     borderRadius: 20,
@@ -331,8 +331,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     height: 64,
-    backgroundColor: colors.black,
-    paddingVertical: 15,
+    backgroundColor: "rgba(155,155,155,0.25)",
+    padding: 15,
+    marginVertical: 5,
     justifyContent: "space-between",
     marginHorizontal: 15,
     borderBottomColor: colors.blue,
@@ -366,7 +367,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: colors.white,
     marginLeft: 20,
-    marginBottom: 20,
+    marginVertical: 20,
   },
 
   icon1: { alignSelf: "flex-start", marginLeft: 15, marginTop: 15 },

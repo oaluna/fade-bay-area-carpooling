@@ -69,7 +69,7 @@ const RegisterScreen = ({ navigation }) => {
 
           <Pressable
             style={styles.submitBtn}
-            onPress={() => navigation.navigate("HomeScreen")}
+            onPress={() => navigation.navigate("DemoScreen")}
           >
             <Text
               style={{
@@ -141,7 +141,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   formInput: {
-   
     backgroundColor: "rgba(255,255,255,0.71)",
     borderColor: colors.blue,
     borderRadius: 15,

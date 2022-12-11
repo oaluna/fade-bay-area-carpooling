@@ -67,7 +67,7 @@ export default function RequestScreen({ navigation, route }) {
             />
           </View>
           <View style={{ backgroundColor: colors.black }}>
-            <Text style={{ fontSize: 15, color: colors.white }}>
+            <Text style={{ fontSize: 20, color: colors.white }}>
               {item.street}
             </Text>
             <Text style={{ color: colors.white }}>{item.area}</Text>
@@ -79,148 +79,161 @@ export default function RequestScreen({ navigation, route }) {
   );
 
   return (
-    <View style={styles.container}>
-      <View style={styles.view1}>
-        <Icon
-          type="material-community"
-          name="arrow-left"
-          color={colors.white}
-          size={32}
-        />
-      </View>
-      <View style={styles.view2}>
-        <TouchableOpacity>
-          <View style={styles.view3}>
-            <Avatar
-              rounded
-              avatarStyle={{}}
-              size={30}
-              source={require("../assets/images/icon-account.png")}
-            />
-            <Text style={{ marginLeft: 5, color: colors.white}}>For Someone</Text>
-            <Icon
-              type="material-community"
-              name="chevron-down"
-              color={colors.white}
-              size={26}
-            />
-          </View>
-        </TouchableOpacity>
-        <View style={styles.view4}>
-          <View>
-            <Image
-              style={styles.image1}
-              source={require("../assets/images/icon-bus.png")}
-            />
-          </View>
-          <View>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("DestinationScreen")}
-            >
-              <View style={styles.view6}>
-                <Text style={styles.text1}>From where</Text>
-              </View>
-            </TouchableOpacity>
-            <View style={styles.view7}>
-              <TouchableOpacity>
-                <View style={styles.view5}>
-                  <Text style={styles.text10}>...</Text>
-                </View>
-              </TouchableOpacity>
-              <View style={styles.view8}>
-                <Icon
-                  type="material-community"
-                  name="plus-thick"
-                  color={colors.blue}
-                  size={25}
-                />
-              </View>
-            </View>
-          </View>
+    <React.Fragment>
+      <View style={styles.container}>
+        <View style={styles.view1}>
+          <Icon
+            type="material-community"
+            name="arrow-left"
+            color={colors.white}
+            size={32}
+          />
         </View>
-      </View>
-      <MapComponent userOrigin={userOrigin} userDestination={userDestination} />
-      <BottomSheet
-      animationConfigs={useBottomSheetSpringConfigs} 
-        ref={bottomsheet1}
-        index={route.params.state}
-        snapPoints={snapPoints1}
-        onChange={() => handleSheetChange1}
-      >
-        <BottomSheetFlatList
-          
-          data={rideData}
-          keyExtractor={(item) => item.id}
-          renderItem={renderFlatListItems}
-          contentContainerStyle={styles.contentContainer}
-          ListHeaderComponent={
-            <View style={styles.view10}>
-              <View>
-                <Text style={styles.text9}>Saved Places</Text>
-              </View>
+
+        <View style={styles.view2}>
+          <TouchableOpacity>
+            <View style={styles.view3}>
+              <Text
+                style={{
+                  color: colors.white,
+                  fontSize: 18,
+                  alignSelf: "center",
+                  width: 65,
+                  marginLeft: 80,
+                  marginRight: 5,
+                }}
+              >
+                Ride with{" "}
+              </Text>
+              <Image
+                source={require("../assets/images/fade-logo.png")}
+                style={{ resizeMode: "contain", width: 60 }}
+              />
             </View>
-          }
-          ListFooterComponent={
-            <View>
-              <View style={styles.view10}>
-                <View style={styles.view11}>
-                  <Icon
-                    type="material-community"
-                    name="map-marker"
-                    color={colors.white}
-                    size={20}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.text9}>Set location on map</Text>
-                </View>
-              </View>
-              <View style={styles.view10}>
-                <View style={styles.view11}>
-                  <Icon
-                    type="material-community"
-                    name="skip-next"
-                    color={colors.white}
-                    size={20}
-                  />
-                </View>
-                <View>
-                  <Text style={styles.text9}>Enter destination later</Text>
-                </View>
-              </View>
-            </View>
-          }
+          </TouchableOpacity>
+        </View>
+
+
+        <View style={styles.view6}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("DestinationScreen")}
+          >
+            <Text style={styles.text1}>Where from ?</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.view4}>
+          <Image
+            style={[styles.image1, { marginTop: 0 }]}
+            source={require("../assets/images/icon-origin.png")}
+          />
+        </View>
+
+
+        <View style={styles.view6}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("DestinationScreen")}
+          >
+            <Text style={styles.text1}>Where to ?</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.view4}>
+          <Image
+            style={[styles.image1, { marginTop: 0 }]}
+            source={require("../assets/images/icon-destination.png")}
+          />
+        </View>
+
+        <MapComponent
+          userOrigin={userOrigin}
+          userDestination={userDestination}
         />
-      </BottomSheet>
-    </View>
+
+        <BottomSheet
+          animationConfigs={useBottomSheetSpringConfigs}
+          ref={bottomsheet1}
+          index={route.params.state}
+          snapPoints={snapPoints1}
+          onChange={() => handleSheetChange1}
+        >
+          <BottomSheetFlatList
+            data={rideData}
+            keyExtractor={(item) => item.id}
+            renderItem={renderFlatListItems}
+            contentContainerStyle={styles.contentContainer}
+            ListHeaderComponent={
+              <View style={styles.view10}>
+                <View>
+                  <Text style={styles.text9}>Saved Places</Text>
+                </View>
+              </View>
+            }
+            ListFooterComponent={
+              <View>
+                <View style={styles.view10}>
+                  <View style={styles.view11}>
+                    <Icon
+                      type="material-community"
+                      name="map-marker"
+                      color={"crimson"}
+                      size={20}
+                    />
+                  </View>
+                  <View>
+                    <Text style={styles.text9}>Set location on map</Text>
+                  </View>
+                </View>
+                <View style={styles.view10}>
+                  <View style={styles.view11}>
+                    <Icon
+                      type="material-community"
+                      name="skip-next"
+                      color={"purple"}
+                      size={20}
+                    />
+                  </View>
+                  <View>
+                    <Text style={styles.text9}>Enter destination later</Text>
+                  </View>
+                </View>
+              </View>
+            }
+          />
+        </BottomSheet>
+      </View>
+    </React.Fragment>
   );
 }
 
 const styles = StyleSheet.create({
-  container1: { flex: 1, paddingTop: parameters.statusBarHeight, backgroundColor: colors.black },
-
   container: {
     flex: 1,
-    paddingTop: 40,
+    paddingTop: 48,
+    justifyContent: "flex-start",
     backgroundColor: colors.black,
-    height: 400
+
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    alignSelf: "center",
+    paddingBottom: 15
   },
   contentContainer: {
-    flex: 1,
+    display: "flex",
+    flexDirection: "column",
     alignItems: "center",
-    backgroundColor:colors.black
+    backgroundColor: colors.black,
   },
-
   view1: {
     position: "absolute",
-    top: 25,
-    left: 12,
+    top: 56,
+    left: 15,
     backgroundColor: "rgba(255,255,255,0.31)",
     height: 40,
     width: 40,
     borderRadius: 20,
     borderColor: colors.blue,
-    borderWidth: 1,
+    borderWidth: 2,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 2,
@@ -228,69 +241,85 @@ const styles = StyleSheet.create({
   },
 
   view2: {
-    height: SCREEN_HEIGHT * 0.21,
+    height: 50,
+    width: 300,
+    flexWrap: "wrap",
     alignItems: "center",
     zIndex: 5,
+    marginLeft: 15,
+    marginBottom: 25,
     backgroundColor: colors.black,
   },
 
   view3: {
     flexDirection: "row",
+    alignSelf: "center",
     alignItems: "center",
-    marginTop: 2,
-    marginBottom: 10,
-    backgroundColor: 'rgba(255,255,255,0.31)',
-    borderRadius: 20,
-    borderColor: colors.blue,
-    borderWidth: 1,
-    height:36,
-    paddingHorizontal: 5,
+    marginTop: 5,
+    marginBottom: 15,
+    marginHorizontal: 15,
+    textAlign: "center",
+    alignSelf: "center",
+    height: 50,
+    width: 150,
+    paddingHorizontal: 15,
     zIndex: 10,
   },
   view4: {
     flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: colors.black
+    height: 40,
+    alignSelf: "center",
+    backgroundColor: colors.black,
+    left: 15,
+    right: 15,
+    top: 25,
+    marginVertical: 10,
   },
   view5: {
     backgroundColor: "rgba(255,255,255,0.31)",
     color: colors.white,
-    width: SCREEN_WIDTH * 0.7,
+    width: 200,
     height: 40,
-    justifyContent: "center",
-    marginTop: 10,
+    paddingTop: 25,
+    marginVertical: 0,
 
     borderRadius: 15,
-    elevation: 2
+    elevation: 2,
   },
   view6: {
     backgroundColor: "rgba(255,255,255,0.31)",
     width: SCREEN_WIDTH * 0.7,
     height: 40,
-    justifyContent: "center",
-    marginTop: 10,
-    paddingLeft: 0,
+    paddingTop: 10,
+    marginTop: 15,
+    marginLeft: 15,
 
     borderRadius: 15,
-    elevation: 2
+    elevation: 2,
   },
   text1: {
     marginLeft: 10,
     fontSize: 16,
     color: colors.white,
   },
-
-  image1: { height: 50, width: 50, marginRight: 10, marginTop: 10 },
+  image1: { height: 49, width: 49, marginRight: 10, marginTop: 10 },
   view7: {
     flexDirection: "row",
     alignItems: "center",
+    backgroundColor: "rgba(255,255,255,0.31)",
+    width: SCREEN_WIDTH * 0.7,
+    height: 40,
+    marginTop: 0,
+    paddingLeft: 0,
+
+    borderRadius: 15,
+    elevation: 2,
   },
   view8: {
     marginLeft: 10,
   },
   view10: {
     alignItems: "center",
-    flex: 5,
     backgroundColor: colors.black,
     flexDirection: "row",
     paddingVertical: 10,
@@ -300,24 +329,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   view11: {
-    backgroundColor: "rgba(255,255,255,0.31)",
+    backgroundColor: "rgba(255,255,255,0.71)",
     color: colors.blue,
     borderColor: colors.blue,
-    borderWidth: 1,
+    borderWidth: 2,
     height: 30,
     width: 30,
     borderRadius: 15,
     alignItems: "center",
     justifyContent: "center",
     marginRight: 15,
-    marginTop: 15,
+    marginTop: 0,
   },
 
   contentContainer: {
     backgroundColor: colors.black,
-    
   },
-
   view12: {
     alignItems: "center",
     paddingVertical: 10,
@@ -366,7 +393,7 @@ const styles = StyleSheet.create({
   },
 
   button1Text: {
-    fontSize: 17,
+    fontSize: 23,
     marginTop: -2,
     color: colors.white,
   },
@@ -383,7 +410,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   view15: {
-    backgroundColor: colors.grey6,
+    backgroundColor: "pink",
     height: 40,
     width: 40,
     borderRadius: 20,
@@ -481,7 +508,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.grey6,
     marginBottom: 10,
   },
-  text9: { fontSize: 15, color: colors.grey1 },
+  text9: { fontSize: 15, color: colors.grey5 },
 
   map: {
     marginVertical: 0,

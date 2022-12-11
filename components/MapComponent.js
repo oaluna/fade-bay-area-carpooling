@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View, Image } from "react-native";
+import { Text, StyleSheet, View, Image, Dimensions } from "react-native";
 import { mapStyle } from "../global/mapStyle";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { colors, parameters } from "../global/styles";
 import MapViewDirections from "react-native-maps-directions";
 import { GOOGLE_MAPS_APIKEY } from "../config";
 
+const { width, height } = Dimensions.get("screen");
 export default class MapComponent extends Component {
   constructor(props) {
     super(props);
@@ -42,7 +43,7 @@ export default class MapComponent extends Component {
               anchor={{ x: 0.5, y: 0.5 }}
             >
               <Image
-                source={require("../assets/images/icon-location.png")}
+                source={require("../assets/images/icon-origin.png")}
                 style={styles.markerOrigin2}
                 resizeMode="cover"
               />
@@ -54,7 +55,7 @@ export default class MapComponent extends Component {
               anchor={{ x: 0.5, y: 0.5 }}
             >
               <Image
-                source={require("../assets/images/icon-location.png")}
+                source={require("../assets/images/icon-destination.png")}
                 style={styles.markerDestination}
                 resizeMode="cover"
               />
@@ -77,8 +78,8 @@ export default class MapComponent extends Component {
 
 const styles = StyleSheet.create({
   map: {
-    height: "100%",
-    width: "100%",
+    height: height / 0.7,
+    width: width,
   },
 
   markerWrapOrigin: {
@@ -89,8 +90,8 @@ const styles = StyleSheet.create({
     // marginTop:0
   },
   markerOrigin: {
-    width: 16,
-    height: 16,
+    width: 50,
+    height: 50,
     borderRadius: 8,
   },
 
@@ -109,8 +110,8 @@ const styles = StyleSheet.create({
   },
   markerDestination: {
     width: 16,
-    height: 16,
-  },
+height: 16,
+marginLeft: 15  },
 
   markerOrigin2: {
     width: 20,

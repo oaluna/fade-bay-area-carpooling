@@ -31,62 +31,66 @@ const SignIn = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-    <ImageBackground source={require("../assets/images/background.jpeg")} style={{height: height, width: width}}>
-      <View style={styles.logoContainer}>
-        <Image
-          source={require("../assets/images/fade-logo.png")}
-          style={styles.fadeLogo}
-        />
-      </View>
-      <View style={styles.formContainer}>
-        <Text style={styles.headerText}>Sign In to your Fade Account</Text>
-
-        <SafeAreaView>
-          {fields.map((text) => (
-            <TextInput
-              key={text.id}
-              style={styles.formInput}
-              onChangeText={onChangeText}
-              placeholder={text.fieldName}
-              secureTextEntry={text.id === 1 ? true : false}
-            />
-          ))}
-        </SafeAreaView>
-
-        <Pressable
-          style={styles.submitBtn}
-          onPress={() => navigation.navigate("HomeScreen")}
-        >
-          <Text
-            style={{
-              color: colors.white,
-              fontSize: 24,
-              textAlign: "center",
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
-            Sign In
-          </Text>
-        </Pressable>
-        <View>
-          <Text style={styles.dividerText}>OR</Text>
+      <ImageBackground
+        source={require("../assets/images/background.jpeg")}
+        style={{ height: height, width: width }}
+      >
+        <View style={styles.logoContainer}>
+          <Image
+            source={require("../assets/images/fade-logo.png")}
+            style={styles.fadeLogo}
+          />
         </View>
-        <Pressable onPress={() => navigation.navigate("RegisterScreen")}>
-          <Text
-            style={{
-              color: colors.white,
-              fontSize: 24,
-              textAlign: "center",
-              display: "flex",
-              flexDirection: "row",
-              marginTop: 15
-            }}
-          >
-            Click here to sign up
-          </Text>
-        </Pressable>
-      </View>
+        <View style={styles.formContainer}>
+          <Text style={styles.headerText}>Sign In to your Fade Account</Text>
+
+          <SafeAreaView>
+            {fields.map((text) => (
+              <TextInput
+                key={text.id}
+                style={styles.formInput}
+                onChangeText={onChangeText}
+                placeholder={text.fieldName}
+                secureTextEntry={text.id === 1 ? true : false}
+              />
+            ))}
+          </SafeAreaView>
+          <View style={{ bottom: 0, position: "absolute", marginBottom: 40 }}>
+            <Pressable
+              style={styles.submitBtn}
+              onPress={() => navigation.navigate("HomeScreen")}
+            >
+              <Text
+                style={{
+                  color: colors.white,
+                  fontSize: 24,
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+              >
+                Sign In
+              </Text>
+            </Pressable>
+            <View>
+              <Text style={styles.dividerText}>OR</Text>
+            </View>
+            <Pressable onPress={() => navigation.navigate("RegisterScreen")}>
+              <Text
+                style={{
+                  color: colors.white,
+                  fontSize: 24,
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "row",
+                  marginTop: 15,
+                }}
+              >
+                Click here to sign up
+              </Text>
+            </Pressable>
+          </View>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -108,7 +112,7 @@ const styles = StyleSheet.create({
     height: height,
     justifyContent: "space-evenly",
     margin: 0,
-   
+
     width: width,
   },
   dividerText: {
@@ -147,12 +151,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   formInput: {
-    backgroundColor: "rgba(255,255,255,0.81)",
+    backgroundColor: "rgba(255,255,255,0.71)",
     borderColor: colors.blue,
     borderRadius: 15,
     width: 300,
     borderWidth: 2,
-    color: colors.white,
+    color: colors.gray3,
     fontSize: 16,
     paddingHorizontal: 15,
     alignSelf: "center",
@@ -171,7 +175,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     backgroundColor: colors.black,
     borderColor: colors.blue,
-    borderWidth: 1,
+    borderWidth: 2,
     elevation: 2,
     borderRadius: 15,
     alignSelf: "center",
