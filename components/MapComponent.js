@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, Image, Dimensions } from "react-native";
 import { mapStyle } from "../global/mapStyle";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
 import { colors, parameters } from "../global/styles";
+import { carsAround } from "../global/data";
 import MapViewDirections from "react-native-maps-directions";
 import { GOOGLE_MAPS_APIKEY } from "../config";
 
@@ -36,6 +37,11 @@ export default class MapComponent extends Component {
           ref={this._map}
           showsUserLocation={true}
           followsUserLocation={true}
+          initialRegion={{
+            ...carsAround[0],
+            latitudeDelta: 0.008,
+            longitudeDelta: 0.008,
+          }}
         >
           {this.props.userOrigin.latitude != null && (
             <MapView.Marker
@@ -66,8 +72,17 @@ export default class MapComponent extends Component {
               origin={this.props.userOrigin}
               destination={this.props.userDestination}
               apikey={GOOGLE_MAPS_APIKEY}
+              style={styles.map}
+              customMapStyle={mapStyle}
+              showsUserLocation={true}
+              followsUserLocation={true}
               strokeWidth={4}
               strokeColor={colors.black}
+              initialRegion={{
+                ...carsAround[0],
+                latitudeDelta: 0.008,
+                longitudeDelta: 0.008,
+              }}
             />
           )}
         </MapView>
@@ -110,8 +125,9 @@ const styles = StyleSheet.create({
   },
   markerDestination: {
     width: 16,
-height: 16,
-marginLeft: 15  },
+    height: 16,
+    marginLeft: 15,
+  },
 
   markerOrigin2: {
     width: 20,

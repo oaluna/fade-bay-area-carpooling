@@ -81,10 +81,11 @@ const LocationAccessScreen = ({ navigation, route }) => {
         source={require("../assets/images/icon-dropoff.png")}
       />
       <Text style={styles.logoTitle}>
-       In order to use Fade, we will need to access your Location.
+        In order to use Fade, we will need to access your Location.
       </Text>
       <Text style={styles.logoSubTitle}>
-        This ensures that you are matched up with riders closest to your area, and don't go too far out of your way to pick up a rider.
+        This ensures that you are matched up with riders closest to your area,
+        and don't go too far out of your way to pick up a rider.
       </Text>
       <View style={{ bottom: 0, position: "absolute", marginBottom: 10 }}>
         {/* x if location is not enabled, check if it is enabled */}
@@ -133,9 +134,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.black
+    backgroundColor: colors.black,
   },
-   image: {
+  image: {
     height: 150,
     width: 150,
   },
@@ -145,48 +146,47 @@ const styles = StyleSheet.create({
     textAlign: "center",
     width: 300,
     color: colors.white,
-    fontWeight: "800"
+    fontWeight: "800",
   },
   logoSubTitle: {
-      textAlign: 'center',
-      marginTop: 20,
-      width: 300,
-      fontSize: 20,
-      fontWeight: "800",
-      color: colors.white
-
+    textAlign: "center",
+    marginTop: 20,
+    width: 300,
+    fontSize: 20,
+    fontWeight: "800",
+    color: colors.white,
   },
-    button: {
-        backgroundColor: colors.black,
-        borderColor: colors.blue,
-        borderWidth: 2,
-        marginLeft: 30,
-        marginRight: 30,
-        marginTop: 20,
-        height: 48,
-        width: 350,
-        borderRadius: 15,
-        alignItems: "center",
-        justifyContent: 'center'
-    },
-    buttonOpacity: {
-        backgroundColor: colors.white,
-        borderColor: colors.blue,
-        borderWidth: 2,
-        marginLeft: 30,
-        marginRight: 30,
-        marginTop: 20,
-        height: 48,
-        width: 350,
-        opacity: .25,
-        borderRadius: 15,
-        alignItems: "center",
-        justifyContent: 'center'
-    },
-    buttonTitle: {
-      fontSize: 20,
-      color: colors.white
-    }
+  button: {
+    backgroundColor: colors.black,
+    borderColor: colors.blue,
+    borderWidth: 2,
+    marginLeft: 30,
+    marginRight: 30,
+    marginTop: 20,
+    height: 48,
+    width: 350,
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonOpacity: {
+    backgroundColor: colors.white,
+    borderColor: colors.blue,
+    borderWidth: 2,
+    marginLeft: 30,
+    marginRight: 30,
+    marginTop: 20,
+    height: 48,
+    width: 350,
+    opacity: 0.25,
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonTitle: {
+    fontSize: 20,
+    color: colors.white,
+  },
 });
 
 export default LocationAccessScreen;

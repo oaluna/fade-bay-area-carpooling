@@ -30,6 +30,12 @@ export const colors = {
   white: "#F4F2F3",
   darkBlue: "#213fb2",
   pageBackground: "rgba(255, 255, 255, 0.71)",
+  snow:"#fffbfc",
+  phlox:"#c04cfd",
+  aqua:"#2afbff",
+  magenta:"#bb2649",
+  darkblue:"#000030"
+
 };
 
 export const parameters = {

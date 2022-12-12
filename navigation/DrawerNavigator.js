@@ -20,7 +20,7 @@ export default function DrawerNavigator() {
           drawerContentContainerStyle: {
             backgroundColor: colors.black,
             color: colors.blue,
-            height: height
+            height: height,
           },
           drawerIcon: ({ focused, size }) => (
             <Icon
@@ -38,7 +38,7 @@ export default function DrawerNavigator() {
         component={SettingsStack}
         options={{
           title: "Settings",
-          
+
           drawerIcon: ({ focused, size }) => (
             <Icon
               type={"material-community"}

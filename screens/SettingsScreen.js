@@ -1,10 +1,12 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React from "react";
+import { View, Text } from "react-native";
 
 export default function SettingsScreen() {
   return (
-    <View style={{alignSelf:"center", justifyContent:"center", height: 1000}}>
-      <Text>Settings</Text>
-     </View>
+    <View
+      style={{ alignSelf: "center", justifyContent: "center", height: 1000 }}
+    >
+      <Text style={{ color: colors.snow }}>Settings</Text>
+    </View>
   );
 }

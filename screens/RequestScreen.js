@@ -113,7 +113,6 @@ export default function RequestScreen({ navigation, route }) {
           </TouchableOpacity>
         </View>
 
-
         <View style={styles.view6}>
           <TouchableOpacity
             onPress={() => navigation.navigate("DestinationScreen")}
@@ -128,7 +127,6 @@ export default function RequestScreen({ navigation, route }) {
           />
         </View>
 
-
         <View style={styles.view6}>
           <TouchableOpacity
             onPress={() => navigation.navigate("DestinationScreen")}
@@ -136,13 +134,13 @@ export default function RequestScreen({ navigation, route }) {
             <Text style={styles.text1}>Where to ?</Text>
           </TouchableOpacity>
         </View>
+
         <View style={styles.view4}>
           <Image
             style={[styles.image1, { marginTop: 0 }]}
             source={require("../assets/images/icon-destination.png")}
           />
         </View>
-
         <MapComponent
           userOrigin={userOrigin}
           userDestination={userDestination}
@@ -216,7 +214,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     alignItems: "flex-start",
     alignSelf: "center",
-    paddingBottom: 15
+    paddingBottom: 15,
   },
   contentContainer: {
     display: "flex",

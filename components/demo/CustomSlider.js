@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   image: {
     height: 300,
     width: 300,
-    resizeMode:"contain"
+    resizeMode: "contain",
   },
   logoTitle: {
     fontSize: 16,
