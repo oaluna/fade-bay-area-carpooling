@@ -1,39 +1,54 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+  Dimensions,
+} from "react-native";
 import Screen from "./Screen";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import { colors } from "../global/styles";
 //import { GOOGLE_MAP_APIKEY } from '@env'
 import { setDestination } from "../redux/slices/navSlice";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "@react-navigation/native";
 import NavFavourites from "./NavFavourites";
-import { mapStyle } from "../global/mapStyle";
 import { Icon } from "react-native-elements";
-import { colors } from "../global/styles";
 
 const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
+
+const { width, height } = Dimensions.get("screen");
 
 const NavigateCard = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
   return (
-    <Screen style={{ flex: 1, borderTopLeftRadius: 15, borderTopRightRadius: 15 }}>
+    <Screen style={{ backgroundColor: colors.darkblue, flex: 1, borderTopLeftRadius: 15, borderTopRightRadius: 15, elevation: 2 }}>
       <Text
         style={{
-          color: colors.snow,
-          fontSize: 32,
           textAlign: "left",
-          paddingBottom: 5,
-          fontSize: 36,
+          paddingBottom: 2,
+          fontSize: 32,
           fontWeight: "bold",
-          paddingTop: 20
+          color: colors.white,
+          width: width / 2,
         }}
       >
-        Welcome, Oscar
+        Good morning, Oscar
       </Text>
-      <View style={{borderTopColor: colors.blue, position:"relative", flex: 1}}>
-        <View style={{backgroundColor:"transparent", paddingBottom: 2}}>
+      <View
+        style={{
+          borderTopColor: colors.gray3,
+          flexShrink: 1,
+          position: "relative",
+          zIndex: 20,
+          backgroundColor: colors.darkblue,
+        }}
+      >
+        <View style={{ backgroundColor: colors.darkblue, paddingBottom: 2 }}>
           <GooglePlacesAutocomplete
             placeholder="Where to?"
             nearbyPlacesAPI="GooglePlacesSearch"
@@ -59,46 +74,90 @@ const NavigateCard = () => {
           />
         </View>
       </View>
-      <View style={{paddingHorizontal: 3, backgroundColor: "transparent", position: "relative", zIndex: 10, justifyContent: "space-between", flex: 1}}>
+      <View
+        style={{
+          paddingHorizontal: 3,
+          alignSelf: "center",
+          backgroundColor: colors.darkblue,
+          position: "relative",
+          zIndex: 10,
+          justifyContent: "space-evenly",
+      
+          marginBottom: 20,
+          height: 200,
+        }}
+      >
         <NavFavourites />
         <View
           style={{
-            height: 150,
-            display: "flex",
+            marginVertical: -50,
+            width: width,
             flexDirection: "row",
-            alignItems: "center",
             justifyContent: "space-evenly",
+            paddingTop: 20,
+            borderTopColor: colors.gray3,
+            position: "relative",
+            height: 50,
           }}
         >
           <TouchableOpacity
-            onPress={() => navigation.push("RideOptionsCard")}
-            style={styles.card}
+            style={{
+              flexDirection: "row",
+              backgroundColor: colors.darkblue,
+              alignItems: "center",
+              justifyContent: "center",
+              width: 150,
+              height: 50,
+              paddingHorizontal: 4,
+              paddingVertical: 3,
+              borderRadius: 15,
+              borderColor: colors.aqua,
+              borderWidth: 2,
+            }}
           >
             <Image
               source={require("../assets/images/icon-carpool.png")}
-              style={{
-                width: 24,
-                height: 24,
-                marginRight: 15,
-                resizeMode: "contain",
-              }}
+              style={{ width: 16, height: 16, resizeMode: "contain" }}
             />
-            <Text style={{ color: colors.snow }}>Join A Carpool</Text>
+            <Text
+              style={{
+                color: colors.white,
+                textAlign: "center",
+                paddingLeft: 3,
+              }}
+            >
+              Join A Carpool
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
+            style={{
+              flexDirection: "row",
+              backgroundColor: colors.darkblue,
+              alignItems: "center",
+              justifyContent: "center",
+              width: 150,
+              height: 50,
+              paddingHorizontal: 4,
+              paddingVertical: 3,
+              borderRadius: 15,
+              borderColor: colors.aqua,
+              borderWidth: 2,
+            }}
             onPress={() => navigation.push("RideOptionsCard")}
-            style={styles.card}
           >
             <Image
               source={require("../assets/images/icon-pickup.png")}
-              style={{
-                width: 24,
-                height: 24,
-                marginRight: 15,
-                resizeMode: "contain",
-              }}
+              style={{ width: 16, height: 16, resizeMode: "contain" }}
             />
-            <Text style={{ color: colors.snow }}>Start a Carpool</Text>
+            <Text
+              style={{
+                color: colors.white,
+                textAlign: "center",
+                paddingLeft: 3,
+              }}
+            >
+              Start a Carpool
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -111,50 +170,18 @@ export default NavigateCard;
 const toInputBoxStyles = StyleSheet.create({
   container: {
     flex: 0,
-    backgroundColor: "transparent",
+    backgroundColor: colors.darkblue,
     paddingTop: 20,
   },
   textInput: {
     fontSize: 15,
-    backgroundColor: "rgba(255,255,255,0.81)",
+    backgroundColor: "rgba(255,255,255,0.71)",
     borderRadius: 15,
     borderWidth: 2,
-    borderColor: colors.blue,
-  },
-  textInputContainer: {
-    paddingHorizontal:0,
-    paddingBottom: 25,
-  },
-});
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    paddingTop: 20,
-  },
-  textInput: {
-    fontSize: 15,
-    backgroundColor: "rgba(255,255,255,0.81)",
-    borderRadius: 15,
-    borderColor: colors.blue,
-    borderEndWidth: 1,
+    borderColor: colors.aqua,
   },
   textInputContainer: {
     paddingHorizontal: 20,
     paddingBottom: 0,
-  },
-  card: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    width: 170,
-    height: 50,
-    backgroundColor: "transparent",
-    borderColor: colors.blue,
-    borderWidth: 2,
-    borderRadius: 50,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });

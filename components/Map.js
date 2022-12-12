@@ -102,9 +102,13 @@ const Map = () => {
             origin={origin.description}
             destination={destination.description}
             lineDashPattern={[0]}
+            resetOnChange={false}
+            mode={"DRIVING"}
+            precision={"high"}
+            geodesic={true}
             apikey={GOOGLE_MAP_APIKEY}
-            strokeWidth={3}
-            strokeColor="black"
+            strokeWidth={4}
+            strokeColor={colors.darkblue}
             onError={(error) => console.log("Directions error: ", error)}
           />
         )}
@@ -114,13 +118,14 @@ const Map = () => {
               latitude: origin?.loaction.lat,
               longitude: origin?.loaction.lng,
             }}
-            title="Origin"
+            title="Your Pickup Location"
             description={origin.description}
             identifier="origin"
           >
             <Image
-              source={require("../assets/images/icon-location.png")}
+              source={require("../assets/images/icon-start.png")}
               style={{ height: 45, width: 45 }}
+              accessibilityLabel="Start"
             />
           </Marker>
         )}
@@ -130,13 +135,14 @@ const Map = () => {
               latitude: destination?.loaction.lat,
               longitude: destination?.loaction.lng,
             }}
-            title="Destination"
+            title="Your Destination"
             description={destination.description}
             identifier="destination"
           >
             <Image
-              source={require("../assets/images/icon-location.png")}
+              source={require("../assets/images/icon-end.png")}
               style={{ height: 45, width: 45 }}
+              accessibilityLabel="End"
             />
           </Marker>
         )}

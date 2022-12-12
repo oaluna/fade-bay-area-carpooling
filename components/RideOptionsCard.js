@@ -8,12 +8,12 @@ import {
   TouchableOpacity,
   View,
   Alert,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import Screen from "./Screen";
 import { useSelector } from "react-redux";
-import { colors } from "../global/styles"
+import { colors } from "../global/styles";
 
 import {
   selectDestination,
@@ -21,20 +21,22 @@ import {
   selectTravelTimeInformation,
 } from "../redux/slices/navSlice";
 
-const { width, height } = Dimensions.get("screen")
+const { width, height } = Dimensions.get("screen");
 
 const data = [
   {
     id: "0",
     title: "Start A Carpool",
 
-    image: "../assets/images/icon-pickup.png",
+    image:
+      "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813319/FadeIcons/icon-pickup_fpnloc.png",
   },
   {
     id: "1",
     title: "Join A Carpool",
 
-    image: "../assets/images/icon-carpool.png",
+    image:
+      "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813321/FadeIcons/icon-carpool_q58kxk.png",
   },
 ];
 
@@ -61,46 +63,123 @@ const RideOptionsCard = () => {
   };
 
   return (
-    <Screen>
-      <View>
-        <TouchableOpacity onPress={() => navigation.push("NavigateCard")}>
-          <Icon type="antdesign" name="arrowleft" color="black" size={23} />
+    <Screen
+      style={{
+        backgroundColor: colors.darkblue,
+        height: height,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        elevation: 2,
+      }}
+    >
+      <View
+        style={{
+          alignItems: "center",
+          flexDirection: "row",
+          justifyContent: "center",
+          marginBottom: 3,
+        }}
+      >
+        <TouchableOpacity
+          style={{ left: 10, position: "absolute", zIndex: 100 }}
+          onPress={() => navigation.push("NavigateCard")}
+        >
+          <Icon
+            type="antdesign"
+            name="arrowleft"
+            color="aqua"
+            size={23}
+            style={{ padding: 3 }}
+          />
         </TouchableOpacity>
-        <Text style={{ color: colors.snow }}>
+        <Text
+          style={{
+            textAlign: "center",
+            fontSize: 24,
+            fontWeight: "bold",
+            color: colors.white,
+          }}
+        >
           Select a ride - {travelTimeInformation?.distance?.text}
         </Text>
       </View>
-      <View>
+      <View style={{ flex: 1, marginTop: 2 }}>
         <FlatList
           data={data}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => setSelected(item)}>
+            <TouchableOpacity
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                paddingHorizontal: 5,
+                backgroundColor: selected?.id === item.id && colors.gray3,
+              }}
+              onPress={() => setSelected(item)}
+            >
               <Image source={{ uri: item.image }} style={styles.image} />
-              <View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  flex: 1,
+                }}
+              >
                 <View>
-                  <Text style={{ color: colors.snow }}>{item.title}</Text>
-                  <Text style={{ color: colors.snow }}>
+                  <Text
+                    style={{
+                      fontSize: 24,
+                      fontWeight: "bold",
+                      color: colors.white,
+                    }}
+                  >
+                    {item.title}
+                  </Text>
+                  <Text style={{ color: colors.white }}>
                     {travelTimeInformation?.duration?.text} Travel time
                   </Text>
                 </View>
-                <Text style={{ color: colors.snow }}>
-                  {/* {new Intl.NumberFormat('en-us', {
-                                        style: 'currency',
-                                        currency: 'USD'
-                                    }).format(
-                                        travelConst(item)
-                                    )} */}
-                  {/* ${travelConst(item)} */}
-                </Text>
               </View>
             </TouchableOpacity>
           )}
         />
       </View>
-      <View>
-        <TouchableOpacity disabled={!selected} onPress={onChoose}>
-          <Text style={{ color: colors.snow }}>Choose {selected?.title}</Text>
+      <View
+        style={{
+          width: width,
+          height: 650,
+          alignSelf: "center",
+          marginLeft: 25,
+        }}
+      >
+        <TouchableOpacity
+          style={{
+            color: colors.white,
+            backgroundColor: colors.darkblue,
+            paddingVertical: 10,
+            marginTop: -20,
+            borderRadius: 15,
+            borderColor: colors.aqua,
+            borderWidth: 2,
+            width: width - 30,
+            height: 50,
+          }}
+          disabled={!selected}
+          onPress={onChoose}
+        >
+          <Text
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              textAlign: "center",
+              color: colors.white,
+              fontSize: 24,
+            }}
+          >
+            Choose {selected?.title}
+          </Text>
         </TouchableOpacity>
       </View>
     </Screen>
@@ -111,9 +190,10 @@ export default RideOptionsCard;
 
 const styles = StyleSheet.create({
   image: {
-    width: 100,
-    height: 100,
+    width: 64,
+    height: 64,
     resizeMode: "contain",
+    margin: 25,
   },
   card: {
     width: 100,

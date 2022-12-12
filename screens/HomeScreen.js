@@ -450,11 +450,16 @@ const HomeScreen = ({ navigation }) => {
               container: {
                 flex: 0,
 
-                height: 220,
                 width: width - 30,
+                
               },
               textInput: {
                 fontSize: 15,
+                borderRadius: 15,
+                height: 50,
+                borderColor: colors.aqua,
+                borderWidth: 2,
+                backgroundColor: "rgba(255,255,255,0.71)"
               },
             }}
             enablePoweredByContainer={true}

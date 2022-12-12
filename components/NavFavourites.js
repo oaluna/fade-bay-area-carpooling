@@ -37,6 +37,10 @@ const NavFavourites = () => {
   const handlePress = () => {};
 
   return (
+    <React.Fragment>
+    <View>
+        <Text style={{color: colors.white, fontSize: 24, marginTop: 25, marginLeft: 15}}>Saved Locations</Text>
+    </View>
     <FlatList
       data={data}
       renderItem={({ item }) => (
@@ -47,6 +51,7 @@ const NavFavourites = () => {
             flexDirection: "row",
             alignItems: "center",
             marginLeft: 15,
+            marginTop: 15,
             borderBottomColor: colors.aqua,
             borderBottomWidth: 1,
           }}
@@ -55,7 +60,7 @@ const NavFavourites = () => {
             source={{ uri: item.image }}
             style={{ marginRight: 15, height: 35, width: 35 }}
           />
-          <View style={{ marginVertical: 15 }}>
+          <View style={{ marginVertical: 5 }}>
             <Text style={{ color: colors.snow, fontSize: 18 }}>
               {item.location}
             </Text>
@@ -70,6 +75,7 @@ const NavFavourites = () => {
         <View style={{ borderBottomColor: colors.aqua }} />
       )}
     />
+    </React.Fragment>
   );
 };
 
