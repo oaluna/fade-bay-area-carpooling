@@ -26,7 +26,15 @@ const NavigateCard = () => {
   const navigation = useNavigation();
 
   return (
-    <Screen style={{ backgroundColor: colors.darkblue, flex: 1, borderTopLeftRadius: 15, borderTopRightRadius: 15, elevation: 2 }}>
+    <Screen
+      style={{
+        backgroundColor: colors.darkblue,
+        flex: 1,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        elevation: 2,
+      }}
+    >
       <Text
         style={{
           textAlign: "left",
@@ -82,7 +90,7 @@ const NavigateCard = () => {
           position: "relative",
           zIndex: 10,
           justifyContent: "space-evenly",
-      
+
           marginBottom: 20,
           height: 200,
         }}

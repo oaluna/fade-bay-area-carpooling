@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
   },
   loginBtn: {
     backgroundColor: "white",
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   startBtn: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
     marginLeft: 30,
     marginRight: 30,
     marginTop: 20,

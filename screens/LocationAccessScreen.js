@@ -22,7 +22,7 @@ const LocationAccessScreen = ({ navigation, route }) => {
     const unsbuscribe = navigation.setOptions({
       headerBacktitle: "Location Access",
       headerStyle: {
-        backgroundColor: colors.black,
+        backgroundColor: colors.darkblue,
       },
       headerTintColor: colors.white,
       headerTitleStyle: {
@@ -106,8 +106,8 @@ const LocationAccessScreen = ({ navigation, route }) => {
               />
             ) : (
               <AntDesign
-                name="close-circle"
-                style={{ marginRight: 10 }}
+                name="closecircleo"
+                style={{ paddingHorizontal: 15 }}
                 size={20}
                 color="darkred"
               />
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
   },
   image: {
     height: 150,
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     color: colors.white,
   },
   button: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
     borderColor: colors.blue,
     borderWidth: 2,
     marginLeft: 30,

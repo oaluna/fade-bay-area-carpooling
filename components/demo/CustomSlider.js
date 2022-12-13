@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
   },
   containerSliderControls: {
     flexDirection: "row",

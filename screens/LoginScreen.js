@@ -10,8 +10,7 @@ import {
   SafeAreaView,
   Pressable,
   Dimensions,
-} 
-from "react-native";
+} from "react-native";
 import PropTypes from "prop-types";
 import { colors } from "../global/styles";
 import { carsAround } from "../global/data";
@@ -76,7 +75,10 @@ const SignIn = ({ navigation }) => {
             <View>
               <Text style={styles.dividerText}>OR</Text>
             </View>
-            <Pressable onPress={() => navigation.navigate("RegisterScreen")}>
+            <Pressable
+              onPress={() => navigation.navigate("RegisterScreen")}
+              style={styles.signupBtn}
+            >
               <Text
                 style={{
                   color: colors.white,
@@ -84,7 +86,6 @@ const SignIn = ({ navigation }) => {
                   textAlign: "center",
                   display: "flex",
                   flexDirection: "row",
-                  marginTop: 15,
                 }}
               >
                 Click here to sign up
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
   container: {
     alignSelf: "center",
 
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
     display: "flex",
     flexDirection: "column",
     flexWrap: "wrap",
@@ -174,8 +175,21 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginVertical: 20,
     paddingVertical: 10,
-    backgroundColor: colors.black,
-    borderColor: colors.blue,
+    backgroundColor: colors.darkblue,
+    borderColor: colors.aqua,
+    borderWidth: 2,
+    elevation: 2,
+    borderRadius: 15,
+    alignSelf: "center",
+  },
+  signupBtn: {
+    height: 50,
+    width: 300,
+    alignSelf: "center",
+    marginVertical: 20,
+    paddingVertical: 10,
+    backgroundColor: colors.darkblue,
+    borderColor: colors.aqua,
     borderWidth: 2,
     elevation: 2,
     borderRadius: 15,

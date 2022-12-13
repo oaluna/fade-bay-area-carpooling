@@ -61,7 +61,7 @@ const Map = () => {
           padding: 3,
           borderRadius: 15,
           shadowRadius: 5,
-          shadowColor: colors.black,
+          shadowColor: colors.darkblue,
           shadowOpacity: 0.5,
           shadowOffset: { width: 0, height: 0 },
         }}

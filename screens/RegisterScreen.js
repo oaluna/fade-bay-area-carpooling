@@ -66,38 +66,43 @@ const RegisterScreen = ({ navigation }) => {
               />
             ))}
           </ScrollView>
-
-          <Pressable
-            style={styles.submitBtn}
-            onPress={() => navigation.navigate("DemoScreen")}
-          >
-            <Text
-              style={{
-                color: colors.white,
-                fontSize: 24,
-                textAlign: "center",
-                display: "flex",
-                flexDirection: "row",
-                marginTop: 0,
-              }}
+          <View style={{ bottom: 0, position: "absolute", marginBottom: 75 }}>
+            <Pressable
+              style={styles.submitBtn}
+              onPress={() => navigation.navigate("DemoScreen")}
             >
-              Register
-            </Text>
-          </Pressable>
-          <Pressable onPress={() => navigation.navigate("LoginScreen")}>
-            <Text
-              style={{
-                color: colors.white,
-                textAlign: "center",
-                marginVertical: 0,
-                position: "absolute",
-                bottom: 100,
-                alignSelf: "center",
-              }}
+              <Text
+                style={{
+                  color: colors.white,
+                  fontSize: 24,
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+              >
+                Sign Up
+              </Text>
+            </Pressable>
+            <View>
+              <Text style={styles.dividerText}>OR</Text>
+            </View>
+            <Pressable
+              onPress={() => navigation.navigate("LoginScreen")}
+              style={styles.loginBtn}
             >
-              Already have an account? Click here.
-            </Text>
-          </Pressable>
+              <Text
+                style={{
+                  color: colors.white,
+                  fontSize: 24,
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+              >
+                I'm Already Registered
+              </Text>
+            </Pressable>
+          </View>
         </View>
       </ImageBackground>
     </View>
@@ -108,7 +113,7 @@ const styles = StyleSheet.create({
   container: {
     alignSelf: "center",
     alignItems: "center",
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
 
     height: height,
     margin: 0,
@@ -149,21 +154,36 @@ const styles = StyleSheet.create({
     fontSize: 16,
     height: 50,
     paddingHorizontal: 15,
-    marginVertical: 8,
+    marginVertical: 7,
     width: 300,
   },
-
   submitBtn: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
     height: 50,
     alignSelf: "center",
     width: 300,
     borderColor: colors.blue,
     borderWidth: 1,
     borderRadius: 15,
-    marginBottom: 150,
     paddingVertical: 10,
     width: 300,
+  },
+  loginBtn: {
+    backgroundColor: colors.darkblue,
+    height: 50,
+    alignSelf: "center",
+    paddingVertical: 10,
+    width: 300,
+    borderColor: colors.blue,
+    borderWidth: 1,
+    borderRadius: 15,
+    width: 300,
+  },
+  dividerText: {
+    color: colors.white,
+    fontSize: 24,
+    textAlign: "center",
+    marginVertical: 15,
   },
 });
 

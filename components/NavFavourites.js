@@ -39,7 +39,7 @@ const NavFavourites = () => {
   return (
     <React.Fragment>
     <View>
-        <Text style={{color: colors.white, fontSize: 24, marginTop: 25, marginLeft: 15}}>Saved Locations</Text>
+        <Text style={{color: colors.white, fontSize: 24, marginTop: 25}}>Saved Locations</Text>
     </View>
     <FlatList
       data={data}
@@ -50,7 +50,7 @@ const NavFavourites = () => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            marginLeft: 15,
+            marginHorizontal: 15,
             marginTop: 15,
             borderBottomColor: colors.aqua,
             borderBottomWidth: 1,

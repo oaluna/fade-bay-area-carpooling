@@ -11,14 +11,14 @@ const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator() {
   return (
-    <Drawer.Navigator color={colors.black}>
+    <Drawer.Navigator color={colors.darkblue}>
       <Drawer.Screen
         name="HomeStack"
         component={HomeStack}
         options={{
           title: "Home",
           drawerContentContainerStyle: {
-            backgroundColor: colors.black,
+            backgroundColor: colors.darkblue,
             color: colors.blue,
             height: height,
           },

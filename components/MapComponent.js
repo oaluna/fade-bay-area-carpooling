@@ -77,7 +77,7 @@ export default class MapComponent extends Component {
               showsUserLocation={true}
               followsUserLocation={true}
               strokeWidth={4}
-              strokeColor={colors.black}
+              strokeColor={colors.darkblue}
               initialRegion={{
                 ...carsAround[0],
                 latitudeDelta: 0.008,
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   destination: {
     width: 20,
     height: 20,
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     borderRadius: 9,
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
     alignItems: "center",
     justifyContent: "center",
   },

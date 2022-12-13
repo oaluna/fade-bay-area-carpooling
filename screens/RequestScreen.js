@@ -66,7 +66,7 @@ export default function RequestScreen({ navigation, route }) {
               size={18}
             />
           </View>
-          <View style={{ backgroundColor: colors.black }}>
+          <View style={{ backgroundColor: colors.darkblue }}>
             <Text style={{ fontSize: 20, color: colors.white }}>
               {item.street}
             </Text>
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 48,
     justifyContent: "flex-start",
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
 
     display: "flex",
     flexDirection: "row",
@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
   },
   view1: {
     position: "absolute",
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     zIndex: 5,
     marginLeft: 15,
     marginBottom: 25,
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
   },
 
   view3: {
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: 40,
     alignSelf: "center",
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
     left: 15,
     right: 15,
     top: 25,
@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
   },
   view10: {
     alignItems: "center",
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
     flexDirection: "row",
     paddingVertical: 10,
     color: colors.white,
@@ -341,7 +341,7 @@ const styles = StyleSheet.create({
   },
 
   contentContainer: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
   },
   view12: {
     alignItems: "center",
@@ -424,7 +424,7 @@ const styles = StyleSheet.create({
 
   text5: {
     fontSize: 12,
-    color: colors.black,
+    color: colors.darkblue,
     marginLeft: 3,
     fontWeight: "bold",
     paddingBottom: 1,
@@ -444,7 +444,7 @@ const styles = StyleSheet.create({
 
   text6: {
     fontSize: 15,
-    color: colors.black,
+    color: colors.darkblue,
     fontWeight: "bold",
   },
 
@@ -469,7 +469,7 @@ const styles = StyleSheet.create({
 
   text7: {
     fontSize: 28,
-    color: colors.black,
+    color: colors.darkblue,
     marginRight: 5,
   },
 
@@ -481,7 +481,7 @@ const styles = StyleSheet.create({
 
   button3: {
     height: 60,
-    backgroundColor: colors.black,
+    backgroundColor: colors.darkblue,
     alignItems: "center",
     justifyContent: "center",
     width: SCREEN_WIDTH - 110,
