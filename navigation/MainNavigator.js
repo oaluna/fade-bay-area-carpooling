@@ -1,5 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import ProfileTypeScreen from "../screens/ProfileTypeScreen";
 import HomeScreen from "../screens/HomeScreen";
 import MapScreen from "../screens/MapScreen";
 import EatsScreen from "../screens/EatsScreen";
@@ -27,6 +28,7 @@ const MainNavigator = () => {
         name="LocationAccessScreen"
         component={LocationAccessScreen}
       />
+      <Stack.Screen name="ProfileTypeScreen" component={ProfileTypeScreen} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="MapScreen" component={MapScreen} />
       <Stack.Screen name="EatsScreen" component={EatsScreen} />

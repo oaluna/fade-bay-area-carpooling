@@ -10,7 +10,8 @@ import {
   SafeAreaView,
   Pressable,
   Dimensions,
-} from "react-native";
+} 
+from "react-native";
 import PropTypes from "prop-types";
 import { colors } from "../global/styles";
 import { carsAround } from "../global/data";
@@ -58,7 +59,7 @@ const SignIn = ({ navigation }) => {
           <View style={{ bottom: 0, position: "absolute", marginBottom: 40 }}>
             <Pressable
               style={styles.submitBtn}
-              onPress={() => navigation.navigate("HomeScreen")}
+              onPress={() => navigation.navigate("ProfileTypeScreen")}
             >
               <Text
                 style={{
