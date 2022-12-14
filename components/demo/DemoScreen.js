@@ -35,7 +35,7 @@ const DemoScreen = ({ navigation, route }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.loginBtn}
-          onPress={() => navigation.push("LoginScreen")}
+          onPress={() => navigation.push("ProfileTypeScreen")}
           raised
           title="Register"
         >

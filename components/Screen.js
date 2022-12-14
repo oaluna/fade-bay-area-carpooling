@@ -8,11 +8,11 @@ const { width, height } = Dimensions.get('screen')
 export default function Screen({children, style }) {
     return (
         <SafeAreaView style={[styles.container, style]}>
-        <ScrollView style={{height: height}} vertical>
+       
             <View style={[styles.view, style]}>
                 {children}
             </View>
-            </ScrollView>
+          
         </SafeAreaView>
     )
 }

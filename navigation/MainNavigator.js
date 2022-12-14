@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import ProfileTypeScreen from "../screens/ProfileTypeScreen";
 import HomeScreen from "../screens/HomeScreen";
 import MapScreen from "../screens/MapScreen";
+import CommuteListingScreen from "../screens/CommuteListingScreen";
 import EatsScreen from "../screens/EatsScreen";
 import SuccessScreen from "../screens/SuccessScreen";
 import LoginScreen from "../screens/LoginScreen";
@@ -30,6 +31,7 @@ const MainNavigator = () => {
       />
       <Stack.Screen name="ProfileTypeScreen" component={ProfileTypeScreen} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="CommuteListingScreen" component={CommuteListingScreen} />
       <Stack.Screen name="MapScreen" component={MapScreen} />
       <Stack.Screen name="EatsScreen" component={EatsScreen} />
       <Stack.Screen name="SuccessScreen" component={SuccessScreen} />

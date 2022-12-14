@@ -6,6 +6,7 @@ import {
   ImageBackground,
   StyleSheet,
   TextInput,
+  Switch,
   Button,
   SafeAreaView,
   Pressable,
@@ -16,30 +17,40 @@ import { colors } from "../global/styles";
 const { width, height } = Dimensions.get("screen");
 
 const ProfileTypeScreen = ({ navigation }) => {
+  const [switchRight, setSwitchRight] = React.useState(false);
   return (
     <View
       style={{
         flex: 1,
         alignItems: "center",
-        justifyContent: "space-evenly",
+        paddingTop: 145,
         backgroundColor: colors.darkblue,
+        paddingHorizontal: 15
+
+        
       }}
     >
-      <Text style={{ color: colors.white, fontSize: 32 }}>
-        What are you looking for today?
+      <Text style={{ color: colors.white, fontSize: 28, textAlign:"center", marginVertical: 25 }}>
+        Switch between passenger and rider at any time!
       </Text>
-      <View style={{flexDirection: "row", justifyContent: "space-evenly", width: width, height: 350 }}>
-      <View>
-        <Image
-          source={require("../assets/images/icon-driver.png")}
-          style={{
-            resizeMode: "contain",
-            width: 100,
-            height: 100,
-            marginVertical: 25,
-            alignSelf: "center",
-          }}
-        />
+     
+      <Text style={{fontSize: 24, color: colors.snow, fontWeight: "400", textAlign:"center", marginVertical: 25}}>
+      Anyone who has a verified Fade
+ Driver account can switch to use 
+the app with a Fade Rider account
+ at any time.
+      </Text>
+  <Text style={{ color: colors.white, fontSize: 28, textAlign:"center", lineHeight: 28, marginVertical: 25 }}>How does it work?</Text>
+  <Text  style={{fontSize: 24, color: colors.snow, fontWeight: "400", textAlign:"center", marginVertical: 25}}>Simple, just look for a switch, 
+like the one below. Switch to
+white to activate your Rider
+account, and green for your
+Driver account.</Text>
+<View style={{flexDirection:"row", justifyContent: "space-between", width: width-30}}>
+<View style={{flexDIrection:"column"}}>
+<View style={{flexDirection:"row", alignItems:"center", alignSelf: "center"}}><Text style={{color: colors.snow}}>Rider</Text>
+       <Switch  style={{ color: colors.aqua, borderColor: colors.aqua, borderWidth: 2}} trackColor={colors.snow} onPress={() => setSwitchRight(!switchRight)} thumbColor={colors.aqua}/>
+       <Text style={{color: colors.snow}}>Driver</Text></View>
         <Pressable
           style={{
             color: colors.white,
@@ -47,7 +58,8 @@ const ProfileTypeScreen = ({ navigation }) => {
             borderColor: colors.aqua,
             borderWidth: 2,
             borderRadius: 15,
-            width: 140,
+            marginTop: 280,
+            width: width - 30,
             alignItems:"center"
           }}
           onPress={() => navigation.navigate("HomeScreen")}
@@ -58,50 +70,17 @@ const ProfileTypeScreen = ({ navigation }) => {
               fontSize: 14,
               paddingVertical: 15,
               paddingHorizontal: 15,
+             
             }}
           >
-            I Need Passengers
+            Continue
           </Text>
         </Pressable>
-      </View>
-      <View>
-        <Image
-          source={require("../assets/images/icon-passenger.png")}
-          style={{
-            resizeMode: "contain",
-            width: 100,
-            height: 100,
-            marginVertical: 25,
-            alignSelf: "center",
-          }}
-        />
+        </View>
 
-        <Pressable
-          style={{
-            color: colors.white,
-            backgroundColor: "rgba(255,255,255,0.3)",
-            borderColor: colors.aqua,
-            borderWidth: 2,
-            borderRadius: 15,
-            width: 140,
-            alignItems:"center"
-          }}
-          onPress={() => navigation.navigate("HomeScreen")}
-        >
-          <Text
-            style={{
-              color: colors.white,
-              fontSize: 14,
-              paddingVertical: 15,
-              paddingHorizontal: 15,
-            }}
-          >
-            I Need a Ride
-          </Text>
-        </Pressable>
       </View>
       </View>
-    </View>
+  
   );
 };
 
