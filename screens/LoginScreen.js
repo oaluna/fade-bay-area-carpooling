@@ -32,8 +32,12 @@ const SignIn = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../assets/images/background.jpeg")}
-        style={{ height: height, width: width }}
+        source={require("../assets/images/gradient-bg.png")}
+        style={{
+          height: height,
+          width: width,
+          filter: "darken(0.5)",
+        }}
       >
         <View style={styles.logoContainer}>
           <Image

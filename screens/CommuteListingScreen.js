@@ -24,7 +24,7 @@ const CommuteListingScreen = ({ navigation }) => {
             Commute Details
           </Text>
         </View>
-        <View style={{ flexDirection: "row", alignItems: "center", backgroundColor: "rgba(255,255,255,0.3)",paddingTop: 15 }}>
+        <View style={{ flexDirection: "row", alignItems: "center", backgroundColor: "rgba(255,255,255,0.3)",paddingTop: 15, borderTopLeftRadius: 15, borderTopRightRadius: 15}}>
         <Image source={require("../assets/images/icon-driver.png")} style={{resizeMode:"contain", width: 18, height: 18, left: 200}} />
           <Image
             source={require("../assets/images/icon-account.png")}
@@ -38,7 +38,7 @@ const CommuteListingScreen = ({ navigation }) => {
           />
           <Text style={{ color: colors.snow, fontSize: 20 }}>Oscar Luna</Text>
         </View>
-        <View style={{ flexDirection: "row", backgroundColor: "rgba(255,255,255,0.3)", }}>
+        <View style={{ flexDirection: "row", backgroundColor: "rgba(255,255,255,0.3)",}}>
           <Image
             source={require("../assets/images/icon-favorites.png")}
             style={{
@@ -85,7 +85,7 @@ const CommuteListingScreen = ({ navigation }) => {
           </Text>
           <Text style={{color: colors.snow, fontSize: 18, left: 25, top: 0}}>None</Text>
         </View>
-        <View style={{ flexDirection:"row", alignItems:"center", backgroundColor: "rgba(255,255,255,0.3)"}}>
+        <View style={{ flexDirection:"row", alignItems:"center", backgroundColor: "rgba(255,255,255,0.3)",  borderBottomLeftRadius: 15, borderBottomRightRadius: 15 }}>
           <Text style={{ color: colors.snow, fontSize: 14, left: 15, top: 18, height: 50 }}>
             Vehicle Make/Model:
           </Text>
@@ -99,6 +99,7 @@ const CommuteListingScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   screen: {
     marginHorizontal: 0,
+    
   },
   logo: {
     height: 50,
@@ -120,6 +121,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.darkblue,
     paddingBottom: 30,
     paddingTop: parameters.statusBarHeight,
+    
   },
   header: {
     color: colors.snow,

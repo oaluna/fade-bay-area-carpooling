@@ -117,7 +117,9 @@ const LocationAccessScreen = ({ navigation, route }) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => getLocationAsync()}
+          onPress={() => {
+            getLocationAsync();
+            navigation.navigate("ProfileTypeScreen")}}
           raised
           title="Register"
         >

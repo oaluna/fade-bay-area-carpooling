@@ -1,6 +1,13 @@
 import React from "react";
 import { colors, parameters } from "../global/styles";
-import { View, StyleSheet, Image, Text, Dimensions } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  ImageBackground,
+  Text,
+  Dimensions,
+} from "react-native";
 import Screen from "../components/Screen";
 import Map from "../components/Map";
 import NavFavourites from "../components/NavFavourites";
@@ -17,7 +24,17 @@ const HomeScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   return (
     <Screen style={styles.screen}>
-      <View style={{ backgroundColor: colors.darkblue }}>
+      <ImageBackground
+        source={require("../assets/images/gradient-bg.png")}
+        style={{
+          width: width,
+          height: height,
+          paddingLeft: 15,
+          marginLeft: -15,
+        
+          resizeMode: "cover",
+        }}
+      >
         <Image
           source={require("../assets/images/fade-logo.png")}
           style={styles.logo}
@@ -67,7 +84,7 @@ const HomeScreen = ({ navigation }) => {
         <NavOptions />
         <NavFavourites />
         <Feed />
-      </View>
+      </ImageBackground>
     </Screen>
   );
 };
@@ -75,7 +92,6 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   screen: {
     marginHorizontal: 0,
-
   },
   logo: {
     height: 50,

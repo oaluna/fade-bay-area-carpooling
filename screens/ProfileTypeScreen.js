@@ -19,7 +19,7 @@ const { width, height } = Dimensions.get("screen");
 const ProfileTypeScreen = ({ navigation }) => {
   const [switchRight, setSwitchRight] = React.useState(false);
   return (
-    <View
+    <ImageBackground source={require("../assets/images/gradient-bg.png")}
       style={{
         flex: 1,
         alignItems: "center",
@@ -54,11 +54,11 @@ Driver account.</Text>
         <Pressable
           style={{
             color: colors.white,
-            backgroundColor: "rgba(255,255,255,0.3)",
+            backgroundColor: colors.darkblue,
             borderColor: colors.aqua,
             borderWidth: 2,
             borderRadius: 15,
-            marginTop: 280,
+            marginTop: 250,
             width: width - 30,
             alignItems:"center"
           }}
@@ -79,7 +79,7 @@ Driver account.</Text>
         </View>
 
       </View>
-      </View>
+      </ImageBackground>
   
   );
 };

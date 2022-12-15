@@ -39,7 +39,7 @@ const NavFavourites = () => {
   return (
     <React.Fragment>
     <View>
-        <Text style={{color: colors.white, fontSize: 24, marginTop: 25}}>Saved Locations</Text>
+        <Text style={{color: colors.white, fontSize: 24}}>Saved Locations</Text>
     </View>
     <FlatList
       data={data}
@@ -54,6 +54,7 @@ const NavFavourites = () => {
             marginTop: 15,
             borderBottomColor: colors.aqua,
             borderBottomWidth: 1,
+            height: 50
           }}
         >
           <Image
@@ -74,6 +75,7 @@ const NavFavourites = () => {
       ItemSeparatorComponent={() => (
         <View style={{ borderBottomColor: colors.aqua }} />
       )}
+      style={{height: 200}}
     />
     </React.Fragment>
   );

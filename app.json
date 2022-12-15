@@ -7,7 +7,7 @@
     "icon": "./assets/images/app-icon.png",
     "userInterfaceStyle": "dark",
     "splash": {
-      "backgroundImage": "./assets/images/splash.png",
+      "backgroundImage": "./assets/images/gradient-bg.png",
       "resizeMode": "contain"
     },
     "updates": {

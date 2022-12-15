@@ -35,7 +35,7 @@ const NavOptions = () => {
 
           <Image
             source={require("../assets/images/icon-calendar.png")}
-            style={{ resizeMode: "contain", marginLeft: 5, alignSelf:"center", width: 36, height: 36}}
+            style={{ resizeMode: "contain", marginLeft: 5, alignSelf:"center", width: 25, height: 25}}
           />
           <Text style={{ color: colors.snow, fontSize: 12, textAlign:"left",marginRight: 25}}>January 12, 2023</Text>
 
@@ -43,7 +43,7 @@ const NavOptions = () => {
       
           <Image
             source={require("../assets/images/icon-clock.png")}
-            style={{ resizeMode: "contain", marginLeft: 25,justifyContent:"space-between", alignSelf:"center", width: 36, height: 36 }}
+            style={{ resizeMode: "contain", marginLeft: 25,justifyContent:"space-between", alignSelf:"center", width: 25, height: 25 }}
           />
           <Text style={{ color: colors.snow, fontSize: 12, textAlign:"center", marginRight: 25}}>9:00 AM</Text>
        
@@ -91,7 +91,8 @@ export default NavOptions;
 
 const styles = StyleSheet.create({
   feed: {
-    
+   height: 320,
+    marginLeft: -15
   },
   bg: {
     backgroundColor: "rgba(255,255,255,0.21)",
