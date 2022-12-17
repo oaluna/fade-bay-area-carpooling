@@ -24,14 +24,16 @@ const CommuteListingScreen = ({ navigation }) => {
             Commute Details
           </Text>
         </View>
+        
         <View style={{ flexDirection: "row", alignItems: "center", backgroundColor: "rgba(255,255,255,0.3)",paddingTop: 15, borderTopLeftRadius: 15, borderTopRightRadius: 15}}>
         <Image source={require("../assets/images/icon-driver.png")} style={{resizeMode:"contain", width: 18, height: 18, left: 200}} />
+        <Text style={{color: colors.aqua, fontSize: 12, left: 205, position:"relative"}}>Driver</Text>
           <Image
             source={require("../assets/images/icon-account.png")}
             style={{
               resizeMode: "contain",
               marginTop: 25,
-              marginLeft: 10,
+              marginLeft: -20,
               height: 84,
               width: 84,
             }}
@@ -45,12 +47,12 @@ const CommuteListingScreen = ({ navigation }) => {
               resizeMode: "contain",
               width: 24,
               height: 24,
-              left: 95,
+              left: 110,
               top: -40,
             }}
           />
           <Text
-            style={{ color: colors.snow, fontSize: 10, left: 95, top: -30 }}
+            style={{ color: colors.snow, fontSize: 10, left: 110, top: -30 }}
           >
             5 Stars, 393 reviews
           </Text>

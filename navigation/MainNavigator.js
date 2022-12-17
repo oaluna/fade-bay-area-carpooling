@@ -1,5 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+
 import ProfileTypeScreen from "../screens/ProfileTypeScreen";
 import HomeScreen from "../screens/HomeScreen";
 import MapScreen from "../screens/MapScreen";
@@ -22,21 +23,22 @@ const MainNavigator = () => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="LoginScreen" component={LoginScreen} />
-      <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-      <Stack.Screen name="DemoScreen" component={DemoScreen} />
+      <Stack.Screen name="LoginScreen" component={LoginScreen} screenOptions={{headerShown: false}}/>
+      <Stack.Screen name="RegisterScreen" component={RegisterScreen} screenOptions={{headerShown: false}}/>
+      <Stack.Screen name="DemoScreen" component={DemoScreen} screenOptions={{headerShown: false}} />
       <Stack.Screen
         name="LocationAccessScreen"
         component={LocationAccessScreen}
+        screenOptions={{headerShown: false}}
       />
-      <Stack.Screen name="ProfileTypeScreen" component={ProfileTypeScreen} />
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="CommuteListingScreen" component={CommuteListingScreen} />
-      <Stack.Screen name="MapScreen" component={MapScreen} />
-      <Stack.Screen name="EatsScreen" component={EatsScreen} />
-      <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
-      <Stack.Screen name="RequestScreen" component={RequestScreen} />
-      <Stack.Screen name="DestinationScreen" component={DestinationScreen} />
+      <Stack.Screen name="ProfileTypeScreen" component={ProfileTypeScreen} screenOptions={{headerShown: false}} />
+      <Stack.Screen name="HomeScreen" component={HomeScreen} screenOptions={{headerShown: false}} />
+      <Stack.Screen name="CommuteListingScreen" component={CommuteListingScreen} screenOptions={{headerShown: false}} />
+      <Stack.Screen name="MapScreen" component={MapScreen} screenOptions={{headerShown: false}} />
+      <Stack.Screen name="EatsScreen" component={EatsScreen} screenOptions={{headerShown: false}} />
+      <Stack.Screen name="SuccessScreen" component={SuccessScreen} screenOptions={{headerShown: false}} />
+      <Stack.Screen name="RequestScreen" component={RequestScreen} screenOptions={{headerShown: false}} />
+      <Stack.Screen name="DestinationScreen" component={DestinationScreen} screenOptions={{headerShown: false}} />
     </Stack.Navigator>
   );
 };

@@ -121,6 +121,7 @@ const Map = () => {
             title="Your Pickup Location"
             description={origin.description}
             identifier="origin"
+            tracksViewChanges={true}
           >
             <Image
               source={require("../assets/images/icon-start.png")}
@@ -138,6 +139,7 @@ const Map = () => {
             title="Your Destination"
             description={destination.description}
             identifier="destination"
+            tracksViewChanges={true}
           >
             <Image
               source={require("../assets/images/icon-end.png")}

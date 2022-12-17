@@ -25,8 +25,7 @@ import { colors, parameters } from "../global/styles";
 import { rideData } from "../global/data";
 import { OriginContext, DestinationContext } from "../context/Context";
 
-const SCREEN_HEIGHT = Dimensions.get("window").height;
-const SCREEN_WIDTH = Dimensions.get("window").width;
+const { width, height} = Dimensions.get("screen");
 
 export default function RequestScreen({ navigation, route }) {
   const { origin, dispatchOrigin } = useContext(OriginContext);
@@ -286,7 +285,7 @@ const styles = StyleSheet.create({
   },
   view6: {
     backgroundColor: "rgba(255,255,255,0.31)",
-    width: SCREEN_WIDTH * 0.7,
+    width: width * 0.7,
     height: 40,
     paddingTop: 10,
     marginTop: 15,
@@ -305,7 +304,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "rgba(255,255,255,0.31)",
-    width: SCREEN_WIDTH * 0.7,
+    width: width * 0.7,
     height: 40,
     marginTop: 0,
     paddingLeft: 0,
@@ -484,7 +483,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.darkblue,
     alignItems: "center",
     justifyContent: "center",
-    width: SCREEN_WIDTH - 110,
+    width: width - 110,
     marginBottom: 10,
   },
 
@@ -510,7 +509,7 @@ const styles = StyleSheet.create({
 
   map: {
     marginVertical: 0,
-    width: SCREEN_WIDTH,
+    width: width,
     zIndex: -1,
   },
 

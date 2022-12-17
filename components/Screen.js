@@ -8,6 +8,7 @@ const { width, height } = Dimensions.get('screen')
 export default function Screen({children, style }) {
     return (
         <SafeAreaView style={[styles.container, style]}>
+
        
             <View style={[styles.view, style]}>
                 {children}

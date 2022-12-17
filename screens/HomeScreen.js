@@ -16,25 +16,19 @@ import Feed from "../components/Feed";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../redux/slices/navSlice";
+
 const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 
 const { width, height } = Dimensions.get("screen");
 
 const HomeScreen = ({ navigation }) => {
+ 
+
+  
   const dispatch = useDispatch();
   return (
     <Screen style={styles.screen}>
-      <ImageBackground
-        source={require("../assets/images/gradient-bg.png")}
-        style={{
-          width: width,
-          height: height,
-          paddingLeft: 15,
-          marginLeft: -15,
-        
-          resizeMode: "cover",
-        }}
-      >
+  
         <Image
           source={require("../assets/images/fade-logo.png")}
           style={styles.logo}
@@ -81,14 +75,18 @@ const HomeScreen = ({ navigation }) => {
             enablePoweredByContainer={true}
           />
         </View>
-        <NavOptions />
+       <NavOptions /> 
         <NavFavourites />
+        
         <Feed />
-      </ImageBackground>
     </Screen>
   );
 };
 
+const HomeScreenContainer = () => {
+  const { startTransition } = useBetweenPages(<HomeScreen />);
+}
+ 
 const styles = StyleSheet.create({
   screen: {
     marginHorizontal: 0,

@@ -38,45 +38,44 @@ const NavFavourites = () => {
 
   return (
     <React.Fragment>
-    <View>
-        <Text style={{color: colors.white, fontSize: 24}}>Saved Locations</Text>
-    </View>
-    <FlatList
-      data={data}
-      renderItem={({ item }) => (
-        <TouchableOpacity
-          onPress={handlePress}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            marginHorizontal: 15,
-            marginTop: 15,
-            borderBottomColor: colors.aqua,
-            borderBottomWidth: 1,
-            height: 50
-          }}
-        >
-          <Image
-            source={{ uri: item.image }}
-            style={{ marginRight: 15, height: 35, width: 35 }}
-          />
-          <View style={{ marginVertical: 5 }}>
-            <Text style={{ color: colors.snow, fontSize: 18 }}>
-              {item.location}
-            </Text>
-            <Text style={{ color: colors.white, fontSize: 12 }}>
-              {item.destination}
-            </Text>
-          </View>
-        </TouchableOpacity>
-      )}
-      keyExtractor={(item) => item.id.toString()}
-      ItemSeparatorComponent={() => (
-        <View style={{ borderBottomColor: colors.aqua }} />
-      )}
-      style={{height: 200}}
-    />
+      <FlatList
+        data={data}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={handlePress}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+
+              marginHorizontal: 15,
+              marginTop: 25,
+              borderBottomColor: colors.aqua,
+              marginBottom: 0,
+              borderBottomWidth: 1,
+              height: 50,
+            }}
+          >
+            <Image
+              source={{ uri: item.image }}
+              style={{ marginRight: 15, height: 35, width: 35 }}
+            />
+            <View style={{ marginVertical: 5 }}>
+              <Text style={{ color: colors.snow, fontSize: 18 }}>
+                {item.location}
+              </Text>
+              <Text style={{ color: colors.white, fontSize: 12 }}>
+                {item.destination}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        )}
+        keyExtractor={(item) => item.id.toString()}
+        ItemSeparatorComponent={() => (
+          <View style={{ borderBottomColor: colors.aqua }} />
+        )}
+        style={{ height: 200 }}
+      />
     </React.Fragment>
   );
 };

@@ -46,8 +46,14 @@ const RegisterScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../assets/images/background.jpeg")}
-        style={{ height: height, width: width }}
+        source={require("../assets/images/gradient-bg3.png")}
+        style={{
+          height: height,
+          width: width,
+          position: "absolute",
+          left: 0,
+          top: 0,
+        }}
       >
         <View style={styles.logoContainer}>
           <Image source={FadeLogo} style={styles.fadeLogo} />

@@ -7,27 +7,33 @@
     "icon": "./assets/images/app-icon.png",
     "userInterfaceStyle": "dark",
     "splash": {
-      "backgroundImage": "./assets/images/gradient-bg.png",
+      "backgroundImage": "./assets/images/gradient-bg3.png",
       "resizeMode": "contain"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/app-icon.png",
-        "backgroundColor": "rgba(255, 255, 255, 0.71)"
+        "foregroundImage": "./assets/images/app-icon.png"
       },
       "config": {
-        "googleMaps": { "apiKey": "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk" }
+        "googleMaps": {
+          "apiKey": "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk"
+        }
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "react-native-auth0"
+    ]
   }
 }

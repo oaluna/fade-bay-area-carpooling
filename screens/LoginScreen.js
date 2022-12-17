@@ -14,6 +14,7 @@ import {
 import PropTypes from "prop-types";
 import { colors } from "../global/styles";
 import { carsAround } from "../global/data";
+import Spinner from 'react-native-loading-spinner-overlay';
 
 const { width, height } = Dimensions.get("screen");
 const SignIn = ({ navigation }) => {
@@ -28,11 +29,26 @@ const SignIn = ({ navigation }) => {
     },
   ];
   const [text, onChangeText] = React.useState("");
+  const [spinner, setSpinner] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+
+  React.useEffect(()=> {
+    setInterval(() => {
+      if(loading) {
+      setSpinner(!spinner)
+    }}, 3000);
+  }, []);
 
   return (
     <View style={styles.container}>
+     <Spinner
+          visible={spinner}
+          color={colors.aqua}
+          textContent={'Loading...'}
+          textStyle={styles.spinnerTextStyle}
+        />
       <ImageBackground
-        source={require("../assets/images/gradient-bg.png")}
+        source={require("../assets/images/gradient-bg3.png")}
         style={{
           height: height,
           width: width,
@@ -120,6 +136,11 @@ const styles = StyleSheet.create({
     margin: 0,
 
     width: width,
+  },
+  spinnerTextStyle: {
+    color: colors.snow,
+    backgroundColor: colors.darkblue,
+    height: 200,
   },
   dividerText: {
     color: colors.white,

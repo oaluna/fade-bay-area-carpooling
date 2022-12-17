@@ -69,7 +69,7 @@ class MapDirections extends Component {
             }
             apikey={GOOGLE_MAPS_APIKEY}
             strokeWidth={3}
-            strokeColor="hotpink"
+            strokeColor={"hotpink"}
             optimizeWaypoints={true}
             onStart={params => {
               console.log(

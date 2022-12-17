@@ -66,7 +66,6 @@ const RideOptionsCard = () => {
     <Screen
       style={{
         backgroundColor: colors.darkblue,
-        height: height,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         elevation: 2,

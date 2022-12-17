@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import Screen from "../components/Screen";
+import { MapView, Marker } from "expo";
 import Constants from "expo-constants";
 import { Icon } from "react-native-elements";
 import { colors } from "../global/styles";
@@ -11,16 +12,16 @@ const SuccessScreen = ({ route }) => {
   const navigation = useNavigation();
 
   return (
-    <Screen>
-      <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")}>
+    <Screen style={{justifyContent:"center"}}>
+      <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")} style={{padding: 3}}>
         <Icon type="antdesign" name="home" color="black" size={16} />
       </TouchableOpacity>
       <View>
         <View>
           <Image source={require("../assets/images/loading7.png")} style={{width: 350, height: 350, resizeMode:"contain"}} />
         </View>
-        <View>
-          <Text style={{ color: colors.snow }}>
+        <View style={{ justifyContent:"space-evenly", height: 200 }}>
+          <Text style={{ color: colors.snow, fontSize: 24 }}>
             Your {data?.title} is on the way
           </Text>
           <Text style={{ color: colors.snow }}>Ride cost: ${data?.price}</Text>
