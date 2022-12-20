@@ -21,7 +21,7 @@ const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 
 const { width, height } = Dimensions.get("screen");
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation, ...props }) => {
  
 
   
@@ -33,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
           source={require("../assets/images/fade-logo.png")}
           style={styles.logo}
         />
-        <Text style={styles.text1}>Welcome!</Text>
+        <Text style={styles.text1}>Welcome, {props.isEnabled === true ? "Driver" : "Rider"}!</Text>
         <View>
           <GooglePlacesAutocomplete
             placeholder="Where from?"

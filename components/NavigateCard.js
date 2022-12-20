@@ -21,9 +21,20 @@ const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 
 const { width, height } = Dimensions.get("screen");
 
-const NavigateCard = () => {
+const NavigateCard = ({isEnabled, getInputData, data}) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  React.useEffect(()=> {
+    function handleInput (key, val) {
+      getInputData({
+        key, value: data.description
+      })
+        }
+    return (data) => {
+      handleInput(null)
+    }
+  }, [])
 
   return (
     <Screen
@@ -45,7 +56,7 @@ const NavigateCard = () => {
           width: width / 2,
         }}
       >
-        Good morning, Oscar
+        Good morning, {isEnabled ? "Driver" : "Rider"}
       </Text>
       <View
         style={{
@@ -66,6 +77,7 @@ const NavigateCard = () => {
                 setDestination({
                   loaction: details.geometry.location,
                   description: data.description,
+                
                 })
               );
             }}

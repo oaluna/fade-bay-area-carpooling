@@ -27,13 +27,19 @@
         "googleMaps": {
           "apiKey": "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk"
         }
-      }
+      },
+      "package": "com.oscarlunadotdev.FadeApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "react-native-auth0"
+      [
+        "react-native-auth0",
+        {
+          "domain": "luna-reactdev.auth0.com"
+        }
+      ]
     ]
   }
 }

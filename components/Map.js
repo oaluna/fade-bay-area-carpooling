@@ -37,7 +37,7 @@ const Map = () => {
   useEffect(() => {
     if (!origin || !destination) return;
     mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
-      edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
+      edgePadding: { top: 25, right: 25, bottom: 25, left: 25 },
     });
   }, [origin, destination]);
 
@@ -72,22 +72,30 @@ const Map = () => {
           name="home"
           color="black"
           size={16}
-          // style={}
+          style={{
+            position:"absolute",
+            top: 50,
+            left: 15,
+            zIndex: 100,
+          }}
         />
       </TouchableOpacity>
 
       <MapView
+      origin={origin}
+      destination={destination}
         style={styles.map}
         ref={mapRef}
         showsUserLocation={true}
-        followsUserLocation={true}
+       
         showsMyLocationButton={true}
         initialRegion={{
-          ...carsAround[0],
-          latitudeDelta: 0.008,
-          longitudeDelta: 0.008,
+  latitude: 37.78825,
+  longitude: -122.4324,
+  latitudeDelta: 0.0922,
+  longitudeDelta: 0.0421,
         }}
-        mapType={"mutedStandard"}
+        mapType={"standard"}
       >
         {!!origin && !!destination && (
           <MapViewDirections
@@ -101,14 +109,14 @@ const Map = () => {
             // }}
             origin={origin.description}
             destination={destination.description}
-            lineDashPattern={[0]}
-            resetOnChange={false}
+            
+            
             mode={"DRIVING"}
             precision={"high"}
             geodesic={true}
             apikey={GOOGLE_MAP_APIKEY}
-            strokeWidth={4}
-            strokeColor={colors.darkblue}
+            strokeWidth={5}
+            strokeColor={colors.aqua}
             onError={(error) => console.log("Directions error: ", error)}
           />
         )}

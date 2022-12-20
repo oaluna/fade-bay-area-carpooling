@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Divider,
   Alert,
   Dimensions,
 } from "react-native";
@@ -137,10 +138,15 @@ const RideOptionsCard = () => {
                     {item.title}
                   </Text>
                   <Text style={{ color: colors.white }}>
-                    {travelTimeInformation?.duration?.text} Travel time
+                    <Image
+                      source={require("../assets/images/icon-clock.png")}
+                      style={{ resizeMode: "contain", width: 12, height: 12 }}
+                    />{" "}
+                    {travelTimeInformation?.duration?.text}
                   </Text>
                 </View>
               </View>
+             
             </TouchableOpacity>
           )}
         />

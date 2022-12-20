@@ -13,8 +13,8 @@ const SuccessScreen = ({ route }) => {
 
   return (
     <Screen style={{justifyContent:"center"}}>
-      <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")} style={{padding: 3}}>
-        <Icon type="antdesign" name="home" color="black" size={16} />
+      <TouchableOpacity onPress={() => navigation.navigate("HomeScreen")} style={{padding: 3, position: "absolute", top: 0, left: 15, width: 32}}>
+        <Image source={require("../assets/images/fade-logo.png")} style={{resizeMode:"contain", width: 120}} />
       </TouchableOpacity>
       <View>
         <View>
@@ -24,7 +24,7 @@ const SuccessScreen = ({ route }) => {
           <Text style={{ color: colors.snow, fontSize: 24 }}>
             Your {data?.title} is on the way
           </Text>
-          <Text style={{ color: colors.snow }}>Ride cost: ${data?.price}</Text>
+          <Text style={{ color: colors.snow }}>You are riding with Oscar</Text>
           <Text style={{ color: colors.snow }}>
             Estimated time: ${data?.time}
           </Text>

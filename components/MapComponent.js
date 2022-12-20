@@ -38,7 +38,7 @@ export default class MapComponent extends Component {
           showsUserLocation={true}
           followsUserLocation={true}
           initialRegion={{
-            ...carsAround[0],
+            ...props,
             latitudeDelta: 0.008,
             longitudeDelta: 0.008,
           }}
@@ -79,7 +79,7 @@ export default class MapComponent extends Component {
               strokeWidth={4}
               strokeColor={colors.darkblue}
               initialRegion={{
-                ...carsAround[0],
+                ...props,
                 latitudeDelta: 0.008,
                 longitudeDelta: 0.008,
               }}

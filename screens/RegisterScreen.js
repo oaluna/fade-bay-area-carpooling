@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TextInput,
   Button,
+  SafeAreaView,
   Pressable,
   ScrollView,
   Dimensions,
@@ -45,69 +46,109 @@ const RegisterScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+     
       <ImageBackground
         source={require("../assets/images/gradient-bg3.png")}
         style={{
           height: height,
           width: width,
-          position: "absolute",
-          left: 0,
-          top: 0,
+          filter: "darken(0.5)",
         }}
       >
-        <View style={styles.logoContainer}>
-          <Image source={FadeLogo} style={styles.fadeLogo} />
-        </View>
-        <View style={styles.formContainer}>
-          <Text style={styles.headerText}>Sign up for Fade today!</Text>
-
-          <ScrollView>
-            {fields.map((text) => (
-              <TextInput
-                key={text.id}
-                style={styles.formInput}
-                onChangeText={onChangeText}
-                placeholder={text.fieldName}
-                secureTextEntry={text.id === 4 || text.id === 5 ? true : false}
+        <View style={styles.loginContainer}>
+          <View style={styles.loginBox}>
+            <View style={styles.loginHeader}>
+              <Image
+                source={require("../assets/images/fade-logo.png")}
+                style={styles.fadeLogo}
               />
-            ))}
-          </ScrollView>
-          <View style={{ bottom: 0, position: "absolute", marginBottom: 75 }}>
-            <Pressable
-              style={styles.submitBtn}
-              onPress={() => navigation.navigate("DemoScreen")}
-            >
-              <Text
-                style={{
-                  color: colors.white,
-                  fontSize: 24,
-                  textAlign: "center",
-                  display: "flex",
-                  flexDirection: "row",
-                }}
-              >
-                Sign Up
-              </Text>
-            </Pressable>
-            <View>
-              <Text style={styles.dividerText}>OR</Text>
+             
             </View>
-            <Pressable
-              onPress={() => navigation.navigate("LoginScreen")}
-              style={styles.loginBtn}
-            >
-              <Text
-                style={{
-                  color: colors.white,
-                  fontSize: 24,
-                  textAlign: "center",
-                  display: "flex",
-                  flexDirection: "row",
-                }}
-              >
-                I'm Already Registered
-              </Text>
-            </Pressable>
+            <View id="error-message" style={styles.errorMessage}></View>
+            <SafeAreaView>
+              <View style={{ marginVertical: 5 }}>
+                <Text style={{ color: colors.snow }}>First Name</Text>
+                <TextInput
+                  type="text"
+                  name="firstname"
+                  placeholder="Enter your first name"
+                  style={styles.input}
+                />
+              </View>
+              <View style={{ marginVertical: 5 }}>
+                <Text style={{ color: colors.snow }}>Last Name</Text>
+                <TextInput
+                  type="text"
+                  name="lastname"
+                  placeholder="Enter your last name"
+                  style={styles.input}
+                />
+              </View>
+              <View style={{ marginVertical: 5 }}>
+                <Text style={{ color: colors.snow }}>Phone Number</Text>
+                <TextInput
+                  type="phone"
+                  name="phone"
+                  placeholder="Enter your Phone Number"
+                  style={styles.input}
+                />
+                </View>
+              <View style={{ marginVertical: 5 }}>
+                <Text style={{ color: colors.snow }}>Email</Text>
+                <TextInput
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  style={styles.input}
+                />
+              </View>
+              <View style={{ marginVertical: 5 }}>
+                <Text style={{ color: colors.snow }}>Password</Text>
+                <TextInput
+                  type="password"
+                  name="password"
+                  placeholder="Enter your password"
+                  secureTextEntry={true}
+                  style={styles.input}
+                />
+              </View>
+         <View style={{height: 200, justifyContent:"flex-end"}}>     
+              <View style={{ marginVertical: 5 }}>
+                <Pressable
+                  style={styles.loginBtn}
+                  onPress={() => navigation.navigate("DemoScreen")}
+                >
+                  <Text
+                    style={{
+                      color: colors.snow,
+                      fontSize: 20,
+                      textAlign: "center",
+                    }}
+                  >
+                    Sign Up
+                  </Text>
+                </Pressable>
+              </View>
+             <Text style={{color:colors.snow, textAlign:'center'}}>OR</Text>
+              <View style={{ marginVertical: 5 }}>
+                <Pressable
+                  style={styles.signupBtn}
+                  onPress={() => navigation.navigate("LoginScreen")}
+                >
+                  <Text
+                    style={{
+                      color: colors.snow,
+                      fontSize: 20,
+                      textAlign: "center",
+                    }}
+                  >
+                    I'm already a member
+                  </Text>
+                </Pressable>
+              </View>
+</View>
+              
+            </SafeAreaView>
           </View>
         </View>
       </ImageBackground>
@@ -117,79 +158,80 @@ const RegisterScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: "center",
-    alignItems: "center",
-    backgroundColor: colors.darkblue,
-
+    flex: 1,
     height: height,
-    margin: 0,
     width: width,
-  },
-  logoContainer: {
     alignSelf: "center",
-    marginBottom: 0,
-    padding: 15,
+  },
+  loginContainer: {
+    height: height,
+    alignSelf: "center",
   },
   fadeLogo: {
-    marginTop: 80,
+    width: 300,
     resizeMode: "contain",
-    width: 300,
   },
-  formContainer: {
-    alignItems: "center",
-    color: colors.white,
-    display: "flex",
-    flex: 2,
-    flexDirection: "column",
-    height: 400,
-    marginVertical: 5,
-    paddingTop: 25,
-    width: 350,
-  },
-  headerText: {
-    color: colors.white,
-    fontSize: 24,
-    marginBottom: 15,
-  },
-  formInput: {
-    backgroundColor: "rgba(255,255,255,0.71)",
-    borderColor: colors.blue,
-    borderRadius: 15,
-    borderWidth: 1,
-    color: colors.white,
-    fontSize: 16,
-    height: 50,
-    paddingHorizontal: 15,
-    marginVertical: 7,
-    width: 300,
-  },
-  submitBtn: {
-    backgroundColor: colors.darkblue,
-    height: 50,
+  loginBox: {
+    marginTop: height / 8,
+    marginLeft: 0,
+    backgroundColor: "transparent",
     alignSelf: "center",
-    width: 300,
-    borderColor: colors.blue,
-    borderWidth: 1,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    boxShadow: "0px 5px 5px #ccc",
+  },
+  loginHeader: {
+    textAlign: "center",
+  },
+  loginHeaderImg: {
+    width: 75,
+  },
+  input: {
+    width: width - 30,
+    borderColor: colors.aqua,
+    height: 50,
+    borderWidth: 2,
     borderRadius: 15,
-    paddingVertical: 10,
-    width: 300,
+    backgroundColor: "rgba(255,255,255,0.31)",
+    color: colors.snow,
+    padding: 10,
+    marginBottom: 10,
   },
   loginBtn: {
-    backgroundColor: colors.darkblue,
+    width: width - 30,
     height: 50,
-    alignSelf: "center",
-    paddingVertical: 10,
-    width: 300,
-    borderColor: colors.blue,
-    borderWidth: 1,
-    borderRadius: 15,
-    width: 300,
+    backgroundColor: colors.darkblue,
+borderRadius: 15,
+shadowColor: colors.aqua,
+shadowOffset: {
+  width: 0, height: 5,
+},
+shadowOpacity: 1,
+shadowRadius: 1,
+elevation: 3,
+    padding: 10,
+    marginTop: 10,
+    marginBottom: 10,
   },
-  dividerText: {
-    color: colors.white,
-    fontSize: 24,
-    textAlign: "center",
-    marginVertical: 15,
+  signupBtn: {
+    width: width - 30,
+    backgroundColor: colors.black,
+    shadowColor: colors.aqua,
+shadowOffset: {
+  width: 0, height: 5,
+},
+shadowOpacity: 1,
+shadowRadius: 1,
+elevation: 3,
+    height: 50,
+    borderRadius: 15,
+    padding: 10,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  errorMessage: {
+    display: "none",
+    whiteSpace: "break-spaces",
   },
 });
 

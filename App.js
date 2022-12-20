@@ -4,9 +4,17 @@ import { Provider } from "react-redux";
 import AppNavigator from "./navigation/AppNavigator";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { BetweenPagesProvider } from "between-pages";
+import { Auth0Provider } from 'react-native-auth0';
+
+import Amplify from "aws-amplify";
+
+Amplify.configure();
+
+
 
 export default function App() {
   return (
+    <Auth0Provider domain={"luna-reactdev.auth0.com"} clientId={"eyrkBuRYDCERnnGBzeREzL1UF6cTmdZJ"}>
     <BetweenPagesProvider>
     <Provider store={store}>
       <KeyboardAvoidingView
@@ -18,5 +26,6 @@ export default function App() {
       </KeyboardAvoidingView>
     </Provider>
     </BetweenPagesProvider>
+    </Auth0Provider>
   );
 }

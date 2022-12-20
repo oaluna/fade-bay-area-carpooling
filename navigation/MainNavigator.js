@@ -13,6 +13,7 @@ import DemoScreen from "../components/demo/DemoScreen";
 import LocationAccessScreen from "../screens/LocationAccessScreen";
 import RequestScreen from "../screens/RequestScreen";
 import DestinationScreen from "../screens/DestinationScreen";
+import SettingsScreen from "../screens/SettingsScreen";
 
 const Stack = createStackNavigator();
 
@@ -23,7 +24,10 @@ const MainNavigator = () => {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="LoginScreen" component={LoginScreen} screenOptions={{headerShown: false}}/>
+      <Stack.Screen name="LoginScreen" component={LoginScreen} screenOptions={{headerShown: false,
+      props: {
+        loggedIn: false
+      }}}/>
       <Stack.Screen name="RegisterScreen" component={RegisterScreen} screenOptions={{headerShown: false}}/>
       <Stack.Screen name="DemoScreen" component={DemoScreen} screenOptions={{headerShown: false}} />
       <Stack.Screen
@@ -31,7 +35,7 @@ const MainNavigator = () => {
         component={LocationAccessScreen}
         screenOptions={{headerShown: false}}
       />
-      <Stack.Screen name="ProfileTypeScreen" component={ProfileTypeScreen} screenOptions={{headerShown: false}} />
+      <Stack.Screen name="ProfileTypeScreen" component={ProfileTypeScreen} screenOptions={{headerShown: false, props: { isEnabled: false }}} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} screenOptions={{headerShown: false}} />
       <Stack.Screen name="CommuteListingScreen" component={CommuteListingScreen} screenOptions={{headerShown: false}} />
       <Stack.Screen name="MapScreen" component={MapScreen} screenOptions={{headerShown: false}} />
@@ -39,6 +43,7 @@ const MainNavigator = () => {
       <Stack.Screen name="SuccessScreen" component={SuccessScreen} screenOptions={{headerShown: false}} />
       <Stack.Screen name="RequestScreen" component={RequestScreen} screenOptions={{headerShown: false}} />
       <Stack.Screen name="DestinationScreen" component={DestinationScreen} screenOptions={{headerShown: false}} />
+      <Stack.Screen name="SettingsScreen" component={SettingsScreen} screenOptions={{headerShown: false}} />
     </Stack.Navigator>
   );
 };

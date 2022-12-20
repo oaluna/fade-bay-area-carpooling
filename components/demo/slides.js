@@ -5,11 +5,11 @@ const sliderContent = [
   },
   {
     imageURL: require('../../assets/images/loading2.png'),
-    text: "Fade encourages users to carpool more by making it convenient to do so. How do we do that, exactly?"
+    text: "Fade encourages users to carpool more connecting coworkers and providing a platform to organize carpools. How do we do that, exactly?"
   },
   {
     imageURL: require('../../assets/images/loading3.png'),
-    text: "Drivers will post their daily commute and riders will be able to search for a ride that fits their schedule."
+    text: "If you are driving, you can post your travel schedule and the number of seats available in your vehicle. If you are a passenger, you can enter your travel details and find the closest match."
   },
   {
     imageURL: require('../../assets/images/loading4.png'),
