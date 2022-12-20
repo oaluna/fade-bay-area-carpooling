@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import {
   Image,
+  ImageBackground,
   Text,
   KeyboardAvoidingView,
   TouchableOpacity,
   StyleSheet,
   View,
+  Dimensions,
 } from "react-native";
-import { colors } from "../global/styles";
+import { colors, theme } from "../global/styles";
 import { FontAwesome, AntDesign } from "@expo/vector-icons";
-
+import { LinearGradient } from "expo-linear-gradient";
 import * as Location from "expo-location";
+
+const { width, height } = Dimensions.get("screen");
 
 const LocationAccessScreen = ({ navigation, route }) => {
   const [location, setLocation] = useState(null);
@@ -21,10 +25,8 @@ const LocationAccessScreen = ({ navigation, route }) => {
     // code to set the header
     const unsbuscribe = navigation.setOptions({
       headerBacktitle: "Location Access",
-      headerStyle: {
-        backgroundColor: colors.darkblue,
-      },
-      headerTintColor: colors.white,
+      headerStyle: {},
+
       headerTitleStyle: {
         fontWeight: "bold",
         marginLeft: 15,
@@ -75,59 +77,80 @@ const LocationAccessScreen = ({ navigation, route }) => {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container}>
-      <Image
-        style={styles.image}
-        source={require("../assets/images/icon-dropoff.png")}
-      />
-      <Text style={styles.logoTitle}>
-        In order to use Fade, we will need to access your Location.
-      </Text>
-      <Text style={styles.logoSubTitle}>
-        This ensures that you are matched up with riders closest to your area,
-        and don't go too far out of your way to pick up a rider.
-      </Text>
-      <View style={{ bottom: 0, position: "absolute", marginBottom: 10 }}>
-        {/* x if location is not enabled, check if it is enabled */}
-        {/* Need more logic to onclick give location acess */}
-        <TouchableOpacity
-          style={styles.buttonOpacity}
-          onPress={() => alert("please enable location in device settings")}
-          raised
-          title="RegisterScreen"
+    <ImageBackground
+      source={require("../assets/images/gradient-bg3.png")}
+      style={{
+        width: width,
+        height: height,
+
+        position: "absolute",
+        left: 0,
+        top: 0,
+        resizeMode: "cover",
+      }}
+    >
+      <KeyboardAvoidingView style={styles.container}>
+        <Image
+          style={styles.image}
+          source={require("../assets/images/icon-dropoff.png")}
+        />
+        <Text style={styles.logoTitle}>
+          In order to use Fade, we will need to access your Location.
+        </Text>
+        <Text style={styles.logoSubTitle}>
+          This ensures that you are matched up with riders closest to your area,
+          and don't go too far out of your way to pick up a rider.
+        </Text>
+        <View
+          style={{ bottom: 0, position: "absolute", bottom: 10, height: 220 }}
         >
-          <Text style={styles.buttonTitle}>
-            {location ? (
-              <FontAwesome
-                name="check-circle"
-                style={{ marginRight: 10 }}
-                size={20}
-                color="#1ba895"
-              />
-            ) : (
-              <AntDesign
-                name="closecircleo"
-                style={{ paddingHorizontal: 15 }}
-                size={20}
-                color="darkred"
-              />
-            )}
-            Turn off Location Access
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            getLocationAsync();
-            navigation.navigate("ProfileTypeScreen")}}
-          raised
-          title="Register"
-        >
-          <Text style={styles.buttonTitle}>Grant Access To My Location</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={{ height: 100 }} />
-    </KeyboardAvoidingView>
+          {/* x if location is not enabled, check if it is enabled */}
+          {/* Need more logic to onclick give location acess */}
+          <TouchableOpacity
+            style={styles.buttonOpacity}
+            onPress={() => alert("please enable location in device settings")}
+            raised
+            title="RegisterScreen"
+          >
+            <Text style={styles.buttonTitle}>
+              {location ? (
+                <FontAwesome
+                  name="check-circle"
+                  style={{ marginRight: 10 }}
+                  size={20}
+                  color="#1ba895"
+                />
+              ) : (
+                <AntDesign
+                  name="closecircleo"
+                  style={{ paddingHorizontal: 15 }}
+                  size={20}
+                  color="darkred"
+                />
+              )}
+              Turn off Location Access
+            </Text>
+          </TouchableOpacity>
+          <LinearGradient
+            start={{ x: 0.1, y: 1 }}
+            end={{ x: 0.75, y: 3.25 }}
+            colors={[theme.colors.blue[7], theme.colors.blue[4]]}
+            style={styles.button}
+          >
+            <TouchableOpacity
+              onPress={() => {
+                getLocationAsync();
+                navigation.navigate("ProfileTypeScreen");
+              }}
+              raised
+              title="Register"
+            >
+              <Text style={styles.buttonTitle}>Share My Location</Text>
+            </TouchableOpacity>
+          </LinearGradient>
+        </View>
+      </KeyboardAvoidingView>
+    </ImageBackground>
   );
 };
 
@@ -136,7 +159,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.darkblue,
+    width: width,
+    height: height,
   },
   image: {
     height: 150,
@@ -147,38 +171,38 @@ const styles = StyleSheet.create({
     fontSize: 32,
     textAlign: "center",
     width: 300,
-    color: colors.white,
+    height: 100,
+    color: theme.colors.neutral[0],
     fontWeight: "800",
   },
   logoSubTitle: {
     textAlign: "center",
     marginTop: 20,
     width: 300,
+    height: 200,
     fontSize: 20,
     fontWeight: "800",
-    color: colors.white,
+    color: theme.colors.neutral[0],
   },
   button: {
-    backgroundColor: colors.darkblue,
-    borderColor: colors.blue,
-    borderWidth: 2,
     marginLeft: 30,
     marginRight: 30,
-    marginTop: 20,
-    height: 48,
+    marginTop: 40,
+    height: 50,
     width: 350,
     borderRadius: 15,
     alignItems: "center",
     justifyContent: "center",
+    elevation: 2,
   },
   buttonOpacity: {
-    backgroundColor: colors.white,
-    borderColor: colors.blue,
+    backgroundColor: theme.colors.neutral[0],
+    borderColor: theme.colors.blue[4],
     borderWidth: 2,
     marginLeft: 30,
     marginRight: 30,
     marginTop: 20,
-    height: 48,
+    height: 50,
     width: 350,
     opacity: 0.25,
     borderRadius: 15,
@@ -187,7 +211,7 @@ const styles = StyleSheet.create({
   },
   buttonTitle: {
     fontSize: 20,
-    color: colors.white,
+    color: theme.colors.neutral[0],
   },
 });
 

@@ -4,29 +4,29 @@ import { HomeStack, SettingsStack } from "./StackNavigator";
 import { Dimensions } from "react-native";
 
 import { Icon } from "react-native-elements";
-import { colors } from "../global/styles";
+import { colors, theme } from "../global/styles";
 
 const { width, height } = Dimensions.get("screen");
 const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator() {
   return (
-    <Drawer.Navigator color={colors.darkblue}>
+    <Drawer.Navigator color={theme.colors.purple[6]}>
       <Drawer.Screen
         name="HomeStack"
         component={HomeStack}
         options={{
           title: "Home",
           drawerContentContainerStyle: {
-            backgroundColor: colors.darkblue,
-            color: colors.blue,
+            backgroundColor: theme.colors.purple[6],
+            color: theme.colors.blue[4],
             height: height,
           },
           drawerIcon: ({ focused, size }) => (
             <Icon
               type={"material-community"}
               name="home-outline"
-              color={focused ? colors.white : colors.grey2}
+              color={focused ? theme.colors.neutral[0] : colors.grey2}
               size={size}
             />
           ),

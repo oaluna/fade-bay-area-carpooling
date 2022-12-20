@@ -14,7 +14,7 @@ import {
 import { Icon } from "react-native-elements";
 import Screen from "./Screen";
 import { useSelector } from "react-redux";
-import { colors } from "../global/styles";
+import { colors, theme } from "../global/styles";
 
 import {
   selectDestination,
@@ -66,7 +66,7 @@ const RideOptionsCard = () => {
   return (
     <Screen
       style={{
-        backgroundColor: colors.darkblue,
+        backgroundColor: theme.colors.purple[6],
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         elevation: 2,
@@ -97,7 +97,7 @@ const RideOptionsCard = () => {
             textAlign: "center",
             fontSize: 24,
             fontWeight: "bold",
-            color: colors.white,
+            color: theme.colors.neutral[0],
           }}
         >
           Select a ride - {travelTimeInformation?.distance?.text}
@@ -132,12 +132,12 @@ const RideOptionsCard = () => {
                     style={{
                       fontSize: 24,
                       fontWeight: "bold",
-                      color: colors.white,
+                      color: theme.colors.neutral[0],
                     }}
                   >
                     {item.title}
                   </Text>
-                  <Text style={{ color: colors.white }}>
+                  <Text style={{ color: theme.colors.neutral[0] }}>
                     <Image
                       source={require("../assets/images/icon-clock.png")}
                       style={{ resizeMode: "contain", width: 12, height: 12 }}
@@ -146,7 +146,6 @@ const RideOptionsCard = () => {
                   </Text>
                 </View>
               </View>
-             
             </TouchableOpacity>
           )}
         />
@@ -161,12 +160,12 @@ const RideOptionsCard = () => {
       >
         <TouchableOpacity
           style={{
-            color: colors.white,
-            backgroundColor: colors.darkblue,
+            color: theme.colors.neutral[0],
+            backgroundColor: theme.colors.purple[6],
             paddingVertical: 10,
             marginTop: -20,
             borderRadius: 15,
-            borderColor: colors.aqua,
+            borderColor: theme.colors.blue[4],
             borderWidth: 2,
             width: width - 30,
             height: 50,
@@ -179,7 +178,7 @@ const RideOptionsCard = () => {
               flexDirection: "row",
               alignItems: "center",
               textAlign: "center",
-              color: colors.white,
+              color: theme.colors.neutral[0],
               fontSize: 24,
             }}
           >
@@ -204,7 +203,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 150,
     backgroundColor: "transparent",
-    borderColor: colors.blue,
+    borderColor: theme.colors.blue[4],
     borderWidth: 2,
     borderRadius: 50,
     justifyContent: "center",

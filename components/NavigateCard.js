@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Screen from "./Screen";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { colors } from "../global/styles";
+import { colors, theme } from "../global/styles";
 //import { GOOGLE_MAP_APIKEY } from '@env'
 import { setDestination } from "../redux/slices/navSlice";
 import { useDispatch } from "react-redux";
@@ -21,25 +21,26 @@ const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 
 const { width, height } = Dimensions.get("screen");
 
-const NavigateCard = ({isEnabled, getInputData, data}) => {
+const NavigateCard = ({ isEnabled, getInputData, data }) => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
-  React.useEffect(()=> {
-    function handleInput (key, val) {
+  React.useEffect(() => {
+    function handleInput(key, val) {
       getInputData({
-        key, value: data.description
-      })
-        }
-    return (data) => {
-      handleInput(null)
+        key,
+        value: data.description,
+      });
     }
-  }, [])
+    return (data) => {
+      handleInput(null);
+    };
+  }, []);
 
   return (
     <Screen
       style={{
-        backgroundColor: colors.darkblue,
+        backgroundColor: theme.colors.purple[6],
         flex: 1,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
@@ -52,7 +53,7 @@ const NavigateCard = ({isEnabled, getInputData, data}) => {
           paddingBottom: 2,
           fontSize: 32,
           fontWeight: "bold",
-          color: colors.white,
+          color: theme.colors.neutral[0],
           width: width / 2,
         }}
       >
@@ -64,10 +65,12 @@ const NavigateCard = ({isEnabled, getInputData, data}) => {
           flexShrink: 1,
           position: "relative",
           zIndex: 20,
-          backgroundColor: colors.darkblue,
+          backgroundColor: theme.colors.purple[6],
         }}
       >
-        <View style={{ backgroundColor: colors.darkblue, paddingBottom: 2 }}>
+        <View
+          style={{ backgroundColor: theme.colors.purple[6], paddingBottom: 2 }}
+        >
           <GooglePlacesAutocomplete
             placeholder="Where to?"
             nearbyPlacesAPI="GooglePlacesSearch"
@@ -77,7 +80,6 @@ const NavigateCard = ({isEnabled, getInputData, data}) => {
                 setDestination({
                   loaction: details.geometry.location,
                   description: data.description,
-                
                 })
               );
             }}
@@ -98,7 +100,7 @@ const NavigateCard = ({isEnabled, getInputData, data}) => {
         style={{
           paddingHorizontal: 3,
           alignSelf: "center",
-          backgroundColor: colors.darkblue,
+          backgroundColor: theme.colors.purple[6],
           position: "relative",
           zIndex: 10,
           justifyContent: "space-evenly",
@@ -123,7 +125,7 @@ const NavigateCard = ({isEnabled, getInputData, data}) => {
           <TouchableOpacity
             style={{
               flexDirection: "row",
-              backgroundColor: colors.darkblue,
+              backgroundColor: theme.colors.purple[6],
               alignItems: "center",
               justifyContent: "center",
               width: 150,
@@ -131,7 +133,7 @@ const NavigateCard = ({isEnabled, getInputData, data}) => {
               paddingHorizontal: 4,
               paddingVertical: 3,
               borderRadius: 15,
-              borderColor: colors.aqua,
+              borderColor: theme.colors.blue[4],
               borderWidth: 2,
             }}
           >
@@ -141,7 +143,7 @@ const NavigateCard = ({isEnabled, getInputData, data}) => {
             />
             <Text
               style={{
-                color: colors.white,
+                color: theme.colors.neutral[0],
                 textAlign: "center",
                 paddingLeft: 3,
               }}
@@ -152,7 +154,7 @@ const NavigateCard = ({isEnabled, getInputData, data}) => {
           <TouchableOpacity
             style={{
               flexDirection: "row",
-              backgroundColor: colors.darkblue,
+              backgroundColor: theme.colors.purple[6],
               alignItems: "center",
               justifyContent: "center",
               width: 150,
@@ -160,7 +162,7 @@ const NavigateCard = ({isEnabled, getInputData, data}) => {
               paddingHorizontal: 4,
               paddingVertical: 3,
               borderRadius: 15,
-              borderColor: colors.aqua,
+              borderColor: theme.colors.blue[4],
               borderWidth: 2,
             }}
             onPress={() => navigation.push("RideOptionsCard")}
@@ -171,7 +173,7 @@ const NavigateCard = ({isEnabled, getInputData, data}) => {
             />
             <Text
               style={{
-                color: colors.white,
+                color: theme.colors.neutral[0],
                 textAlign: "center",
                 paddingLeft: 3,
               }}
@@ -190,7 +192,7 @@ export default NavigateCard;
 const toInputBoxStyles = StyleSheet.create({
   container: {
     flex: 0,
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     paddingTop: 20,
   },
   textInput: {
@@ -198,7 +200,7 @@ const toInputBoxStyles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,0.71)",
     borderRadius: 15,
     borderWidth: 2,
-    borderColor: colors.aqua,
+    borderColor: theme.colors.blue[4],
   },
   textInputContainer: {
     paddingHorizontal: 20,

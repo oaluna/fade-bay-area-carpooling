@@ -1,5 +1,5 @@
 import React from "react";
-import { colors, parameters } from "../global/styles";
+import { colors, parameters, theme } from "../global/styles";
 import {
   View,
   StyleSheet,
@@ -8,6 +8,7 @@ import {
   Text,
   Dimensions,
 } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import Screen from "../components/Screen";
 import Map from "../components/Map";
 import NavFavourites from "../components/NavFavourites";
@@ -22,18 +23,22 @@ const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 const { width, height } = Dimensions.get("screen");
 
 const HomeScreen = ({ navigation, ...props }) => {
- 
-
-  
   const dispatch = useDispatch();
   return (
-    <Screen style={styles.screen}>
-  
+    <Screen>
+      <LinearGradient
+        start={{ x: 1, y: 0 }}
+        end={{ x: 0.5, y: 1 }}
+        colors={[theme.colors.purple[10], theme.colors.blue[8]]}
+        style={styles.screen}
+      >
         <Image
           source={require("../assets/images/fade-logo.png")}
           style={styles.logo}
         />
-        <Text style={styles.text1}>Welcome, {props.isEnabled === true ? "Driver" : "Rider"}!</Text>
+        <Text style={styles.text1}>
+          Welcome, {props.isEnabled === true ? "Driver" : "Rider"}!
+        </Text>
         <View>
           <GooglePlacesAutocomplete
             placeholder="Where from?"
@@ -67,7 +72,7 @@ const HomeScreen = ({ navigation, ...props }) => {
                 fontSize: 15,
                 borderRadius: 15,
                 height: 50,
-                borderColor: colors.aqua,
+                borderColor: theme.colors.blue[4],
                 borderWidth: 2,
                 backgroundColor: "rgba(255,255,255,0.71)",
               },
@@ -75,21 +80,25 @@ const HomeScreen = ({ navigation, ...props }) => {
             enablePoweredByContainer={true}
           />
         </View>
-       <NavOptions /> 
+        <NavOptions />
         <NavFavourites />
-        
+
         <Feed />
+      </LinearGradient>
     </Screen>
   );
 };
 
 const HomeScreenContainer = () => {
   const { startTransition } = useBetweenPages(<HomeScreen />);
-}
- 
+};
+
 const styles = StyleSheet.create({
   screen: {
-    marginHorizontal: 0,
+    position: "absolute",
+    paddingLeft: 15,
+    width: width,
+    height: height,
   },
   logo: {
     height: 50,
@@ -98,19 +107,19 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   text1: {
-    color: colors.snow,
+    color: theme.colors.neutral[0],
     fontSize: 42,
     paddingBottom: 20,
     paddingTop: 20,
   },
   container: {
     flex: 1,
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     paddingBottom: 30,
     paddingTop: parameters.statusBarHeight,
   },
   header: {
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     height: parameters.headerHeight,
     alignItems: "center",
   },
@@ -133,19 +142,19 @@ const styles = StyleSheet.create({
   },
 
   home: {
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     paddingLeft: 20,
   },
 
   text1: {
-    color: colors.white,
+    color: theme.colors.neutral[0],
     fontSize: 42,
     paddingBottom: 20,
     paddingTop: 20,
   },
 
   text2: {
-    color: colors.white,
+    color: theme.colors.neutral[0],
     fontSize: 16,
   },
 
@@ -160,7 +169,7 @@ const styles = StyleSheet.create({
     width: 150,
     backgroundColor: "rgba(255,255,255,0.21)",
     borderRadius: 20,
-    borderColor: colors.blue,
+    borderColor: theme.colors.blue[4],
     borderWidth: 2,
     alignItems: "center",
     justifyContent: "center",
@@ -168,7 +177,7 @@ const styles = StyleSheet.create({
   },
 
   button1Text: {
-    color: colors.white,
+    color: theme.colors.neutral[0],
     fontSize: 17,
     marginTop: -2,
   },
@@ -184,13 +193,13 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,0.11)",
     width: 80,
     height: 110,
-    borderColor: colors.blue,
+    borderColor: theme.colors.blue[4],
 
     borderWidth: 2,
   },
 
   title: {
-    color: colors.white,
+    color: theme.colors.neutral[0],
     fontSize: 12,
     margin: 5,
     textAlign: "center",
@@ -199,19 +208,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 15,
     height: 50,
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     alignItems: "center",
     justifyContent: "space-between",
     marginHorizontal: 15,
   },
-  text3: { fontSize: 24, color: colors.white },
+  text3: { fontSize: 24, color: theme.colors.neutral[0] },
 
   view4: {
     flexDirection: "row",
     alignItems: "center",
     marginRight: 15,
     backgroundColor: "rgba(255,255,255,0.21)",
-    borderColor: colors.blue,
+    borderColor: theme.colors.blue[4],
     borderWidth: 2,
     paddingHorizontal: 10,
     paddingVertical: 2,
@@ -228,8 +237,8 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     justifyContent: "space-between",
     marginHorizontal: 15,
-    borderBottomColor: colors.blue,
-    color: colors.white,
+    borderBottomColor: theme.colors.blue[4],
+    color: theme.colors.neutral[0],
     borderBottomWidth: 1,
     flex: 1,
   },
@@ -240,7 +249,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   view7: {
-    backgroundColor: colors.blue,
+    backgroundColor: theme.colors.blue[4],
     height: 32,
     width: 32,
     borderRadius: 20,
@@ -257,7 +266,7 @@ const styles = StyleSheet.create({
 
   text4: {
     fontSize: 20,
-    color: colors.white,
+    color: theme.colors.neutral[0],
     marginLeft: 20,
     marginVertical: 20,
   },
@@ -274,7 +283,7 @@ const styles = StyleSheet.create({
     width: 16,
     height: 16,
     borderRadius: 8,
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     alignItems: "center",
     justifyContent: "center",
   },
@@ -283,7 +292,7 @@ const styles = StyleSheet.create({
     width: 4,
     height: 4,
     borderRadius: 2,
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
   },
 });
 

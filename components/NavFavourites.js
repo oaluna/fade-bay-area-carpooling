@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { useDispatch } from "react-redux";
-import { colors } from "../global/styles";
+import { colors, theme } from "../global/styles";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -50,7 +50,7 @@ const NavFavourites = () => {
 
               marginHorizontal: 15,
               marginTop: 25,
-              borderBottomColor: colors.aqua,
+              borderBottomColor: theme.colors.blue[4],
               marginBottom: 0,
               borderBottomWidth: 1,
               height: 50,
@@ -61,10 +61,10 @@ const NavFavourites = () => {
               style={{ marginRight: 15, height: 35, width: 35 }}
             />
             <View style={{ marginVertical: 5 }}>
-              <Text style={{ color: colors.snow, fontSize: 18 }}>
+              <Text style={{ color: theme.colors.neutral[0], fontSize: 18 }}>
                 {item.location}
               </Text>
-              <Text style={{ color: colors.white, fontSize: 12 }}>
+              <Text style={{ color: theme.colors.neutral[0], fontSize: 12 }}>
                 {item.destination}
               </Text>
             </View>
@@ -72,7 +72,7 @@ const NavFavourites = () => {
         )}
         keyExtractor={(item) => item.id.toString()}
         ItemSeparatorComponent={() => (
-          <View style={{ borderBottomColor: colors.aqua }} />
+          <View style={{ borderBottomColor: theme.colors.blue[4] }} />
         )}
         style={{ height: 200 }}
       />

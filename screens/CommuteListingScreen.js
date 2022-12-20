@@ -1,5 +1,5 @@
 import React from "react";
-import { colors, parameters } from "../global/styles";
+import { colors, parameters, theme } from "../global/styles";
 import { View, StyleSheet, Image, Text, Dimensions } from "react-native";
 import Screen from "../components/Screen";
 import Map from "../components/Map";
@@ -18,16 +18,37 @@ const CommuteListingScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   return (
     <Screen style={styles.screen}>
-      <View style={{ backgroundColor: colors.darkblue }}>
+      <View style={{ backgroundColor: theme.colors.purple[6] }}>
         <View>
-          <Text style={[styles.header, { color: colors.snow }]}>
+          <Text style={[styles.header, { color: theme.colors.neutral[0] }]}>
             Commute Details
           </Text>
         </View>
-        
-        <View style={{ flexDirection: "row", alignItems: "center", backgroundColor: "rgba(255,255,255,0.3)",paddingTop: 15, borderTopLeftRadius: 15, borderTopRightRadius: 15}}>
-        <Image source={require("../assets/images/icon-driver.png")} style={{resizeMode:"contain", width: 18, height: 18, left: 200}} />
-        <Text style={{color: colors.aqua, fontSize: 12, left: 205, position:"relative"}}>Driver</Text>
+
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            backgroundColor: "rgba(255,255,255,0.3)",
+            paddingTop: 15,
+            borderTopLeftRadius: 15,
+            borderTopRightRadius: 15,
+          }}
+        >
+          <Image
+            source={require("../assets/images/icon-driver.png")}
+            style={{ resizeMode: "contain", width: 18, height: 18, left: 200 }}
+          />
+          <Text
+            style={{
+              color: theme.colors.blue[4],
+              fontSize: 12,
+              left: 205,
+              position: "relative",
+            }}
+          >
+            Driver
+          </Text>
           <Image
             source={require("../assets/images/icon-account.png")}
             style={{
@@ -38,9 +59,16 @@ const CommuteListingScreen = ({ navigation }) => {
               width: 84,
             }}
           />
-          <Text style={{ color: colors.snow, fontSize: 20 }}>Oscar Luna</Text>
+          <Text style={{ color: theme.colors.neutral[0], fontSize: 20 }}>
+            Oscar Luna
+          </Text>
         </View>
-        <View style={{ flexDirection: "row", backgroundColor: "rgba(255,255,255,0.3)",}}>
+        <View
+          style={{
+            flexDirection: "row",
+            backgroundColor: "rgba(255,255,255,0.3)",
+          }}
+        >
           <Image
             source={require("../assets/images/icon-favorites.png")}
             style={{
@@ -52,12 +80,25 @@ const CommuteListingScreen = ({ navigation }) => {
             }}
           />
           <Text
-            style={{ color: colors.snow, fontSize: 10, left: 110, top: -30 }}
+            style={{
+              color: theme.colors.neutral[0],
+              fontSize: 10,
+              left: 110,
+              top: -30,
+            }}
           >
             5 Stars, 393 reviews
           </Text>
         </View>
-        <View style={{ flexDirection: "row", alignItems:"center", marginTop: 0, paddingRight: 25, backgroundColor: "rgba(255,255,255,0.3)", }}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            marginTop: 0,
+            paddingRight: 25,
+            backgroundColor: "rgba(255,255,255,0.3)",
+          }}
+        >
           <Image
             source={require("../assets/images/icon-to-from.png")}
             style={{
@@ -69,29 +110,105 @@ const CommuteListingScreen = ({ navigation }) => {
             }}
           />
           <Text
-            style={{ color: colors.snow, fontSize: 14, left: 0, top: -40 }}
+            style={{
+              color: theme.colors.neutral[0],
+              fontSize: 14,
+              left: 0,
+              top: -40,
+            }}
           >
             701 London Street
           </Text>
-          <Image source={require("../assets/images/icon-clock.png")} style={{resizeMode:"contain", width: 24, height: 24, left:50, top: -40}}/>
-          <Text  style={{ color: colors.snow, fontSize: 10, left: 65, top: -40 }}>9:00 AM</Text>
+          <Image
+            source={require("../assets/images/icon-clock.png")}
+            style={{
+              resizeMode: "contain",
+              width: 24,
+              height: 24,
+              left: 50,
+              top: -40,
+            }}
+          />
           <Text
-            style={{ color: colors.snow, fontSize: 14, left: -150, top: 0 }}
+            style={{
+              color: theme.colors.neutral[0],
+              fontSize: 10,
+              left: 65,
+              top: -40,
+            }}
           >
-           415 Mission Street
+            9:00 AM
+          </Text>
+          <Text
+            style={{
+              color: theme.colors.neutral[0],
+              fontSize: 14,
+              left: -150,
+              top: 0,
+            }}
+          >
+            415 Mission Street
           </Text>
         </View>
-        <View style={{ flexDirection:"row", alignItems:"center", backgroundColor: "rgba(255,255,255,0.3)"}}>
-          <Text style={{ color: colors.snow, fontSize: 14, left: 15, top: 18, height: 50 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            backgroundColor: "rgba(255,255,255,0.3)",
+          }}
+        >
+          <Text
+            style={{
+              color: theme.colors.neutral[0],
+              fontSize: 14,
+              left: 15,
+              top: 18,
+              height: 50,
+            }}
+          >
             Message from Driver:
           </Text>
-          <Text style={{color: colors.snow, fontSize: 18, left: 25, top: 0}}>None</Text>
+          <Text
+            style={{
+              color: theme.colors.neutral[0],
+              fontSize: 18,
+              left: 25,
+              top: 0,
+            }}
+          >
+            None
+          </Text>
         </View>
-        <View style={{ flexDirection:"row", alignItems:"center", backgroundColor: "rgba(255,255,255,0.3)",  borderBottomLeftRadius: 15, borderBottomRightRadius: 15 }}>
-          <Text style={{ color: colors.snow, fontSize: 14, left: 15, top: 18, height: 50 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            backgroundColor: "rgba(255,255,255,0.3)",
+            borderBottomLeftRadius: 15,
+            borderBottomRightRadius: 15,
+          }}
+        >
+          <Text
+            style={{
+              color: theme.colors.neutral[0],
+              fontSize: 14,
+              left: 15,
+              top: 18,
+              height: 50,
+            }}
+          >
             Vehicle Make/Model:
           </Text>
-          <Text style={{color: colors.snow, fontSize: 18, left: 25, top: 0}}>Ford Escape - 2003</Text>
+          <Text
+            style={{
+              color: theme.colors.neutral[0],
+              fontSize: 18,
+              left: 25,
+              top: 0,
+            }}
+          >
+            Ford Escape - 2003
+          </Text>
         </View>
       </View>
     </Screen>
@@ -101,7 +218,6 @@ const CommuteListingScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   screen: {
     marginHorizontal: 0,
-    
   },
   logo: {
     height: 50,
@@ -112,7 +228,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   text1: {
-    color: colors.snow,
+    color: theme.colors.neutral[0],
     fontSize: 18,
     textAlign: "center",
     paddingBottom: 20,
@@ -120,13 +236,12 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     paddingBottom: 30,
     paddingTop: parameters.statusBarHeight,
-    
   },
   header: {
-    color: colors.snow,
+    color: theme.colors.neutral[0],
     fontSize: 24,
     alignItems: "center",
     alignSelf: "center",
@@ -151,19 +266,19 @@ const styles = StyleSheet.create({
   },
 
   home: {
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     paddingLeft: 20,
   },
 
   text1: {
-    color: colors.white,
+    color: theme.colors.neutral[0],
     fontSize: 42,
     paddingBottom: 20,
     paddingTop: 20,
   },
 
   text2: {
-    color: colors.white,
+    color: theme.colors.neutral[0],
     fontSize: 16,
   },
 
@@ -178,7 +293,7 @@ const styles = StyleSheet.create({
     width: 150,
     backgroundColor: "rgba(255,255,255,0.21)",
     borderRadius: 20,
-    borderColor: colors.blue,
+    borderColor: theme.colors.blue[4],
     borderWidth: 2,
     alignItems: "center",
     justifyContent: "center",
@@ -186,7 +301,7 @@ const styles = StyleSheet.create({
   },
 
   button1Text: {
-    color: colors.white,
+    color: theme.colors.neutral[0],
     fontSize: 17,
     marginTop: -2,
   },
@@ -202,13 +317,13 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,0.11)",
     width: 80,
     height: 110,
-    borderColor: colors.blue,
+    borderColor: theme.colors.blue[4],
 
     borderWidth: 2,
   },
 
   title: {
-    color: colors.white,
+    color: theme.colors.neutral[0],
     fontSize: 12,
     margin: 5,
     textAlign: "center",
@@ -217,19 +332,19 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 15,
     height: 50,
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     alignItems: "center",
     justifyContent: "space-between",
     marginHorizontal: 15,
   },
-  text3: { fontSize: 24, color: colors.white },
+  text3: { fontSize: 24, color: theme.colors.neutral[0] },
 
   view4: {
     flexDirection: "row",
     alignItems: "center",
     marginRight: 15,
     backgroundColor: "rgba(255,255,255,0.21)",
-    borderColor: colors.blue,
+    borderColor: theme.colors.blue[4],
     borderWidth: 2,
     paddingHorizontal: 10,
     paddingVertical: 2,
@@ -246,8 +361,8 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     justifyContent: "space-between",
     marginHorizontal: 15,
-    borderBottomColor: colors.blue,
-    color: colors.white,
+    borderBottomColor: theme.colors.blue[4],
+    color: theme.colors.neutral[0],
     borderBottomWidth: 1,
     flex: 1,
   },
@@ -258,7 +373,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   view7: {
-    backgroundColor: colors.blue,
+    backgroundColor: theme.colors.blue[4],
     height: 32,
     width: 32,
     borderRadius: 20,
@@ -275,7 +390,7 @@ const styles = StyleSheet.create({
 
   text4: {
     fontSize: 20,
-    color: colors.white,
+    color: theme.colors.neutral[0],
     marginLeft: 20,
     marginVertical: 20,
   },
@@ -292,7 +407,7 @@ const styles = StyleSheet.create({
     width: 16,
     height: 16,
     borderRadius: 8,
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     alignItems: "center",
     justifyContent: "center",
   },
@@ -301,7 +416,7 @@ const styles = StyleSheet.create({
     width: 4,
     height: 4,
     borderRadius: 2,
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
   },
 });
 

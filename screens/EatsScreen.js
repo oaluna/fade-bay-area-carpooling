@@ -4,7 +4,7 @@ import { Text, TouchableOpacity, View, Dimensions } from "react-native";
 import Screen from "../components/Screen";
 import Constants from "expo-constants";
 import { Icon } from "react-native-elements";
-import { colors } from "../global/styles";
+import { colors, theme } from "../global/styles";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -23,8 +23,8 @@ const EatsScreen = () => {
         />
       </TouchableOpacity>
       <View>
-        <Text style={{ color: colors.snow }}>Join A Carpool</Text>
-        <Text style={{ color: colors.snow }}>Feed goes here</Text>
+        <Text style={{ color: theme.colors.neutral[0] }}>Join A Carpool</Text>
+        <Text style={{ color: theme.colors.neutral[0] }}>Feed goes here</Text>
       </View>
     </Screen>
   );

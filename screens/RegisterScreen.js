@@ -14,16 +14,14 @@ import {
 } from "react-native";
 import FadeLogo from "../assets/images/fade-logo.png";
 
-import { colors } from "../global/styles";
-
+import { colors, theme } from "../global/styles";
+import { LinearGradient } from "expo-linear-gradient";
 const { height, width } = Dimensions.get("screen");
 
 const RegisterScreen = ({ navigation }) => {
   const fields = [
-    { id: 0, fieldName: "First Name" },
-    {
-      id: 1,
-      fieldName: "Last Name",
+    { id: 0, 
+      fieldName: "Full Name"
     },
     {
       id: 2,
@@ -46,7 +44,6 @@ const RegisterScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-     
       <ImageBackground
         source={require("../assets/images/gradient-bg3.png")}
         style={{
@@ -62,39 +59,34 @@ const RegisterScreen = ({ navigation }) => {
                 source={require("../assets/images/fade-logo.png")}
                 style={styles.fadeLogo}
               />
-             
             </View>
             <View id="error-message" style={styles.errorMessage}></View>
             <SafeAreaView>
               <View style={{ marginVertical: 5 }}>
-                <Text style={{ color: colors.snow }}>First Name</Text>
+                <Text style={{ color: theme.colors.neutral[0] }}>
+                  Name
+                </Text>
                 <TextInput
                   type="text"
-                  name="firstname"
-                  placeholder="Enter your first name"
+                  name="fullname"
+                  placeholder="Enter your full name"
                   style={styles.input}
                 />
               </View>
+            
               <View style={{ marginVertical: 5 }}>
-                <Text style={{ color: colors.snow }}>Last Name</Text>
-                <TextInput
-                  type="text"
-                  name="lastname"
-                  placeholder="Enter your last name"
-                  style={styles.input}
-                />
-              </View>
-              <View style={{ marginVertical: 5 }}>
-                <Text style={{ color: colors.snow }}>Phone Number</Text>
+                <Text style={{ color: theme.colors.neutral[0] }}>
+                  Phone Number
+                </Text>
                 <TextInput
                   type="phone"
                   name="phone"
                   placeholder="Enter your Phone Number"
                   style={styles.input}
                 />
-                </View>
+              </View>
               <View style={{ marginVertical: 5 }}>
-                <Text style={{ color: colors.snow }}>Email</Text>
+                <Text style={{ color: theme.colors.neutral[0] }}>Email</Text>
                 <TextInput
                   type="email"
                   name="email"
@@ -103,7 +95,7 @@ const RegisterScreen = ({ navigation }) => {
                 />
               </View>
               <View style={{ marginVertical: 5 }}>
-                <Text style={{ color: colors.snow }}>Password</Text>
+                <Text style={{ color: theme.colors.neutral[0] }}>Password</Text>
                 <TextInput
                   type="password"
                   name="password"
@@ -112,42 +104,52 @@ const RegisterScreen = ({ navigation }) => {
                   style={styles.input}
                 />
               </View>
-         <View style={{height: 200, justifyContent:"flex-end"}}>     
-              <View style={{ marginVertical: 5 }}>
-                <Pressable
-                  style={styles.loginBtn}
-                  onPress={() => navigation.navigate("DemoScreen")}
-                >
-                  <Text
-                    style={{
-                      color: colors.snow,
-                      fontSize: 20,
-                      textAlign: "center",
-                    }}
+              <View style={{ height: 300, justifyContent: "flex-end" }}>
+                <View style={{ marginTop: 25 }}>
+                <LinearGradient
+                start={{x: 0.1, y: 1}} end={{x: 0.75, y: 3.25}}
+          colors={[theme.colors.blue[7], theme.colors.blue[4]]} style={styles.loginBtn}>
+                  <Pressable
+                    
+                    onPress={() => navigation.navigate("DemoScreen")}
                   >
-                    Sign Up
-                  </Text>
-                </Pressable>
-              </View>
-             <Text style={{color:colors.snow, textAlign:'center'}}>OR</Text>
-              <View style={{ marginVertical: 5 }}>
-                <Pressable
-                  style={styles.signupBtn}
-                  onPress={() => navigation.navigate("LoginScreen")}
+                    <Text
+                      style={{
+                        color: theme.colors.neutral[0],
+                        fontSize: 20,
+                        textAlign: "center",
+                      }}
+                    >
+                      Sign Up
+                    </Text>
+                  </Pressable>
+                  </LinearGradient>
+                </View>
+                <Text
+                  style={{
+                    color: theme.colors.neutral[0],
+                    textAlign: "center",
+                  }}
                 >
-                  <Text
-                    style={{
-                      color: colors.snow,
-                      fontSize: 20,
-                      textAlign: "center",
-                    }}
+                  OR
+                </Text>
+                <View style={{ marginVertical: 5 }}>
+                  <Pressable
+                    style={styles.signupBtn}
+                    onPress={() => navigation.navigate("LoginScreen")}
                   >
-                    I'm already a member
-                  </Text>
-                </Pressable>
+                    <Text
+                      style={{
+                        color: theme.colors.neutral[0],
+                        fontSize: 20,
+                        textAlign: "center",
+                      }}
+                    >
+                      I'm already a member
+                    </Text>
+                  </Pressable>
+                </View>
               </View>
-</View>
-              
             </SafeAreaView>
           </View>
         </View>
@@ -188,42 +190,31 @@ const styles = StyleSheet.create({
   },
   input: {
     width: width - 30,
-    borderColor: colors.aqua,
+    borderColor: theme.colors.neutral[4],
     height: 50,
     borderWidth: 2,
     borderRadius: 15,
-    backgroundColor: "rgba(255,255,255,0.31)",
-    color: colors.snow,
+    backgroundColor: theme.colors.neutral[0],
+    color: theme.colors.neutral[0],
     padding: 10,
     marginBottom: 10,
   },
   loginBtn: {
     width: width - 30,
     height: 50,
-    backgroundColor: colors.darkblue,
-borderRadius: 15,
-shadowColor: colors.aqua,
-shadowOffset: {
-  width: 0, height: 5,
-},
-shadowOpacity: 1,
-shadowRadius: 1,
-elevation: 3,
+  
+    borderRadius: 15,
+    
+    elevation: 2,
     padding: 10,
     marginTop: 10,
     marginBottom: 10,
   },
   signupBtn: {
     width: width - 30,
-    backgroundColor: colors.black,
-    shadowColor: colors.aqua,
-shadowOffset: {
-  width: 0, height: 5,
-},
-shadowOpacity: 1,
-shadowRadius: 1,
-elevation: 3,
+    
     height: 50,
+   
     borderRadius: 15,
     padding: 10,
     marginTop: 10,

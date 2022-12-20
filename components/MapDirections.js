@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Dimensions, StyleSheet } from "react-native";
 import MapView from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
+import { theme } from "../global/styles";
 
 const { GOOGLE_MAPS_APIKEY } = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 

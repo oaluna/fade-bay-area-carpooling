@@ -18,7 +18,7 @@ import MapViewDirections from "react-native-maps-directions";
 // import { GOOGLE_MAP_APIKEY } from '@env'
 import { Icon } from "react-native-elements";
 import Constants from "expo-constants";
-import { colors } from "../global/styles";
+import { colors, theme } from "../global/styles";
 import { mapStyle } from "../global/mapStyle";
 import { carsAround } from "../global/data";
 import { useNavigation } from "@react-navigation/native";
@@ -57,11 +57,11 @@ const Map = () => {
     <View style={{ flex: 1, position: "relative" }}>
       <TouchableOpacity
         style={{
-          background: colors.snow,
+          background: theme.colors.neutral[0],
           padding: 3,
           borderRadius: 15,
           shadowRadius: 5,
-          shadowColor: colors.darkblue,
+          shadowColor: theme.colors.purple[6],
           shadowOpacity: 0.5,
           shadowOffset: { width: 0, height: 0 },
         }}
@@ -73,7 +73,7 @@ const Map = () => {
           color="black"
           size={16}
           style={{
-            position:"absolute",
+            position: "absolute",
             top: 50,
             left: 15,
             zIndex: 100,
@@ -82,18 +82,17 @@ const Map = () => {
       </TouchableOpacity>
 
       <MapView
-      origin={origin}
-      destination={destination}
+        origin={origin}
+        destination={destination}
         style={styles.map}
         ref={mapRef}
         showsUserLocation={true}
-       
         showsMyLocationButton={true}
         initialRegion={{
-  latitude: 37.78825,
-  longitude: -122.4324,
-  latitudeDelta: 0.0922,
-  longitudeDelta: 0.0421,
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
         }}
         mapType={"standard"}
       >
@@ -109,14 +108,12 @@ const Map = () => {
             // }}
             origin={origin.description}
             destination={destination.description}
-            
-            
             mode={"DRIVING"}
             precision={"high"}
             geodesic={true}
             apikey={GOOGLE_MAP_APIKEY}
             strokeWidth={5}
-            strokeColor={colors.aqua}
+            strokeColor={theme.colors.blue[4]}
             onError={(error) => console.log("Directions error: ", error)}
           />
         )}

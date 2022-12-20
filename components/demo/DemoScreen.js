@@ -3,11 +3,14 @@ import {
   View,
   TouchableOpacity,
   Image,
+  ImageBackground,
   Text,
   StyleSheet,
   Dimensions,
 } from "react-native";
-import { colors } from "../../global/styles";
+import { colors, theme } from "../../global/styles";
+import { LinearGradient } from "expo-linear-gradient";
+
 
 import CustomSlider from "./CustomSlider";
 import sliderContent from "./slides";
@@ -16,17 +19,19 @@ const { width, height } = Dimensions.get("screen");
 
 const DemoScreen = ({ navigation, route }) => {
   return (
-    <View style={styles.container}>
+    <ImageBackground source={require("../../assets/images/gradient-bg3.png")} style={styles.container}>
+    
       {/* slider */}
       <Image
         source={require("../../assets/images/fade-logo.png")}
         style={{ width: 200, height: 200, resizeMode: "contain" }}
       />
       <CustomSlider sliderContent={sliderContent} />
-      <View style={{ bottom: 0, position: "absolute", marginBottom: 10 }}>
+      <View style={{ position:"relative", flex: 1, alignItems:'center' }}>
+      <LinearGradient
+                start={{x: 0.1, y: 1}} end={{x: 0.75, y: 3.25}}
+          colors={[theme.colors.blue[7], theme.colors.blue[4]]} style={styles.startBtn}>
         <TouchableOpacity
-          style={styles.startBtn}
-          i
           onPress={() => navigation.push("LocationAccessScreen")}
           raised
           title="Register"
@@ -41,8 +46,10 @@ const DemoScreen = ({ navigation, route }) => {
         >
           <Text style={styles.loginBtnText}>I'm already signed up</Text>
         </TouchableOpacity>
+        </LinearGradient>
       </View>
-    </View>
+  
+    </ImageBackground>
   );
 };
 
@@ -53,42 +60,43 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.darkblue,
   },
   loginBtn: {
-    backgroundColor: "white",
+    position:"relative",
+    
     marginLeft: 30,
     marginRight: 30,
     marginTop: 20,
     height: 48,
-    width: 300,
-    borderRadius: 15,
-    borderWidth: 2,
-    borderColor: colors.blue,
+    width: width - 30,
+  
+    
     alignItems: "center",
     justifyContent: "center",
   },
   startBtn: {
-    backgroundColor: colors.darkblue,
+   
     marginLeft: 30,
     marginRight: 30,
-    marginTop: 20,
-    height: 48,
-    width: 300,
+    marginTop: 0,
+    marginBottom: 25,
+    height: 50,
+    width: width - 30,
     borderRadius: 15,
-    borderColor: colors.blue,
-    borderWidth: 2,
+    elevation: 2,
     alignItems: "center",
     justifyContent: "center",
   },
   startBtnText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#fff",
+    color: theme.colors.neutral[0],
+    marginTop: 90,
+    height: 50
   },
   loginBtnText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#808080",
+    color: theme.colors.neutral[0],
   },
 });

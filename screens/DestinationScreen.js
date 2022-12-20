@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import { Avatar, Icon } from "react-native-elements";
-import { colors, parameters } from "../global/styles";
+import { colors, parameters, theme } from "../global/styles";
 import { GOOGLE_MAPS_APIKEY } from "../config";
 import { OriginContext, DestinationContext } from "../context/Context";
 
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 25,
     left: 12,
-    backgroundColor: colors.white,
+    backgroundColor: theme.colors.neutral[0],
     height: 40,
     width: 40,
     borderRadius: 20,
@@ -154,12 +154,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 2,
     marginBottom: 10,
-    backgroundColor: colors.white,
+    backgroundColor: theme.colors.neutral[0],
     height: 30,
     zIndex: 10,
   },
 
-  view2: { backgroundColor: colors.white, zIndex: 4, paddingBottom: 10 },
+  view2: {
+    backgroundColor: theme.colors.neutral[0],
+    zIndex: 4,
+    paddingBottom: 10,
+  },
 
   view24: {
     flexDirection: "row",
@@ -195,7 +199,7 @@ const autoComplete = {
   container: {
     paddingTop: 20,
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: theme.colors.neutral[0],
   },
 
   textInputContainer: {

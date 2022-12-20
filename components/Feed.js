@@ -14,7 +14,7 @@ import { Icon, Avatar } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import { selectOrigin, selectDestination } from "../redux/slices/navSlice";
 import { useSelector } from "react-redux";
-import { colors } from "../global/styles";
+import { colors, theme } from "../global/styles";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -81,7 +81,7 @@ const NavOptions = () => {
       <View style={{ flex: 1, alignSelf: "flex-start" }}>
         <Text
           style={{
-            color: colors.snow,
+            color: theme.colors.neutral[0],
             fontSize: 24,
             textAlign: "center",
             marginTop: 20,
@@ -118,7 +118,7 @@ const NavOptions = () => {
             />
             <Text
               style={{
-                color: colors.snow,
+                color: theme.colors.neutral[0],
                 fontSize: 12,
                 textAlign: "left",
                 marginRight: 25,
@@ -139,7 +139,7 @@ const NavOptions = () => {
             />
             <Text
               style={{
-                color: colors.snow,
+                color: theme.colors.neutral[0],
                 fontSize: 12,
                 textAlign: "center",
                 marginRight: 25,
@@ -168,7 +168,7 @@ const NavOptions = () => {
                 resizeMode: "contain",
                 borderRadius: 35,
                 flexDirection: "row",
-                color: colors.snow,
+                color: theme.colors.neutral[0],
                 fontSize: 10,
                 textAlign: "left",
                 alignItems: "center",
@@ -189,7 +189,7 @@ const NavOptions = () => {
             >
               <Text
                 style={{
-                  color: colors.snow,
+                  color: theme.colors.neutral[0],
                   fontSize: 24,
                   textAlign: "center",
                 }}
@@ -208,10 +208,10 @@ const NavOptions = () => {
               />
               <Text
                 style={{
-                  color: colors.snow,
+                  color: theme.colors.neutral[0],
                   fontSize: 10,
                   textAlign: "center",
-                  flexDirection:"row",
+                  flexDirection: "row",
                 }}
               >
                 5.00 Rating
@@ -220,7 +220,7 @@ const NavOptions = () => {
           </View>
           <Text
             style={{
-              color: colors.snow,
+              color: theme.colors.neutral[0],
               fontSize: 10,
               marginTop: 135,
               marginLeft: 175,
@@ -231,7 +231,7 @@ const NavOptions = () => {
           <Icon
             name="chevron-right"
             type="font-awesome-5"
-            color={colors.aqua}
+            color={theme.colors.blue[4]}
             size={24}
             style={{ marginTop: 125, marginRight: 5 }}
           />
@@ -246,12 +246,11 @@ export default NavOptions;
 const styles = StyleSheet.create({
   feed: {
     height: 320,
-  
     marginLeft: -15,
   },
   bg: {
     backgroundColor: "rgba(255,255,255,0.21)",
-    borderColor: colors.aqua,
+    borderColor: theme.colors.blue[4],
     borderWidth: 2,
     borderRadius: 15,
     width: 200,
@@ -260,7 +259,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingVertical: 25,
     flexDirection: "row",
-    color: colors.snow,
+    color: theme.colors.neutral[0],
     fontSize: 10,
     textAlign: "center",
     width: width,
@@ -279,7 +278,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   text: {
-    color: colors.snow,
+    color: theme.colors.neutral[0],
     fontSize: 10,
     textAlign: "center",
     fontSize: 12,

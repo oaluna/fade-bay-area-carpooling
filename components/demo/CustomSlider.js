@@ -8,7 +8,7 @@ import {
   View,
   Dimensions,
 } from "react-native";
-import { colors } from "../../global/styles";
+import { colors, theme } from "../../global/styles";
 import { FontAwesome } from "@expo/vector-icons";
 import GestureRecognizer from "react-native-swipe-gestures";
 import useInterval from "./useInterval";
@@ -62,7 +62,10 @@ const customSlider = ({ sliderContent }) => {
               name="circle"
               size={10}
               style={{
-                color: activeIndex == id ? colors.white : colors.blue,
+                color:
+                  activeIndex == id
+                    ? theme.colors.red[5]
+                    : theme.colors.neutral[4],
                 marginRight: 4,
               }}
             />
@@ -79,28 +82,33 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.darkblue,
+    justifyContent: "space-evenly",
   },
   containerSliderControls: {
     flexDirection: "row",
+    alignItems: "flex-end",
     justifyContent: "center",
-    marginBottom: 150,
+    marginBottom: 25,
     marginTop: 100,
+    height: 50,
   },
   scroll: {},
   image: {
     height: 300,
     width: 300,
     resizeMode: "contain",
+    alignItems: "center",
   },
   logoTitle: {
-    fontSize: 16,
+    fontSize: 20,
     letterSpacing: 0.5,
     lineHeight: 32,
     marginVertical: 20,
     textAlign: "center",
     fontWeight: "bold",
     width: 300,
-    color: colors.white,
+    height: 100,
+    alignItems: "center",
+    color: theme.colors.neutral[0],
   },
 });

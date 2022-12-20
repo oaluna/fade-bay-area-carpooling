@@ -21,11 +21,11 @@ import BottomSheet, {
 } from "@gorhom/bottom-sheet";
 import { Avatar, Icon } from "react-native-elements";
 import MapComponent from "../components/MapComponent";
-import { colors, parameters } from "../global/styles";
+import { colors, parameters, theme } from "../global/styles";
 import { rideData } from "../global/data";
 import { OriginContext, DestinationContext } from "../context/Context";
 
-const { width, height} = Dimensions.get("screen");
+const { width, height } = Dimensions.get("screen");
 
 export default function RequestScreen({ navigation, route }) {
   const { origin, dispatchOrigin } = useContext(OriginContext);
@@ -65,11 +65,11 @@ export default function RequestScreen({ navigation, route }) {
               size={18}
             />
           </View>
-          <View style={{ backgroundColor: colors.darkblue }}>
-            <Text style={{ fontSize: 20, color: colors.white }}>
+          <View style={{ backgroundColor: theme.colors.purple[6] }}>
+            <Text style={{ fontSize: 20, color: theme.colors.neutral[0] }}>
               {item.street}
             </Text>
-            <Text style={{ color: colors.white }}>{item.area}</Text>
+            <Text style={{ color: theme.colors.neutral[0] }}>{item.area}</Text>
           </View>
         </View>
       </View>
@@ -94,7 +94,7 @@ export default function RequestScreen({ navigation, route }) {
             <View style={styles.view3}>
               <Text
                 style={{
-                  color: colors.white,
+                  color: theme.colors.neutral[0],
                   fontSize: 18,
                   alignSelf: "center",
                   width: 65,
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 48,
     justifyContent: "flex-start",
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
 
     display: "flex",
     flexDirection: "row",
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
   },
   view1: {
     position: "absolute",
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
     borderRadius: 20,
-    borderColor: colors.blue,
+    borderColor: theme.colors.blue[4],
     borderWidth: 2,
     justifyContent: "center",
     alignItems: "center",
@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     zIndex: 5,
     marginLeft: 15,
     marginBottom: 25,
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
   },
 
   view3: {
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: 40,
     alignSelf: "center",
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     left: 15,
     right: 15,
     top: 25,
@@ -274,7 +274,7 @@ const styles = StyleSheet.create({
   },
   view5: {
     backgroundColor: "rgba(255,255,255,0.31)",
-    color: colors.white,
+    color: theme.colors.neutral[0],
     width: 200,
     height: 40,
     paddingTop: 25,
@@ -297,7 +297,7 @@ const styles = StyleSheet.create({
   text1: {
     marginLeft: 10,
     fontSize: 16,
-    color: colors.white,
+    color: theme.colors.neutral[0],
   },
   image1: { height: 49, width: 49, marginRight: 10, marginTop: 10 },
   view7: {
@@ -317,18 +317,18 @@ const styles = StyleSheet.create({
   },
   view10: {
     alignItems: "center",
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     flexDirection: "row",
     paddingVertical: 10,
-    color: colors.white,
+    color: theme.colors.neutral[0],
     borderBottomColor: colors.grey1,
     borderBottomWidth: 1,
     paddingHorizontal: 15,
   },
   view11: {
     backgroundColor: "rgba(255,255,255,0.71)",
-    color: colors.blue,
-    borderColor: colors.blue,
+    color: theme.colors.blue[4],
+    borderColor: theme.colors.blue[4],
     borderWidth: 2,
     height: 30,
     width: 30,
@@ -340,27 +340,27 @@ const styles = StyleSheet.create({
   },
 
   contentContainer: {
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
   },
   view12: {
     alignItems: "center",
     paddingVertical: 10,
     borderBottomWidth: 1,
-    borderBottomColor: colors.blue,
+    borderBottomColor: theme.colors.blue[4],
   },
 
   text2: {
     fontSize: 18,
-    color: colors.white,
+    color: theme.colors.neutral[0],
   },
   text3: {
     fontSize: 16,
-    color: colors.white,
+    color: theme.colors.neutral[0],
     fontWeight: "bold",
     marginRight: 5,
   },
 
-  text4: { color: colors.white, marginTop: 4 },
+  text4: { color: theme.colors.neutral[0], marginTop: 4 },
 
   view13: {
     flexDirection: "row",
@@ -373,7 +373,7 @@ const styles = StyleSheet.create({
   button1: {
     height: 40,
     width: 100,
-    backgroundColor: colors.blue,
+    backgroundColor: theme.colors.blue[4],
     borderRadius: 20,
     alignItems: "center",
     justifyContent: "center",
@@ -382,7 +382,7 @@ const styles = StyleSheet.create({
 
   button2: {
     height: 50,
-    backgroundColor: colors.blue,
+    backgroundColor: theme.colors.blue[4],
     alignItems: "center",
     justifyContent: "center",
     marginTop: 20,
@@ -392,11 +392,11 @@ const styles = StyleSheet.create({
   button1Text: {
     fontSize: 23,
     marginTop: -2,
-    color: colors.white,
+    color: theme.colors.neutral[0],
   },
 
   button2Text: {
-    color: colors.white,
+    color: theme.colors.neutral[0],
     fontSize: 23,
     marginTop: -2,
   },
@@ -423,7 +423,7 @@ const styles = StyleSheet.create({
 
   text5: {
     fontSize: 12,
-    color: colors.darkblue,
+    color: theme.colors.purple[6],
     marginLeft: 3,
     fontWeight: "bold",
     paddingBottom: 1,
@@ -443,7 +443,7 @@ const styles = StyleSheet.create({
 
   text6: {
     fontSize: 15,
-    color: colors.darkblue,
+    color: theme.colors.purple[6],
     fontWeight: "bold",
   },
 
@@ -468,7 +468,7 @@ const styles = StyleSheet.create({
 
   text7: {
     fontSize: 28,
-    color: colors.darkblue,
+    color: theme.colors.purple[6],
     marginRight: 5,
   },
 
@@ -480,7 +480,7 @@ const styles = StyleSheet.create({
 
   button3: {
     height: 60,
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     alignItems: "center",
     justifyContent: "center",
     width: width - 110,

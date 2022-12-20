@@ -11,18 +11,29 @@ import {
   Pressable,
   Dimensions,
 } from "react-native";
+import {LinearGradient} from "expo-linear-gradient";
 import { Icon } from "react-native-elements";
 import { useAuth0 } from "react-native-auth0";
 import PropTypes from "prop-types";
-import { colors } from "../global/styles";
+import { colors, theme } from "../global/styles";
 import { carsAround } from "../global/data";
 import Spinner from "react-native-loading-spinner-overlay";
 
 const { width, height } = Dimensions.get("screen");
 
-const EyeHidden = () => <Image source={require("../assets/images/icon-hidden.png")} style={{resizeMode:"contain", width: 20, height: 20}} />
+const EyeHidden = () => (
+  <Image
+    source={require("../assets/images/icon-hidden.png")}
+    style={{ resizeMode: "contain", width: 20, height: 20 }}
+  />
+);
 
-const EyeVisible = () => <Image source={require("../assets/images/icon-visible.png")} style={{resizeMode:"contain", width: 20, height: 20}} />
+const EyeVisible = () => (
+  <Image
+    source={require("../assets/images/icon-visible.png")}
+    style={{ resizeMode: "contain", width: 20, height: 20 }}
+  />
+);
 
 const SignIn = ({ navigation }) => {
   const { authorize, clearSession, user } = useAuth0();
@@ -69,12 +80,11 @@ const SignIn = ({ navigation }) => {
     }, 3000);
   }, []);
 
-
   return (
     <View style={styles.container}>
       <Spinner
         visible={spinner}
-        color={colors.aqua}
+        color={theme.colors.blue[4]}
         textContent={"Loading..."}
         textStyle={styles.spinnerTextStyle}
       />
@@ -96,7 +106,7 @@ const SignIn = ({ navigation }) => {
             <View id="error-message" style={styles.errorMessage}></View>
             <SafeAreaView>
               <View style={{ marginVertical: 15 }}>
-                <Text style={{ color: colors.snow }}>Email</Text>
+                <Text style={{ color: theme.colors.neutral[0] }}>Email</Text>
                 <TextInput
                   type="email"
                   name="email"
@@ -105,23 +115,40 @@ const SignIn = ({ navigation }) => {
                 />
               </View>
               <View style={{ marginVertical: 15 }}>
-                <Text style={{ color: colors.snow }}>Password</Text>
+                <Text style={{ color: theme.colors.blue[0] }}>Password</Text>
                 <TextInput
                   type="password"
                   name="password"
                   placeholder={"Enter your password"}
-                  
                   secureTextEntry={isHidden === true ? true : false}
                   style={styles.input}
-                  
                 />
-               <Pressable onPress={() => isHidden === true ? setIsHidden(false) : setIsHidden(true)} style={{position:"absolute", top: 30, alignSelf:"flex-end", right: 25}}>
-               {isHidden == true ? <EyeHidden /> : <EyeVisible /> }
-               </Pressable>
-              </View>
-                <Pressable onPress={() => {}}>
-                <Text style={{alignSelf:"flex-end", color:colors.aqua}}>Forgot your Password?</Text>
+                <Pressable
+                  onPress={() =>
+                    isHidden === true ? setIsHidden(false) : setIsHidden(true)
+                  }
+                  style={{
+                    position: "absolute",
+                    top: 30,
+                    alignSelf: "flex-end",
+                    right: 25,
+                  }}
+                >
+                  {isHidden == true ? <EyeHidden /> : <EyeVisible />}
                 </Pressable>
+              </View>
+              <Pressable onPress={() => {}}>
+                <Text
+                  style={{
+                    alignSelf: "flex-end",
+                    color: theme.colors.blue[0],
+                    position: "absolute",
+                    top: -20,
+                  }}
+                >
+                  Forgot your Password?
+                </Text>
+              </Pressable>
               <View
                 style={{
                   flexDirection: "column",
@@ -130,11 +157,14 @@ const SignIn = ({ navigation }) => {
                 }}
               >
                 <View style={{ marginVertical: 5 }}>
-                  <Pressable style={styles.loginBtn} onPress={onLogin}>
+                <LinearGradient
+                start={{x: 0.1, y: 1}} end={{x: 0.75, y: 3.25}}
+          colors={[theme.colors.blue[7], theme.colors.blue[4]]} style={styles.loginBtn}>
+                  <Pressable onPress={onLogin}>
                     <Text
                       adjustsFontSizeToFit={true}
                       style={{
-                        color: colors.snow,
+                        color: theme.colors.neutral[0],
                         fontSize: 20,
                         textAlign: "center",
                       }}
@@ -142,8 +172,15 @@ const SignIn = ({ navigation }) => {
                       Log In
                     </Text>
                   </Pressable>
+                  </LinearGradient>
                 </View>
-                <Text adjustsFontSizeToFit={true} style={{ color: colors.snow, textAlign: "center" }}>
+                <Text
+                  adjustsFontSizeToFit={true}
+                  style={{
+                    color: theme.colors.neutral[0],
+                    textAlign: "center",
+                  }}
+                >
                   OR
                 </Text>
                 <View style={{ marginVertical: 5 }}>
@@ -153,7 +190,7 @@ const SignIn = ({ navigation }) => {
                   >
                     <Text
                       style={{
-                        color: colors.darkblue,
+                        color: theme.colors.neutral[0],
                         fontSize: 20,
                         textAlign: "center",
                       }}
@@ -200,7 +237,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     justifyContent: "space-evenly",
- 
   },
   loginHeader: {
     textAlign: "center",
@@ -210,11 +246,11 @@ const styles = StyleSheet.create({
   },
   input: {
     width: width - 30,
-    borderColor: colors.gray6,
+    borderColor: theme.colors.neutral[4],
     height: 50,
     borderWidth: 2,
     borderRadius: 15,
-    backgroundColor: colors.snow,
+    backgroundColor: theme.colors.neutral[0],
     color: colors.gray1,
     padding: 10,
     marginBottom: 10,
@@ -222,36 +258,18 @@ const styles = StyleSheet.create({
   loginBtn: {
     width: width - 30,
     height: 50,
-    borderColor: colors.aqua,
-    borderWidth: 1,
-    backgroundColor: colors.darkblue,
+ 
     borderRadius: 15,
-    shadowColor: colors.aqua,
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 1,
-    elevation: 10,
+   
+    elevation: 2,
     padding: 10,
     marginTop: 10,
     marginBottom: 10,
   },
   signupBtn: {
     width: width - 30,
-    color: colors.black,
-    borderColor: colors.aqua,
-    borderWidth: 1,
-    backgroundColor: colors.snow,
-    shadowColor: colors.aqua,
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 1,
-    elevation: 10,
+    
+   
     height: 50,
     borderRadius: 15,
     padding: 10,

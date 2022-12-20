@@ -12,8 +12,8 @@ import {
   Pressable,
   Dimensions,
 } from "react-native";
-import { colors } from "../global/styles";
-
+import { colors, theme } from "../global/styles";
+import { LinearGradient } from "expo-linear-gradient";
 const { width, height } = Dimensions.get("screen");
 
 const ProfileTypeScreen = ({ navigation }) => {
@@ -35,7 +35,7 @@ const ProfileTypeScreen = ({ navigation }) => {
       <View style={{ marginTop: 100 }}>
         <Text
           style={{
-            color: colors.white,
+            color: theme.colors.neutral[0],
             fontSize: 28,
             textAlign: "center",
             marginVertical: 25,
@@ -47,7 +47,7 @@ const ProfileTypeScreen = ({ navigation }) => {
         <Text
           style={{
             fontSize: 24,
-            color: colors.snow,
+            color: theme.colors.neutral[0],
             fontWeight: "400",
             textAlign: "center",
             marginVertical: 25,
@@ -58,7 +58,7 @@ const ProfileTypeScreen = ({ navigation }) => {
         </Text>
         <Text
           style={{
-            color: colors.white,
+            color: theme.colors.neutral[0],
             fontSize: 28,
             textAlign: "center",
             lineHeight: 28,
@@ -70,7 +70,7 @@ const ProfileTypeScreen = ({ navigation }) => {
         <Text
           style={{
             fontSize: 24,
-            color: colors.snow,
+            color: theme.colors.neutral[0],
             fontWeight: "400",
             textAlign: "center",
             marginVertical: 25,
@@ -98,7 +98,9 @@ const ProfileTypeScreen = ({ navigation }) => {
             >
               <Switch
                 trackColor={{ false: colors.grey2, true: colors.grey }}
-                thumbColor={isEnabled ? colors.aqua : colors.snow}
+                thumbColor={
+                  isEnabled ? theme.colors.blue[4] : theme.colors.neutral[0]
+                }
                 ios_backgroundColor="#3e3e3e"
                 onValueChange={toggleSwitch}
                 value={isEnabled}
@@ -113,7 +115,12 @@ const ProfileTypeScreen = ({ navigation }) => {
                   height: 50,
                 }}
               >
-                <Text style={{ color: colors.snow, paddingHorizontal: 2 }}>
+                <Text
+                  style={{
+                    color: theme.colors.neutral[0],
+                    paddingHorizontal: 2,
+                  }}
+                >
                   You are a{" "}
                 </Text>
                 <Image
@@ -126,7 +133,12 @@ const ProfileTypeScreen = ({ navigation }) => {
                     paddingHorizontal: 0,
                   }}
                 />
-                <Text style={{ color: colors.snow, paddingHorizontal: 2 }}>
+                <Text
+                  style={{
+                    color: theme.colors.neutral[0],
+                    paddingHorizontal: 2,
+                  }}
+                >
                   {!isEnabled ? "Rider " : "Driver"}
                 </Text>
               </View>
@@ -144,38 +156,30 @@ const ProfileTypeScreen = ({ navigation }) => {
                 )}
               </View>
             </View>
-            <Pressable
-              style={{
-                color: colors.white,
-                backgroundColor: colors.darkblue,
-                borderColor: colors.aqua,
-                borderWidth: 1,
-                shadowColor: colors.aqua,
-                shadowOffset: {
-                  width: 0,
-                  height: 5,
-                },
-                shadowOpacity: 1,
-                shadowRadius: 1,
-                elevation: 10,
-                borderRadius: 15,
-                marginTop: 250,
-                width: width - 30,
-                alignItems: "center",
-              }}
-              onPress={() => navigation.navigate("HomeScreen")}
+            <View style={{height: 300, justifyContent:"flex-end"}}>
+            <LinearGradient
+              start={{ x: 0.1, y: 1 }}
+              end={{ x: 0.75, y: 3.25 }}
+              colors={[
+                theme.colors.blue[7],
+                theme.colors.blue[4],
+        
+              ]}
+              style={styles.loginBtn}
             >
-              <Text
-                style={{
-                  color: colors.white,
-                  fontSize: 20,
-                  paddingVertical: 15,
-                  paddingHorizontal: 15,
-                }}
-              >
-                Continue
-              </Text>
-            </Pressable>
+              <Pressable onPress={() => navigation.navigate("HomeScreen")}>
+                <Text
+                  style={{
+                    color: theme.colors.neutral[0],
+                    fontSize: 20,
+                   textAlign:"center"
+                  }}
+                >
+                  Continue
+                </Text>
+              </Pressable>
+            </LinearGradient>
+            </View>
           </View>
         </View>
       </View>
@@ -187,11 +191,10 @@ const styles = StyleSheet.create({
   icon: {
     resizeMode: "contain",
     width: 96,
-    height: 96
-    ,
-    backgroundColor: colors.darkblue,
+    height: 96,
+    backgroundColor: theme.colors.purple[6],
     borderRadius: 50,
-    shadowColor: colors.snow,
+    shadowColor: theme.colors.neutral[0],
     shadowOffset: {
       width: 10,
       height: 15,
@@ -199,9 +202,26 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 1,
     elevation: 15,
-    alignItems:"center",
-    justifyContent:"center",
-    marginVertical:60
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 60,
+  },
+  loginBtn: {
+    width: width - 30,
+    height: 50,
+
+    borderRadius: 15,
+    shadowColor: theme.colors.blue[10],
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 1,
+    elevation: 2,
+    padding: 10,
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 

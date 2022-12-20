@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Text, StyleSheet, View, Image, Dimensions } from "react-native";
 import { mapStyle } from "../global/mapStyle";
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import { colors, parameters } from "../global/styles";
+import { colors, parameters, theme } from "../global/styles";
 import { carsAround } from "../global/data";
 import MapViewDirections from "react-native-maps-directions";
 import { GOOGLE_MAPS_APIKEY } from "../config";
@@ -77,7 +77,7 @@ export default class MapComponent extends Component {
               showsUserLocation={true}
               followsUserLocation={true}
               strokeWidth={4}
-              strokeColor={colors.darkblue}
+              strokeColor={theme.colors.purple[6]}
               initialRegion={{
                 ...props,
                 latitudeDelta: 0.008,
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   destination: {
     width: 20,
     height: 20,
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     alignItems: "center",
     justifyContent: "center",
   },
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   view1: {
     width: 7,
     height: 7,
-    backgroundColor: colors.white,
+    backgroundColor: theme.colors.neutral[0],
   },
   markerDestination: {
     width: 16,
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 10,
     right: 12,
-    backgroundColor: colors.white,
+    backgroundColor: theme.colors.neutral[0],
     height: 40,
     width: 180,
     borderRadius: 20,
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 50,
     left: 12,
-    backgroundColor: colors.white,
+    backgroundColor: theme.colors.neutral[0],
     height: 40,
     width: 140,
     borderRadius: 20,
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     borderRadius: 9,
-    backgroundColor: colors.darkblue,
+    backgroundColor: theme.colors.purple[6],
     alignItems: "center",
     justifyContent: "center",
   },

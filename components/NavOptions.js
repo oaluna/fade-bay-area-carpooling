@@ -11,7 +11,7 @@ import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import { selectOrigin } from "../redux/slices/navSlice";
 import { useSelector } from "react-redux";
-import { colors } from "../global/styles";
+import { colors, theme } from "../global/styles";
 
 const PickupIcon = () => (
   <Image source={require("../assets/images/icon-pickup.png")} />
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     height: 145,
     width: 100,
     borderRadius: 15,
-    borderColor: colors.blue,
+    borderColor: theme.colors.blue[4],
     borderWidth: 1,
   },
   image: {
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   text: {
-    color: colors.snow,
+    color: theme.colors.neutral[0],
     fontSize: 12,
     display: "flex",
     flexDirection: "row",

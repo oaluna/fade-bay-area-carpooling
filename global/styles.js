@@ -30,45 +30,110 @@ export const colors = {
   white: "#F4F2F3",
   darkBlue: "#213fb2",
   pageBackground: "rgba(255, 255, 255, 0.71)",
-  snow:"#fffbfc",
-  phlox:"#c04cfd",
-  aqua:"#2afbff",
-  magenta:"#bb2649",
-  darkblue:"#000030"
-
+  snow: "#fffbfc",
+  phlox: "#c04cfd",
+  aqua: "#2afbff",
+  magenta: "#bb2649",
+  darkblue: "#000030",
 };
 
 export const theme = {
   colors: {
-    primary: [
-      "#fef7d5", "#feedad", "#fee083", "#fed365", "#febf32", "#da9c24", "#b67c19", "#935e0f", "#6f4006", "#4b2200", "#270000"
-    ],
+    primary: "#08415c",
+    secondary: "#bb2649",
     neutral: [
-      "#ffffff", "#f3f5f7", "#e7ebef", "#dae0e7", "#ced6df", "#c2ced8", "#b6c6d1", "#a9bec9", "#9db6c2", "#91aebc", "#8596b5", 
+      "#ffffff",
+      "#e7ebef",
+      "#dae0e7",
+      "#c1cbd7",
+      "#8fa2b7",
+      "#6a84a0",
+      "#50657c",
+      "#405064",
+      "#303c4b",
+      "#202832",
+      "#000000",
     ],
     blue: [
-      "#e2f0ff", "#c5dfff", "#a9cdff", "#8bbdff", "#6eacff", "#519bff", "#348aff", "#1779ff", "#0068e6", "#0052b3", "#003d80"
+      "#ffffff",
+      "#ececfe",
+      "#d8d9fd",
+      "#9ea1fa",
+      "#5156f6",
+      "#2a31f4",
+      "#0b12d5",
+      "#080d9b",
+      "#050861",
+      "#020326",
+      "#010213"
     ],
     green: [
-      "#eefde2", "#d8fcc5", "#bcf6a6", "#9fe987", "#7fd964", "#5ecb41", "#3dbc1e", "#1cac00", "#008a00", "#006700", "#004400"
+      "#cff2e0",
+      "#afe9ce",
+      "#90e0b6",
+      "#70d7a1",
+      "#45cb85",
+      "#31af6e",
+      "#288f5a",
+      "#1f6f46",
+      "#165032",
+      "#0d301e",
+      "#04100a",
     ],
-    yellow: ["#fffacd", "#fff39b", "#ffeb69", "#ffe338", "#ffda06", "#dabf05", "#b7a304", "#947803", "#715102", "#4e2f01", "#2b0e00"],
+    yellow: [
+      "#fef5ae",
+      "#fef086",
+      "#fde74c",
+      "#fde635",
+      "#fde10d",
+      "#dec402",
+      "#b6a102",
+      "#8d7d01",
+      "#655901",
+      "#3d3601",
+      "#141200",
+    ],
     red: [
-      "#fdeded", "#FBDADC", "#f5a3a7", "#f06a6f", "#ea3238", "#c61f27", "#a31a22", "#80151d", "#5c1018", "#380c13", "#15060e"
+      "#f8dde3",
+      "#f1bbc8",
+      "#ea99ac",
+      "#e37891",
+      "#dc5675",
+      "#d5345a",
+      "#bb2649",
+      "#981f3b",
+      "#77182e",
+      "#551121",
+      "#330a14",
     ],
-    turquoise: [
-      "#dafee9", "#b5fdd8", "#8ffad2", "#6af8c9", "#45f6c0", "#20f4b7", "#00f2ae", "#00eaa5", "#00e29c", "#00da93", "#00d28a"
+    purple: [
+      "#ddcddf",
+      "#cdb4cf",
+      "#bc9bbf",
+      "#ab83af",
+      "#9a6aa0",
+      "#845889",
+      "#634267",
+      "#543857",
+      "#3c2835",
+      "#241825",
+      "#0c080c",
     ],
     gradientOne: "linear-gradient(91.26deg, #70A2FF 0%, #54F0D1 100%)",
-    gradientTwo: "linear-gradient(91.26deg, #8AD4EC 0%, #EF96FF 21.74%, #FF56A9 54.03%, #FFAA6C 85.28%)",
+    gradientTwo:
+      "linear-gradient(91.26deg, #8AD4EC 0%, #EF96FF 21.74%, #FF56A9 54.03%, #FFAA6C 85.28%)",
     gradientThree: "linear-gradient(91.26deg, #76E268 0%, #FFD505 100%)",
     gradientFour: "linear-gradient(91.26deg, #FFD505 0%, #F44336 100%)",
-    gradientFive: "linear-gradient(91.26deg, #70A2FF 0%, #72E5DA 28.65%, #72F6D1 50.52%, #76E268 100%)",
-    gradientSix: "linear-gradient(91.26deg, #8AD4EC 0%, #EF96FF 21.74%, #FF56A9 54.03%, #FFAA6C 85.28%)",
-    gradientSeven: "linear-gradient(91.26deg, #70A2FF 0%, #72F6D1 21.87%, #76E268 47.92%, #FFD505 72.4%, #F76E64 100%)",
-    gradientEight: "linear-gradient(91.26deg, #A9CDFF 0%, #72F6D1 21.87%, #A0ED8D 55.73%, #FED365 81.77%, #FAA49E 100%)"
-  }
-}
+    gradientFive:
+      "linear-gradient(91.26deg, #70A2FF 0%, #72E5DA 28.65%, #72F6D1 50.52%, #76E268 100%)",
+    gradientSix:
+      "linear-gradient(91.26deg, #8AD4EC 0%, #EF96FF 21.74%, #FF56A9 54.03%, #FFAA6C 85.28%)",
+    gradientSeven:
+      "linear-gradient(91.26deg, #70A2FF 0%, #72F6D1 21.87%, #76E268 47.92%, #FFD505 72.4%, #F76E64 100%)",
+    gradientEight:
+      "linear-gradient(91.26deg, #A9CDFF 0%, #72F6D1 21.87%, #A0ED8D 55.73%, #FED365 81.77%, #FAA49E 100%)",
+  },
+};
 
 export const parameters = {
   statusBarHeight: getStatusBarHeight(),
