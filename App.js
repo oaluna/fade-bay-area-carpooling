@@ -6,9 +6,7 @@ import { KeyboardAvoidingView, Platform } from "react-native";
 import { BetweenPagesProvider } from "between-pages";
 import { Auth0Provider } from 'react-native-auth0';
 
-import Amplify from "aws-amplify";
 
-Amplify.configure();
 
 
 
