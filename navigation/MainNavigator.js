@@ -14,6 +14,7 @@ import LocationAccessScreen from "../screens/LocationAccessScreen";
 import RequestScreen from "../screens/RequestScreen";
 import DestinationScreen from "../screens/DestinationScreen";
 import SettingsScreen from "../screens/SettingsScreen";
+import EditProfileScreen from "../screens/EditProfileScreen"
 
 const Stack = createStackNavigator();
 
@@ -44,8 +45,10 @@ const MainNavigator = () => {
       <Stack.Screen name="RequestScreen" component={RequestScreen} screenOptions={{headerShown: false}} />
       <Stack.Screen name="DestinationScreen" component={DestinationScreen} screenOptions={{headerShown: false}} />
       <Stack.Screen name="SettingsScreen" component={SettingsScreen} screenOptions={{headerShown: false}} />
+      <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} screenOptions={{headerShown: false}} />
     </Stack.Navigator>
   );
 };
+
 
 export default MainNavigator;

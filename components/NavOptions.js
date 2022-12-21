@@ -124,7 +124,7 @@ export default NavOptions;
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "rgba(255,255,255,0.21)",
+    backgroundColor: theme.colors.blue[9],
     position: "relative",
     marginTop: 75,
     marginRight: 10,
@@ -133,8 +133,6 @@ const styles = StyleSheet.create({
     height: 145,
     width: 100,
     borderRadius: 15,
-    borderColor: theme.colors.blue[4],
-    borderWidth: 1,
   },
   image: {
     width: 84,

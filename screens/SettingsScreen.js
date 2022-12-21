@@ -12,6 +12,7 @@ import {
 import { Icon } from "react-native-elements";
 import { colors, theme } from "../global/styles";
 import { LinearGradient } from "expo-linear-gradient";
+import useFileUpload, { UploadItem } from "react-native-use-file-upload";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -20,43 +21,43 @@ const data = [
     id: 0,
     title: "Edit Profile",
     icon: "edit",
-    onPress: () => {},
+    target: "EditProfileScreen",
   },
   {
     id: 1,
     title: "Privacy Settings",
     icon: "lock",
-    onPress: () => {},
+    target: "HomeScreen",
   },
   {
     id: 2,
     title: "Account Settings",
     icon: "user",
-    onPress: () => {},
+    target: "HomeScreen",
   },
   {
     id: 3,
     title: "My Contact List",
     icon: "phone",
-    onPress: () => {},
+    target: "HomeScreen",
   },
   {
     id: 4,
     title: "My Recent Rides",
     icon: "car",
-    onPress: () => {},
+    target: "HomeScreen",
   },
   {
     id: 5,
     title: "Support",
     icon: "team",
-    onPress: () => {},
+    target: "HomeScreen",
   },
   {
     id: 6,
     title: "Sign Out",
     icon: "logout",
-    onPress: () => {},
+    target: "HomeScreen",
   },
 ];
 
@@ -65,7 +66,7 @@ export default function SettingsScreen({ navigation }) {
     <LinearGradient
       start={{ x: 1, y: 0 }}
       end={{ x: 0.5, y: 1 }}
-      colors={[theme.colors.purple[10], theme.colors.blue[8]]}
+      colors={[theme.colors.blue[9], theme.colors.blue[8]]}
       style={styles.container}
     >
       <View>
@@ -110,24 +111,21 @@ export default function SettingsScreen({ navigation }) {
             height: 100,
             alignSelf: "center",
             borderRadius: 50,
-            opacity: 0.65,
+            opacity: 0.5,
             position: "absolute",
             zIndex: 20,
             top: 10,
             elevation: 2,
           }}
         >
-          <Image
-            source={require("../assets/images/icon-plus.png")}
-            style={{
-              resizeMode: "contain",
-              width: 50,
-              height: 50,
-              alignSelf: "center",
-              alignItems: "center",
-              marginVertical: 5,
-            }}
+          <Icon
+            type="antdesign"
+            name="plus"
+            size={32}
+            color="white"
+            style={{ marginTop: 30 }}
           />
+
           <Text
             style={{
               color: theme.colors.neutral[0],
@@ -156,7 +154,15 @@ export default function SettingsScreen({ navigation }) {
         data={data}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View style={{ height: 60, marginLeft: 15, flexDirection: "row", alignItems:"center" }}>
+          <Pressable
+            style={{
+              height: 60,
+              marginLeft: 15,
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+            onPress={() => navigation.navigate(item.target)}
+          >
             <Icon
               type="antdesign"
               name={item.icon}
@@ -179,7 +185,7 @@ export default function SettingsScreen({ navigation }) {
             >
               {item.title}
             </Text>
-          </View>
+          </Pressable>
         )}
         ItemSeparatorComponent={() => (
           <View

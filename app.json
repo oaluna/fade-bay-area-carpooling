@@ -6,9 +6,11 @@
     "orientation": "portrait",
     "icon": "./assets/images/app-icon.png",
     "userInterfaceStyle": "dark",
+
     "splash": {
-      "backgroundImage": "./assets/images/gradient-bg3.png",
-      "resizeMode": "contain"
+      "image": "./assets/images/gradient-bg3.png",
+      "resizeMode": "cover",
+      "icon": "./assets/images/app-icon.png"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -21,7 +23,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/app-icon.png"
+        "foregroundImage": "./assets/images/app-icon.png",
+        "backgroundColor": "#bb2649"
       },
       "config": {
         "googleMaps": {

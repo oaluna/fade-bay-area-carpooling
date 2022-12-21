@@ -132,9 +132,9 @@ const LocationAccessScreen = ({ navigation, route }) => {
             </Text>
           </TouchableOpacity>
           <LinearGradient
-            start={{ x: 0.1, y: 1 }}
-            end={{ x: 0.75, y: 3.25 }}
-            colors={[theme.colors.blue[7], theme.colors.blue[4]]}
+                    start={{ x: 0.5, y: 1 }}
+                    end={{ x: 0.75, y: 1 }}
+                    colors={[theme.colors.lightblue[5], theme.colors.blue[5]]}
             style={styles.button}
           >
             <TouchableOpacity

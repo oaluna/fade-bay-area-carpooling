@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   view: {
-    backgroundColor: theme.colors.purple[6],
+   
     width: width,
     height: height,
     paddingHorizontal: 15,

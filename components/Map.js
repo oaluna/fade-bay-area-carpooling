@@ -58,7 +58,8 @@ const Map = () => {
       <TouchableOpacity
         style={{
           background: theme.colors.neutral[0],
-          padding: 3,
+          padding: 0,
+          width: width,
           borderRadius: 15,
           shadowRadius: 5,
           shadowColor: theme.colors.purple[6],

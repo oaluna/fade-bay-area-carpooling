@@ -24,7 +24,7 @@ const SuccessScreen = ({ route }) => {
         }}
       >
         <Image
-          source={require("../assets/images/fade-logo.png")}
+          source={require("../assets/images/fade-logo-alt.png")}
           style={{ resizeMode: "contain", width: 120 }}
         />
       </TouchableOpacity>

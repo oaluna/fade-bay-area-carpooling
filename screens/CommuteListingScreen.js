@@ -4,7 +4,7 @@ import { View, StyleSheet, Image, Text, Dimensions } from "react-native";
 import Screen from "../components/Screen";
 import Map from "../components/Map";
 import NavFavourites from "../components/NavFavourites";
-
+import { LinearGradient } from "expo-linear-gradient";
 import NavOptions from "../components/NavOptions";
 import Feed from "../components/Feed";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
@@ -18,6 +18,7 @@ const CommuteListingScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   return (
     <Screen style={styles.screen}>
+    <LinearGradient start={{ x: 1, y: 0 }} end={{ x: 0.5, y: 1 }} colors={[theme.colors.blue[10], theme.colors.blue[8]]} style={styles.screen}>
       <View style={{ backgroundColor: theme.colors.purple[6] }}>
         <View>
           <Text style={[styles.header, { color: theme.colors.neutral[0] }]}>
@@ -29,7 +30,7 @@ const CommuteListingScreen = ({ navigation }) => {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            backgroundColor: "rgba(255,255,255,0.3)",
+            
             paddingTop: 15,
             borderTopLeftRadius: 15,
             borderTopRightRadius: 15,
@@ -211,6 +212,7 @@ const CommuteListingScreen = ({ navigation }) => {
           </Text>
         </View>
       </View>
+      </LinearGradient>
     </Screen>
   );
 };
@@ -218,6 +220,9 @@ const CommuteListingScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   screen: {
     marginHorizontal: 0,
+    width: width,
+    height: height,
+    position:'absolute'
   },
   logo: {
     height: 50,
@@ -236,7 +241,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: theme.colors.purple[6],
+    backgroundColor: theme.colors.blue[9],
     paddingBottom: 30,
     paddingTop: parameters.statusBarHeight,
   },
@@ -266,7 +271,7 @@ const styles = StyleSheet.create({
   },
 
   home: {
-    backgroundColor: theme.colors.purple[6],
+    backgroundColor: theme.colors.blue[9],
     paddingLeft: 20,
   },
 
@@ -291,10 +296,9 @@ const styles = StyleSheet.create({
   button1: {
     height: 40,
     width: 150,
-    backgroundColor: "rgba(255,255,255,0.21)",
+
     borderRadius: 20,
-    borderColor: theme.colors.blue[4],
-    borderWidth: 2,
+  
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 20,
@@ -313,11 +317,11 @@ const styles = StyleSheet.create({
 
   cardHeader: {
     marginBottom: 5,
-    borderRadius: 15,
-    backgroundColor: "rgba(255,255,255,0.11)",
+
+
     width: 80,
     height: 110,
-    borderColor: theme.colors.blue[4],
+
 
     borderWidth: 2,
   },
@@ -332,7 +336,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 15,
     height: 50,
-    backgroundColor: theme.colors.purple[6],
+    backgroundColor: theme.colors.blue[9],
     alignItems: "center",
     justifyContent: "space-between",
     marginHorizontal: 15,
@@ -343,9 +347,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginRight: 15,
-    backgroundColor: "rgba(255,255,255,0.21)",
-    borderColor: theme.colors.blue[4],
-    borderWidth: 2,
+    
     paddingHorizontal: 10,
     paddingVertical: 2,
     borderRadius: 20,
@@ -356,14 +358,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     height: 64,
-    backgroundColor: "rgba(155,155,155,0.25)",
+    
     padding: 15,
     marginVertical: 5,
     justifyContent: "space-between",
     marginHorizontal: 15,
-    borderBottomColor: theme.colors.blue[4],
     color: theme.colors.neutral[0],
-    borderBottomWidth: 1,
+   
     flex: 1,
   },
 
@@ -373,7 +374,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   view7: {
-    backgroundColor: theme.colors.blue[4],
+   
     height: 32,
     width: 32,
     borderRadius: 20,
@@ -407,7 +408,7 @@ const styles = StyleSheet.create({
     width: 16,
     height: 16,
     borderRadius: 8,
-    backgroundColor: theme.colors.purple[6],
+    backgroundColor: theme.colors.blue[9],
     alignItems: "center",
     justifyContent: "center",
   },
@@ -416,7 +417,7 @@ const styles = StyleSheet.create({
     width: 4,
     height: 4,
     borderRadius: 2,
-    backgroundColor: theme.colors.purple[6],
+    backgroundColor: theme.colors.blue[9],
   },
 });
 

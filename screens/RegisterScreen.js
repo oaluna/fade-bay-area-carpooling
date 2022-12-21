@@ -12,7 +12,12 @@ import {
   ScrollView,
   Dimensions,
 } from "react-native";
-import FadeLogo from "../assets/images/fade-logo.png";
+import {
+  SharedElement,
+  SharedElementTransition,
+  nodeFromRef,
+} from "react-native-shared-element";
+import FadeLogo from "../assets/images/fade-logo-alt.png";
 
 import { colors, theme } from "../global/styles";
 import { LinearGradient } from "expo-linear-gradient";
@@ -20,9 +25,7 @@ const { height, width } = Dimensions.get("screen");
 
 const RegisterScreen = ({ navigation }) => {
   const fields = [
-    { id: 0, 
-      fieldName: "Full Name"
-    },
+    { id: 0, fieldName: "Full Name" },
     {
       id: 2,
       fieldName: "Phone Number",
@@ -49,23 +52,25 @@ const RegisterScreen = ({ navigation }) => {
         style={{
           height: height,
           width: width,
-          filter: "darken(0.5)",
         }}
       >
         <View style={styles.loginContainer}>
           <View style={styles.loginBox}>
-            <View style={styles.loginHeader}>
-              <Image
-                source={require("../assets/images/fade-logo.png")}
-                style={styles.fadeLogo}
-              />
+            <View
+              style={styles.loginHeader}
+              ref={(ref) => (endAncestor = nodeFromRef(ref))}
+            >
+              <SharedElement onNode={(node) => (endNode = node)}>
+                <Image
+                  source={require("../assets/images/fade-logo-alt.png")}
+                  style={styles.fadeLogo}
+                />
+              </SharedElement>
             </View>
             <View id="error-message" style={styles.errorMessage}></View>
             <SafeAreaView>
-              <View style={{ marginVertical: 5 }}>
-                <Text style={{ color: theme.colors.neutral[0] }}>
-                  Name
-                </Text>
+              <View style={{ marginVertical: 15 }}>
+                <Text style={{ color: theme.colors.neutral[0] }}>Name</Text>
                 <TextInput
                   type="text"
                   name="fullname"
@@ -73,7 +78,7 @@ const RegisterScreen = ({ navigation }) => {
                   style={styles.input}
                 />
               </View>
-            
+
               <View style={{ marginVertical: 5 }}>
                 <Text style={{ color: theme.colors.neutral[0] }}>
                   Phone Number
@@ -105,24 +110,26 @@ const RegisterScreen = ({ navigation }) => {
                 />
               </View>
               <View style={{ height: 300, justifyContent: "flex-end" }}>
-                <View style={{ marginTop: 25 }}>
-                <LinearGradient
-                start={{x: 0.1, y: 1}} end={{x: 0.75, y: 3.25}}
-          colors={[theme.colors.blue[7], theme.colors.blue[4]]} style={styles.loginBtn}>
-                  <Pressable
-                    
-                    onPress={() => navigation.navigate("DemoScreen")}
+                <View style={{ marginVertical: 5 }}>
+                  <LinearGradient
+                    start={{ x: 0.5, y: 1 }}
+                    end={{ x: 0.75, y: 1 }}
+                    colors={[theme.colors.lightblue[5], theme.colors.blue[5]]}
+                    style={styles.loginBtn}
                   >
-                    <Text
-                      style={{
-                        color: theme.colors.neutral[0],
-                        fontSize: 20,
-                        textAlign: "center",
-                      }}
+                    <Pressable
+                      onPress={() => navigation.navigate("DemoScreen")}
                     >
-                      Sign Up
-                    </Text>
-                  </Pressable>
+                      <Text
+                        style={{
+                          color: theme.colors.neutral[0],
+                          fontSize: 20,
+                          textAlign: "center",
+                        }}
+                      >
+                        Sign Up
+                      </Text>
+                    </Pressable>
                   </LinearGradient>
                 </View>
                 <Text
@@ -170,20 +177,21 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   fadeLogo: {
-    width: 300,
+    width:300,
     resizeMode: "contain",
   },
   loginBox: {
-    marginTop: height / 8,
+    marginTop: height / 5,
     marginLeft: 0,
     backgroundColor: "transparent",
     alignSelf: "center",
     alignItems: "center",
     justifyContent: "space-evenly",
-    boxShadow: "0px 5px 5px #ccc",
   },
   loginHeader: {
     textAlign: "center",
+    bottom: 120,
+    height: 100,
   },
   loginHeaderImg: {
     width: 75,
@@ -202,19 +210,19 @@ const styles = StyleSheet.create({
   loginBtn: {
     width: width - 30,
     height: 50,
-  
+
     borderRadius: 15,
-    
+
     elevation: 2,
     padding: 10,
-    marginTop: 10,
+    marginTop: 15,
     marginBottom: 10,
   },
   signupBtn: {
     width: width - 30,
-    
+
     height: 50,
-   
+
     borderRadius: 15,
     padding: 10,
     marginTop: 10,

@@ -11,7 +11,13 @@ import {
   Pressable,
   Dimensions,
 } from "react-native";
-import {LinearGradient} from "expo-linear-gradient";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  FadeInDown,
+  Layout,
+} from "react-native-reanimated";
+import { LinearGradient } from "expo-linear-gradient";
 import { Icon } from "react-native-elements";
 import { useAuth0 } from "react-native-auth0";
 import PropTypes from "prop-types";
@@ -35,7 +41,7 @@ const EyeVisible = () => (
   />
 );
 
-const SignIn = ({ navigation }) => {
+const SignIn = ({ navigation, openMenu }) => {
   const { authorize, clearSession, user } = useAuth0();
   const fields = [
     {
@@ -51,6 +57,34 @@ const SignIn = ({ navigation }) => {
   const [spinner, setSpinner] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [isHidden, setIsHidden] = React.useState(true);
+
+  const offset = useSharedValue(0);
+
+  React.useEffect(() => {
+    setLoading(false);
+    return () => setLoading(true);
+  }, [loading]);
+
+  React.useEffect(() => {
+    if (loading === false) {
+      setSpinner(false);
+    }
+  }, [loading]);
+
+  const containerAnimatedStyle = () => {
+    if (loading === false) {
+      LayoutAnimation.easeInOut();
+    }
+  };
+
+  const handleLoading = () => {
+    if (loading === true) {
+      Layout.springify();
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+  };
 
   const onLogin = async () => {
     try {
@@ -72,22 +106,8 @@ const SignIn = ({ navigation }) => {
 
   const loggedIn = user !== undefined && user !== null;
 
-  React.useEffect(() => {
-    setInterval(() => {
-      if (loading) {
-        setSpinner(!spinner);
-      }
-    }, 3000);
-  }, []);
-
   return (
     <View style={styles.container}>
-      <Spinner
-        visible={spinner}
-        color={theme.colors.blue[4]}
-        textContent={"Loading..."}
-        textStyle={styles.spinnerTextStyle}
-      />
       <ImageBackground
         source={require("../assets/images/gradient-bg3.png")}
         style={{
@@ -95,114 +115,125 @@ const SignIn = ({ navigation }) => {
           width: width,
         }}
       >
-        <View style={styles.loginContainer}>
-          <View style={styles.loginBox}>
-            <View style={styles.loginHeader}>
-              <Image
-                source={require("../assets/images/fade-logo.png")}
-                style={styles.fadeLogo}
-              />
-            </View>
-            <View id="error-message" style={styles.errorMessage}></View>
-            <SafeAreaView>
-              <View style={{ marginVertical: 15 }}>
-                <Text style={{ color: theme.colors.neutral[0] }}>Email</Text>
-                <TextInput
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  style={styles.input}
+   
+          <View style={styles.loginContainer}>
+            <View style={styles.loginBox}>
+              <View style={styles.loginHeader}>
+              <Animated.View
+          style={containerAnimatedStyle}
+          entering={FadeInDown.delay(1000)}
+          layout={() => handleLoading()}
+        >
+                <Image
+                  source={require("../assets/images/fade-logo-alt.png")}
+                  style={styles.fadeLogo}
                 />
+                </Animated.View>
               </View>
-              <View style={{ marginVertical: 15 }}>
-                <Text style={{ color: theme.colors.blue[0] }}>Password</Text>
-                <TextInput
-                  type="password"
-                  name="password"
-                  placeholder={"Enter your password"}
-                  secureTextEntry={isHidden === true ? true : false}
-                  style={styles.input}
-                />
-                <Pressable
-                  onPress={() =>
-                    isHidden === true ? setIsHidden(false) : setIsHidden(true)
-                  }
-                  style={{
-                    position: "absolute",
-                    top: 30,
-                    alignSelf: "flex-end",
-                    right: 25,
-                  }}
-                >
-                  {isHidden == true ? <EyeHidden /> : <EyeVisible />}
-                </Pressable>
-              </View>
-              <Pressable onPress={() => {}}>
-                <Text
-                  style={{
-                    alignSelf: "flex-end",
-                    color: theme.colors.blue[0],
-                    position: "absolute",
-                    top: -20,
-                  }}
-                >
-                  Forgot your Password?
-                </Text>
-              </Pressable>
-              <View
-                style={{
-                  flexDirection: "column",
-                  height: 350,
-                  justifyContent: "flex-end",
-                }}
-              >
-                <View style={{ marginVertical: 5 }}>
-                <LinearGradient
-                start={{x: 0.1, y: 1}} end={{x: 0.75, y: 3.25}}
-          colors={[theme.colors.blue[7], theme.colors.blue[4]]} style={styles.loginBtn}>
-                  <Pressable onPress={onLogin}>
-                    <Text
-                      adjustsFontSizeToFit={true}
-                      style={{
-                        color: theme.colors.neutral[0],
-                        fontSize: 20,
-                        textAlign: "center",
-                      }}
-                    >
-                      Log In
-                    </Text>
-                  </Pressable>
-                  </LinearGradient>
+              <View id="error-message" style={styles.errorMessage}></View>
+              <SafeAreaView>
+                <View style={{ marginVertical: 15 }}>
+                  <Text style={{ color: theme.colors.neutral[0] }}>Email</Text>
+                  <TextInput
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    style={styles.input}
+                  />
                 </View>
-                <Text
-                  adjustsFontSizeToFit={true}
-                  style={{
-                    color: theme.colors.neutral[0],
-                    textAlign: "center",
-                  }}
-                >
-                  OR
-                </Text>
-                <View style={{ marginVertical: 5 }}>
+                <View style={{ marginVertical: 15 }}>
+                  <Text style={{ color: theme.colors.blue[0] }}>Password</Text>
+                  <TextInput
+                    type="password"
+                    name="password"
+                    placeholder={"Enter your password"}
+                    secureTextEntry={isHidden === true ? true : false}
+                    style={styles.input}
+                  />
                   <Pressable
-                    style={styles.signupBtn}
-                    onPress={() => navigation.navigate("RegisterScreen")}
+                    onPress={() =>
+                      isHidden === true ? setIsHidden(false) : setIsHidden(true)
+                    }
+                    style={{
+                      position: "absolute",
+                      top: 30,
+                      alignSelf: "flex-end",
+                      right: 25,
+                    }}
                   >
-                    <Text
-                      style={{
-                        color: theme.colors.neutral[0],
-                        fontSize: 20,
-                        textAlign: "center",
-                      }}
-                    >
-                      New to Fade? Sign Up
-                    </Text>
+                    {isHidden == true ? <EyeHidden /> : <EyeVisible />}
                   </Pressable>
                 </View>
-              </View>
-            </SafeAreaView>
+                <Pressable onPress={() => {}}>
+                  <Text
+                    style={{
+                      alignSelf: "flex-end",
+                      color: theme.colors.lightblue[3],
+                      position: "absolute",
+                      top: -20,
+                      textShadowColor: theme.colors.neutral[10],
+                      textShadowOffset: {
+                        width: 0,
+                        height: 1.25,
+                      },
+                      textShadowRadius: 1,
+                    }}
+                  >
+                    Forgot your Password?
+                  </Text>
+                </Pressable>
+                <View style={{ height: 350, justifyContent: "flex-end" }}>
+                  <View style={{ marginVertical: 5 }}>
+                    <LinearGradient
+                      start={{ x: 0.5, y: 1 }}
+                      end={{ x: 0.75, y: 1 }}
+                      colors={[theme.colors.lightblue[5], theme.colors.blue[5]]}
+                      style={styles.loginBtn}
+                    >
+                      <Pressable onPress={() => onLogin()}>
+                        <Text
+                          adjustsFontSizeToFit={true}
+                          style={{
+                            color: theme.colors.neutral[0],
+                            fontSize: 20,
+                            textAlign: "center",
+                          }}
+                        >
+                          Log In
+                        </Text>
+                      </Pressable>
+                    </LinearGradient>
+                  </View>
+                  <Text
+                    adjustsFontSizeToFit={true}
+                    style={{
+                      color: theme.colors.neutral[0],
+                      textAlign: "center",
+                    }}
+                  >
+                    OR
+                  </Text>
+                  <View style={{ marginVertical: 5 }}>
+                    <Pressable
+                      style={styles.signupBtn}
+                      onPress={() => navigation.navigate("RegisterScreen")}
+                    >
+                      <Text
+                        style={{
+                          color: theme.colors.neutral[0],
+                          fontSize: 20,
+                          textAlign: "center",
+                        }}
+                      >
+                        New to Fade? Sign Up
+                      </Text>
+                    </Pressable>
+                  </View>
+                </View>
+              </SafeAreaView>
+            </View>
           </View>
-        </View>
+      
       </ImageBackground>
     </View>
   );
@@ -240,10 +271,10 @@ const styles = StyleSheet.create({
   },
   loginHeader: {
     textAlign: "center",
+    bottom: 120,
+    height: 200,
   },
-  loginHeaderImg: {
-    width: 75,
-  },
+
   input: {
     width: width - 30,
     borderColor: theme.colors.neutral[4],
@@ -258,18 +289,17 @@ const styles = StyleSheet.create({
   loginBtn: {
     width: width - 30,
     height: 50,
- 
+
     borderRadius: 15,
-   
+
     elevation: 2,
     padding: 10,
-    marginTop: 10,
+    marginTop: -5,
     marginBottom: 10,
   },
   signupBtn: {
     width: width - 30,
-    
-   
+
     height: 50,
     borderRadius: 15,
     padding: 10,
@@ -279,6 +309,9 @@ const styles = StyleSheet.create({
   errorMessage: {
     display: "none",
     whiteSpace: "break-spaces",
+  },
+  spinnerTextStyle: {
+    color: theme.colors.neutral[0],
   },
 });
 

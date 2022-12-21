@@ -25,14 +25,16 @@ const ProfileTypeScreen = ({ navigation }) => {
       style={{
         width: width,
         height: height,
-        paddingLeft: 15,
+
         position: "absolute",
         left: 0,
         top: 0,
         resizeMode: "cover",
       }}
     >
-      <View style={{ marginTop: 100 }}>
+      <View
+        style={{ marginTop: 100, paddingHorizontal: 15, alignSelf: "center" }}
+      >
         <Text
           style={{
             color: theme.colors.neutral[0],
@@ -124,7 +126,7 @@ const ProfileTypeScreen = ({ navigation }) => {
                   You are a{" "}
                 </Text>
                 <Image
-                  source={require("../assets/images/fade-logo.png")}
+                  source={require("../assets/images/fade-logo-alt.png")}
                   style={{
                     resizeMode: "contain",
                     height: 60,
@@ -156,29 +158,25 @@ const ProfileTypeScreen = ({ navigation }) => {
                 )}
               </View>
             </View>
-            <View style={{height: 300, justifyContent:"flex-end"}}>
-            <LinearGradient
-              start={{ x: 0.1, y: 1 }}
-              end={{ x: 0.75, y: 3.25 }}
-              colors={[
-                theme.colors.blue[7],
-                theme.colors.blue[4],
-        
-              ]}
-              style={styles.loginBtn}
-            >
-              <Pressable onPress={() => navigation.navigate("HomeScreen")}>
-                <Text
-                  style={{
-                    color: theme.colors.neutral[0],
-                    fontSize: 20,
-                   textAlign:"center"
-                  }}
-                >
-                  Continue
-                </Text>
-              </Pressable>
-            </LinearGradient>
+            <View style={{ height: 300, justifyContent: "flex-end" }}>
+              <LinearGradient
+                start={{ x: 0.5, y: 1 }}
+                end={{ x: 0.75, y: 1 }}
+                colors={[theme.colors.lightblue[5], theme.colors.blue[5]]}
+                style={styles.loginBtn}
+              >
+                <Pressable onPress={() => navigation.navigate("HomeScreen")}>
+                  <Text
+                    style={{
+                      color: theme.colors.neutral[0],
+                      fontSize: 20,
+                      textAlign: "center",
+                    }}
+                  >
+                    Continue
+                  </Text>
+                </Pressable>
+              </LinearGradient>
             </View>
           </View>
         </View>
@@ -211,7 +209,7 @@ const styles = StyleSheet.create({
     height: 50,
 
     borderRadius: 15,
-    shadowColor: theme.colors.blue[10],
+    shadowColor: theme.colors.blue[9],
     shadowOffset: {
       width: 0,
       height: 1,

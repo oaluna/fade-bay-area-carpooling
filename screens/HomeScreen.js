@@ -29,16 +29,18 @@ const HomeScreen = ({ navigation, ...props }) => {
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.purple[10], theme.colors.blue[8]]}
+        colors={[theme.colors.blue[10], theme.colors.blue[8]]}
         style={styles.screen}
       >
         <Image
           source={require("../assets/images/fade-logo.png")}
           style={styles.logo}
         />
-        <Text style={styles.text1}>
-          Welcome, {props.isEnabled === true ? "Driver" : "Rider"}!
-        </Text>
+        <View style={{ backgroundColor: "transparent" }}>
+          <Text style={styles.text1}>
+            Welcome, {props.isEnabled === true ? "Driver" : "Rider"}!
+          </Text>
+        </View>
         <View>
           <GooglePlacesAutocomplete
             placeholder="Where from?"
@@ -72,9 +74,9 @@ const HomeScreen = ({ navigation, ...props }) => {
                 fontSize: 15,
                 borderRadius: 15,
                 height: 50,
-                borderColor: theme.colors.blue[4],
-                borderWidth: 2,
-                backgroundColor: "rgba(255,255,255,0.71)",
+                borderColor: theme.colors.neutral[4],
+                borderWidth: 1,
+                backgroundColor: theme.colors.neutral[0],
               },
             }}
             enablePoweredByContainer={true}

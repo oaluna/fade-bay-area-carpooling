@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.4.5",
+    "@react-navigation/bottom-tabs": "^6.5.2",
     "@react-navigation/drawer": "^6.5.3",
     "@react-navigation/native": "^6.0.16",
     "@react-navigation/native-stack": "^6.9.4",
@@ -25,6 +26,9 @@
     "expo-permissions": "~14.0.0",
     "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "~1.4.2",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "os": "^0.1.2",
     "react": "18.1.0",
     "react-native": "0.70.5",
     "react-native-auth0": "^2.16.0",
@@ -37,9 +41,12 @@
     "react-native-maps-directions": "^1.9.0",
     "react-native-material-textfield": "^0.16.1",
     "react-native-reanimated": "^2.13.0",
+    "react-native-screens": "~3.18.0",
+    "react-native-shared-element": "0.8.4",
     "react-native-status-bar-height": "^2.6.0",
     "react-native-swipe-gestures": "^1.0.5",
     "react-native-timeline-listview": "^0.2.3",
+    "react-native-use-file-upload": "^0.1.5",
     "react-redux": "^8.0.5"
   },
   "devDependencies": {

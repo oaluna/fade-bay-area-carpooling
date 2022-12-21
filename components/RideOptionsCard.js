@@ -12,6 +12,7 @@ import {
   Dimensions,
 } from "react-native";
 import { Icon } from "react-native-elements";
+import { LinearGradient } from "expo-linear-gradient";
 import Screen from "./Screen";
 import { useSelector } from "react-redux";
 import { colors, theme } from "../global/styles";
@@ -64,128 +65,135 @@ const RideOptionsCard = () => {
   };
 
   return (
-    <Screen
-      style={{
-        backgroundColor: theme.colors.purple[6],
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15,
-        elevation: 2,
-      }}
-    >
-      <View
+    <Screen>
+      <LinearGradient
+        start={{ x: 1, y: 0 }}
+        end={{ x: 0.5, y: 1 }}
+        colors={[theme.colors.blue[9], theme.colors.blue[8]]}
         style={{
-          alignItems: "center",
-          flexDirection: "row",
-          justifyContent: "center",
-          marginBottom: 3,
+          position: "absolute",
+          borderTopLeftRadius: 15,
+          borderTopRightRadius: 15,
+          paddingTop: 25,
+          width: width,
+          elevation: 2,
         }}
       >
-        <TouchableOpacity
-          style={{ left: 10, position: "absolute", zIndex: 100 }}
-          onPress={() => navigation.push("NavigateCard")}
-        >
-          <Icon
-            type="antdesign"
-            name="arrowleft"
-            color="aqua"
-            size={23}
-            style={{ padding: 3 }}
-          />
-        </TouchableOpacity>
-        <Text
+        <View
           style={{
-            textAlign: "center",
-            fontSize: 24,
-            fontWeight: "bold",
-            color: theme.colors.neutral[0],
+            alignItems: "center",
+            flexDirection: "row",
+            justifyContent: "space-evenly",
+            marginBottom: 3,
           }}
         >
-          Select a ride - {travelTimeInformation?.distance?.text}
-        </Text>
-      </View>
-      <View style={{ flex: 1, marginTop: 2 }}>
-        <FlatList
-          data={data}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                paddingHorizontal: 5,
-                backgroundColor: selected?.id === item.id && colors.gray3,
-              }}
-              onPress={() => setSelected(item)}
-            >
-              <Image source={{ uri: item.image }} style={styles.image} />
-              <View
+          <TouchableOpacity
+            style={{ zIndex: 100 }}
+            onPress={() => navigation.push("NavigateCard")}
+          >
+            <Icon
+              type="antdesign"
+              name="arrowleft"
+              color="aqua"
+              size={23}
+              style={{ padding: 3 }}
+            />
+          </TouchableOpacity>
+          <Text
+            style={{
+              textAlign: "center",
+              fontSize: 24,
+              fontWeight: "bold",
+              color: theme.colors.neutral[0],
+            }}
+          >
+            Select a ride - {travelTimeInformation?.distance?.text}
+          </Text>
+        </View>
+        <View style={{ flex: 1, marginTop: 2 }}>
+          <FlatList
+            data={data}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => (
+              <TouchableOpacity
                 style={{
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  flex: 1,
+                  paddingHorizontal: 5,
+                  backgroundColor: selected?.id === item.id && colors.gray3,
                 }}
+                onPress={() => setSelected(item)}
               >
-                <View>
-                  <Text
-                    style={{
-                      fontSize: 24,
-                      fontWeight: "bold",
-                      color: theme.colors.neutral[0],
-                    }}
-                  >
-                    {item.title}
-                  </Text>
-                  <Text style={{ color: theme.colors.neutral[0] }}>
-                    <Image
-                      source={require("../assets/images/icon-clock.png")}
-                      style={{ resizeMode: "contain", width: 12, height: 12 }}
-                    />{" "}
-                    {travelTimeInformation?.duration?.text}
-                  </Text>
+                <Image source={{ uri: item.image }} style={styles.image} />
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    flex: 1,
+                  }}
+                >
+                  <View>
+                    <Text
+                      style={{
+                        fontSize: 24,
+                        fontWeight: "bold",
+                        color: theme.colors.neutral[0],
+                      }}
+                    >
+                      {item.title}
+                    </Text>
+                    <Text style={{ color: theme.colors.neutral[0] }}>
+                      <Image
+                        source={require("../assets/images/icon-clock.png")}
+                        style={{ resizeMode: "contain", width: 12, height: 12 }}
+                      />{" "}
+                      {travelTimeInformation?.duration?.text}
+                    </Text>
+                  </View>
                 </View>
-              </View>
-            </TouchableOpacity>
-          )}
-        />
-      </View>
-      <View
-        style={{
-          width: width,
-          height: 650,
-          alignSelf: "center",
-          marginLeft: 25,
-        }}
-      >
-        <TouchableOpacity
+              </TouchableOpacity>
+            )}
+          />
+        </View>
+        <View
           style={{
-            color: theme.colors.neutral[0],
-            backgroundColor: theme.colors.purple[6],
-            paddingVertical: 10,
-            marginTop: -20,
-            borderRadius: 15,
-            borderColor: theme.colors.blue[4],
-            borderWidth: 2,
-            width: width - 30,
-            height: 50,
+            width: width,
+            height: 650,
+            alignSelf: "center",
+            marginLeft: 25,
           }}
-          disabled={!selected}
-          onPress={onChoose}
         >
-          <Text
+          <TouchableOpacity
             style={{
-              flexDirection: "row",
-              alignItems: "center",
-              textAlign: "center",
               color: theme.colors.neutral[0],
-              fontSize: 24,
+
+              paddingVertical: 10,
+              marginTop: -20,
+              borderRadius: 15,
+              borderColor: theme.colors.blue[4],
+              borderWidth: 2,
+              width: width - 30,
+              height: 50,
             }}
+            disabled={!selected}
+            onPress={onChoose}
           >
-            Choose {selected?.title}
-          </Text>
-        </TouchableOpacity>
-      </View>
+            <Text
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                textAlign: "center",
+                color: theme.colors.neutral[0],
+                fontSize: 24,
+              }}
+            >
+              Choose {selected?.title}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </LinearGradient>
     </Screen>
   );
 };
