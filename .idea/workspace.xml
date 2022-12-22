@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="be8ea893-fc60-4ed3-8290-cd4b4f4c49e9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/icon-hidden.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/icon-hidden.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/icon-visible.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/icon-visible.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Feed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/NavFavourites.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/NavFavourites.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/NavOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/NavOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/NavigateCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/NavigateCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/RideOptionsCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/RideOptionsCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/demo/CustomSlider.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/demo/CustomSlider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/demo/DemoScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/demo/DemoScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/CommuteListingScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CommuteListingScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/EatsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/EatsScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/LocationAccessScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LocationAccessScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LoginScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/MapScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/MapScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ProfileTypeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProfileTypeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/RegisterScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/RegisterScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/RequestScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/RequestScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SettingsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SettingsScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SuccessScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SuccessScreen.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2JEyTekDbxvlPZAYB6EM3VrpDR0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="npx expo start" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="false" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="be8ea893-fc60-4ed3-8290-cd4b4f4c49e9" name="Changes" comment="" />
+      <created>1671657547196</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671657547196</updated>
+    </task>
+    <servers />
+  </component>
+</project>

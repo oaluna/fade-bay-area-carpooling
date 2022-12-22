@@ -21,7 +21,7 @@ const ProfileTypeScreen = ({ navigation }) => {
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
   return (
     <ImageBackground
-      source={require("../assets/images/gradient-bg3.png")}
+      source={require("../assets/images/gradient-bg.png")}
       style={{
         width: width,
         height: height,
@@ -48,8 +48,8 @@ const ProfileTypeScreen = ({ navigation }) => {
 
         <Text
           style={{
-            fontSize: 24,
-            color: theme.colors.neutral[0],
+            fontSize: 22,
+            color: theme.colors.neutral[2],
             fontWeight: "400",
             textAlign: "center",
             marginVertical: 25,
@@ -71,8 +71,8 @@ const ProfileTypeScreen = ({ navigation }) => {
         </Text>
         <Text
           style={{
-            fontSize: 24,
-            color: theme.colors.neutral[0],
+            fontSize: 22,
+            color: theme.colors.neutral[2],
             fontWeight: "400",
             textAlign: "center",
             marginVertical: 25,
@@ -88,25 +88,40 @@ const ProfileTypeScreen = ({ navigation }) => {
             width: width - 30,
           }}
         >
-          <View style={{ flexDIrection: "column" }}>
+          <View style={{ alignSelf:"center" }}>
             <View
               style={{
-                flexDirection: "column",
+             flexDirection:"column",
                 alignItems: "center",
-                alignSelf: "center",
+                alignSelf:'center',
                 width: width,
                 height: 100,
               }}
             >
               <Switch
-                trackColor={{ false: colors.grey2, true: colors.grey }}
+                trackColor={{ false: theme.colors.neutral[4], true: theme.colors.neutral[0] }}
                 thumbColor={
-                  isEnabled ? theme.colors.blue[4] : theme.colors.neutral[0]
+                  isEnabled ? theme.colors.lightblue[4] : theme.colors.neutral[6]
                 }
                 ios_backgroundColor="#3e3e3e"
                 onValueChange={toggleSwitch}
                 value={isEnabled}
+                
               />
+             
+              <View style={{}}>
+                {isEnabled ? (
+                  <Image
+                    source={require("../assets/images/icon-driver.png")}
+                    style={styles.icon}
+                  />
+                ) : (
+                  <Image
+                    source={require("../assets/images/icon-traveler.png")}
+                    style={styles.icon}
+                  />
+                )}
+              </View>
               <View
                 style={{
                   flexDirection: "row",
@@ -114,11 +129,13 @@ const ProfileTypeScreen = ({ navigation }) => {
                   alignSelf: "center",
                   justifyContent: "center",
                   width: width,
-                  height: 50,
+                  height: 20,
+                  marginTop: -40
                 }}
               >
                 <Text
                   style={{
+                    fontSize: 20,
                     color: theme.colors.neutral[0],
                     paddingHorizontal: 2,
                   }}
@@ -138,31 +155,19 @@ const ProfileTypeScreen = ({ navigation }) => {
                 <Text
                   style={{
                     color: theme.colors.neutral[0],
-                    paddingHorizontal: 2,
+                    fontSize: 20,
+                    marginHorizontal: 5,
                   }}
                 >
                   {!isEnabled ? "Rider " : "Driver"}
                 </Text>
-              </View>
-              <View style={{}}>
-                {isEnabled ? (
-                  <Image
-                    source={require("../assets/images/icon-driver.png")}
-                    style={styles.icon}
-                  />
-                ) : (
-                  <Image
-                    source={require("../assets/images/icon-traveler.png")}
-                    style={styles.icon}
-                  />
-                )}
               </View>
             </View>
             <View style={{ height: 300, justifyContent: "flex-end" }}>
               <LinearGradient
                 start={{ x: 0.5, y: 1 }}
                 end={{ x: 0.75, y: 1 }}
-                colors={[theme.colors.lightblue[5], theme.colors.blue[5]]}
+                colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
                 style={styles.loginBtn}
               >
                 <Pressable onPress={() => navigation.navigate("HomeScreen")}>

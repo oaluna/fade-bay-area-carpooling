@@ -28,6 +28,7 @@ const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 const { width, height } = Dimensions.get("screen");
 
 const Map = () => {
+  const [snapshot, setSnapshot] = React.useState(uri)
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
   const mapRef = useRef(null);
@@ -37,7 +38,7 @@ const Map = () => {
   useEffect(() => {
     if (!origin || !destination) return;
     mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
-      edgePadding: { top: 25, right: 25, bottom: 25, left: 25 },
+      edgePadding: { top: 10, right: 10, bottom: 10, left: 10 },
     });
   }, [origin, destination]);
 
@@ -51,6 +52,20 @@ const Map = () => {
     const data = await fetch(URL).then((response) => response.json());
     if (data.status !== "OK") return alert(data.error_message);
     dispatch(setTravelTimeInformation(data.rows[0].elements[0]));
+  };
+
+  const takeSnapshot = () => {
+    const snapshot = takeSnapshot({
+      width: 300,
+      height: 300,
+
+      format: "png",
+      quality: 0.8,
+      result: "file",
+    });
+    snapshot.then((uri) => {
+      setMapSnapshot(uri);
+    });
   };
 
   return (
@@ -146,6 +161,10 @@ const Map = () => {
             description={destination.description}
             identifier="destination"
             tracksViewChanges={true}
+            animateMarkerToCoordinate={{
+              latitude: destination?.loaction.lat,
+              longitude: destination?.loaction.lng,
+            }}
           >
             <Image
               source={require("../assets/images/icon-end.png")}

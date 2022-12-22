@@ -78,7 +78,7 @@ const LocationAccessScreen = ({ navigation, route }) => {
 
   return (
     <ImageBackground
-      source={require("../assets/images/gradient-bg3.png")}
+      source={require("../assets/images/gradient-bg.png")}
       style={{
         width: width,
         height: height,
@@ -132,9 +132,9 @@ const LocationAccessScreen = ({ navigation, route }) => {
             </Text>
           </TouchableOpacity>
           <LinearGradient
-                    start={{ x: 0.5, y: 1 }}
-                    end={{ x: 0.75, y: 1 }}
-                    colors={[theme.colors.lightblue[5], theme.colors.blue[5]]}
+            start={{ x: 0.5, y: 1 }}
+            end={{ x: 0.75, y: 1 }}
+            colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
             style={styles.button}
           >
             <TouchableOpacity

@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Screen from "../components/Screen";
-import Map from "../components/Map";
 import NavFavourites from "../components/NavFavourites";
 import NavOptions from "../components/NavOptions";
 import Feed from "../components/Feed";

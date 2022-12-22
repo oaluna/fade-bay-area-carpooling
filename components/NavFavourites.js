@@ -39,7 +39,8 @@ const NavFavourites = () => {
 
   return (
     <KeyboardAvoidingView>
-      <View style={{ top: 0, height: 150 }}>
+      <View style={{ marginTop: -40, height: 175 }}>
+      <Text style={{color: theme.colors.neutral[0]}}>My Saved Locations</Text>
         <FlatList
           data={data}
           renderItem={({ item }) => (
@@ -49,15 +50,15 @@ const NavFavourites = () => {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                marginHorizontal: 25,
                 marginTop: 15,
-                borderRadius: 15,
-                backgroundColor: theme.colors.blue[9],
-                width: width - 30,
+            backgroundColor: theme.colors.neutral[7],
+                borderWidth: 1,
+                  borderBottomColor: theme.colors.lightblue[4],
+                width: width -30,
                 height: 60,
-                width: width - 30,
-                alignSelf: "center",
+                alignSelf:"flex-start",
                 justifyContent: "space-evenly",
+                elevation: 1
               }}
             >
               <Image
@@ -69,6 +70,7 @@ const NavFavourites = () => {
                   marginVertical: 0,
                   justifyContent: "space-evenly",
                   height: 60,
+                  
                 }}
               >
                 <Text style={{ color: theme.colors.neutral[0], fontSize: 18 }}>

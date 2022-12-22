@@ -48,7 +48,7 @@ const RegisterScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../assets/images/gradient-bg3.png")}
+        source={require("../assets/images/gradient-bg.png")}
         style={{
           height: height,
           width: width,
@@ -112,9 +112,12 @@ const RegisterScreen = ({ navigation }) => {
               <View style={{ height: 300, justifyContent: "flex-end" }}>
                 <View style={{ marginVertical: 5 }}>
                   <LinearGradient
-                    start={{ x: 0.5, y: 1 }}
-                    end={{ x: 0.75, y: 1 }}
-                    colors={[theme.colors.lightblue[5], theme.colors.blue[5]]}
+                    start={{ x: 0, y: 1 }}
+                    end={{ x: 1, y: 1 }}
+                    colors={[
+                      theme.colors.lightblue[4],
+                      theme.colors.lightblue[6],
+                    ]}
                     style={styles.loginBtn}
                   >
                     <Pressable
@@ -177,7 +180,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   fadeLogo: {
-    width:300,
+    width: 300,
     resizeMode: "contain",
   },
   loginBox: {

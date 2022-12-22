@@ -44,8 +44,7 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
         toInputBoxStyles,
         {
           flex: 1,
-          borderTopLeftRadius: 15,
-          borderTopRightRadius: 15,
+          
           elevation: 2,
           width: width + 10,
           position: "absolute",
@@ -57,7 +56,8 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
         colors={[theme.colors.blue[9], theme.colors.blue[8]]}
-        style={{ width: width, height: height }}
+        style={{ width: width, height: height, borderTopLeftRadius: 15,
+          borderTopRightRadius: 15, }}
       >
         <Text
           style={{
@@ -111,45 +111,36 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
             alignSelf: "center",
             zIndex: 10,
             justifyContent: "space-evenly",
-            height: 200,
+            height: 250,
           }}
         >
           <NavFavourites />
-          <View
-            style={{
-              marginTop: 40,
-              width: width,
-              flexDirection: "row",
-              alignItems: "flex-end",
-              justifyContent: "space-evenly",
-              paddingTop: 20,
-
-              position: "relative",
-              height: 50,
-            }}
+        </View>
+        <View style={styles.buttonContainer}>
+        <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]} style={styles.navOption}>
+          <TouchableOpacity
+            onPress={() => navigation.push("RideOptionsCard")}
+        
           >
-            <TouchableOpacity
-              onPress={() => navigation.push("RideOptionsCard")}
-              style={styles.navOption}
-            >
-              <Image
-                source={require("../assets/images/icon-carpool.png")}
-                style={styles.icon}
-              />
-              <Text style={styles.buttonText}>Join A Carpool</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => navigation.push("RideOptionsCard")}
-              style={styles.navOption}
-            >
-              <Image
-                source={require("../assets/images/icon-pickup.png")}
-                style={styles.icon}
-              />
-              <Text style={styles.buttonText}>Start A Carpool</Text>
-            </TouchableOpacity>
-          </View>
+            
+            <Text style={styles.buttonText}>Join A Carpool</Text>
+          </TouchableOpacity>
+</LinearGradient>
+ <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]} style={styles.navOption}>
+          <TouchableOpacity
+            onPress={() => navigation.push("RideOptionsCard")}
+          
+          >
+          
+            <Text style={styles.buttonText}>Start A Carpool</Text>
+          </TouchableOpacity>
+          </LinearGradient>
         </View>
       </LinearGradient>
     </Screen>
@@ -169,7 +160,7 @@ const toInputBoxStyles = StyleSheet.create({
     backgroundColor: theme.colors.neutral[0],
     borderRadius: 15,
     borderWidth: 2,
-    borderColor: theme.colors.blue[4],
+    borderColor: theme.colors.neutral[4],
   },
   textInputContainer: {
     paddingHorizontal: 0,
@@ -194,24 +185,35 @@ const toInputBoxStyles = StyleSheet.create({
 const styles = StyleSheet.create({
   navOption: {
     flexDirection: "column",
-    backgroundColor: theme.colors.blue[9],
+    
     alignItems: "center",
     alignSelf: "center",
     justifyContent: "center",
-    width: 170,
-    height: 150,
-    marginTop: 65,
+    width: 180,
+    height: 60,
+    marginTop: 15,
     paddingHorizontal: 0,
     paddingVertical: 3,
     borderRadius: 15,
     elevation: 2,
   },
+  buttonContainer: {
+    marginTop: 0,
+    width: width,
+    flexDirection: "row",
+    alignItems: "flex-end",
+    justifyContent: "space-evenly",
+    paddingTop: 0,
+    background: "transparent",
+    position: "relative",
+    height: 20,
+  },
   buttonText: {
     color: theme.colors.neutral[0],
-    fontSize: 12,
+    fontSize: 20,
   },
   icon: {
-    width: 84,
-    height: 84,
+    width: 56,
+    height: 56,
   },
 });

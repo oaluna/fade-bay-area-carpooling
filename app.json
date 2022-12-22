@@ -8,16 +8,14 @@
     "userInterfaceStyle": "dark",
 
     "splash": {
-      "image": "./assets/images/gradient-bg3.png",
+      "image": "./assets/images/gradient-bg.png",
       "resizeMode": "cover",
       "icon": "./assets/images/app-icon.png"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

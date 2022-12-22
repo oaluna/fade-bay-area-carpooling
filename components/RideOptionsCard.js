@@ -115,6 +115,7 @@ const RideOptionsCard = () => {
             data={data}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
+              
               <TouchableOpacity
                 style={{
                   flexDirection: "row",
@@ -165,18 +166,24 @@ const RideOptionsCard = () => {
             marginLeft: 25,
           }}
         >
-          <TouchableOpacity
-            style={{
+        <LinearGradient
+                    start={{ x: 0, y: 1 }}
+                    end={{ x: 1, y: 1 }}
+                    colors={[
+                      theme.colors.lightblue[4],
+                      theme.colors.lightblue[6],
+                    ]}
+                    style={{
               color: theme.colors.neutral[0],
 
               paddingVertical: 10,
-              marginTop: -20,
+              marginTop: 50,
               borderRadius: 15,
-              borderColor: theme.colors.blue[4],
-              borderWidth: 2,
               width: width - 30,
               height: 50,
-            }}
+            }}>
+          <TouchableOpacity
+            
             disabled={!selected}
             onPress={onChoose}
           >
@@ -192,6 +199,7 @@ const RideOptionsCard = () => {
               Choose {selected?.title}
             </Text>
           </TouchableOpacity>
+          </LinearGradient>
         </View>
       </LinearGradient>
     </Screen>
@@ -202,17 +210,15 @@ export default RideOptionsCard;
 
 const styles = StyleSheet.create({
   image: {
-    width: 64,
-    height: 64,
+    width: 56,
+    height: 56,
     resizeMode: "contain",
     margin: 25,
   },
   card: {
     width: 100,
-    height: 150,
-    backgroundColor: "transparent",
-    borderColor: theme.colors.blue[4],
-    borderWidth: 2,
+    height: 100,
+    
     borderRadius: 50,
     justifyContent: "center",
     alignItems: "center",

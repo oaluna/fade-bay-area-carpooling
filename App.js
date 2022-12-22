@@ -6,10 +6,6 @@ import { KeyboardAvoidingView, Platform } from "react-native";
 import { BetweenPagesProvider } from "between-pages";
 import { Auth0Provider } from 'react-native-auth0';
 
-
-
-
-
 export default function App() {
   return (
     <Auth0Provider domain={"luna-reactdev.auth0.com"} clientId={"eyrkBuRYDCERnnGBzeREzL1UF6cTmdZJ"}>
