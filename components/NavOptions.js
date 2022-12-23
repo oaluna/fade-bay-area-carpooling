@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: theme.colors.blue[8],
     position: "relative",
-    marginTop: 75,
+    marginTop: 25,
     marginRight: 10,
     marginVertical: 15,
     padding: 10,

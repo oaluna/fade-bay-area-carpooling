@@ -44,7 +44,7 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
         toInputBoxStyles,
         {
           flex: 1,
-          
+
           elevation: 2,
           width: width + 10,
           position: "absolute",
@@ -56,8 +56,12 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
         colors={[theme.colors.blue[9], theme.colors.blue[8]]}
-        style={{ width: width, height: height, borderTopLeftRadius: 15,
-          borderTopRightRadius: 15, }}
+        style={{
+          width: width,
+          height: height,
+          borderTopLeftRadius: 15,
+          borderTopRightRadius: 15,
+        }}
       >
         <Text
           style={{
@@ -117,29 +121,29 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
           <NavFavourites />
         </View>
         <View style={styles.buttonContainer}>
-        <LinearGradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]} style={styles.navOption}>
-          <TouchableOpacity
-            onPress={() => navigation.push("RideOptionsCard")}
-        
+          <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
+            style={styles.navOption}
           >
-            
-            <Text style={styles.buttonText}>Join A Carpool</Text>
-          </TouchableOpacity>
-</LinearGradient>
- <LinearGradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]} style={styles.navOption}>
-          <TouchableOpacity
-            onPress={() => navigation.push("RideOptionsCard")}
-          
+            <TouchableOpacity
+              onPress={() => navigation.push("RideOptionsCard")}
+            >
+              <Text style={styles.buttonText}>Join A Carpool</Text>
+            </TouchableOpacity>
+          </LinearGradient>
+          <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
+            style={styles.navOption}
           >
-          
-            <Text style={styles.buttonText}>Start A Carpool</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.push("RideOptionsCard")}
+            >
+              <Text style={styles.buttonText}>Start A Carpool</Text>
+            </TouchableOpacity>
           </LinearGradient>
         </View>
       </LinearGradient>
@@ -185,7 +189,7 @@ const toInputBoxStyles = StyleSheet.create({
 const styles = StyleSheet.create({
   navOption: {
     flexDirection: "column",
-    
+
     alignItems: "center",
     alignSelf: "center",
     justifyContent: "center",

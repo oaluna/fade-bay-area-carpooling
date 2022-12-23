@@ -3,7 +3,6 @@ import {
   SafeAreaView,
   StyleSheet,
   View,
-  ScrollView,
   Dimensions,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -21,6 +20,7 @@ export default function Screen({ children, style }) {
       colors={[theme.colors.blue[9], theme.colors.blue[8]]}
       style={{ width: width, height: height }}
     >
+      
       <View style={[styles.view, style]}>{children}</View>
       </LinearGradient>
     </SafeAreaView>

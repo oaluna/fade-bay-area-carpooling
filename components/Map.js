@@ -28,7 +28,6 @@ const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 const { width, height } = Dimensions.get("screen");
 
 const Map = () => {
-  const [snapshot, setSnapshot] = React.useState(uri)
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
   const mapRef = useRef(null);
@@ -54,20 +53,8 @@ const Map = () => {
     dispatch(setTravelTimeInformation(data.rows[0].elements[0]));
   };
 
-  const takeSnapshot = () => {
-    const snapshot = takeSnapshot({
-      width: 300,
-      height: 300,
 
-      format: "png",
-      quality: 0.8,
-      result: "file",
-    });
-    snapshot.then((uri) => {
-      setMapSnapshot(uri);
-    });
-  };
-
+  
   return (
     <View style={{ flex: 1, position: "relative" }}>
       <TouchableOpacity
@@ -107,10 +94,12 @@ const Map = () => {
         initialRegion={{
           latitude: 37.78825,
           longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitudeDelta: 0.0932,
+          longitudeDelta: 0.00421,
         }}
         mapType={"standard"}
+        zoomControlEnabled={true}
+        zoomTapEnabled={true}
       >
         {!!origin && !!destination && (
           <MapViewDirections
@@ -159,6 +148,7 @@ const Map = () => {
             }}
             title="Your Destination"
             description={destination.description}
+
             identifier="destination"
             tracksViewChanges={true}
             animateMarkerToCoordinate={{
@@ -185,5 +175,7 @@ const styles = StyleSheet.create({
     flex: 1,
     position: "relative",
     zIndex: 10,
+    height: height,
+    marginVertical:0
   },
 });

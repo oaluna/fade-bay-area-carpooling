@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Image,
   ImageBackground,
+  SafeAreaView,
   Text,
   Dimensions,
 } from "react-native";
@@ -24,7 +25,9 @@ const { width, height } = Dimensions.get("screen");
 const HomeScreen = ({ navigation, ...props }) => {
   const dispatch = useDispatch();
   return (
-    <Screen>
+    <SafeAreaView style={{overflowY:"scroll"}}>
+    
+    
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
@@ -86,7 +89,8 @@ const HomeScreen = ({ navigation, ...props }) => {
 
         <Feed />
       </LinearGradient>
-    </Screen>
+   
+    </SafeAreaView>
   );
 };
 
@@ -105,7 +109,8 @@ const styles = StyleSheet.create({
     height: 50,
     width: 100,
     resizeMode: "contain",
-    marginBottom: 20,
+    marginTop: 40,
+    marginBottom: 0,
   },
   text1: {
     color: theme.colors.neutral[0],

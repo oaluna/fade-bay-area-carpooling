@@ -115,7 +115,6 @@ const RideOptionsCard = () => {
             data={data}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
-              
               <TouchableOpacity
                 style={{
                   flexDirection: "row",
@@ -166,14 +165,11 @@ const RideOptionsCard = () => {
             marginLeft: 25,
           }}
         >
-        <LinearGradient
-                    start={{ x: 0, y: 1 }}
-                    end={{ x: 1, y: 1 }}
-                    colors={[
-                      theme.colors.lightblue[4],
-                      theme.colors.lightblue[6],
-                    ]}
-                    style={{
+          <LinearGradient
+            start={{ x: 0, y: 1 }}
+            end={{ x: 1, y: 1 }}
+            colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
+            style={{
               color: theme.colors.neutral[0],
 
               paddingVertical: 10,
@@ -181,24 +177,21 @@ const RideOptionsCard = () => {
               borderRadius: 15,
               width: width - 30,
               height: 50,
-            }}>
-          <TouchableOpacity
-            
-            disabled={!selected}
-            onPress={onChoose}
+            }}
           >
-            <Text
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                textAlign: "center",
-                color: theme.colors.neutral[0],
-                fontSize: 24,
-              }}
-            >
-              Choose {selected?.title}
-            </Text>
-          </TouchableOpacity>
+            <TouchableOpacity disabled={!selected} onPress={onChoose}>
+              <Text
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  textAlign: "center",
+                  color: theme.colors.neutral[0],
+                  fontSize: 24,
+                }}
+              >
+                Choose {selected?.title}
+              </Text>
+            </TouchableOpacity>
           </LinearGradient>
         </View>
       </LinearGradient>
@@ -218,7 +211,7 @@ const styles = StyleSheet.create({
   card: {
     width: 100,
     height: 100,
-    
+
     borderRadius: 50,
     justifyContent: "center",
     alignItems: "center",
