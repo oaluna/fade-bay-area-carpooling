@@ -78,7 +78,7 @@ const LocationAccessScreen = ({ navigation, route }) => {
 
   return (
     <ImageBackground
-      source={require("../assets/images/gradient-bg.png")}
+      source={require("../assets/images/gradient-bg3.png")}
       style={{
         width: width,
         height: height,

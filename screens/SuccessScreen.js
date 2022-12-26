@@ -5,6 +5,7 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
+  Pressable,
   Dimensions,
 } from "react-native";
 import Screen from "../components/Screen";
@@ -23,6 +24,7 @@ const SuccessScreen = ({ route }) => {
   const { data } = route.params;
   const origin = useSelector(selectOrigin);
   const navigation = useNavigation();
+  const ref = React.useRef();
 
   React.useEffect(() => {
     if (!origin) navigation.replace("HomeScreen");
@@ -35,38 +37,41 @@ const SuccessScreen = ({ route }) => {
       colors={[theme.colors.blue[9], theme.colors.blue[8]]}
       style={{ width: width, height: height }}
     >
-      <Screen>
-        <TouchableOpacity
+      <Screen ref={ref}>
+        <Pressable
           onPress={() => navigation.navigate("HomeScreen")}
           style={{
-            height: 120,
             top: -100,
             left: 15,
-            width: 32,
+            height: 85,
           }}
         >
           <Image
             source={require("../assets/images/fade-logo-alt.png")}
             style={{ resizeMode: "contain", width: 120 }}
           />
-        </TouchableOpacity>
+        </Pressable>
         <View>
           <View>
-            <MapContainer/>
+            <MapContainer />
           </View>
           <View style={{ justifyContent: "space-evenly", height: 200 }}>
             <Text style={{ color: theme.colors.neutral[0], fontSize: 24 }}>
-              Edit Post
+              Trip Posted!
             </Text>
-            <Text style={{ fontSize: 20, color: theme.colors.neutral[0] }}>
-              Driver: {data?.driver}
+            <Text style={styles.body}>
+              Driver: oscarluna
             </Text>
-            <Text style={{fontSize: 20, color: theme.colors.neutral[0] }}>
+            <Text style={styles.body}>
               Travel Time: {data?.time}
             </Text>
-            <Text style={{ fontSize: 20, color: theme.colors.neutral[0] }}>
+            <Text style={styles.body}>
               Distance: {data?.distance}
             </Text>
+            <Text style={styles.body}>
+              Seats Available: 3
+            </Text>
+        
           </View>
         </View>
       </Screen>
@@ -76,4 +81,6 @@ const SuccessScreen = ({ route }) => {
 
 export default SuccessScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  body: { fontSize: 20, color: theme.colors.neutral[0] }
+});

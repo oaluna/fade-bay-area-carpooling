@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Text, TouchableOpacity, View, Dimensions } from "react-native";
+import { Text, TouchableOpacity, View, Dimensions, Image } from "react-native";
+import Feed from "../components/Feed";
 import Screen from "../components/Screen";
 import Constants from "expo-constants";
 import { Icon } from "react-native-elements";
@@ -13,18 +14,21 @@ const EatsScreen = () => {
 
   return (
     <Screen>
+      <View>
+      <Image source={require("../assets/images/fade-logo.png")} style={{resizeMode: "contain", width: 100, height: 60}} />
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Icon
           type="antdesign"
-          name="home"
-          color="black"
-          size={16}
-          // style={}
+          name="arrowleft"
+          color="white"
+          size={24}
+          style={{
+            position:"relative", alignSelf:"flex-start", marginVertical: 25
+          }}
         />
       </TouchableOpacity>
-      <View>
-        <Text style={{ color: theme.colors.neutral[0] }}>Join A Carpool</Text>
-        <Text style={{ color: theme.colors.neutral[0] }}>Feed goes here</Text>
+     <Text style={{color:theme.colors.neutral[0], fontSize: 24}}>Join A Carpool</Text>
+        <Feed />
       </View>
     </Screen>
   );

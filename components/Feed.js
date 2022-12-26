@@ -12,7 +12,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from "react-native";
-import { Icon } from "react-native-elements";
+import { Icon, Avatar } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import { selectOrigin, selectDestination } from "../redux/slices/navSlice";
 import { useSelector } from "react-redux";
@@ -83,9 +83,31 @@ const data = [
   },
 ];
 
-const CardContainer = (props, ...data) => {
+const CardContainer = ({navigation, ...props}) => {
+  // const {
+  //   username,
+  //   width,
+  //   height,
+  //   subtitle,
+  //   titleColor,
+  //   borderRadius,
+  //   dividerColor,
+  //   leftSideTitle,
+  //   leftSideValue,
+  //   leftSideColor,
+  //   subtitleColor,
+  //   rightSideTitle,
+  //   rightSideValue,
+  //   rightSideColor,
+  //   backgroundColor,
+  //   leftSideValueColor,
+  //   rightSideValueColor,
+  // } = props;
+
   const {
-    title,
+    type,
+    id,
+    username,
     width,
     height,
     subtitle,
@@ -102,9 +124,13 @@ const CardContainer = (props, ...data) => {
     backgroundColor,
     leftSideValueColor,
     rightSideValueColor,
+    avatar,
+    date,
+    start,
+    end,
+    time,
+    seats,
   } = props;
-
-  const { type, id, username, avatar, date, start, end, time, seats } = data;
 
   const ImageContainer = (props) => {
     const { shadowStyle, source } = props;
@@ -113,9 +139,8 @@ const CardContainer = (props, ...data) => {
         <Image
           borderRadius={24}
           style={styles.imageStyle}
-          source={{
-            uri: "https://images.unsplash.com/photo-1538689621163-f5be0ad13ec7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-          }}
+          source={require("../assets/images/mapSnapshot.jpg")}
+          resizeMode={"cover"}
         />
       </View>
     );
@@ -138,35 +163,44 @@ const CardContainer = (props, ...data) => {
   };
 
   return (
-    <View style={container(width, height, borderRadius, backgroundColor)}>
-      <ImageContainer {...props} />
-      <View style={styles.contentContainer}>
-        <Text style={titleStyle(titleColor)}>{data.username}</Text>
-        <Text style={subtitleStyle(subtitleColor)}>{subtitle}</Text>
-        {renderStarReview()}
-        <View style={styles.footerContainer}>
-          <View style={styles.leftSideContainer}>
-            <Text style={leftSideTitleStyle(leftSideColor)}>
-              {leftSideTitle}
-            </Text>
-            <Text style={leftSideValueStyle(leftSideValueColor)}>
-              {leftSideValue}
-            </Text>
-          </View>
-          <View style={styles.rightSideContainer}>
-            <View style={dividerStyle(dividerColor)} />
-            <View style={styles.rightSideContainerGlue}>
-              <Text style={rightSideTitleStyle(rightSideColor)}>
-                {rightSideTitle}
-              </Text>
-              <Text style={rightSideValueStyle(rightSideValueColor)}>
-                {rightSideValue}
-              </Text>
+    <FlatList
+      data={data}
+      keyExtractor={(item) => item.id}
+      renderItem={(item) => (
+        <View style={container(width, height, borderRadius, backgroundColor)}>
+          <ImageContainer {...props} />
+        <Avatar source={require("../assets/images/oscarluna.png")} rounded size="medium" containerStyle={styles.avatar}/>
+          <View style={styles.contentContainer}>
+            <Text style={titleStyle(titleColor)}>{props.username}</Text>
+            <Text style={subtitleStyle(subtitleColor)}>{props.type}</Text>
+            {props.type === "Driver" ? <Image source={require("../assets/images/icon-driver.png")} style={styles.icon}/> : <Image source={require("../assets/images/icon-traveler.png")} style={styles.icon} />}
+            {renderStarReview()}
+            <View style={styles.footerContainer}>
+              <View style={styles.leftSideContainer}>
+                <Text style={leftSideTitleStyle(leftSideColor)}>
+                  {leftSideTitle}
+                </Text>
+                <Text style={leftSideValueStyle(leftSideValueColor)}>
+                  {leftSideValue}
+                </Text>
+              </View>
+              <View style={styles.rightSideContainer}>
+                <View style={dividerStyle(dividerColor)} />
+                <View style={styles.rightSideContainerGlue}>
+                  <Text style={rightSideTitleStyle(rightSideColor)}>
+                    {rightSideTitle}
+                  </Text>
+                  <Text style={rightSideValueStyle(rightSideValueColor)}>
+                    {rightSideValue}
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
-      </View>
-    </View>
+      )}
+      onPress={() => navigation.navigate("CommuteListingScreen")}
+    />
   );
 };
 
@@ -177,7 +211,7 @@ const ImagedCardView = (props) => {
       data={data}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-        <TouchableOpacity onPress={onPress} style={styles.imagedCardView}>
+        <TouchableOpacity onPress={onPress} style={styles.imagedCardView} >
           <CardContainer {...props} />
         </TouchableOpacity>
       )}
@@ -192,21 +226,24 @@ const NavOptions = () => {
 
   return (
     <View style={{ width: width, height: 400 }}>
-      <View style={{ flex: 1, alignSelf: "flex-start" }}>
+      <View style={{ flex: 1, alignSelf: "flex-start", height: 100 }}>
         <Text
           style={{
             color: theme.colors.blue[0],
             fontSize: 24,
             textAlign: "center",
-            marginTop: 20,
-            marginBottom: 20,
+            marginVertical: 45,
+            marginLeft: 48,
+          
           }}
         >
-          Commute Feed
+          Join A Carpool
         </Text>
       </View>
       <View style={styles.feed}>
-        <ImagedCardView onPress={() => navigation.navigate("CommuteListingScreen")}/>
+        <ImagedCardView
+          onPress={() => navigation.navigate("CommuteListingScreen")}
+        />
       </View>
     </View>
   );
@@ -290,10 +327,10 @@ const rightSideValueStyle = (rightSideValueColor) => {
 };
 
 CardContainer.propTypes = {
-  title: PropTypes.string,
+  username: PropTypes.string,
   width: PropTypes.number,
   height: PropTypes.number,
-  subtitle: PropTypes.string,
+  type: PropTypes.string,
   titleColor: PropTypes.string,
   borderRadius: PropTypes.number,
   dividerColor: PropTypes.string,
@@ -314,15 +351,15 @@ CardContainer.defaultProps = {
   borderRadius: 24,
   width: width * 0.75,
   titleColor: "white",
-  username: data.username,
-  leftSideTitle: "Days",
-  subtitle: "Indonesia",
+  username: "oscarluna",
+  leftSideTitle: "TIME: 9:00am",
+  type: "Driver",
   leftSideColor: "white",
   dividerColor: "#c4c4c4",
-  leftSideValue: "4 Days",
+  leftSideValue: "DATE: 1/2/2023",
   rightSideColor: "white",
-  rightSideValue: "$1500",
-  rightSideTitle: "Price",
+  rightSideValue: "3",
+  rightSideTitle: "Seats",
   subtitleColor: "#dbdbdb",
   backgroundColor: "#0a96ea",
   leftSideValueColor: "white",
@@ -339,6 +376,8 @@ const imageStyle = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 6,
   },
+  alignItems: "center",
+  resizeMode: "cover",
   imageStyle: {
     top: -24,
     left: -48,
@@ -350,7 +389,7 @@ const imageStyle = StyleSheet.create({
 
 const styles = StyleSheet.create({
   feed: {
-    height: 330,
+    height: height,
     marginLeft: -30,
   },
   bg: {
@@ -358,7 +397,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     flexWrap: "wrap",
     height: 100,
-   
+
     flexDirection: "row",
     color: theme.colors.neutral[0],
     fontSize: 10,
@@ -380,6 +419,26 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     zIndex: 10,
   },
+  avatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    resizeMode: "cover",
+    display: "flex",
+    flexDirection:"row",
+    justifyContent: "flex-start",
+    marginLeft: 60,
+    marginTop: 15,
+    backgroundColor:theme.colors.neutral[5]
+  },
+  icon: {
+    resizeMode: "contain",
+    width: 12,
+    height: 12,
+    flexDirection:"row",
+    marginLeft: 40,
+    marginTop: -12
+  },
   text: {
     color: theme.colors.neutral[0],
     fontSize: 10,
@@ -395,6 +454,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "flex-start",
     marginTop: 0,
+ 
   },
   starReviewStyle: {
     marginTop: 16,
@@ -408,9 +468,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   contentContainer: {
-    marginTop: 6,
-    marginLeft: 80,
-    flexDirection: "column",
+    marginTop: -45,
+    marginLeft: 110,
+    flex: 3,
   },
   footerContainer: {
     marginTop: 10,

@@ -3,6 +3,7 @@ import {
   FlatList,
   Image,
   StyleSheet,
+  KeyboardAvoidingView,
   Text,
   TouchableOpacity,
   View,
@@ -92,6 +93,7 @@ const NavOptions = () => {
   const origin = useSelector(selectOrigin);
 
   return (
+    <KeyboardAvoidingView>
     <FlatList
       data={data}
       renderItem={({ item }) => (
@@ -99,6 +101,7 @@ const NavOptions = () => {
           onPress={() => navigation.push(item.screen)}
           disabled={!origin}
           style={styles.card}
+
         >
           <View>
             <Image source={{ uri: item.image }} style={styles.image} />
@@ -117,6 +120,7 @@ const NavOptions = () => {
       keyExtractor={(item) => item.id.toString()}
       horizontal
     />
+    </KeyboardAvoidingView>
   );
 };
 
@@ -128,11 +132,12 @@ const styles = StyleSheet.create({
     position: "relative",
     marginTop: 25,
     marginRight: 10,
-    marginVertical: 15,
+    marginVertical:75,
     padding: 10,
     height: 145,
     width: 100,
     borderRadius: 15,
+    zIndex: 20
   },
   image: {
     width: 84,

@@ -21,7 +21,7 @@ const ProfileTypeScreen = ({ navigation }) => {
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
   return (
     <ImageBackground
-      source={require("../assets/images/gradient-bg.png")}
+      source={require("../assets/images/gradient-bg3.png")}
       style={{
         width: width,
         height: height,
@@ -88,27 +88,31 @@ const ProfileTypeScreen = ({ navigation }) => {
             width: width - 30,
           }}
         >
-          <View style={{ alignSelf:"center" }}>
+          <View style={{ alignSelf: "center" }}>
             <View
               style={{
-             flexDirection:"column",
+                flexDirection: "column",
                 alignItems: "center",
-                alignSelf:'center',
+                alignSelf: "center",
                 width: width,
                 height: 100,
               }}
             >
               <Switch
-                trackColor={{ false: theme.colors.neutral[4], true: theme.colors.neutral[0] }}
+                trackColor={{
+                  false: theme.colors.neutral[4],
+                  true: theme.colors.neutral[0],
+                }}
                 thumbColor={
-                  isEnabled ? theme.colors.lightblue[4] : theme.colors.neutral[6]
+                  isEnabled
+                    ? theme.colors.lightblue[4]
+                    : theme.colors.neutral[6]
                 }
                 ios_backgroundColor="#3e3e3e"
                 onValueChange={toggleSwitch}
                 value={isEnabled}
-                
               />
-             
+
               <View style={{}}>
                 {isEnabled ? (
                   <Image
@@ -130,7 +134,7 @@ const ProfileTypeScreen = ({ navigation }) => {
                   justifyContent: "center",
                   width: width,
                   height: 20,
-                  marginTop: -40
+                  marginTop: -40,
                 }}
               >
                 <Text

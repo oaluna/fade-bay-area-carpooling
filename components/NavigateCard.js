@@ -44,11 +44,10 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
         toInputBoxStyles,
         {
           flex: 1,
-
+position:"absolute", left: 0,
           elevation: 2,
-          width: width + 10,
-          position: "absolute",
-          left: -7.5,
+          width: width,
+          
         },
       ]}
     >
@@ -67,11 +66,11 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
           style={{
             textAlign: "left",
             paddingVertical: 20,
-            paddingLeft: 15,
+        
             fontSize: 32,
             fontWeight: "bold",
             color: colors.white,
-            width: width,
+            width: width - 30,
           }}
         >
           Good morning, {isEnabled ? "Driver" : "Rider"}
@@ -82,6 +81,7 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
             flexShrink: 1,
             position: "relative",
             zIndex: 20,
+            width: width - 30
           }}
         >
           <View style={{ paddingBottom: 2 }}>
@@ -113,9 +113,11 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
         <View
           style={{
             alignSelf: "center",
+            alignItems:"flex-start",
             zIndex: 10,
-            justifyContent: "space-evenly",
+            justifyContent: "center",
             height: 250,
+            width: width,
           }}
         >
           <NavFavourites />
@@ -128,7 +130,7 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
             style={styles.navOption}
           >
             <TouchableOpacity
-              onPress={() => navigation.push("RideOptionsCard")}
+              onPress={() => navigation.push("EatsScreen")}
             >
               <Text style={styles.buttonText}>Join A Carpool</Text>
             </TouchableOpacity>
@@ -156,8 +158,10 @@ export default NavigateCard;
 const toInputBoxStyles = StyleSheet.create({
   container: {
     flex: 0,
-    width: width - 30,
+    width: width,
     alignSelf: "center",
+    alignItems:"center",
+    paddingHorizontal: 15
   },
   textInput: {
     fontSize: 15,
@@ -165,10 +169,12 @@ const toInputBoxStyles = StyleSheet.create({
     borderRadius: 15,
     borderWidth: 2,
     borderColor: theme.colors.neutral[4],
+   
   },
   textInputContainer: {
-    paddingHorizontal: 0,
-    paddingVertical: 20,
+    alignSelf: "center",
+    width: width - 30,
+    marginRight: 30
   },
   listView: {
     color: theme.colors.red[4],
@@ -192,18 +198,18 @@ const styles = StyleSheet.create({
 
     alignItems: "center",
     alignSelf: "center",
-    justifyContent: "center",
-    width: 180,
+    justifyContent: "space-evenly",
+    width: 150,
     height: 60,
-    marginTop: 15,
-    paddingHorizontal: 0,
+    marginTop: 5,
+    paddingHorizontal: 15,
     paddingVertical: 3,
     borderRadius: 15,
     elevation: 2,
   },
   buttonContainer: {
     marginTop: 0,
-    width: width,
+    width: width - 30,
     flexDirection: "row",
     alignItems: "flex-end",
     justifyContent: "space-evenly",

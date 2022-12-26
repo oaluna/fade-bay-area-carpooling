@@ -109,7 +109,7 @@ const SignIn = ({ navigation, openMenu }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../assets/images/gradient-bg.png")}
+        source={require("../assets/images/gradient-bg3.png")}
         style={{
           height: height,
           width: width,

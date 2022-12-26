@@ -1,6 +1,7 @@
 import React from "react";
 import { colors, parameters, theme } from "../global/styles";
 import { View, StyleSheet, Image, Text, Dimensions } from "react-native";
+import { Icon } from "react-native-elements";
 import Screen from "../components/Screen";
 import Map from "../components/Map";
 import NavFavourites from "../components/NavFavourites";
@@ -24,8 +25,8 @@ const CommuteListingScreen = ({ navigation }) => {
         colors={[theme.colors.blue[10], theme.colors.blue[8]]}
         style={styles.screen}
       >
-        <View style={{ backgroundColor: theme.colors.purple[6] }}>
           <View>
+          <Icon type="antdesign" name="arrowleft" color="white" size={30} style={{alignSelf:"flex-start", margin:15}} />
             <Text style={[styles.header, { color: theme.colors.neutral[0] }]}>
               Commute Details
             </Text>
@@ -77,7 +78,6 @@ const CommuteListingScreen = ({ navigation }) => {
           <View
             style={{
               flexDirection: "row",
-              backgroundColor: "rgba(255,255,255,0.3)",
             }}
           >
             <Image
@@ -107,7 +107,6 @@ const CommuteListingScreen = ({ navigation }) => {
               alignItems: "center",
               marginTop: 0,
               paddingRight: 25,
-              backgroundColor: "rgba(255,255,255,0.3)",
             }}
           >
             <Image
@@ -165,7 +164,6 @@ const CommuteListingScreen = ({ navigation }) => {
             style={{
               flexDirection: "row",
               alignItems: "center",
-              backgroundColor: "rgba(255,255,255,0.3)",
             }}
           >
             <Text
@@ -194,7 +192,6 @@ const CommuteListingScreen = ({ navigation }) => {
             style={{
               flexDirection: "row",
               alignItems: "center",
-              backgroundColor: "rgba(255,255,255,0.3)",
               borderBottomLeftRadius: 15,
               borderBottomRightRadius: 15,
             }}
@@ -221,7 +218,8 @@ const CommuteListingScreen = ({ navigation }) => {
               Ford Escape - 2003
             </Text>
           </View>
-        </View>
+     
+        <Image source={require("../assets/images/mapSnapshot.jpg")} style={{resizeMode:"contain", width: width, height: height- 50, top: -220}}/>
       </LinearGradient>
     </Screen>
   );
@@ -260,7 +258,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     alignItems: "center",
     alignSelf: "center",
-    marginVertical: 25,
+    marginVertical: 5,
   },
 
   image1: {
@@ -276,8 +274,7 @@ const styles = StyleSheet.create({
   cardImage: {
     height: 64,
     width: 64,
-    borderWidth: 2,
-    alignSelf: "center",
+    alignSelf: "flex-start",
   },
 
   home: {

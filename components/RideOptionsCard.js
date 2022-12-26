@@ -29,16 +29,16 @@ const data = [
   {
     id: "0",
     title: "Start A Carpool",
-
     image:
       "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813319/FadeIcons/icon-pickup_fpnloc.png",
+    link: "SuccessScreen"
   },
   {
     id: "1",
     title: "Join A Carpool",
-
     image:
       "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813321/FadeIcons/icon-carpool_q58kxk.png",
+    link: "EatsScreen"
   },
 ];
 
@@ -55,7 +55,7 @@ const RideOptionsCard = () => {
 
   const onChoose = () => {
     if (!selected) return Alert.alert("Please select a ride option");
-    navigation.push("SuccessScreen", {
+    navigation.push(selected.link, {
       data: {
         ...selected,
         distance: travelTimeInformation?.distance?.text,

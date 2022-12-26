@@ -8,10 +8,12 @@
     "userInterfaceStyle": "dark",
 
     "splash": {
-      "image": "./assets/images/gradient-bg.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "cover",
-      "icon": "./assets/images/app-icon.png"
+      "icon": "./assets/images/app-icon.png",
+      "backgroundColor": "#000030"
     },
+    
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -22,7 +24,6 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/app-icon.png",
-        "backgroundColor": "#bb2649"
       },
       "config": {
         "googleMaps": {

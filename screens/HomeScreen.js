@@ -27,6 +27,7 @@ const HomeScreen = ({ navigation, ...props }) => {
   return (
     <SafeAreaView style={{overflowY:"scroll"}}>
     
+
     
       <LinearGradient
         start={{ x: 1, y: 0 }}
@@ -38,11 +39,13 @@ const HomeScreen = ({ navigation, ...props }) => {
           source={require("../assets/images/fade-logo.png")}
           style={styles.logo}
         />
+
         <View style={{ backgroundColor: "transparent" }}>
           <Text style={styles.text1}>
             Welcome, {props.isEnabled === true ? "Driver" : "Rider"}!
           </Text>
         </View>
+
         <View>
           <GooglePlacesAutocomplete
             placeholder="Where from?"
@@ -83,10 +86,10 @@ const HomeScreen = ({ navigation, ...props }) => {
             }}
             enablePoweredByContainer={true}
           />
+
         </View>
         <NavOptions />
         <NavFavourites />
-
         <Feed />
       </LinearGradient>
    
