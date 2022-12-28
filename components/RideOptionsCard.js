@@ -65,16 +65,18 @@ const RideOptionsCard = () => {
   };
 
   return (
-    <Screen>
+    <Screen style={{marginTop:0, height: 600}}>
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
         colors={[theme.colors.blue[9], theme.colors.blue[8]]}
         style={{
           position: "absolute",
+          top: 0,
           borderTopLeftRadius: 15,
           borderTopRightRadius: 15,
-          paddingTop: 25,
+    paddingTop: 20,
+         
           width: width,
           elevation: 2,
         }}

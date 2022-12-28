@@ -24,7 +24,7 @@ const SuccessScreen = ({ route }) => {
   const { data } = route.params;
   const origin = useSelector(selectOrigin);
   const navigation = useNavigation();
-  const ref = React.useRef();
+
 
   React.useEffect(() => {
     if (!origin) navigation.replace("HomeScreen");
@@ -37,7 +37,7 @@ const SuccessScreen = ({ route }) => {
       colors={[theme.colors.blue[9], theme.colors.blue[8]]}
       style={{ width: width, height: height }}
     >
-      <Screen ref={ref}>
+      <Screen>
         <Pressable
           onPress={() => navigation.navigate("HomeScreen")}
           style={{

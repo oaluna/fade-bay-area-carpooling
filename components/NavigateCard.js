@@ -44,10 +44,13 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
         toInputBoxStyles,
         {
           flex: 1,
-position:"absolute", left: 0,
+          position:"relative",
+        alignSelf:"center",
+        alignItems:"center",
+        marginTop: -15,
           elevation: 2,
           width: width,
-          
+          padding: 0,
         },
       ]}
     >
@@ -60,17 +63,20 @@ position:"absolute", left: 0,
           height: height,
           borderTopLeftRadius: 15,
           borderTopRightRadius: 15,
+          paddingLeft: 20,
+        
         }}
       >
         <Text
           style={{
+            alignSelf:"center",
             textAlign: "left",
             paddingVertical: 20,
-        
+            marginTop: 15,
             fontSize: 32,
             fontWeight: "bold",
             color: colors.white,
-            width: width - 30,
+            width: width,
           }}
         >
           Good morning, {isEnabled ? "Driver" : "Rider"}
@@ -81,7 +87,7 @@ position:"absolute", left: 0,
             flexShrink: 1,
             position: "relative",
             zIndex: 20,
-            width: width - 30
+            width: width - 30,
           }}
         >
           <View style={{ paddingBottom: 2 }}>
@@ -113,7 +119,7 @@ position:"absolute", left: 0,
         <View
           style={{
             alignSelf: "center",
-            alignItems:"flex-start",
+            alignItems: "flex-start",
             zIndex: 10,
             justifyContent: "center",
             height: 250,
@@ -126,12 +132,10 @@ position:"absolute", left: 0,
           <LinearGradient
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
-            colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
+            colors={[theme.colors.red[4], theme.colors.red[6]]}
             style={styles.navOption}
           >
-            <TouchableOpacity
-              onPress={() => navigation.push("EatsScreen")}
-            >
+            <TouchableOpacity onPress={() => navigation.push("EatsScreen")}>
               <Text style={styles.buttonText}>Join A Carpool</Text>
             </TouchableOpacity>
           </LinearGradient>
@@ -160,8 +164,8 @@ const toInputBoxStyles = StyleSheet.create({
     flex: 0,
     width: width,
     alignSelf: "center",
-    alignItems:"center",
-    paddingHorizontal: 15
+    alignItems: "center",
+    paddingHorizontal: 15,
   },
   textInput: {
     fontSize: 15,
@@ -169,12 +173,11 @@ const toInputBoxStyles = StyleSheet.create({
     borderRadius: 15,
     borderWidth: 2,
     borderColor: theme.colors.neutral[4],
-   
   },
   textInputContainer: {
     alignSelf: "center",
     width: width - 30,
-    marginRight: 30
+    marginRight: 30,
   },
   listView: {
     color: theme.colors.red[4],
@@ -199,10 +202,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     justifyContent: "space-evenly",
-    width: 150,
+    width: 165,
     height: 60,
     marginTop: 5,
-    paddingHorizontal: 15,
+    paddingHorizontal: 25,
     paddingVertical: 3,
     borderRadius: 15,
     elevation: 2,

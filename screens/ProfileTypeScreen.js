@@ -22,6 +22,7 @@ const ProfileTypeScreen = ({ navigation }) => {
   return (
     <ImageBackground
       source={require("../assets/images/gradient-bg3.png")}
+      blurRadius={8}
       style={{
         width: width,
         height: height,
@@ -118,11 +119,13 @@ const ProfileTypeScreen = ({ navigation }) => {
                   <Image
                     source={require("../assets/images/icon-driver.png")}
                     style={styles.icon}
+              
                   />
                 ) : (
                   <Image
                     source={require("../assets/images/icon-traveler.png")}
                     style={styles.icon}
+                
                   />
                 )}
               </View>
@@ -199,7 +202,8 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     width: 96,
     height: 96,
-    backgroundColor: theme.colors.purple[6],
+    backgroundColor: "transparent",
+  
     borderRadius: 50,
     shadowColor: theme.colors.neutral[0],
     shadowOffset: {

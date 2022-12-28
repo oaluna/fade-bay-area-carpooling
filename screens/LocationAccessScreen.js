@@ -9,6 +9,7 @@ import {
   View,
   Dimensions,
 } from "react-native";
+import Lottie from "lottie-react-native";
 import { colors, theme } from "../global/styles";
 import { FontAwesome, AntDesign } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -79,6 +80,7 @@ const LocationAccessScreen = ({ navigation, route }) => {
   return (
     <ImageBackground
       source={require("../assets/images/gradient-bg3.png")}
+      blurRadius={8}
       style={{
         width: width,
         height: height,
@@ -90,10 +92,10 @@ const LocationAccessScreen = ({ navigation, route }) => {
       }}
     >
       <KeyboardAvoidingView style={styles.container}>
-        <Image
+        <Lottie
           style={styles.image}
-          source={require("../assets/images/icon-dropoff.png")}
-        />
+          source={{ uri: "https://assets7.lottiefiles.com/packages/lf20_dsfexraq.json"}} autoPlay loop />
+      
         <Text style={styles.logoTitle}>
           In order to use Fade, we will need to access your Location.
         </Text>

@@ -21,6 +21,7 @@ const DemoScreen = ({ navigation, route }) => {
     <ImageBackground
       source={require("../../assets/images/gradient-bg3.png")}
       style={styles.container}
+      blurRadius={8}
     >
       {/* slider */}
       <Image
@@ -32,7 +33,7 @@ const DemoScreen = ({ navigation, route }) => {
         <LinearGradient
           start={{ x: 0.5, y: 1 }}
           end={{ x: 0.75, y: 1 }}
-          colors={[theme.colors.lightblue[5], theme.colors.blue[5]]}
+          colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
           style={styles.startBtn}
         >
           <TouchableOpacity
