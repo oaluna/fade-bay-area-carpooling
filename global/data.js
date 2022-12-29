@@ -38,11 +38,11 @@ export const filterData = [
 ];
 
 export const rideData = [
-  { street: "701 London Street", area: "San Francisco, CA", id: "0" },
-  { street: "415 Mission Street", area: "San Francisco, CA 94105", id: "1" },
-  { street: "701 London Street", area: "San Francisco, CA 94112 ", id: "2" },
-  { street: "424 Jones Street", area: "San Francisco, CA 94102", id: "3" },
-  { street: "55 Taylor Street", area: "San Francisco, CA 94102", id: "4" },
+  { name: "oscarluna", street: "701 London Street", area: "San Francisco, CA", id: "0" },
+  { name: "oscarluna", street: "415 Mission Street", area: "San Francisco, CA 94105", id: "1" },
+  { name: "oscarluna", street: "701 London Street", area: "San Francisco, CA 94112 ", id: "2" },
+  { name: "oscarluna", street: "424 Jones Street", area: "San Francisco, CA 94102", id: "3" },
+  { name: "oscarluna", street: "55 Taylor Street", area: "San Francisco, CA 94102", id: "4" },
 ];
 
 export const carTypeData = [

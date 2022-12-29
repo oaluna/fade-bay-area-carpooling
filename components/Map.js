@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import {
   Image,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
   Dimensions,
@@ -17,10 +16,8 @@ import {
 import MapViewDirections from "react-native-maps-directions";
 // import { GOOGLE_MAP_APIKEY } from '@env'
 import { Icon } from "react-native-elements";
-import Constants from "expo-constants";
-import { colors, theme } from "../global/styles";
-import { mapStyle } from "../global/mapStyle";
-import { carsAround } from "../global/data";
+import { theme } from "../global/styles";
+
 import { useNavigation } from "@react-navigation/native";
 
 const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
@@ -103,14 +100,6 @@ const Map = () => {
       >
         {!!origin && !!destination && (
           <MapViewDirections
-            // origin={{
-            //     latitude: origin?.loaction.lat,
-            //     longitude: origin?.loaction.lng,
-            // }}
-            // destination={{
-            //     latitude: destination?.loaction.lat,
-            //     longitude: destination?.loaction.lng,
-            // }}
             origin={origin.description}
             destination={destination.description}
             mode={"DRIVING"}

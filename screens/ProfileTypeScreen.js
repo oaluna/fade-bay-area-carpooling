@@ -12,6 +12,7 @@ import {
   Pressable,
   Dimensions,
 } from "react-native";
+import Lottie from "lottie-react-native";
 import { colors, theme } from "../global/styles";
 import { LinearGradient } from "expo-linear-gradient";
 const { width, height } = Dimensions.get("screen");
