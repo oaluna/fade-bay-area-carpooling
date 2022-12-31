@@ -21,11 +21,14 @@ const CommuteListingScreen = ({ navigation }) => {
       >
         <View
           style={{
-            width: width,
+            width: width/1.5,
             marginLeft: 15,
-            marginTop: 15,
+            marginVertical : 25,
             marginRight: 0,
+            flexDirection:"row",
             alignItems: "flex-start",
+            alignItems:"center",
+            justifyContent:"space-between"
           }}
         >
           <Icon
@@ -35,7 +38,7 @@ const CommuteListingScreen = ({ navigation }) => {
             size={30}
             style={{
               alignSelf: "flex-start",
-              margin: 15,
+              
               position: "relative",
             }}
             onPress={() => navigation.goBack()}
@@ -43,7 +46,7 @@ const CommuteListingScreen = ({ navigation }) => {
           <Text
             style={[
               styles.header,
-              { color: theme.colors.neutral[0], marginBottom: 25 },
+              { color: theme.colors.neutral[0], marginBottom: 25, alignItems:"center" },
             ]}
           >
             Commute Details
@@ -78,7 +81,7 @@ const CommuteListingScreen = ({ navigation }) => {
               size="medium"
               containerStyle={styles.avatar}
             />
-            <Badge size={20} style={{backgroundColor:theme.colors.green[4], left: -20}}/>
+            <Badge size={12} style={{backgroundColor:theme.colors.green[4], left: -15}}/>
             <Text
               style={{
                 color: theme.colors.neutral[0],

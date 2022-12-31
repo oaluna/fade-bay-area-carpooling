@@ -120,7 +120,7 @@ const SignIn = ({ navigation, openMenu }) => {
             <View style={styles.loginHeader}>
               <Animated.View
                 style={containerAnimatedStyle}
-                entering={FadeInDown.delay(1000)}
+                entering={FadeInDown.easing()}
                 layout={() => handleLoading()}
               >
                 <Image

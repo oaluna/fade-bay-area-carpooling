@@ -4,11 +4,14 @@ import { Provider } from "react-redux";
 import AppNavigator from "./navigation/AppNavigator";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { Provider as PaperProvider } from 'react-native-paper';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider} from '@ui-kitten/components';
 import { BetweenPagesProvider } from "between-pages";
 import { Auth0Provider } from "react-native-auth0";
 
 export default function App() {
   return (
+    <ApplicationProvider {...eva} theme={eva.dark}>
     <Auth0Provider
       domain={"luna-reactdev.auth0.com"}
       clientId={"eyrkBuRYDCERnnGBzeREzL1UF6cTmdZJ"}
@@ -27,5 +30,6 @@ export default function App() {
       </BetweenPagesProvider>
         </Provider>
     </Auth0Provider>
+    </ApplicationProvider>
   );
 }

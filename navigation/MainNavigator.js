@@ -11,6 +11,7 @@ import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import DemoScreen from "../components/demo/DemoScreen";
 import LocationAccessScreen from "../screens/LocationAccessScreen";
+import SplashScreen from "../screens/SplashScreen";
 import RequestScreen from "../screens/RequestScreen";
 import DestinationScreen from "../screens/DestinationScreen";
 import SettingsScreen from "../screens/SettingsScreen";
@@ -21,12 +22,18 @@ const Stack = createStackNavigator();
 const MainNavigator = () => {
   return (
     <Stack.Navigator
+      initialRouteName={"SplashScreen"}
       screenOptions={{
         headerShown: false,
       }}
     >
       <Stack.Screen
-        name="LoginScreen"
+        name={"SplashScreen"}
+        component={SplashScreen}
+        screenOptions={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={"LoginScreen"}
         component={LoginScreen}
         screenOptions={{
           headerShown: false,
