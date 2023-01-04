@@ -9,34 +9,6 @@ import { getStatusBarHeight } from "react-native-status-bar-height";
 // will be 0 on Android, because You pass true to skipAndroid
 //console.log(getStatusBarHeight(true));
 
-export const colors = {
-  buttons: "#000080",
-  grey: "#99aaaa",
-  grey1: "#434843",
-  grey2: "#5e5e5e",
-  grey3: "#898989",
-  grey4: "#bdbdbd",
-  grey5: "#eeeeee",
-  grey6: "#eeeeee",
-  grey7: "#F2f9f9",
-  grey10: "#d6d6d6",
-  cardComment: "#888888",
-  cardBackground: "#dedede",
-  statusbar: "#ff8c52",
-  headerText: "rgba(255, 255, 255, 0.71)",
-  lightgreen: "#4fc8b0",
-  blue: "#2afbff",
-  black: "#1b263b",
-  white: "#F4F2F3",
-  darkBlue: "#213fb2",
-  pageBackground: "rgba(255, 255, 255, 0.71)",
-  snow: "#fffbfc",
-  phlox: "#c04cfd",
-  aqua: "#2afbff",
-  magenta: "#bb2649",
-  darkblue: "#000030",
-};
-
 export const theme = {
   colors: {
     primary: "#08415c",
@@ -120,17 +92,17 @@ export const theme = {
       "#330a14",
     ],
     purple: [
-      "#ddcddf",
-      "#cdb4cf",
-      "#bc9bbf",
-      "#ab83af",
-      "#9a6aa0",
-      "#845889",
-      "#634267",
-      "#543857",
-      "#3c2835",
-      "#241825",
-      "#0c080c",
+      "#f3ecfd",
+      "#e8dafc",
+      "#d1b4f8",
+      "#b98ff5",
+      "#a26af1",
+      "#8338ec",
+      "#741fea",
+      "#6113cd",
+      "#4f10a8",
+      "#3e0c83",
+      "#2c095d",
     ],
     gradientOne: "linear-gradient(91.26deg, #70A2FF 0%, #54F0D1 100%)",
     gradientTwo:

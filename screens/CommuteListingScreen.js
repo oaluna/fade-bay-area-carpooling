@@ -2,7 +2,7 @@ import React from "react";
 import { parameters, theme } from "../global/styles";
 import { View, StyleSheet, Image, Text, Dimensions } from "react-native";
 import { Icon, Avatar } from "react-native-elements";
-import { Badge } from "react-native-paper"
+import { Badge } from "react-native-paper";
 import Screen from "../components/Screen";
 import { LinearGradient } from "expo-linear-gradient";
 import { useDispatch } from "react-redux";
@@ -16,19 +16,19 @@ const CommuteListingScreen = ({ navigation }) => {
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[10], theme.colors.blue[8]]}
+        colors={[theme.colors.blue[9], theme.colors.purple[10]]}
         style={styles.screen}
       >
         <View
           style={{
-            width: width/1.5,
+            width: width / 1.5,
             marginLeft: 15,
-            marginVertical : 25,
+            marginVertical: 25,
             marginRight: 0,
-            flexDirection:"row",
+            flexDirection: "row",
             alignItems: "flex-start",
-            alignItems:"center",
-            justifyContent:"space-between"
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
           <Icon
@@ -38,7 +38,7 @@ const CommuteListingScreen = ({ navigation }) => {
             size={30}
             style={{
               alignSelf: "flex-start",
-              
+
               position: "relative",
             }}
             onPress={() => navigation.goBack()}
@@ -46,7 +46,11 @@ const CommuteListingScreen = ({ navigation }) => {
           <Text
             style={[
               styles.header,
-              { color: theme.colors.neutral[0], marginBottom: 25, alignItems:"center" },
+              {
+                color: theme.colors.neutral[0],
+                marginBottom: 25,
+                alignItems: "center",
+              },
             ]}
           >
             Commute Details
@@ -81,7 +85,10 @@ const CommuteListingScreen = ({ navigation }) => {
               size="medium"
               containerStyle={styles.avatar}
             />
-            <Badge size={12} style={{backgroundColor:theme.colors.green[4], left: -15}}/>
+            <Badge
+              size={12}
+              style={{ backgroundColor: theme.colors.green[4], left: -15 }}
+            />
             <Text
               style={{
                 color: theme.colors.neutral[0],
@@ -108,7 +115,7 @@ const CommuteListingScreen = ({ navigation }) => {
                 flexDirection: "row",
                 alignItems: "center",
                 marginTop: -105,
-                marginLeft: 20
+                marginLeft: 20,
               }}
             >
               <Image
@@ -188,9 +195,21 @@ const CommuteListingScreen = ({ navigation }) => {
               </View>
             </View>
           </View>
-          <View style={{ backgroundColor: theme.colors.blue[8], padding: 5, width: 150, height: 80,left: 180, top: -45, elevation: 2}}>
-            <Text style={{color: theme.colors.neutral[0]}}>Notes from Driver:</Text>
-            <Text style={{color: theme.colors.neutral[3]}}>none</Text>
+          <View
+            style={{
+              backgroundColor: theme.colors.blue[8],
+              padding: 5,
+              width: 150,
+              height: 80,
+              left: 180,
+              top: -45,
+              elevation: 2,
+            }}
+          >
+            <Text style={{ color: theme.colors.neutral[0] }}>
+              Notes from Driver:
+            </Text>
+            <Text style={{ color: theme.colors.neutral[3] }}>none</Text>
           </View>
         </View>
         <Image

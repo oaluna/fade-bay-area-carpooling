@@ -31,14 +31,14 @@ const data = [
     title: "Start A Carpool",
     image:
       "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813319/FadeIcons/icon-pickup_fpnloc.png",
-    link: "SuccessScreen"
+    link: "SuccessScreen",
   },
   {
     id: "1",
     title: "Join A Carpool",
     image:
       "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813321/FadeIcons/icon-carpool_q58kxk.png",
-    link: "EatsScreen"
+    link: "EatsScreen",
   },
 ];
 
@@ -65,18 +65,18 @@ const RideOptionsCard = () => {
   };
 
   return (
-    <Screen style={{marginTop:0, height: 600}}>
+    <Screen style={{ marginTop: 0, height: 600 }}>
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[9], theme.colors.blue[8]]}
+        colors={[theme.colors.blue[9], theme.colors.purple[10]]}
         style={{
           position: "absolute",
           top: 0,
           borderTopLeftRadius: 15,
           borderTopRightRadius: 15,
-    paddingTop: 20,
-         
+          paddingTop: 20,
+
           width: width,
           elevation: 2,
         }}
@@ -123,7 +123,7 @@ const RideOptionsCard = () => {
                   alignItems: "center",
                   justifyContent: "space-between",
                   paddingHorizontal: 5,
-                  backgroundColor: selected?.id === item.id && colors.gray3,
+                  backgroundColor: selected?.id === item.id && theme.colors.neutral[5],
                 }}
                 onPress={() => setSelected(item)}
               >

@@ -19,8 +19,8 @@ const { width, height } = Dimensions.get("screen");
 const DemoScreen = ({ navigation, route }) => {
   return (
     <ImageBackground
-      source={require("../../assets/images/gradient-bg3.png")}
-      style={styles.container}
+      source={require("../../assets/images/gradient.png")}
+      style={[styles.container, { opacity: 0.11}]}
       blurRadius={8}
     >
       {/* slider */}

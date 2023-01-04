@@ -25,7 +25,6 @@ const SuccessScreen = ({ route }) => {
   const origin = useSelector(selectOrigin);
   const navigation = useNavigation();
 
-
   React.useEffect(() => {
     if (!origin) navigation.replace("HomeScreen");
   }, []);
@@ -34,7 +33,7 @@ const SuccessScreen = ({ route }) => {
     <LinearGradient
       start={{ x: 1, y: 0 }}
       end={{ x: 0.5, y: 1 }}
-      colors={[theme.colors.blue[9], theme.colors.blue[8]]}
+      colors={[theme.colors.blue[9], theme.colors.purple[10]]}
       style={{ width: width, height: height }}
     >
       <Screen>
@@ -59,19 +58,10 @@ const SuccessScreen = ({ route }) => {
             <Text style={{ color: theme.colors.neutral[0], fontSize: 24 }}>
               Trip Posted!
             </Text>
-            <Text style={styles.body}>
-              Driver: oscarluna
-            </Text>
-            <Text style={styles.body}>
-              Travel Time: {data?.time}
-            </Text>
-            <Text style={styles.body}>
-              Distance: {data?.distance}
-            </Text>
-            <Text style={styles.body}>
-              Seats Available: 3
-            </Text>
-        
+            <Text style={styles.body}>Driver: oscarluna</Text>
+            <Text style={styles.body}>Travel Time: {data?.time}</Text>
+            <Text style={styles.body}>Distance: {data?.distance}</Text>
+            <Text style={styles.body}>Seats Available: 3</Text>
           </View>
         </View>
       </Screen>
@@ -82,5 +72,5 @@ const SuccessScreen = ({ route }) => {
 export default SuccessScreen;
 
 const styles = StyleSheet.create({
-  body: { fontSize: 20, color: theme.colors.neutral[0] }
+  body: { fontSize: 20, color: theme.colors.neutral[0] },
 });

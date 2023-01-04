@@ -80,78 +80,90 @@ const LocationAccessScreen = ({ navigation, route }) => {
   return (
     <ImageBackground
       source={require("../assets/images/gradient-bg3.png")}
-      blurRadius={8}
+      blurRadius="8"
       style={{
-        width: width,
         height: height,
-
-        position: "absolute",
-        left: 0,
-        top: 0,
-        resizeMode: "cover",
+        width: width,
+        alignSelf: "center",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+        paddingBottom: 40,
       }}
     >
-      <KeyboardAvoidingView style={styles.container}>
-        <Lottie
-          style={styles.image}
-          source={{ uri: "https://assets7.lottiefiles.com/packages/lf20_dsfexraq.json"}} autoPlay loop />
-      
-        <Text style={styles.logoTitle}>
-          In order to use Fade, we will need to access your Location.
-        </Text>
-        <Text style={styles.logoSubTitle}>
-          This ensures that you are matched up with riders closest to your area,
-          and don't go too far out of your way to pick up a rider.
-        </Text>
-        <View
-          style={{ bottom: 0, position: "absolute", bottom: 10, height: 220 }}
-        >
-          {/* x if location is not enabled, check if it is enabled */}
-          {/* Need more logic to onclick give location acess */}
-          <TouchableOpacity
-            style={styles.buttonOpacity}
-            onPress={() => alert("please enable location in device settings")}
-            raised
-            title="RegisterScreen"
+      <LinearGradient
+        start={{ x: 1, y: 0 }}
+        end={{ x: 0.5, y: 1 }}
+        colors={[theme.colors.blue[9], theme.colors.purple[8]]}
+        style={styles.gradient}
+      >
+    
+        <KeyboardAvoidingView style={[styles.container, { zIndex: 2 }]}>
+          <Lottie
+            style={styles.image}
+            source={{
+              uri: "https://assets7.lottiefiles.com/packages/lf20_dsfexraq.json",
+            }}
+            autoPlay
+            loop
+          />
+
+          <Text style={styles.logoTitle}>
+            In order to use Fade, we will need to access your Location.
+          </Text>
+          <Text style={styles.logoSubTitle}>
+            This ensures that you are matched up with riders closest to your
+            area, and don't go too far out of your way to pick up a rider.
+          </Text>
+          <View
+            style={{ bottom: 0, position: "absolute", bottom: 10, height: 220 }}
           >
-            <Text style={styles.buttonTitle}>
-              {location ? (
-                <FontAwesome
-                  name="check-circle"
-                  style={{ marginRight: 10 }}
-                  size={20}
-                  color="#1ba895"
-                />
-              ) : (
-                <AntDesign
-                  name="closecircleo"
-                  style={{ paddingHorizontal: 15 }}
-                  size={20}
-                  color="darkred"
-                />
-              )}
-              Turn off Location Access
-            </Text>
-          </TouchableOpacity>
-          <LinearGradient
-            start={{ x: 0.5, y: 1 }}
-            end={{ x: 0.75, y: 1 }}
-            colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
-            style={styles.button}
-          >
+            {/* x if location is not enabled, check if it is enabled */}
+            {/* Need more logic to onclick give location acess */}
             <TouchableOpacity
-              onPress={() => {
-                getLocationAsync();
-                navigation.navigate("ProfileTypeScreen");
-              }}
+              style={styles.buttonOpacity}
+              onPress={() => alert("please enable location in device settings")}
               raised
-              title="Register"
+              title="RegisterScreen"
             >
-              <Text style={styles.buttonTitle}>Share My Location</Text>
+              <Text style={styles.buttonTitle}>
+                {location ? (
+                  <FontAwesome
+                    name="check-circle"
+                    style={{ marginRight: 10 }}
+                    size={20}
+                    color="#1ba895"
+                  />
+                ) : (
+                  <AntDesign
+                    name="closecircleo"
+                    style={{ paddingHorizontal: 15 }}
+                    size={20}
+                    color="darkred"
+                  />
+                )}
+                Turn off Location Access
+              </Text>
             </TouchableOpacity>
-          </LinearGradient>
-        </View>
-      </KeyboardAvoidingView>
+            <LinearGradient
+              start={{ x: 0.5, y: 1 }}
+              end={{ x: 0.75, y: 1 }}
+              colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
+              style={styles.button}
+            >
+              <TouchableOpacity
+                onPress={() => {
+                  getLocationAsync();
+                  navigation.navigate("ProfileTypeScreen");
+                }}
+                raised
+                title="Register"
+              >
+                <Text style={styles.buttonTitle}>Share My Location</Text>
+              </TouchableOpacity>
+            </LinearGradient>
+          </View>
+        </KeyboardAvoidingView>
+      </LinearGradient>
     </ImageBackground>
   );
 };
@@ -159,10 +171,38 @@ const LocationAccessScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    alignSelf: "center",
+    position: "absolute",
+    right: 0,
+    top: 20,
+    paddingVertical: 0,
+    marginVertical: 0,
+    zIndex: -1,
+  },
+
+  gradient: {
+    position: "absolute",
+    top: -20,
+    right: 0,
+    paddingTop: 0,
+    width: width + 10,
+    height: height + 80,
+    margin: 0,
+    flexDirection: "column",
     alignItems: "center",
-    width: width,
-    height: height,
+    alignSelf: "center",
+    justifyContent: "space-between",
+    zIndex: 0,
+  },
+  imageContainer: {
+    width: width - 30,
+    height: 200,
+    alignSelf: "center",
+    position: "relative",
+    zIndex: 1,
+  },
+  body: {
+    zIndex: 2,
   },
   image: {
     height: 150,

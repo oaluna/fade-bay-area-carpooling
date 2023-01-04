@@ -44,10 +44,10 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
         toInputBoxStyles,
         {
           flex: 1,
-          position:"relative",
-        alignSelf:"center",
-        alignItems:"center",
-        marginTop: -15,
+          position: "relative",
+          alignSelf: "center",
+          alignItems: "center",
+          marginTop: -15,
           elevation: 2,
           width: width,
           padding: 0,
@@ -57,25 +57,24 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[9], theme.colors.blue[8]]}
+        colors={[theme.colors.blue[9], theme.colors.purple[10]]}
         style={{
           width: width,
           height: height,
           borderTopLeftRadius: 15,
           borderTopRightRadius: 15,
           paddingLeft: 20,
-        
         }}
       >
         <Text
           style={{
-            alignSelf:"center",
+            alignSelf: "center",
             textAlign: "left",
             paddingVertical: 20,
             marginTop: 15,
             fontSize: 32,
             fontWeight: "bold",
-            color: colors.white,
+            color: theme.colors.neutral[0],
             width: width,
           }}
         >

@@ -22,17 +22,16 @@ const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 
 const { width, height } = Dimensions.get("screen");
 
+
+
 const HomeScreen = ({ navigation, ...props }) => {
   const dispatch = useDispatch();
   return (
-    <SafeAreaView style={{overflowY:"scroll"}}>
-    
-
-    
+    <SafeAreaView style={{ overflowY: "scroll" }}>
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[10], theme.colors.blue[8]]}
+        colors={[theme.colors.blue[9], theme.colors.purple[10]]}
         style={styles.screen}
       >
         <Image
@@ -86,13 +85,11 @@ const HomeScreen = ({ navigation, ...props }) => {
             }}
             enablePoweredByContainer={true}
           />
-
         </View>
         <NavOptions />
         <NavFavourites />
         <Feed />
       </LinearGradient>
-   
     </SafeAreaView>
   );
 };
@@ -304,5 +301,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.purple[6],
   },
 });
+
+
 
 export default HomeScreen;

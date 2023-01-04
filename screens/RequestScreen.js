@@ -61,7 +61,7 @@ export default function RequestScreen({ navigation, route }) {
             <Icon
               type="material-community"
               name="clock-time-four"
-              color={colors.white}
+              color={theme.colors.neutral[0]}
               size={18}
             />
           </View>
@@ -84,7 +84,7 @@ export default function RequestScreen({ navigation, route }) {
           <Icon
             type="material-community"
             name="arrow-left"
-            color={colors.white}
+            color={theme.colors.neutral[0]}
             size={32}
           />
         </View>
@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingVertical: 10,
     color: theme.colors.neutral[0],
-    borderBottomColor: colors.grey1,
+    borderBottomColor: theme.colors.neutral[3],
     borderBottomWidth: 1,
     paddingHorizontal: 15,
   },
@@ -474,7 +474,7 @@ const styles = StyleSheet.create({
 
   text8: {
     fontSize: 15,
-    color: colors.grey2,
+    color: theme.colors.neutral[3],
     textDecorationLine: "line-through",
   },
 
@@ -489,7 +489,6 @@ const styles = StyleSheet.create({
 
   view23: {
     flexDirection: "row",
-    backgroundColor: colors.cardBackground,
     // elevation:10,
     justifyContent: "space-between",
     alignItems: "flex-end",
@@ -502,10 +501,10 @@ const styles = StyleSheet.create({
     width: 55,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: colors.grey6,
+    backgroundColor: theme.colors.neutral[3],
     marginBottom: 10,
   },
-  text9: { fontSize: 15, color: colors.grey5 },
+  text9: { fontSize: 15, color: theme.colors.neutral[3] },
 
   map: {
     marginVertical: 0,
@@ -550,5 +549,5 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 
-  text10: { color: colors.grey2, paddingLeft: 10 },
+  text10: { color: theme.colors.neutral[3], paddingLeft: 10 },
 });

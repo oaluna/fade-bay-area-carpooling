@@ -26,7 +26,9 @@ export default function DrawerNavigator() {
             <Icon
               type={"material-community"}
               name="home-outline"
-              color={focused ? theme.colors.neutral[0] : colors.grey2}
+              color={
+                focused ? theme.colors.neutral[0] : theme.colors.neutral[3]
+              }
               size={size}
             />
           ),
@@ -43,7 +45,7 @@ export default function DrawerNavigator() {
             <Icon
               type={"material-community"}
               name="cog-outline"
-              color={focused ? "#7cc" : colors.grey2}
+              color={focused ? "#7cc" : theme.colors.neutral[3]}
               size={size}
             />
           ),

@@ -1,319 +1,487 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  Image,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  StatusBar,
+  SafeAreaView,
+  Dimensions,
   ImageBackground,
   StyleSheet,
-  TextInput,
-  Button,
-  SafeAreaView,
-  Pressable,
-  Dimensions,
+  Image,
 } from "react-native";
-import Animated, {
-  useAnimatedStyle,
-  useSharedValue,
-  FadeInDown,
-  Layout,
-} from "react-native-reanimated";
+import Checkbox from "expo-checkbox";
 import { LinearGradient } from "expo-linear-gradient";
-import { Icon } from "react-native-elements";
-import { useAuth0 } from "react-native-auth0";
-import PropTypes from "prop-types";
-import { colors, theme } from "../global/styles";
-import { carsAround } from "../global/data";
-import Spinner from "react-native-loading-spinner-overlay";
+import { theme } from "../global/styles";
+import Icon from "react-native-vector-icons/Feather";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import * as LocalAuthentication from "expo-local-authentication";
 
 const { width, height } = Dimensions.get("screen");
 
-const EyeHidden = () => (
-  <Image
-    source={require("../assets/images/icon-hidden.png")}
-    style={{ resizeMode: "contain", width: 20, height: 20 }}
-  />
-);
+const LoginScreen = ({ navigation }) => {
+  const [isChecked, setChecked] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [isBiometricSupported, setIsBiometricSupported] = React.useState(false);
 
-const EyeVisible = () => (
-  <Image
-    source={require("../assets/images/icon-visible.png")}
-    style={{ resizeMode: "contain", width: 20, height: 20 }}
-  />
-);
+  const ValidateLogin = Yup.object().shape({
+    password: Yup.string()
+      .min(8, "Password must be greater that 8 characters!")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        "Must include, at least one letter, one number and one special character"
+      )
+      .required("Required"),
+    email: Yup.string().email("Invalid email").required("Required"),
+  });
 
-const SignIn = ({ navigation, openMenu }) => {
-  const { authorize, clearSession, user } = useAuth0();
-  const fields = [
-    {
-      id: 0,
-      fieldName: "Email",
-    },
-    {
-      id: 1,
-      fieldName: "Password",
-    },
-  ];
-  const [text, onChangeText] = React.useState("");
-  const [spinner, setSpinner] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
-  const [isHidden, setIsHidden] = React.useState(true);
+  const authenticate = async () => {
+    const auth = LocalAuthentication.authenticateAsync({
+      promptMessage: "Authenticate with Fingerprint",
+      fallbackLabel: "Enter password",
+      cancelLabel: "Cancel",
+      requireConfirmation: false,
+    });
 
-  const offset = useSharedValue(0);
+    auth.then((result) => {
+      setIsAuthenticated(result.success);
 
-  React.useEffect(() => {
-    setLoading(false);
-    return () => setLoading(true);
-  }, [loading]);
-
-  React.useEffect(() => {
-    if (loading === false) {
-      setSpinner(false);
-    }
-  }, [loading]);
-
-  const containerAnimatedStyle = () => {
-    if (loading === false) {
-      LayoutAnimation.easeInOut();
-    }
+      if (result.success) {
+        navigation.navigate("ProfileTypeScreen");
+      }
+    });
   };
 
-  const handleLoading = () => {
-    if (loading === true) {
-      Layout.springify();
-      setLoading(false);
-    } else {
-      setLoading(true);
-    }
-  };
+  useEffect(() => {
+    (async () => {
+      const compatible = await LocalAuthentication.hasHardwareAsync();
+      setIsBiometricSupported(compatible);
+    })();
+  });
 
-  const onLogin = async () => {
-    try {
-      await authorize({ scope: "openid profile email" });
-      navigation.navigate("ProfileTypeScreen");
-    } catch (e) {
-      console.log(e);
-    }
+  const checked = () => {
+    setChecked(false);
   };
-
-  const onLogOut = async () => {
-    try {
-      await clearSession();
-      navigation.navigate("LoginScreen");
-    } catch (e) {
-      console.log("Log out cancelled");
-    }
-  };
-
-  const loggedIn = user !== undefined && user !== null;
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView
+      style={{
+        height: height,
+        width: width,
+        alignSelf: "center",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+        paddingBottom: 75,
+      }}
+    >
       <ImageBackground
         source={require("../assets/images/gradient-bg3.png")}
         style={{
           height: height,
           width: width,
+          alignSelf: "center",
+          alignItems: "center",
+          justifyContent: "space-evenly",
+          paddingBottom: 40,
         }}
       >
-        <View style={styles.loginContainer}>
-          <View style={styles.loginBox}>
-            <View style={styles.loginHeader}>
-              <Animated.View
-                style={containerAnimatedStyle}
-                entering={FadeInDown.easing()}
-                layout={() => handleLoading()}
+        <LinearGradient
+          start={{ x: 1, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          colors={[theme.colors.blue[9], theme.colors.purple[8]]}
+          style={styles.gradient}
+        >
+          <Image
+            source={require("../assets/images/gradient.png")}
+            style={styles.gradient}
+          />
+          <View
+            style={{
+              backgroundColor: "transparent",
+              borderBottomLeftRadius: 100,
+              borderBottomRightRadius: 100,
+              width: width - 30,
+              height: height * 0.8,
+              alignSelf: "center",
+            }}
+          >
+            <View>
+              <View
+                style={{
+                  alignItems: "center",
+                  width: width - 30,
+                  paddingTop: 150,
+                }}
               >
                 <Image
                   source={require("../assets/images/fade-logo-alt.png")}
-                  style={styles.fadeLogo}
-                />
-              </Animated.View>
-            </View>
-            <View id="error-message" style={styles.errorMessage}></View>
-            <SafeAreaView>
-              <View style={{ marginVertical: 15 }}>
-                <Text style={{ color: theme.colors.neutral[0] }}>Email</Text>
-                <TextInput
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  style={styles.input}
-                />
-              </View>
-              <View style={{ marginVertical: 15 }}>
-                <Text style={{ color: theme.colors.blue[0] }}>Password</Text>
-                <TextInput
-                  type="password"
-                  name="password"
-                  placeholder={"Enter your password"}
-                  secureTextEntry={isHidden === true ? true : false}
-                  style={styles.input}
-                />
-                <Pressable
-                  onPress={() =>
-                    isHidden === true ? setIsHidden(false) : setIsHidden(true)
-                  }
                   style={{
-                    position: "absolute",
-                    top: 30,
-                    alignSelf: "flex-end",
-                    right: 25,
+                    rezsizeMode: "cover",
+                    alignSelf: "center",
+                    width: 350,
+                    height: 100,
                   }}
-                >
-                  {isHidden == true ? <EyeHidden /> : <EyeVisible />}
-                </Pressable>
-              </View>
-              <Pressable onPress={() => {}}>
+                />
                 <Text
                   style={{
-                    alignSelf: "flex-end",
-                    color: theme.colors.lightblue[3],
-                    position: "absolute",
-                    top: -20,
-                    textShadowColor: theme.colors.neutral[10],
-                    textShadowOffset: {
-                      width: 0,
-                      height: 1.25,
-                    },
-                    textShadowRadius: 1,
+                    fontSize: 10,
+                    marginTop: 45,
+                    color: theme.colors.neutral[3],
+                    letterSpacing: 0.25,
                   }}
                 >
-                  Forgot your Password?
+                  By Signing in you are agreeing to our
                 </Text>
-              </Pressable>
-              <View style={{ height: 350, justifyContent: "flex-end" }}>
-                <View style={{ marginVertical: 5 }}>
-                  <LinearGradient
-                    start={{ x: 0, y: 1 }}
-                    end={{ x: 1, y: 1 }}
-                    colors={[
-                      theme.colors.lightblue[4],
-                      theme.colors.lightblue[6],
-                    ]}
-                    style={styles.loginBtn}
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginTop: 5,
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontSize: 10,
+                      color: theme.colors.lightblue[5],
+                      letterSpacing: 0.25,
+                      marginBottom: 25,
+                    }}
                   >
-                    <Pressable onPress={() => onLogin()}>
-                      <Text
-                        adjustsFontSizeToFit={true}
+                    Terms and privacy policy
+                  </Text>
+                </View>
+              </View>
+
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  marginTop: 25,
+                  justifyContent: "center",
+                }}
+              >
+                <Text
+                  style={{
+                    textDecorationLine: "underline",
+                    marginRight: 10,
+                    fontWeight: "bold",
+                    fontSize: 18,
+                    color: theme.colors.lightblue[4],
+                  }}
+                >
+                  Login
+                </Text>
+                <Text
+                  style={{ fontSize: 18, color: theme.colors.neutral[3] }}
+                  onPress={() => navigation.navigate("RegisterScreen")}
+                >
+                  Register{" "}
+                </Text>
+              </View>
+              <View style={{ marginTop: 30 }}>
+                <Formik
+                  initialValues={{ email: "", password: "" }}
+                  validateOnMount={true}
+                  validationSchema={ValidateLogin}
+                  onSubmit={(values) =>
+                    navigation.navigate("ProfileTypeScreen")
+                  }
+                >
+                  {({
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    touched,
+                    values,
+                    errors,
+                    isValid,
+                  }) => (
+                    <View>
+                      <View
                         style={{
-                          color: theme.colors.neutral[0],
-                          fontSize: 20,
-                          textAlign: "center",
+                          flexDirection: "row",
+                          borderBottomWidth: 1,
+                          borderBottomColor: theme.colors.neutral[3],
+                          marginBottom: 15,
+                          alignItems: "center",
                         }}
                       >
-                        Log In
-                      </Text>
-                    </Pressable>
-                  </LinearGradient>
-                </View>
+                        <Icon
+                          name="mail"
+                          size={18}
+                          color={theme.colors.neutral[3]}
+                        />
+                        <TextInput
+                          style={{
+                            marginLeft: 10,
+                            color: theme.colors.neutral[0],
+                          }}
+                          onChangeText={handleChange("email")}
+                          onBlur={handleBlur("email")}
+                          value={values.email}
+                          placeholder="Email Address"
+                          placeholderTextColor={theme.colors.neutral[3]}
+                        />
+                      </View>
+                      <View style={{ marginBottom: 15 }}>
+                        {errors.email && touched.email ? (
+                          <Text
+                            style={{ color: theme.colors.red[5], fontSize: 15 }}
+                          >
+                            {errors.email}
+                          </Text>
+                        ) : null}
+                      </View>
+
+                      <View
+                        style={{
+                          flexDirection: "row",
+
+                          borderBottomWidth: 1,
+                          borderBottomColor: theme.colors.neutral[3],
+                          marginBottom: 15,
+                          alignItems: "center",
+                        }}
+                      >
+                        <Icon
+                          name="lock"
+                          size={22}
+                          color={theme.colors.neutral[3]}
+                        />
+                        <TextInput
+                          style={{
+                            marginLeft: 10,
+                            color: theme.colors.neutral[0],
+                          }}
+                          placeholder="Password"
+                          onChangeText={handleChange("password")}
+                          onBlur={handleBlur("password")}
+                          value={values.password}
+                          placeholderTextColor={theme.colors.neutral[3]}
+                          secureTextEntry={true}
+                        />
+                      </View>
+                      <View style={{ marginBottom: 20 }}>
+                        {errors.password && touched.password ? (
+                          <Text
+                            style={{ color: theme.colors.red[5], fontSize: 15 }}
+                          >
+                            {errors.password}
+                          </Text>
+                        ) : null}
+                      </View>
+
+                      <View
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <View
+                          style={{
+                            flexDirection: "row",
+                            marginBottom: 30,
+                            alignItems: "center",
+                          }}
+                        >
+                          <Checkbox
+                            color={theme.colors.lightblue[4]}
+                            value={isChecked}
+                            onValueChange={checked}
+                            style={{ width: 16, height: 16, marginRight: 5 }}
+                          />
+                          <Text
+                            style={{
+                              marginLeft: 5,
+                              color: theme.colors.neutral[3],
+                              fontSize: 12,
+                            }}
+                          >
+                            Remember Password
+                          </Text>
+                        </View>
+
+                        <Text style={{ color: theme.colors.lightblue[3] }}>
+                          Forgot Password
+                        </Text>
+                      </View>
+
+                      <LinearGradient
+                        start={{ x: 0, y: 1 }}
+                        end={{ x: 1, y: 1 }}
+                        colors={[
+                          theme.colors.lightblue[4],
+                          theme.colors.lightblue[6],
+                        ]}
+                        style={{
+                          borderRadius: 15,
+                          height: 50,
+                          justifyContent: "center",
+                          alignItems: "center",
+                          marginBottom: 15,
+                          elevation: 2,
+                        }}
+                      >
+                        <TouchableOpacity onPress={handleSubmit}>
+                          <Text
+                            style={{
+                              color: theme.colors.neutral[0],
+                              fontSize: 20,
+                            }}
+                          >
+                            Login
+                          </Text>
+                        </TouchableOpacity>
+                      </LinearGradient>
+                    </View>
+                  )}
+                </Formik>
+
                 <Text
-                  adjustsFontSizeToFit={true}
                   style={{
-                    color: theme.colors.neutral[0],
-                    textAlign: "center",
+                    alignSelf: "center",
+                    color: theme.colors.neutral[3],
                   }}
                 >
-                  OR
+                  or connect with
                 </Text>
-                <View style={{ marginVertical: 5 }}>
-                  <Pressable
-                    style={styles.signupBtn}
-                    onPress={() => navigation.navigate("RegisterScreen")}
-                  >
-                    <Text
-                      style={{
-                        color: theme.colors.neutral[0],
-                        fontSize: 20,
-                        textAlign: "center",
-                      }}
-                    >
-                      New to Fade? Sign Up
-                    </Text>
-                  </Pressable>
+                <View
+                  style={{
+                    alignSelf: "center",
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    width: width / 2,
+                    marginTop: 10,
+                  }}
+                >
+                  <Ionicons
+                    name="logo-facebook"
+                    size={32}
+                    color={theme.colors.lightblue[5]}
+                  />
+                  <Ionicons
+                    name="logo-instagram"
+                    size={32}
+                    color={theme.colors.neutral[0]}
+                  />
+                  <Ionicons
+                    name="logo-pinterest"
+                    size={32}
+                    color={theme.colors.red[5]}
+                  />
+                  <Ionicons
+                    name="logo-linkedin"
+                    size={32}
+                    color={theme.colors.blue[4]}
+                  />
                 </View>
               </View>
-            </SafeAreaView>
+            </View>
           </View>
-        </View>
-      </ImageBackground>
-    </View>
-  );
-};
 
-SignIn.propTypes = {
-  // required
-  onPress: PropTypes.func.isRequired,
-  onLogOut: PropTypes.func.isRequired,
-  onLogin: PropTypes.func.isRequired,
+          <View
+            style={{
+              alignItems: "center",
+              height: Dimensions.get("window").height * 0.2,
+            }}
+          >
+            {isBiometricSupported ? (
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <TouchableOpacity
+                  onPress={authenticate}
+                  style={{
+                    height: 80,
+                    width: 80,
+                    borderRadius: 10,
+                    borderWidth: 1,
+                    borderColor: theme.colors.neutral[0],
+                    backgroundColor: theme.colors.neutral[3],
+                    elevation: 2,
+                    opacity: 0.5,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Ionicons
+                    name="finger-print-outline"
+                    size={40}
+                    color={theme.colors.neutral[0]}
+                  />
+                </TouchableOpacity>
+
+                <Text style={{ color: theme.colors.neutral[0] }}>Login with touch id</Text>
+              </View>
+            ) : (
+              <View
+                style={{
+                  alignItems: "center",
+                  flex: 1,
+                  justifyContent: "center",
+                }}
+              >
+                <Text style={{ color: theme.colors.neutral[0], fontSize: 20 }}>
+                  Welcome Back!
+                </Text>
+              </View>
+            )}
+          </View>
+        </LinearGradient>
+      </ImageBackground>
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: height,
-    width: width,
     alignSelf: "center",
+    position: "absolute",
+    right: 0,
+    top: 20,
+    paddingVertical: 0,
+    marginVertical: 0,
+    zIndex: -1,
   },
-  loginContainer: {
-    height: height,
+
+  gradient: {
+    position: "absolute",
+    top: -20,
+    right: 0,
+    paddingTop: 0,
+    width: width + 10,
+    height: height + 80,
+    margin: 0,
+    flexDirection: "column",
+    alignItems: "center",
     alignSelf: "center",
+    justifyContent: "space-between",
+    zIndex: 0,
   },
-  fadeLogo: {
-    width: 300,
-    resizeMode: "contain",
+  imageContainer: {
+    width: width - 30,
+    height: 200,
+    alignSelf: "center",
+    position: "relative",
+    zIndex: 1,
   },
-  loginBox: {
-    marginTop: height / 5,
-    marginLeft: 0,
-    backgroundColor: "transparent",
+  body: {
+    zIndex: 3,
+    flex: 1,
+    height: height,
+    width: width + 10,
     alignSelf: "center",
     alignItems: "center",
-    justifyContent: "space-evenly",
-  },
-  loginHeader: {
-    textAlign: "center",
-    bottom: 120,
-    height: 200,
-  },
-
-  input: {
-    width: width - 30,
-    borderColor: theme.colors.neutral[4],
-    height: 50,
-    borderWidth: 2,
-    borderRadius: 15,
-    backgroundColor: theme.colors.neutral[0],
-    color: colors.gray1,
-    padding: 10,
-    marginBottom: 10,
-  },
-  loginBtn: {
-    width: width - 30,
-    height: 50,
-
-    borderRadius: 15,
-
-    elevation: 2,
-    padding: 10,
-    marginTop: -5,
-    marginBottom: 10,
-  },
-  signupBtn: {
-    width: width - 30,
-
-    height: 50,
-    borderRadius: 15,
-    padding: 10,
-    marginTop: 10,
-    marginBottom: 10,
-  },
-  errorMessage: {
-    display: "none",
-    whiteSpace: "break-spaces",
-  },
-  spinnerTextStyle: {
-    color: theme.colors.neutral[0],
+    paddingTop: 120,
+    margin: 0,
+    paddingLeft: 10,
+    justifyContent: "space-between",
+    backgroundColor: "rgba(0,0,0,0.05)",
   },
 });
 
-export default SignIn;
+export default LoginScreen;

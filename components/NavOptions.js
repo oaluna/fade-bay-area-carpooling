@@ -110,7 +110,7 @@ const NavOptions = () => {
               <Icon
                 type="antdesign"
                 name="arrowright"
-                color={colors.blue}
+                color={theme.colors.blue[4]}
                 size={12}
               />
             </View>

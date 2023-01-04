@@ -1,239 +1,552 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+  StatusBar,
+  SafeAreaView,
+  Dimensions,
   Image,
   ImageBackground,
-  StyleSheet,
-  TextInput,
-  Button,
-  SafeAreaView,
-  Pressable,
-  ScrollView,
-  Dimensions,
 } from "react-native";
-import {
-  SharedElement,
-  SharedElementTransition,
-  nodeFromRef,
-} from "react-native-shared-element";
-import FadeLogo from "../assets/images/fade-logo-alt.png";
-
-import { colors, theme } from "../global/styles";
 import { LinearGradient } from "expo-linear-gradient";
-const { height, width } = Dimensions.get("screen");
+import { theme } from "../global/styles";
+import Checkbox from "expo-checkbox";
+
+import Icon from "react-native-vector-icons/Feather";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import * as LocalAuthentication from "expo-local-authentication";
+
+const { width, height } = Dimensions.get("screen");
 
 const RegisterScreen = ({ navigation }) => {
-  const fields = [
-    { id: 0, fieldName: "Full Name" },
-    {
-      id: 2,
-      fieldName: "Phone Number",
-    },
-    {
-      id: 3,
-      fieldName: "Email",
-    },
-    {
-      id: 4,
-      fieldName: "Password",
-    },
-    {
-      id: 5,
-      fieldName: "Confirm Password",
-    },
-  ];
-  const [text, onChangeText] = React.useState("");
+  const [isChecked, setChecked] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [isBiometricSupported, setIsBiometricSupported] = React.useState(false);
+
+  const ValidateLogin = Yup.object().shape({
+    password: Yup.string()
+      .min(8, "Password must be greater than 8 characters!")
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        "Must contain at least one letter, one number and one special character"
+      )
+      .required("Required"),
+    email: Yup.string().email("Invalid email").required("Required"),
+  });
+
+  const authenticate = async () => {
+    const auth = LocalAuthentication.authenticateAsync({
+      promptMessage: "Authenticate with Fingerprint",
+      fallbackLabel: "Enter password",
+      cancelLabel: "Cancel",
+      requireConfirmation: false,
+    });
+
+    auth.then((result) => {
+      setIsAuthenticated(result.success);
+
+      if (result.success) {
+        navigation.navigate("LocationAccessScreen");
+      }
+    });
+  };
+
+  useEffect(() => {
+    (async () => {
+      const compatible = await LocalAuthentication.hasHardwareAsync();
+      setIsBiometricSupported(compatible);
+    })();
+  });
+
+  const checked = () => {
+    setChecked(false);
+  };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView
+      style={{
+        height: height,
+        width: width,
+        alignSelf: "center",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+        paddingBottom: 75,
+      }}
+    >
       <ImageBackground
         source={require("../assets/images/gradient-bg3.png")}
         style={{
           height: height,
           width: width,
+          alignSelf: "center",
+          alignItems: "center",
+          justifyContent: "space-evenly",
+          paddingBottom: 40,
         }}
       >
-        <View style={styles.loginContainer}>
-          <View style={styles.loginBox}>
-            <View
-              style={styles.loginHeader}
-              ref={(ref) => (endAncestor = nodeFromRef(ref))}
-            >
-              <SharedElement onNode={(node) => (endNode = node)}>
+        <LinearGradient
+          start={{ x: 1, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          colors={[theme.colors.blue[9], theme.colors.purple[8]]}
+          style={styles.gradient}
+        >
+          <Image
+            source={require("../assets/images/gradient.png")}
+            style={styles.gradient}
+          />
+          <View
+            style={{
+              backgroundColor: "transparent",
+              borderBottomLeftRadius: 100,
+              borderBottomRightRadius: 100,
+              width: width - 30,
+              height: height * 0.8,
+              alignSelf: "center",
+            }}
+          >
+            <View>
+              <View
+                style={{
+                  alignItems: "center",
+                  width: width - 30,
+                  paddingTop: 150,
+                }}
+              >
                 <Image
                   source={require("../assets/images/fade-logo-alt.png")}
-                  style={styles.fadeLogo}
+                  style={{
+                    rezsizeMode: "cover",
+                    alignSelf: "center",
+                    width: 350,
+                    height: 100,
+                  }}
                 />
-              </SharedElement>
-            </View>
-            <View id="error-message" style={styles.errorMessage}></View>
-            <SafeAreaView>
-              <View style={{ marginVertical: 15 }}>
-                <Text style={{ color: theme.colors.neutral[0] }}>Name</Text>
-                <TextInput
-                  type="text"
-                  name="fullname"
-                  placeholder="Enter your full name"
-                  style={styles.input}
-                />
-              </View>
-
-              <View style={{ marginVertical: 5 }}>
-                <Text style={{ color: theme.colors.neutral[0] }}>
-                  Phone Number
-                </Text>
-                <TextInput
-                  type="phone"
-                  name="phone"
-                  placeholder="Enter your Phone Number"
-                  style={styles.input}
-                />
-              </View>
-              <View style={{ marginVertical: 5 }}>
-                <Text style={{ color: theme.colors.neutral[0] }}>Email</Text>
-                <TextInput
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  style={styles.input}
-                />
-              </View>
-              <View style={{ marginVertical: 5 }}>
-                <Text style={{ color: theme.colors.neutral[0] }}>Password</Text>
-                <TextInput
-                  type="password"
-                  name="password"
-                  placeholder="Enter your password"
-                  secureTextEntry={true}
-                  style={styles.input}
-                />
-              </View>
-              <View style={{ height: 300, justifyContent: "flex-end" }}>
-                <View style={{ marginVertical: 5 }}>
-                  <LinearGradient
-                    start={{ x: 0, y: 1 }}
-                    end={{ x: 1, y: 1 }}
-                    colors={[
-                      theme.colors.lightblue[4],
-                      theme.colors.lightblue[6],
-                    ]}
-                    style={styles.loginBtn}
-                  >
-                    <Pressable
-                      onPress={() => navigation.navigate("DemoScreen")}
-                    >
-                      <Text
-                        style={{
-                          color: theme.colors.neutral[0],
-                          fontSize: 20,
-                          textAlign: "center",
-                        }}
-                      >
-                        Sign Up
-                      </Text>
-                    </Pressable>
-                  </LinearGradient>
-                </View>
                 <Text
                   style={{
-                    color: theme.colors.neutral[0],
-                    textAlign: "center",
+                    fontSize: 10,
+                    marginTop: 45,
+                    color: theme.colors.neutral[3],
+                    letterSpacing: 0.25,
                   }}
                 >
-                  OR
+                  By Signing in you are agreeing to our
                 </Text>
-                <View style={{ marginVertical: 5 }}>
-                  <Pressable
-                    style={styles.signupBtn}
-                    onPress={() => navigation.navigate("LoginScreen")}
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginTop: 5,
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontSize: 10,
+                      color: theme.colors.lightblue[5],
+                      letterSpacing: 0.25,
+                      marginBottom: 20,
+                    }}
                   >
-                    <Text
-                      style={{
-                        color: theme.colors.neutral[0],
-                        fontSize: 20,
-                        textAlign: "center",
-                      }}
-                    >
-                      I'm already a member
-                    </Text>
-                  </Pressable>
+                    Terms and privacy policy
+                  </Text>
                 </View>
               </View>
-            </SafeAreaView>
+
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  marginVertical: 20,
+                  justifyContent: "center",
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 18,
+                    color: theme.colors.neutral[3],
+                  }}
+                  onPress={() => navigation.navigate("LoginScreen")}
+                >
+                  Login
+                </Text>
+                <Text
+                  style={{
+                    textDecorationLine: "underline",
+                    marginLeft: 10,
+                    fontWeight: "bold",
+                    fontSize: 18,
+                    color: theme.colors.lightblue[4],
+                  }}
+                >
+                  Register
+                </Text>
+              </View>
+              <View style={{ marginTop: 0 }}>
+                <Formik
+                  initialValues={{ email: "", password: "" }}
+                  validateOnMount={true}
+                  validationSchema={ValidateLogin}
+                  onSubmit={(values) => navigation.navigate("Home")}
+                >
+                  {({
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    touched,
+                    values,
+                    errors,
+                    isValid,
+                  }) => (
+                    <View>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          borderBottomWidth: 1,
+                          borderBottomColor: theme.colors.neutral[3],
+                          marginBottom: 20,
+                          alignItems: "center",
+                        }}
+                      >
+                        <Icon
+                          name="edit"
+                          size={18}
+                          color={theme.colors.neutral[3]}
+                        />
+                        <TextInput
+                          style={{
+                            marginLeft: 10,
+                            color: theme.colors.neutral[0],
+                          }}
+                          onChangeText={handleChange("name")}
+                          onBlur={handleBlur("name")}
+                          value={values.name}
+                          placeholder="Name (First, Last)"
+                          placeholderTextColor={theme.colors.neutral[3]}
+                        />
+                      </View>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          borderBottomWidth: 1,
+                          borderBottomColor: theme.colors.neutral[3],
+                          marginBottom: 20,
+                          alignItems: "center",
+                        }}
+                      >
+                        <Icon
+                          name="phone"
+                          size={18}
+                          color={theme.colors.neutral[3]}
+                        />
+                        <TextInput
+                          style={{
+                            marginLeft: 10,
+                            color: theme.colors.neutral[0],
+                          }}
+                          onChangeText={handleChange("phone")}
+                          onBlur={handleBlur("phone")}
+                          value={values.phone}
+                          placeholder="Phone Number (xxx) xxx-xxxx"
+                          placeholderTextColor={theme.colors.neutral[3]}
+                        />
+                      </View>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          borderBottomWidth: 1,
+                          borderBottomColor: theme.colors.neutral[3],
+                          marginBottom: 20,
+                          alignItems: "center",
+                        }}
+                      >
+                        <Icon
+                          name="calendar"
+                          size={18}
+                          color={theme.colors.neutral[3]}
+                        />
+                        <TextInput
+                          style={{
+                            marginLeft: 10,
+                            color: theme.colors.neutral[0],
+                          }}
+                          onChangeText={handleChange("dateOfBirth")}
+                          onBlur={handleBlur("dateOfBirth")}
+                          value={values.dateOfBirth}
+                          placeholder="Date Of Birth (MM/DD/YYYY)"
+                          placeholderTextColor={theme.colors.neutral[3]}
+                        />
+                      </View>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          borderBottomWidth: 1,
+                          borderBottomColor: theme.colors.neutral[3],
+                          marginBottom: 0,
+                          alignItems: "center",
+                        }}
+                      >
+                        <Icon
+                          name="mail"
+                          size={18}
+                          color={theme.colors.neutral[3]}
+                        />
+                        <TextInput
+                          style={{ marginLeft: 10 }}
+                          onChangeText={handleChange("email")}
+                          onBlur={handleBlur("email")}
+                          value={values.email}
+                          placeholder="Email Address"
+                          placeholderTextColor={theme.colors.neutral[3]}
+                        />
+                      </View>
+                      <View style={{ marginBottom: 20 }}>
+                        {errors.email && touched.email ? (
+                          <Text style={{ color: "red", fontSize: 15 }}>
+                            {errors.email}
+                          </Text>
+                        ) : null}
+                      </View>
+
+                      <View
+                        style={{
+                          flexDirection: "row",
+
+                          borderBottomWidth: 1,
+                          borderBottomColor: theme.colors.neutral[3],
+                          marginBottom: 5,
+                          alignItems: "center",
+                        }}
+                      >
+                        <Icon
+                          name="lock"
+                          size={22}
+                          color={theme.colors.neutral[3]}
+                        />
+                        <TextInput
+                          style={{ marginLeft: 10 }}
+                          placeholder="Password"
+                          onChangeText={handleChange("password")}
+                          onBlur={handleBlur("password")}
+                          value={values.password}
+                          secureTextEntry={true}
+                          placeholderTextColor={theme.colors.neutral[3]}
+                        />
+                      </View>
+                      <View style={{ marginBottom: 20 }}>
+                        {errors.password && touched.password ? (
+                          <Text style={{ color: "red", fontSize: 15 }}>
+                            {errors.password}
+                          </Text>
+                        ) : null}
+                      </View>
+
+                      <View
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <View
+                          style={{
+                            flexDirection: "row",
+                            marginBottom: 30,
+                            alignItems: "center",
+                          }}
+                        >
+                          <Checkbox value={isChecked} onValueChange={checked} />
+                          <Text
+                            style={{
+                              marginLeft: 5,
+                              color: theme.colors.neutral[3],
+                            }}
+                          >
+                            Remember Password
+                          </Text>
+                        </View>
+
+                        <Text style={{ color: theme.colors.lightblue[5] }}>
+                          Forgot Password
+                        </Text>
+                      </View>
+                      <LinearGradient
+                        start={{ x: 0, y: 1 }}
+                        end={{ x: 1, y: 1 }}
+                        colors={[
+                          theme.colors.lightblue[4],
+                          theme.colors.lightblue[6],
+                        ]}
+                        style={{
+                          borderRadius: 15,
+                          height: 50,
+                          justifyContent: "center",
+                          alignItems: "center",
+                          marginBottom: 15,
+                          elevation: 2,
+                        }}
+                      >
+                        <TouchableOpacity onPress={handleSubmit}>
+                          <Text
+                            style={{
+                              fontSize: 20,
+                              color: theme.colors.neutral[0],
+                            }}
+                          >
+                            Register
+                          </Text>
+                        </TouchableOpacity>
+                      </LinearGradient>
+                    </View>
+                  )}
+                </Formik>
+
+                <Text
+                  style={{
+                    alignSelf: "center",
+                    fontSize: 12,
+                    color: theme.colors.neutral[3],
+                  }}
+                >
+                  or connect with
+                </Text>
+                <View
+                  style={{
+                    alignSelf: "center",
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    marginBottom: 10,
+                    marginTop: 10,
+                    width: width / 2,
+                  }}
+                >
+                  <Ionicons
+                    name="logo-facebook"
+                    size={24}
+                    color={theme.colors.lightblue[5]}
+                  />
+                  <Ionicons
+                    name="logo-instagram"
+                    size={24}
+                    color={theme.colors.neutral[0]}
+                  />
+                  <Ionicons
+                    name="logo-pinterest"
+                    size={24}
+                    color={theme.colors.red[5]}
+                  />
+                  <Ionicons
+                    name="logo-linkedin"
+                    size={24}
+                    color={theme.colors.blue[6]}
+                  />
+                </View>
+              </View>
+            </View>
           </View>
-        </View>
+
+          <View
+            style={{
+              alignItems: "center",
+              height: height * 0.2,
+              marginTop: 5,
+            }}
+          >
+            {isBiometricSupported ? (
+              <View style={{ justifyContent: "center", alignItems: "center" }}>
+                <TouchableOpacity
+                  onPress={authenticate}
+                  style={{
+                    height: 80,
+                    width: 80,
+                    borderRadius: 10,
+                    borderWidth: 1,
+                    borderColor: theme.colors.neutral[0],
+                    backgroundColor: theme.colors.neutral[3],
+                    elevation: 2,
+                    opacity: 0.5,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Ionicons
+                    name="finger-print-outline"
+                    size={40}
+                    color="white"
+                  />
+                </TouchableOpacity>
+
+                <Text style={{ color: "white" }}>Login with touch id</Text>
+              </View>
+            ) : (
+              <View
+                style={{
+                  alignItems: "center",
+                  flex: 1,
+                  justifyContent: "center",
+                }}
+              >
+                <Text style={{ color: "white", fontSize: 20 }}>
+                  Welcome Back!
+                </Text>
+              </View>
+            )}
+          </View>
+        </LinearGradient>
       </ImageBackground>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: height,
-    width: width,
     alignSelf: "center",
+    position: "absolute",
+    right: 0,
+    top: 20,
+    paddingVertical: 0,
+    marginVertical: 0,
+    zIndex: -1,
   },
-  loginContainer: {
-    height: height,
+
+  gradient: {
+    position: "absolute",
+    top: -20,
+    right: 0,
+    paddingTop: 0,
+    width: width + 10,
+    height: height + 80,
+    margin: 0,
+    flexDirection: "column",
+    alignItems: "center",
     alignSelf: "center",
+    justifyContent: "space-between",
+    zIndex: 0,
   },
-  fadeLogo: {
-    width: 300,
-    resizeMode: "contain",
+  imageContainer: {
+    width: width - 30,
+    height: 200,
+    alignSelf: "center",
+    position: "relative",
+    zIndex: 1,
   },
-  loginBox: {
-    marginTop: height / 5,
-    marginLeft: 0,
-    backgroundColor: "transparent",
+  body: {
+    zIndex: 3,
+    flex: 1,
+    height: height,
+    width: width + 10,
     alignSelf: "center",
     alignItems: "center",
-    justifyContent: "space-evenly",
-  },
-  loginHeader: {
-    textAlign: "center",
-    bottom: 120,
-    height: 100,
-  },
-  loginHeaderImg: {
-    width: 75,
-  },
-  input: {
-    width: width - 30,
-    borderColor: theme.colors.neutral[4],
-    height: 50,
-    borderWidth: 2,
-    borderRadius: 15,
-    backgroundColor: theme.colors.neutral[0],
-    color: theme.colors.neutral[10],
-    padding: 10,
-    marginBottom: 10,
-  },
-  loginBtn: {
-    width: width - 30,
-    height: 50,
-
-    borderRadius: 15,
-
-    elevation: 2,
-    padding: 10,
-    marginTop: 15,
-    marginBottom: 10,
-  },
-  signupBtn: {
-    width: width - 30,
-
-    height: 50,
-
-    borderRadius: 15,
-    padding: 10,
-    marginTop: 10,
-    marginBottom: 10,
-  },
-  errorMessage: {
-    display: "none",
-    whiteSpace: "break-spaces",
+    paddingTop: 120,
+    margin: 0,
+    paddingLeft: 10,
+    justifyContent: "space-between",
+    backgroundColor: "rgba(0,0,0,0.05)",
   },
 });
 

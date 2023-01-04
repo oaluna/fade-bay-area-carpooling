@@ -31,7 +31,7 @@ const DestinationScreen = ({ data, navigation }) => {
           <Icon
             type="material-community"
             name="arrow-left"
-            color={colors.grey1}
+            color={theme.colors.neutral[3]}
             size={32}
             onPress={() => navigation.goBack()}
           />
@@ -49,7 +49,7 @@ const DestinationScreen = ({ data, navigation }) => {
               <Icon
                 type="material-community"
                 name="chevron-down"
-                color={colors.grey1}
+                color={theme.colors.neutral[3]}
                 size={26}
               />
             </View>
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
 
 const autoComplete = {
   textInput: {
-    backgroundColor: colors.grey6,
+    backgroundColor: theme.colors.neutral[5],
     height: 50,
     borderRadius: 5,
     paddingVertical: 5,
