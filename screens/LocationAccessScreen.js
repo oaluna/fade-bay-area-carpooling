@@ -80,7 +80,7 @@ const LocationAccessScreen = ({ navigation, route }) => {
   return (
     <ImageBackground
       source={require("../assets/images/gradient-bg3.png")}
-      blurRadius="8"
+     
       style={{
         height: height,
         width: width,
@@ -93,10 +93,9 @@ const LocationAccessScreen = ({ navigation, route }) => {
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[9], theme.colors.purple[8]]}
+        colors={[theme.colors.blue[10], theme.colors.blue[8]]}
         style={styles.gradient}
       >
-    
         <KeyboardAvoidingView style={[styles.container, { zIndex: 2 }]}>
           <Lottie
             style={styles.image}
@@ -115,7 +114,7 @@ const LocationAccessScreen = ({ navigation, route }) => {
             area, and don't go too far out of your way to pick up a rider.
           </Text>
           <View
-            style={{ bottom: 0, position: "absolute", bottom: 10, height: 220 }}
+            style={{ bottom: 0, position: "absolute", bottom: 10, height: 180 }}
           >
             {/* x if location is not enabled, check if it is enabled */}
             {/* Need more logic to onclick give location acess */}
@@ -172,8 +171,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: "center",
+    alignItems:"center",
     position: "absolute",
-    right: 0,
+height: height,
     top: 20,
     paddingVertical: 0,
     marginVertical: 0,
@@ -181,12 +181,10 @@ const styles = StyleSheet.create({
   },
 
   gradient: {
-    position: "absolute",
-    top: -20,
-    right: 0,
+    
     paddingTop: 0,
-    width: width + 10,
-    height: height + 80,
+    width: width,
+    height: height,
     margin: 0,
     flexDirection: "column",
     alignItems: "center",
@@ -229,7 +227,7 @@ const styles = StyleSheet.create({
   button: {
     marginLeft: 30,
     marginRight: 30,
-    marginTop: 40,
+    marginTop:0,
     height: 50,
     width: 350,
     borderRadius: 15,

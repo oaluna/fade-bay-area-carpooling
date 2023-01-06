@@ -15,7 +15,7 @@ export const filterData = [
     name: "Scheduled Rides",
     image: require("../assets/images/icon-calendar.png"),
     id: "2",
-    onPress: "HomeScreen",
+    onPress: "ScheduleScreen",
   },
   {
     name: "Subscribed Rides",

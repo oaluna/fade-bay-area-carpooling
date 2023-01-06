@@ -22,8 +22,6 @@ const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 
 const { width, height } = Dimensions.get("screen");
 
-
-
 const HomeScreen = ({ navigation, ...props }) => {
   const dispatch = useDispatch();
   return (
@@ -31,7 +29,7 @@ const HomeScreen = ({ navigation, ...props }) => {
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[9], theme.colors.purple[10]]}
+        colors={[theme.colors.blue[10], theme.colors.blue[8]]}
         style={styles.screen}
       >
         <Image
@@ -94,9 +92,7 @@ const HomeScreen = ({ navigation, ...props }) => {
   );
 };
 
-const HomeScreenContainer = () => {
-  const { startTransition } = useBetweenPages(<HomeScreen />);
-};
+
 
 const styles = StyleSheet.create({
   screen: {
@@ -301,7 +297,5 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.purple[6],
   },
 });
-
-
 
 export default HomeScreen;

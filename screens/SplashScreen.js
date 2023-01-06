@@ -31,17 +31,17 @@ const SplashScreen = ({ navigation }) => {
     {
       id: 1,
       image: "https://assets3.lottiefiles.com/packages/lf20_bo8vqwyw.json",
-      text: "Fade encourages users to carpool more connecting coworkers and providing a platform to organize carpools. How do we do that, exactly?",
+      text: "Fade encourages users to carpool more by connecting coworkers and providing a platform to organize carpools. How do we do that, exactly?",
     },
     {
       id: 2,
       image: "https://assets3.lottiefiles.com/packages/lf20_qdkbuiyx.json",
-      text: "If you are driving, you can post your travel schedule and the number of seats available in your vehicle. If you are a passenger, you can enter your travel details and find the closest match.",
+      text: "If you are driving, you can post your travel schedule and the number of seats available in your vehicle. If you are a passenger, you can enter your travel details and we will find you the closest match.",
     },
     {
       id: 3,
       image: "https://assets5.lottiefiles.com/packages/lf20_ndLURGQdmU.json",
-      text: "Once matched, you can opt to subscribe to this route and join your Fade driver every day they are making this trip. Hello, carpool lane!",
+      text: "Once matched, you can opt to subscribe to your driver's route and join your Fade driver every day they are making this trip. Hello, carpool lane!",
     },
     {
       id: 4,
@@ -50,18 +50,28 @@ const SplashScreen = ({ navigation }) => {
     },
   ]);
 
+  React.useEffect(() => {
+    if(animationRef.current && currentStep !== steps){
+      return animationRef.current.play();
+    }
+  }, [currentStep]);
+
   const nextStep = () => {
     setCurrentStep(currentStep >= 4 ? 4 : currentStep + 1);
+    
   };
 
-  const prevStep = () => setCurrentStep(currentStep <= 0 ? 0 : currentStep - 1);
+  const prevStep = () =>{
+     setCurrentStep(currentStep <= 0 ? 0 : currentStep - 1)
+ 
+    };
 
   return (
     <View style={styles.container}>
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[9], theme.colors.purple[8]]}
+        colors={[theme.colors.blue[10], theme.colors.blue[8]]}
         style={styles.gradient}
       >
         <Image
@@ -89,9 +99,11 @@ const SplashScreen = ({ navigation }) => {
                 position: "relative",
                 marginTop: -30,
               }}
+              ref={animationRef}
               autoPlay={true}
               loop={true}
               hardwareAccelerationAndroid={true}
+              cacheComposition={true}
             />
           </View>
           <View>
@@ -135,7 +147,7 @@ const SplashScreen = ({ navigation }) => {
               <View></View>
             )}
           </View>
-          <View>
+          <View style={{alignSelf:"center", width: width, height: 100}}>
             {currentStep <= 4 ? (
               <LinearGradient
                 start={{ x: 0, y: 1 }}
@@ -144,12 +156,7 @@ const SplashScreen = ({ navigation }) => {
                 style={[styles.button]}
               >
                 <TouchableOpacity
-                  style={[
-                    styles.button,
-                    {
-                      backgroundColor: theme.colors.lightblue[4],
-                    },
-                  ]}
+                  
                   onPress={
                     currentStep < 4
                       ? nextStep
@@ -165,7 +172,7 @@ const SplashScreen = ({ navigation }) => {
               <View></View>
             )}
           </View>
-          <View></View>
+          <View style={{width: width, height: height + 50, backgroundColor: "rgba(0,0,0,0.25)", position:"absolute", top: 0, right: 0, zIndex: 0}}></View>
         </View>
       </LinearGradient>
     </View>
@@ -183,9 +190,8 @@ const styles = StyleSheet.create({
     top: 20,
     paddingVertical: 0,
     marginVertical: 0,
-    zIndex: -1,
+    zIndex: 0
   },
-
   gradient: {
     position: "absolute",
     top: -20,
@@ -239,7 +245,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     alignItems: "center",
     alignSelf: "center",
-    marginVertical: 15,
+    marginBottom: 80,
     paddingVertical: 15,
     justifyContent: "center",
   },

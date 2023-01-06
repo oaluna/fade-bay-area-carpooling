@@ -20,7 +20,10 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCalendarsUsageDescription": "This app needs access to your calendar to set reminders."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -31,7 +34,10 @@
           "apiKey": "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk"
         }
       },
-      "package": "com.oscarlunadotdev.FadeApp"
+      "package": "com.oscarlunadotdev.FadeApp",
+      "permissions": [
+        "READ_CALENDAR", "WRITE_CALENDAR"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -46,3 +52,5 @@
     ]
   }
 }
+
+

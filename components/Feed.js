@@ -83,7 +83,7 @@ const data = [
   },
 ];
 
-const CardContainer = ({navigation, ...props}) => {
+const CardContainer = ({ navigation, ...props }) => {
   // const {
   //   username,
   //   width,
@@ -167,13 +167,28 @@ const CardContainer = ({navigation, ...props}) => {
       data={data}
       keyExtractor={(item) => item.id}
       renderItem={(item) => (
-        <View style={container(width, height, borderRadius, backgroundColor)}>
+        <View style={[container(width, height, borderRadius, backgroundColor), { elevation: 2}]}>
           <ImageContainer {...props} />
-        <Avatar source={require("../assets/images/oscarluna.png")} rounded size="medium" containerStyle={styles.avatar}/>
+          <Avatar
+            source={require("../assets/images/oscarluna.png")}
+            rounded
+            size="medium"
+            containerStyle={styles.avatar}
+          />
           <View style={styles.contentContainer}>
             <Text style={titleStyle(titleColor)}>{props.username}</Text>
             <Text style={subtitleStyle(subtitleColor)}>{props.type}</Text>
-            {props.type === "Driver" ? <Image source={require("../assets/images/icon-driver.png")} style={styles.icon}/> : <Image source={require("../assets/images/icon-traveler.png")} style={styles.icon} />}
+            {props.type === "Driver" ? (
+              <Image
+                source={require("../assets/images/icon-driver.png")}
+                style={styles.icon}
+              />
+            ) : (
+              <Image
+                source={require("../assets/images/icon-traveler.png")}
+                style={styles.icon}
+              />
+            )}
             {renderStarReview()}
             <View style={styles.footerContainer}>
               <View style={styles.leftSideContainer}>
@@ -211,7 +226,7 @@ const ImagedCardView = (props) => {
       data={data}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-        <TouchableOpacity onPress={onPress} style={styles.imagedCardView} >
+        <TouchableOpacity onPress={onPress} style={styles.imagedCardView}>
           <CardContainer {...props} />
         </TouchableOpacity>
       )}
@@ -234,7 +249,6 @@ const NavOptions = () => {
             textAlign: "center",
             marginVertical: 45,
             marginLeft: 48,
-          
           }}
         >
           Join A Carpool
@@ -361,7 +375,7 @@ CardContainer.defaultProps = {
   rightSideValue: "3",
   rightSideTitle: "Seats",
   subtitleColor: "#dbdbdb",
-  backgroundColor: "#0a96ea",
+  backgroundColor: `${theme.colors.blue[8]}`,
   leftSideValueColor: "white",
   rightSideValueColor: "white",
 };
@@ -425,19 +439,19 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     resizeMode: "cover",
     display: "flex",
-    flexDirection:"row",
+    flexDirection: "row",
     justifyContent: "flex-start",
     marginLeft: 60,
     marginTop: 15,
-    backgroundColor:theme.colors.neutral[5]
+    backgroundColor: theme.colors.neutral[5],
   },
   icon: {
     resizeMode: "contain",
     width: 12,
     height: 12,
-    flexDirection:"row",
+    flexDirection: "row",
     marginLeft: 40,
-    marginTop: -12
+    marginTop: -12,
   },
   text: {
     color: theme.colors.neutral[0],
@@ -454,7 +468,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "flex-start",
     marginTop: 0,
- 
   },
   starReviewStyle: {
     marginTop: 16,

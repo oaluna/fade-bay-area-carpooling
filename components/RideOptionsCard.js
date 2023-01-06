@@ -69,7 +69,7 @@ const RideOptionsCard = () => {
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[9], theme.colors.purple[10]]}
+        colors={[theme.colors.blue[10], theme.colors.blue[8]]}
         style={{
           position: "absolute",
           top: 0,
@@ -123,7 +123,8 @@ const RideOptionsCard = () => {
                   alignItems: "center",
                   justifyContent: "space-between",
                   paddingHorizontal: 5,
-                  backgroundColor: selected?.id === item.id && theme.colors.neutral[5],
+                  backgroundColor:
+                    selected?.id === item.id && theme.colors.neutral[5],
                 }}
                 onPress={() => setSelected(item)}
               >

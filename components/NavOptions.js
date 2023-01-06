@@ -56,7 +56,7 @@ const data = [
     title: "Scheduled Carpools",
     image:
       "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813321/FadeIcons/icon-calendar_lrywil.png",
-    screen: "CommuteListingScreen",
+    screen: "ScheduleScreen",
   },
   {
     id: "3",
@@ -94,32 +94,42 @@ const NavOptions = () => {
 
   return (
     <KeyboardAvoidingView>
-    <FlatList
-      data={data}
-      renderItem={({ item }) => (
-        <TouchableOpacity
-          onPress={() => navigation.push(item.screen)}
-          disabled={!origin}
-          style={styles.card}
-
-        >
-          <View>
-            <Image source={{ uri: item.image }} style={styles.image} />
-            <View style={styles.cardText}>
-              <Text style={styles.text}>{item.title}</Text>
-              <Icon
-                type="antdesign"
-                name="arrowright"
-                color={theme.colors.blue[4]}
-                size={12}
+      <FlatList
+        data={data}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() => navigation.push(item.screen)}
+            disabled={!origin && item.id === "0"}
+            style={
+              !origin && item.id === "0"
+                ? [styles.card, { backgroundColor: theme.colors.neutral[8] }]
+                : styles.card
+            }
+          >
+            <View>
+              <Image
+                source={
+                  !origin && item.id === "0"
+                    ? require("../assets/images/close.png")
+                    : { uri: item.image }
+                }
+                style={styles.image}
               />
+              <View style={styles.cardText}>
+                <Text style={styles.text}>{item.title}</Text>
+                <Icon
+                  type="antdesign"
+                  name="arrowright"
+                  color={theme.colors.blue[4]}
+                  size={12}
+                />
+              </View>
             </View>
-          </View>
-        </TouchableOpacity>
-      )}
-      keyExtractor={(item) => item.id.toString()}
-      horizontal
-    />
+          </TouchableOpacity>
+        )}
+        keyExtractor={(item) => item.id.toString()}
+        horizontal
+      />
     </KeyboardAvoidingView>
   );
 };
@@ -132,12 +142,12 @@ const styles = StyleSheet.create({
     position: "relative",
     marginTop: 25,
     marginRight: 10,
-    marginVertical:75,
+    marginVertical: 75,
     padding: 10,
     height: 145,
     width: 100,
     borderRadius: 15,
-    zIndex: 20
+    zIndex: 20,
   },
   image: {
     width: 84,

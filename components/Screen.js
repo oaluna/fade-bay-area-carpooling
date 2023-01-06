@@ -12,7 +12,7 @@ export default function Screen({ children, style }) {
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[9], theme.colors.purple[10]]}
+        colors={[theme.colors.blue[10], theme.colors.blue[8]]}
         style={{ width: width, height: height }}
       >
         <View style={[styles.view, style]}>{children}</View>

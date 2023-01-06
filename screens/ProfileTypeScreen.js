@@ -17,6 +17,10 @@ import { colors, theme } from "../global/styles";
 import { LinearGradient } from "expo-linear-gradient";
 const { width, height } = Dimensions.get("screen");
 
+export const CameraIcon = () => (
+  <Icon {...style} name='camera'/>
+);
+
 const ProfileTypeScreen = ({ navigation }) => {
   const [isEnabled, setIsEnabled] = React.useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
@@ -36,10 +40,9 @@ const ProfileTypeScreen = ({ navigation }) => {
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[9], theme.colors.purple[8]]}
+        colors={[theme.colors.blue[10], theme.colors.blue[8]]}
         style={styles.gradient}
       >
-       
         <View
           style={{ marginTop: 100, paddingHorizontal: 15, alignSelf: "center" }}
         >
