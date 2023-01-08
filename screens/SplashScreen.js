@@ -5,13 +5,15 @@ import {
   ImageBackground,
   View,
   Dimensions,
+  Pressable,
   Animated,
   LayoutAnimationConfig,
   TouchableOpacity,
 } from "react-native";
+import React from "react";
 import { useInterval } from "../components/demo/useInterval";
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import Carousel from "react-native-intro-carousel";
 import Lottie from "lottie-react-native";
 import { theme } from "../global/styles";
 
@@ -22,7 +24,7 @@ const SplashScreen = ({ navigation }) => {
   const animationRef = React.useRef();
 
   const [currentStep, setCurrentStep] = React.useState(0);
-  const [steps, setSteps] = React.useState([
+  const [slideData, setSlideData] = React.useState([
     {
       id: 0,
       image: "https://assets8.lottiefiles.com/private_files/lf30_hhb5tl1k.json",
@@ -51,20 +53,20 @@ const SplashScreen = ({ navigation }) => {
   ]);
 
   React.useEffect(() => {
-    if(animationRef.current && currentStep !== steps){
-      return animationRef.current.play();
+    if (animationRef.current && currentStep !== steps) {
+      animationRef.current.play();
     }
-  }, [currentStep]);
+  }, [slideData]);
 
   const nextStep = () => {
+    animationRef.current.play();
     setCurrentStep(currentStep >= 4 ? 4 : currentStep + 1);
-    
   };
 
-  const prevStep = () =>{
-     setCurrentStep(currentStep <= 0 ? 0 : currentStep - 1)
- 
-    };
+  const prevStep = () => {
+    animationRef.current.play();
+    setCurrentStep(currentStep <= 0 ? 0 : currentStep - 1);
+  };
 
   return (
     <View style={styles.container}>
@@ -88,8 +90,9 @@ const SplashScreen = ({ navigation }) => {
               alignSelf: "center",
             }}
           />
-          <View style={styles.imageContainer}>
+          {/* <View style={styles.imageContainer}>
             <Lottie
+            id={steps}
               source={{ uri: steps[currentStep].image }}
               backgroundColor={"transparent"}
               style={{
@@ -102,8 +105,7 @@ const SplashScreen = ({ navigation }) => {
               ref={animationRef}
               autoPlay={true}
               loop={true}
-              hardwareAccelerationAndroid={true}
-              cacheComposition={true}
+imageAssetsFolder={'../assets/lottie-files'}              
             />
           </View>
           <View>
@@ -147,7 +149,7 @@ const SplashScreen = ({ navigation }) => {
               <View></View>
             )}
           </View>
-          <View style={{alignSelf:"center", width: width, height: 100}}>
+          <View style={{ alignSelf: "center", width: width, height: 100 }}>
             {currentStep <= 4 ? (
               <LinearGradient
                 start={{ x: 0, y: 1 }}
@@ -156,7 +158,6 @@ const SplashScreen = ({ navigation }) => {
                 style={[styles.button]}
               >
                 <TouchableOpacity
-                  
                   onPress={
                     currentStep < 4
                       ? nextStep
@@ -172,7 +173,58 @@ const SplashScreen = ({ navigation }) => {
               <View></View>
             )}
           </View>
-          <View style={{width: width, height: height + 50, backgroundColor: "rgba(0,0,0,0.25)", position:"absolute", top: 0, right: 0, zIndex: 0}}></View>
+          <View
+            style={{
+              width: width,
+              height: height + 50,
+              backgroundColor: "rgba(0,0,0,0.25)",
+              position: "absolute",
+              top: 0,
+              right: 0,
+              zIndex: 0,
+            }}
+          ></View> */}
+          <Carousel
+            data={slideData}
+            buttonsConfig={{
+              disabled: true,
+            }}
+            renderItem={({ item, index }, goToSlide) => (
+              <View style={styles.content}>
+                <Lottie
+                  source={{ uri: item.image }}
+                  style={styles.image}
+                  autoPlay
+                  loop
+                />
+                <Text style={styles.text}>{item.text}</Text>
+                <View style={styles.buttonsContainer}>
+                  <Pressable
+                    style={[styles.button, { backgroundColor: index === 0 ? theme.colors.neutral[8] : theme.colors.neutral[4]}]}
+                    onPress={() => goToSlide(index - 1)}
+                  >
+                    <Text style={{color:theme.colors.neutral[0]}}>Previous</Text>
+                  </Pressable>
+                  {index === 4 ? 
+                    (
+                    <Pressable
+                    style={[styles.button, {backgroundColor: theme.colors.lightblue[3]}]}
+                    onPress={() => navigation.navigate("LoginScreen")}
+                  >
+                    <Text>Continue</Text>
+                  </Pressable> 
+                  ) :
+                  (
+                    <Pressable
+                    style={[styles.button, {backgroundColor: theme.colors.lightblue[3]}]}
+                    onPress={() =>   goToSlide(index + 1)}
+                  >
+                    <Text>Next</Text>
+                  </Pressable>)}
+                </View>
+              </View>
+            )}
+          />
         </View>
       </LinearGradient>
     </View>
@@ -190,7 +242,7 @@ const styles = StyleSheet.create({
     top: 20,
     paddingVertical: 0,
     marginVertical: 0,
-    zIndex: 0
+    zIndex: 0,
   },
   gradient: {
     position: "absolute",
@@ -204,14 +256,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     justifyContent: "space-between",
-  
+
     zIndex: 0,
   },
+  image: {
+   
+    resizeMode: "contain",
+    height: 350,
+    position: "relative",
+    marginTop: -30,
+  },  
   imageContainer: {
     width: width - 30,
-    height: 200,
+    height: 100,
     alignSelf: "center",
     position: "relative",
+    marginTop: 0,
     zIndex: 1,
   },
   body: {
@@ -235,17 +295,19 @@ const styles = StyleSheet.create({
     width: width,
     zIndex: 1,
     position: "relative",
+    height: 180
   },
   button: {
     width: width - 30,
     zIndex: 1,
     position: "relative",
     height: 50,
+    backgroundColor: theme.colors.neutral[3],
     borderRadius: 15,
     textAlign: "center",
     alignItems: "center",
     alignSelf: "center",
-    marginBottom: 80,
+    marginBottom: 20,
     paddingVertical: 15,
     justifyContent: "center",
   },

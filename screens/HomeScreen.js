@@ -92,8 +92,6 @@ const HomeScreen = ({ navigation, ...props }) => {
   );
 };
 
-
-
 const styles = StyleSheet.create({
   screen: {
     position: "absolute",
@@ -234,7 +232,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     height: 64,
-    backgroundColor: "rgba(155,155,155,0.25)",
+    backgroundColor: "rgba( 200,200,200,0.25)",
     padding: 15,
     marginVertical: 5,
     justifyContent: "space-between",
