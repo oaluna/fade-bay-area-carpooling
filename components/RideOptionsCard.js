@@ -65,7 +65,7 @@ const RideOptionsCard = () => {
   };
 
   return (
-    <Screen style={{ marginTop: 0, height: 600 }}>
+    <Screen style={{ marginTop: 0, height: height / 2 }}>
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}

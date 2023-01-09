@@ -25,19 +25,22 @@ const { width, height } = Dimensions.get("screen");
 const HomeScreen = ({ navigation, ...props }) => {
   const dispatch = useDispatch();
   return (
-    <SafeAreaView style={{ overflowY: "scroll" }}>
+    <SafeAreaView style={styles.screen}>
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
         colors={[theme.colors.blue[10], theme.colors.blue[8]]}
-        style={styles.screen}
+        style={styles.container}
       >
         <Image
           source={require("../assets/images/fade-logo.png")}
           style={styles.logo}
         />
-
-        <View style={{ backgroundColor: "transparent" }}>
+        <View style={{ 
+          backgroundColor: "transparent", 
+          alignSelf:"flex-start",
+          paddingLeft: 15
+        }}>
           <Text style={styles.text1}>
             Welcome, {props.isEnabled === true ? "Driver" : "Rider"}!
           </Text>
@@ -69,7 +72,6 @@ const HomeScreen = ({ navigation, ...props }) => {
             styles={{
               container: {
                 flex: 0,
-
                 width: width - 30,
               },
               textInput: {
@@ -84,20 +86,26 @@ const HomeScreen = ({ navigation, ...props }) => {
             enablePoweredByContainer={true}
           />
         </View>
-        <NavOptions />
-        <NavFavourites />
-        <Feed />
+        <View>
+          <NavFavourites />
+        </View>
+        <View style={{ height: 400, paddingVertical: 20, overflowY: "scroll" }}>
+          <Feed />
+        </View>
+        <View>
+          <NavOptions />
+        </View>
       </LinearGradient>
     </SafeAreaView>
   );
 };
 
-
-
 const styles = StyleSheet.create({
   screen: {
     position: "absolute",
-    paddingLeft: 15,
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "space-evenly",
     width: width,
     height: height,
   },
@@ -105,8 +113,10 @@ const styles = StyleSheet.create({
     height: 50,
     width: 100,
     resizeMode: "contain",
-    marginTop: 40,
+    marginTop: 0,
     marginBottom: 0,
+    padding: 15,
+    alignSelf:"flex-start"
   },
   text1: {
     color: theme.colors.neutral[0],
@@ -116,16 +126,20 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: theme.colors.purple[6],
-    paddingBottom: 30,
-    paddingTop: parameters.statusBarHeight,
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: width,
+    backgroundColor: theme.colors.red[6],
+    paddingBottom: 0,
+    marginBottom: 0,
   },
   header: {
     backgroundColor: theme.colors.purple[6],
     height: parameters.headerHeight,
+    marginTop: 140,
     alignItems: "center",
   },
-
   image1: {
     height: 64,
     width: 64,
@@ -135,37 +149,31 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     overflow: "visible",
   },
-
   cardImage: {
     height: 64,
     width: 64,
     borderWidth: 2,
     alignSelf: "center",
   },
-
   home: {
     backgroundColor: theme.colors.purple[6],
     paddingLeft: 20,
   },
-
   text1: {
     color: theme.colors.neutral[0],
     fontSize: 42,
     paddingBottom: 20,
     paddingTop: 20,
   },
-
   text2: {
     color: theme.colors.neutral[0],
     fontSize: 16,
   },
-
   view1: {
     flexDirection: "row",
     flex: 1,
     paddingTop: 30,
   },
-
   button1: {
     height: 40,
     width: 150,
@@ -234,7 +242,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     height: 64,
-    backgroundColor: "rgba(155,155,155,0.25)",
+    backgroundColor: "rgba( 200,200,200,0.25)",
     padding: 15,
     marginVertical: 5,
     justifyContent: "space-between",

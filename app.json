@@ -7,7 +7,12 @@
     "icon": "./assets/images/app-icon.png",
     "backgroundColor": "#000030",
     "userInterfaceStyle": "dark",
-
+    "androidNavigationBar": {
+      "barStyle": "light-content",
+      "visible": "immersive",
+      "backgroundColor": "#000030"
+    }
+    },
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "cover",
@@ -27,12 +32,19 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/app-icon.png",
+        "foregroundImage": "./assets/images/app-icon.png"
       },
       "config": {
         "googleMaps": {
-          "apiKey": "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk"
+          "apiKey": "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk",
+          
         }
+      },
+      "splash": {
+        "image": "./assets/images/splash.png",
+        "resizeMode": "cover",
+        "icon": "./assets/images/app-icon.png",
+        "backgroundColor": "#000030"
       },
       "package": "com.oscarlunadotdev.FadeApp",
       "permissions": [
@@ -51,6 +63,3 @@
       ]
     ]
   }
-}
-
-

@@ -166,8 +166,14 @@ const CardContainer = ({ navigation, ...props }) => {
     <FlatList
       data={data}
       keyExtractor={(item) => item.id}
+      style={{justifyContent:"space-between"}}
       renderItem={(item) => (
-        <View style={[container(width, height, borderRadius, backgroundColor), { elevation: 2}]}>
+        <View
+          style={[
+            container(width, height, borderRadius, backgroundColor),
+            { height: 140 },
+          ]}
+        >
           <ImageContainer {...props} />
           <Avatar
             source={require("../assets/images/oscarluna.png")}
@@ -225,6 +231,7 @@ const ImagedCardView = (props) => {
     <FlatList
       data={data}
       keyExtractor={(item) => item.id}
+      style={{height: 200, resizeMode:"contain", marginBottom: 15, marginTop: 0}}
       renderItem={({ item }) => (
         <TouchableOpacity onPress={onPress} style={styles.imagedCardView}>
           <CardContainer {...props} />
@@ -234,25 +241,26 @@ const ImagedCardView = (props) => {
   );
 };
 
-const NavOptions = () => {
+const Feed = () => {
   const navigation = useNavigation();
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
 
   return (
-    <View style={{ width: width, height: 400 }}>
-      <View style={{ flex: 1, alignSelf: "flex-start", height: 100 }}>
+    <View style={{ width: width, height: 100, alignSelf: "center", marginTop: 5}}>
         <Text
           style={{
-            color: theme.colors.blue[0],
-            fontSize: 24,
-            textAlign: "center",
-            marginVertical: 45,
-            marginLeft: 48,
+            color: theme.colors.neutral[0],
+            fontSize: 16,
+            alignSelf:"flex-start",
+            paddingLeft: 15,
           }}
         >
           Join A Carpool
         </Text>
+      <View
+        style={{ flex: 1, alignSelf: "center", marginLeft: 35, height: 150 }}
+      >
       </View>
       <View style={styles.feed}>
         <ImagedCardView
@@ -363,8 +371,12 @@ CardContainer.propTypes = {
 CardContainer.defaultProps = {
   height: 135,
   borderRadius: 24,
-  width: width * 0.75,
+  width: width - 80,
   titleColor: "white",
+  alignSelf: "flex-end",
+  alignItems: "center",
+  marginLeft: 45,
+  marginRight: -15,
   username: "oscarluna",
   leftSideTitle: "TIME: 9:00am",
   type: "Driver",
@@ -375,7 +387,7 @@ CardContainer.defaultProps = {
   rightSideValue: "3",
   rightSideTitle: "Seats",
   subtitleColor: "#dbdbdb",
-  backgroundColor: `${theme.colors.blue[8]}`,
+  backgroundColor: "rgba(255,255,255,.11)",
   leftSideValueColor: "white",
   rightSideValueColor: "white",
 };
@@ -395,7 +407,7 @@ const imageStyle = StyleSheet.create({
   imageStyle: {
     top: -24,
     left: -48,
-    width: 145,
+    width: 160,
     height: 200,
     position: "absolute",
   },
@@ -403,12 +415,15 @@ const imageStyle = StyleSheet.create({
 
 const styles = StyleSheet.create({
   feed: {
-    height: height,
-    marginLeft: -30,
+    height: height * 2,
+    marginLeft: 0,
+    marginTop:-10,
+    paddingTop: 10,
+    height: 477
   },
   bg: {
     backgroundColor: theme.colors.blue[8],
-    borderRadius: 25,
+    borderRadius:15,
     flexWrap: "wrap",
     height: 100,
 
@@ -423,7 +438,7 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   image: {
-    width: width / 3,
+    width: width - 30,
     height: 84,
     resizeMode: "contain",
     alignSelf: "center",
@@ -520,12 +535,13 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
   },
   imageStyle: {
-    resizeMode: "contain",
+    resizeMode: "cover",
     top: -10,
-    left: -48,
+    left: -50,
     width: 100,
     height: 130,
     position: "absolute",
+    
   },
   imagedCardViewContainer: {
     height: 100,
@@ -536,4 +552,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NavOptions;
+export default Feed;

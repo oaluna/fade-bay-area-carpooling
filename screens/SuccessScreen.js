@@ -34,21 +34,17 @@ const SuccessScreen = ({ route }) => {
       start={{ x: 1, y: 0 }}
       end={{ x: 0.5, y: 1 }}
       colors={[theme.colors.blue[10], theme.colors.blue[8]]}
-      style={{ width: width, height: height }}
+      style={{ width: width, height: height, alignSelf:"center", flex: 1 }}
     >
       <Screen>
         <Pressable
           onPress={() => navigation.navigate("HomeScreen")}
-          style={{
-            top: -100,
-            left: 15,
-            height: 85,
-          }}
+          
         >
-          <Image
-            source={require("../assets/images/fade-logo-alt.png")}
-            style={{ resizeMode: "contain", width: 120 }}
-          />
+            <Image
+          source={require("../assets/images/fade-logo.png")}
+          style={styles.logo}
+        />
         </Pressable>
         <View>
           <View>
@@ -73,4 +69,12 @@ export default SuccessScreen;
 
 const styles = StyleSheet.create({
   body: { fontSize: 20, color: theme.colors.neutral[0] },
+  logo: {
+  height: 50,
+  width: 100,
+  resizeMode: "contain",
+  marginTop: 0,
+  marginBottom: 0,
+  padding: 15,
+  alignSelf:"flex-start"}
 });
