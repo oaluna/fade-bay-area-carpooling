@@ -6,6 +6,7 @@ import {
   KeyboardAvoidingView,
   Text,
   TouchableOpacity,
+  Dimensions,
   View,
 } from "react-native";
 import { Icon } from "react-native-elements";
@@ -36,54 +37,42 @@ const SettingsIcon = () => (
   <Image source={require("../assets/images/icon-settings.png")} />
 );
 
+const { width, height } = Dimensions.get("screen");
+
 const data = [
   {
     id: "0",
-    title: "Start a Carpool",
+    title: "Carpool",
     image:
-      "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813319/FadeIcons/icon-pickup_fpnloc.png",
+      require("../assets/images/icon-carpool-alt.png"),
     screen: "MapScreen",
   },
   {
     id: "1",
-    title: "Join a Carpool",
+    title: "Scheduled",
     image:
-      "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813321/FadeIcons/icon-carpool_q58kxk.png",
-    screen: "EatsScreen",
+      require("../assets/images/icon-calendar-alt.png"),
+    screen: "ScheduleScreen",
   },
   {
     id: "2",
-    title: "Scheduled Carpools",
+    title: "Subscribed",
     image:
-      "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813321/FadeIcons/icon-calendar_lrywil.png",
+      require("../assets/images/icon-plus-alt.png"),
     screen: "ScheduleScreen",
   },
   {
     id: "3",
-    title: "My Subscriptions",
+    title: "Messages",
     image:
-      "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813319/FadeIcons/icon-plus_ust5ud.png",
+      require("../assets/images/icon-inbox-alt.png"),
     screen: "EatsScreen",
   },
   {
     id: "4",
-    title: "My Favorites",
-    image:
-      "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813321/FadeIcons/icon-subscribed_igqrzq.png",
-    screen: "EatsScreen",
-  },
-  {
-    id: "5",
-    title: "My Messages",
-    image:
-      "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813323/FadeIcons/icon-messages_ckl9dx.png",
-    screen: "EatsScreen",
-  },
-  {
-    id: "6",
     title: "Settings",
     image:
-      "https://res.cloudinary.com/dgdnpkfun/image/upload/v1670813320/FadeIcons/icon-settings_qrpumg.png",
+      require("../assets/images/icon-settings-alt.png"),
     screen: "SettingsScreen",
   },
 ];
@@ -96,6 +85,13 @@ const NavOptions = () => {
     <KeyboardAvoidingView>
       <FlatList
         data={data}
+        contentContainerStyle={{
+          width: width,
+          alignSelf: "flex-start",
+          alignItems: "flex-end",
+          height: 170,
+          elevation:10
+        }}
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => navigation.push(item.screen)}
@@ -109,20 +105,12 @@ const NavOptions = () => {
             <View>
               <Image
                 source={
-                  !origin && item.id === "0"
-                    ? require("../assets/images/close.png")
-                    : { uri: item.image }
+                  item.image
                 }
                 style={styles.image}
               />
               <View style={styles.cardText}>
                 <Text style={styles.text}>{item.title}</Text>
-                <Icon
-                  type="antdesign"
-                  name="arrowright"
-                  color={theme.colors.blue[4]}
-                  size={12}
-                />
               </View>
             </View>
           </TouchableOpacity>
@@ -138,20 +126,22 @@ export default NavOptions;
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: theme.colors.blue[8],
-    position: "relative",
-    marginTop: 25,
-    marginRight: 10,
-    marginVertical: 75,
-    padding: 10,
-    height: 145,
-    width: 100,
-    borderRadius: 15,
+    backgroundColor: "rgba(255,255,255,.11)",
+   flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"center",
+    height:75,
+    width: 75,
     zIndex: 20,
+    padding: 5,
+    overflowX: "scroll",
+    marginBottom: 0
+  
+  
   },
   image: {
-    width: 84,
-    height: 84,
+    width: 32,
+    height: 32,
     resizeMode: "contain",
     alignSelf: "center",
     display: "flex",
@@ -160,17 +150,22 @@ const styles = StyleSheet.create({
   },
   text: {
     color: theme.colors.neutral[0],
-    fontSize: 12,
+    fontSize: 11,
     display: "flex",
     flexDirection: "row",
     alignItems: "flex-end",
     justifyContent: "flex-end",
+    height: 12,
+    paddingVertical: 0,
+    
   },
   cardText: {
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
+    alignSelf: "center",
     justifyContent: "space-evenly",
-    marginTop: 20,
+    width: 60,
+    textAlign: "center",
+    marginTop: 1,
   },
 });

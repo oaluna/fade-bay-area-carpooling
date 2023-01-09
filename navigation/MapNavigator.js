@@ -1,19 +1,19 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import NavigateCard from '../components/NavigateCard';
 import RideOptionsCard from '../components/RideOptionsCard';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const MapNavigator = () => {
     return (
-        <Stack.Navigator
+        <Tab.Navigator
         screenOptions={{
             headerShown: false
         }}>
-            <Stack.Screen name="NavigateCard" component={NavigateCard} />
-            <Stack.Screen name="RideOptionsCard" component={RideOptionsCard} />
-        </Stack.Navigator>
+            <Tab.Screen name="NavigateCard" component={NavigateCard} />
+            <Tab.Screen name="RideOptionsCard" component={RideOptionsCard} />
+        </Tab.Navigator>
     );
 }
 
