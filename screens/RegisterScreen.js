@@ -32,6 +32,7 @@ const RegisterScreen = ({ navigation }) => {
   const [isBiometricSupported, setIsBiometricSupported] = React.useState(false);
 
   const fadeAnim = React.useRef(new Animated.Value(0)).current;
+  const scaleAnim = React.useRef(new Animated.Value(0)).current;
 
   const ValidateLogin = Yup.object().shape({
     password: Yup.string()
@@ -80,6 +81,14 @@ const RegisterScreen = ({ navigation }) => {
     }).start();
   });
 
+  React.useEffect(() => {
+    Animated.timing(scaleAnim, {
+      toValue: 1,
+      duration: 3000,
+      useNativeDriver: true,
+    }).start();
+  });
+
   return (
     <SafeAreaView
       style={{
@@ -105,439 +114,464 @@ const RegisterScreen = ({ navigation }) => {
         <LinearGradient
           start={{ x: 1, y: 0 }}
           end={{ x: 0.5, y: 1 }}
-          colors={[theme.colors.blue[10], theme.colors.blue[8]]}
+          colors={[theme.colors.blue[8], theme.colors.blue[10]]}
           style={styles.gradient}
         >
           <Image
             source={require("../assets/images/gradient.png")}
             style={styles.gradient}
           />
-          <Animated.View // Special animatable View
+          <View
             style={{
-              opacity: fadeAnim,
-              transform: [
-                {
-                  translateX: fadeAnim.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [100, 0], // 0 : 150, 0.5 : 75, 1 : 0
-                  }),
-                },
-              ],
+              height: height + 20,
+              width: width + 20,
+              backgroundColor: "rgba(0,0,0,0.25)",
+              position: "absolute",
+              margin: 0,
+              padding: 0,
             }}
-          >
-            <View>
-              <View
+          ></View>
+          <View>
+            <View
+              style={{
+                alignItems: "center",
+                width: width - 30,
+                height: 250,
+                paddingTop: 150,
+              }}
+            >
+              <Animated.View
                 style={{
-                  alignItems: "center",
-                  width: width - 30,
-                  paddingTop: 150,
+                  opacity: fadeAnim,
+                  transform: [
+                    {
+                      scale: scaleAnim.interpolate({
+                        inputRange: [1, 1.25],
+                        outputRange: [0.95, 1],
+                      }),
+                    },
+                  ],
                 }}
               >
                 <Image
                   source={require("../assets/images/fade-logo-alt.png")}
                   style={{
-                    rezsizeMode: "cover",
+                    rezsizeMode: "contain",
                     alignSelf: "center",
-                    width: 350,
-                    height: 100,
+                    width: width - 30,
+                    height: 99,
                   }}
                 />
-              </View>
+              </Animated.View>
+            </View>
+            {/* <Animated.View // Special animatable View
+            style={{
+              opacity: fadeAnim,
+              transform: [
+                {
+                  translateY: fadeAnim.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [100, 0], // 0 : 150, 0.5 : 75, 1 : 0
+                  }),
+                },
+              
+              ],
+            }}
+          > */}
 
-              <View
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginVertical: 20,
+                justifyContent: "center",
+              }}
+            >
+              <Text
                 style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  marginVertical: 20,
-                  justifyContent: "center",
+                  fontSize: 18,
+                  color: theme.colors.lightblue[3],
+                }}
+                onPress={() => navigation.navigate("LoginScreen")}
+              >
+                Login
+              </Text>
+              <Text
+                style={{
+                  textDecorationLine: "underline",
+                  marginLeft: 10,
+                  fontWeight: "bold",
+                  fontSize: 18,
+                  color: theme.colors.neutral[4],
                 }}
               >
-                <Text
-                  style={{
-                    fontSize: 18,
-                    color: theme.colors.lightblue[3],
-                  }}
-                  onPress={() => navigation.navigate("LoginScreen")}
-                >
-                  Login
-                </Text>
-                <Text
-                  style={{
-                    textDecorationLine: "underline",
-                    marginLeft: 10,
-                    fontWeight: "bold",
-                    fontSize: 18,
-                    color: theme.colors.neutral[4],
-                  }}
-                >
-                  Register
-                </Text>
-              </View>
-              <View style={{ justifyContent: "center", height: 750 }}>
-                <Formik
-                  initialValues={{ email: "", password: "" }}
-                  validateOnMount={true}
-                  validationSchema={ValidateLogin}
-                  onSubmit={(values) => navigation.navigate("Home")}
-                >
-                  {({
-                    handleChange,
-                    handleBlur,
-                    handleSubmit,
-                    touched,
-                    values,
-                    errors,
-                    isValid,
-                  }) => (
-                    <View>
-                      <View
+                Register
+              </Text>
+            </View>
+            <View style={{ justifyContent: "center", height: 750 }}>
+              <Formik
+                initialValues={{ email: "", password: "" }}
+                validateOnMount={true}
+                validationSchema={ValidateLogin}
+                onSubmit={(values) => navigation.navigate("Home")}
+              >
+                {({
+                  handleChange,
+                  handleBlur,
+                  handleSubmit,
+                  touched,
+                  values,
+                  errors,
+                  isValid,
+                }) => (
+                  <View>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        borderBottomWidth: 1,
+                        borderBottomColor: theme.colors.neutral[3],
+                        marginBottom: 20,
+                        alignItems: "center",
+                      }}
+                    >
+                      <Icon
+                        name="edit"
+                        size={18}
+                        color={theme.colors.neutral[3]}
+                      />
+                      <TextInput
                         style={{
-                          flexDirection: "row",
-                          borderBottomWidth: 1,
-                          borderBottomColor: theme.colors.neutral[3],
-                          marginBottom: 20,
-                          alignItems: "center",
+                          marginLeft: 10,
+                          color: theme.colors.neutral[0],
                         }}
-                      >
-                        <Icon
-                          name="edit"
-                          size={18}
-                          color={theme.colors.neutral[3]}
-                        />
-                        <TextInput
-                          style={{
-                            marginLeft: 10,
-                            color: theme.colors.neutral[0],
-                          }}
-                          onChangeText={handleChange("name")}
-                          onBlur={handleBlur("name")}
-                          value={values.name}
-                          placeholder="Name (First, Last)"
-                          placeholderTextColor={theme.colors.neutral[3]}
-                        />
-                      </View>
-                      <View
+                        onChangeText={handleChange("name")}
+                        onBlur={handleBlur("name")}
+                        value={values.name}
+                        placeholder="Name (First, Last)"
+                        placeholderTextColor={theme.colors.neutral[3]}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        borderBottomWidth: 1,
+                        borderBottomColor: theme.colors.neutral[3],
+                        marginBottom: 20,
+                        alignItems: "center",
+                      }}
+                    >
+                      <Icon
+                        name="phone"
+                        size={18}
+                        color={theme.colors.neutral[3]}
+                      />
+                      <TextInput
                         style={{
-                          flexDirection: "row",
-                          borderBottomWidth: 1,
-                          borderBottomColor: theme.colors.neutral[3],
-                          marginBottom: 20,
-                          alignItems: "center",
+                          marginLeft: 10,
+                          color: theme.colors.neutral[0],
                         }}
-                      >
-                        <Icon
-                          name="phone"
-                          size={18}
-                          color={theme.colors.neutral[3]}
-                        />
-                        <TextInput
-                          style={{
-                            marginLeft: 10,
-                            color: theme.colors.neutral[0],
-                          }}
-                          onChangeText={handleChange("phone")}
-                          onBlur={handleBlur("phone")}
-                          value={values.phone}
-                          placeholder="Phone Number (xxx) xxx-xxxx"
-                          placeholderTextColor={theme.colors.neutral[3]}
-                        />
-                      </View>
-                      <View
+                        onChangeText={handleChange("phone")}
+                        onBlur={handleBlur("phone")}
+                        value={values.phone}
+                        placeholder="Phone Number (xxx) xxx-xxxx"
+                        placeholderTextColor={theme.colors.neutral[3]}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        borderBottomWidth: 1,
+                        borderBottomColor: theme.colors.neutral[3],
+                        marginBottom: 20,
+                        alignItems: "center",
+                      }}
+                    >
+                      <Icon
+                        name="calendar"
+                        size={18}
+                        color={theme.colors.neutral[3]}
+                      />
+                      <TextInput
                         style={{
-                          flexDirection: "row",
-                          borderBottomWidth: 1,
-                          borderBottomColor: theme.colors.neutral[3],
-                          marginBottom: 20,
-                          alignItems: "center",
+                          marginLeft: 10,
+                          color: theme.colors.neutral[0],
                         }}
-                      >
-                        <Icon
-                          name="calendar"
-                          size={18}
-                          color={theme.colors.neutral[3]}
-                        />
-                        <TextInput
-                          style={{
-                            marginLeft: 10,
-                            color: theme.colors.neutral[0],
-                          }}
-                          onChangeText={handleChange("dateOfBirth")}
-                          onBlur={handleBlur("dateOfBirth")}
-                          value={values.dateOfBirth}
-                          placeholder="Date Of Birth (MM/DD/YYYY)"
-                          placeholderTextColor={theme.colors.neutral[3]}
-                        />
-                      </View>
-                      <View
-                        style={{
-                          flexDirection: "row",
-                          borderBottomWidth: 1,
-                          borderBottomColor: theme.colors.neutral[3],
-                          marginBottom: 0,
-                          alignItems: "center",
-                        }}
-                      >
-                        <Icon
-                          name="mail"
-                          size={18}
-                          color={theme.colors.neutral[3]}
-                        />
-                        <TextInput
-                          style={{ marginLeft: 10 }}
-                          onChangeText={handleChange("email")}
-                          onBlur={handleBlur("email")}
-                          value={values.email}
-                          placeholder="Email Address"
-                          placeholderTextColor={theme.colors.neutral[3]}
-                        />
-                      </View>
-                      <View style={{ marginBottom: 20 }}>
-                        {errors.email && touched.email ? (
-                          <Text style={{ color: "red", fontSize: 15 }}>
-                            {errors.email}
-                          </Text>
-                        ) : null}
-                      </View>
+                        onChangeText={handleChange("dateOfBirth")}
+                        onBlur={handleBlur("dateOfBirth")}
+                        value={values.dateOfBirth}
+                        placeholder="Date Of Birth (MM/DD/YYYY)"
+                        placeholderTextColor={theme.colors.neutral[3]}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        borderBottomWidth: 1,
+                        borderBottomColor: theme.colors.neutral[3],
+                        marginBottom: 0,
+                        alignItems: "center",
+                      }}
+                    >
+                      <Icon
+                        name="mail"
+                        size={18}
+                        color={theme.colors.neutral[3]}
+                      />
+                      <TextInput
+                        style={{ marginLeft: 10 }}
+                        onChangeText={handleChange("email")}
+                        onBlur={handleBlur("email")}
+                        value={values.email}
+                        placeholder="Email Address"
+                        placeholderTextColor={theme.colors.neutral[3]}
+                      />
+                    </View>
+                    <View style={{ marginBottom: 20 }}>
+                      {errors.email && touched.email ? (
+                        <Text style={{ color: "red", fontSize: 15 }}>
+                          {errors.email}
+                        </Text>
+                      ) : null}
+                    </View>
 
+                    <View
+                      style={{
+                        flexDirection: "row",
+
+                        borderBottomWidth: 1,
+                        borderBottomColor: theme.colors.neutral[3],
+                        marginBottom: 5,
+                        alignItems: "center",
+                      }}
+                    >
+                      <Icon
+                        name="lock"
+                        size={22}
+                        color={theme.colors.neutral[3]}
+                      />
+                      <TextInput
+                        style={{ marginLeft: 10 }}
+                        placeholder="Password"
+                        onChangeText={handleChange("password")}
+                        onBlur={handleBlur("password")}
+                        value={values.password}
+                        secureTextEntry={true}
+                        placeholderTextColor={theme.colors.neutral[3]}
+                      />
+                    </View>
+                    <View style={{ marginBottom: 20 }}>
+                      {errors.password && touched.password ? (
+                        <Text style={{ color: "red", fontSize: 15 }}>
+                          {errors.password}
+                        </Text>
+                      ) : null}
+                    </View>
+
+                    <View
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                      }}
+                    >
                       <View
                         style={{
                           flexDirection: "row",
-
-                          borderBottomWidth: 1,
-                          borderBottomColor: theme.colors.neutral[3],
-                          marginBottom: 5,
+                          marginBottom: 30,
                           alignItems: "center",
                         }}
                       >
-                        <Icon
-                          name="lock"
-                          size={22}
-                          color={theme.colors.neutral[3]}
-                        />
-                        <TextInput
-                          style={{ marginLeft: 10 }}
-                          placeholder="Password"
-                          onChangeText={handleChange("password")}
-                          onBlur={handleBlur("password")}
-                          value={values.password}
-                          secureTextEntry={true}
-                          placeholderTextColor={theme.colors.neutral[3]}
-                        />
-                      </View>
-                      <View style={{ marginBottom: 20 }}>
-                        {errors.password && touched.password ? (
-                          <Text style={{ color: "red", fontSize: 15 }}>
-                            {errors.password}
-                          </Text>
-                        ) : null}
-                      </View>
-
-                      <View
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <View
+                        <Checkbox value={isChecked} onValueChange={checked} />
+                        <Text
                           style={{
-                            flexDirection: "row",
-                            marginBottom: 30,
-                            alignItems: "center",
+                            marginLeft: 5,
+                            color: theme.colors.neutral[3],
                           }}
                         >
-                          <Checkbox value={isChecked} onValueChange={checked} />
-                          <Text
-                            style={{
-                              marginLeft: 5,
-                              color: theme.colors.neutral[3],
-                            }}
-                          >
-                            Remember Password
-                          </Text>
-                        </View>
-
-                        <Text style={{ color: theme.colors.lightblue[5] }}>
-                          Forgot Password
+                          Remember Password
                         </Text>
                       </View>
 
+                      <Text style={{ color: theme.colors.lightblue[5] }}>
+                        Forgot Password
+                      </Text>
+                    </View>
+
+                    <View
+                      style={{
+                        width: width - 30,
+                        alignSelf: "center",
+                        height: height / 8,
+                        justifyContent: "flex-end",
+                        marginTop: 75,
+                      }}
+                    >
                       <View
                         style={{
-                          width: width - 30,
-                          alignSelf: "center",
-                          height: height / 8,
+                          alignItems: "center",
                           justifyContent: "flex-end",
-                          marginTop: 75,
+                          height: Dimensions.get("window").height * 0.2,
                         }}
                       >
-                        <View
-                          style={{
-                            alignItems: "center",
-                            justifyContent: "flex-end",
-                            height: Dimensions.get("window").height * 0.2,
-                          }}
-                        >
-                          {isBiometricSupported ? (
-                            <View
+                        {isBiometricSupported ? (
+                          <View
+                            style={{
+                              alignItems: "center",
+                            }}
+                          >
+                            <TouchableOpacity
+                              onPress={authenticate}
                               style={{
-                                
+                                height: 80,
+                                width: 80,
+                                borderRadius: 10,
+                                borderWidth: 1,
+                                borderColor: theme.colors.neutral[0],
+                                backgroundColor: theme.colors.neutral[3],
+                                elevation: 2,
+                                opacity: 0.5,
                                 alignItems: "center",
-                              }}
-                            >
-                              <TouchableOpacity
-                                onPress={authenticate}
-                                style={{
-                                  height: 80,
-                                  width: 80,
-                                  borderRadius: 10,
-                                  borderWidth: 1,
-                                  borderColor: theme.colors.neutral[0],
-                                  backgroundColor: theme.colors.neutral[3],
-                                  elevation: 2,
-                                  opacity: 0.5,
-                                  alignItems: "center",
-                                  justifyContent: "center",
-                                }}
-                              >
-                                <Ionicons
-                                  name="finger-print-outline"
-                                  size={40}
-                                  color={theme.colors.neutral[0]}
-                                />
-                              </TouchableOpacity>
-
-                              <Text style={{ color: theme.colors.neutral[0] }}>
-                                Login with touch id
-                              </Text>
-                            </View>
-                          ) : (
-                            <View
-                              style={{
-                                alignItems: "center",
-                                flex: 1,
                                 justifyContent: "center",
                               }}
                             >
-                              <Text
-                                style={{
-                                  color: theme.colors.neutral[0],
-                                  fontSize: 20,
-                                }}
-                              >
-                                Welcome Back!
-                              </Text>
-                            </View>
-                          )}
-                        </View>
-                      </View>
-                      <View
-                        style={{
-                          flexDirection: "row",
-                          alignItems: "center",
-                          alignSelf: "center",
-                          justifyContent: "space-evenly",
-                          marginTop: 5,
-                          width: width * 0.64,
-                          height: 25,
-                        }}
-                      >
-                        <Text
-                          style={{
-                            fontSize: 10,
+                              <Ionicons
+                                name="finger-print-outline"
+                                size={40}
+                                color={theme.colors.neutral[0]}
+                              />
+                            </TouchableOpacity>
 
-                            color: theme.colors.neutral[3],
-                            letterSpacing: 0.25,
-                          }}
-                        >
-                          By Signing in you are agreeing to our
-                        </Text>
-                        <Text
-                          style={{
-                            fontSize: 10,
-                            color: theme.colors.lightblue[5],
-                            letterSpacing: 0.25,
-                          }}
-                        >
-                          Terms and privacy policy
-                        </Text>
-                      </View>
-                      <LinearGradient
-                        start={{ x: 0, y: 1 }}
-                        end={{ x: 1, y: 1 }}
-                        colors={[
-                          theme.colors.lightblue[4],
-                          theme.colors.lightblue[6],
-                        ]}
-                        style={{
-                          borderRadius: 15,
-                          height: 50,
-                          justifyContent: "center",
-                          alignItems: "center",
-                          marginBottom: 15,
-                          elevation: 2,
-                        }}
-                      >
-                        <TouchableOpacity onPress={handleSubmit}>
-                          <Text
+                            <Text style={{ color: theme.colors.neutral[0] }}>
+                              Login with touch id
+                            </Text>
+                          </View>
+                        ) : (
+                          <View
                             style={{
-                              fontSize: 20,
-                              color: theme.colors.neutral[0],
+                              alignItems: "center",
+                              flex: 1,
+                              justifyContent: "center",
                             }}
                           >
-                            Register
-                          </Text>
-                        </TouchableOpacity>
-                      </LinearGradient>
+                            <Text
+                              style={{
+                                color: theme.colors.neutral[0],
+                                fontSize: 20,
+                              }}
+                            >
+                              Welcome Back!
+                            </Text>
+                          </View>
+                        )}
+                      </View>
                     </View>
-                  )}
-                </Formik>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        alignSelf: "center",
+                        justifyContent: "space-evenly",
+                        marginTop: 5,
+                        width: width * 0.64,
+                        height: 25,
+                      }}
+                    >
+                      <Text
+                        style={{
+                          fontSize: 10,
 
-                <Text
-                  style={{
-                    alignSelf: "center",
-                    alignItems: "center",
-                    marginTop: 0,
-                    color: theme.colors.neutral[0],
-                  }}
-                >
-                  or connect with
-                </Text>
-                <View
-                  style={{
-                    alignSelf: "center",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-evenly",
-                    width: width * 0.85,
-                    height: 50,
-                    marginTop: 10,
-                  }}
-                >
-                  <Ionicons
-                    name="logo-facebook"
-                    size={24}
-                    color={theme.colors.lightblue[5]}
-                  />
-                  <Ionicons
-                    name="logo-instagram"
-                    size={24}
-                    color={theme.colors.neutral[0]}
-                  />
-                  <Ionicons
-                    name="logo-pinterest"
-                    size={24}
-                    color={theme.colors.red[5]}
-                  />
-                  <Ionicons
-                    name="logo-linkedin"
-                    size={24}
-                    color={theme.colors.blue[4]}
-                  />
-                </View>
+                          color: theme.colors.neutral[3],
+                          letterSpacing: 0.25,
+                        }}
+                      >
+                        By Signing in you are agreeing to our
+                      </Text>
+                      <Text
+                        style={{
+                          fontSize: 10,
+                          color: theme.colors.lightblue[5],
+                          letterSpacing: 0.25,
+                        }}
+                      >
+                        Terms and privacy policy
+                      </Text>
+                    </View>
+                    <LinearGradient
+                      start={{ x: 0, y: 1 }}
+                      end={{ x: 1, y: 1 }}
+                      colors={[
+                        theme.colors.lightblue[4],
+                        theme.colors.lightblue[6],
+                      ]}
+                      style={{
+                        borderRadius: 15,
+                        height: 50,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginBottom: 15,
+                        elevation: 2,
+                      }}
+                    >
+                      <TouchableOpacity onPress={handleSubmit}>
+                        <Text
+                          style={{
+                            fontSize: 20,
+                            color: theme.colors.neutral[0],
+                          }}
+                        >
+                          Register
+                        </Text>
+                      </TouchableOpacity>
+                    </LinearGradient>
+                  </View>
+                )}
+              </Formik>
+
+              <Text
+                style={{
+                  alignSelf: "center",
+                  alignItems: "center",
+                  marginTop: 0,
+                  color: theme.colors.neutral[0],
+                }}
+              >
+                or connect with
+              </Text>
+              <View
+                style={{
+                  alignSelf: "center",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-evenly",
+                  width: width * 0.85,
+                  height: 50,
+                  marginTop: 10,
+                }}
+              >
+                <Ionicons
+                  name="logo-facebook"
+                  size={24}
+                  color={theme.colors.lightblue[5]}
+                />
+                <Ionicons
+                  name="logo-instagram"
+                  size={24}
+                  color={theme.colors.neutral[0]}
+                />
+                <Ionicons
+                  name="logo-pinterest"
+                  size={24}
+                  color={theme.colors.red[5]}
+                />
+                <Ionicons
+                  name="logo-linkedin"
+                  size={24}
+                  color={theme.colors.blue[4]}
+                />
               </View>
             </View>
-          </Animated.View>
+            {/* </Animated.View> */}
+          </View>
 
           <View
             style={{

@@ -80,7 +80,6 @@ const LocationAccessScreen = ({ navigation, route }) => {
   return (
     <ImageBackground
       source={require("../assets/images/gradient-bg3.png")}
-     
       style={{
         height: height,
         width: width,
@@ -93,7 +92,7 @@ const LocationAccessScreen = ({ navigation, route }) => {
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[10], theme.colors.blue[8]]}
+        colors={[theme.colors.blue[8], theme.colors.blue[10]]}
         style={styles.gradient}
       >
         <KeyboardAvoidingView style={[styles.container, { zIndex: 2 }]}>
@@ -171,9 +170,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: "center",
-    alignItems:"center",
+    alignItems: "center",
     position: "absolute",
-height: height,
+    height: height,
     top: 20,
     paddingVertical: 0,
     marginVertical: 0,
@@ -181,7 +180,6 @@ height: height,
   },
 
   gradient: {
-    
     paddingTop: 0,
     width: width,
     height: height,
@@ -227,7 +225,7 @@ height: height,
   button: {
     marginLeft: 30,
     marginRight: 30,
-    marginTop:0,
+    marginTop: 0,
     height: 50,
     width: 350,
     borderRadius: 15,

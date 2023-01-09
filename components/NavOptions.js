@@ -66,7 +66,7 @@ const data = [
     title: "Messages",
     image:
       require("../assets/images/icon-inbox-alt.png"),
-    screen: "EatsScreen",
+    screen: "MessagesScreen",
   },
   {
     id: "4",

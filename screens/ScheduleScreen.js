@@ -1,4 +1,4 @@
-import { View, Text, Dimensions, Platform, Button } from "react-native";
+import { View, Text, Dimensions, Platform, Button, StyleSheet } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Icon } from "react-native-elements";
@@ -56,7 +56,7 @@ const ScheduleScreen = ({ navigation }) => {
     <LinearGradient
       start={{ x: 1, y: 0 }}
       end={{ x: 0.5, y: 1 }}
-      colors={[theme.colors.blue[10], theme.colors.blue[8]]}
+      colors={[theme.colors.blue[8], theme.colors.blue[10]]}
       style={{
         alignSelf: "center",
         alignItems: "center",
@@ -65,13 +65,7 @@ const ScheduleScreen = ({ navigation }) => {
       }}
     >
       <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          marginTop: 48,
-          justifyContent: "space-evenly",
-          width: width * 0.8,
-        }}
+        style={styles.header}
       >
         <Icon
           type="antdesign"
@@ -84,7 +78,7 @@ const ScheduleScreen = ({ navigation }) => {
           My Upcoming Carpools
         </Text>
       </View>
-      <View style={{marginTop: 150}}>
+      <View style={{ marginTop: 150 }}>
         <Button title="Create a new calendar" onPress={createCalendar} />
       </View>
       {created === true && (
@@ -95,11 +89,20 @@ const ScheduleScreen = ({ navigation }) => {
           }}
         >
           <CalendarPicker onDateChange={setSelectedStartDate} />
-          
         </View>
       )}
     </LinearGradient>
   );
 };
+
+const styles = StyleSheet.create({
+  header: {
+    flexDirection: "row",
+    alignItems:"center",
+    justifyContent: "space-between",
+    width: width -30,
+    height: 90
+  },
+})
 
 export default ScheduleScreen;

@@ -57,7 +57,7 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[10], theme.colors.blue[8]]}
+        colors={[theme.colors.blue[8], theme.colors.blue[10]]}
         style={{
           width: width,
           height: height,

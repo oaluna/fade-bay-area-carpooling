@@ -62,49 +62,33 @@ const data = [
 ];
 
 export default function SettingsScreen({ navigation }) {
-
-  
   return (
     <LinearGradient
       start={{ x: 1, y: 0 }}
       end={{ x: 0.5, y: 1 }}
-      colors={[theme.colors.blue[10], theme.colors.blue[8]]}
+      colors={[theme.colors.blue[8], theme.colors.blue[10]]}
       style={styles.container}
     >
-      <View>
+      <View style={styles.header}>
         <Pressable onPress={() => navigation.goBack()}>
           <Icon
             type="antdesign"
             name="arrowleft"
             color="white"
             size={20}
-            style={{ alignSelf: "flex-start", marginTop: 45, marginLeft: 15 }}
+          style={{alignSelf:"flex-start"}}
           />
         </Pressable>
-      </View>
-      <View
-        style={{
-          alignSelf: "center",
-          justifyContent: "center",
-          height: 200,
-          position: "absolute",
-          left: 0,
-        }}
-      >
         <Text
-          style={{
-            color: theme.colors.neutral[0],
-            fontSize: 40,
-            textAlign: "left",
-            justifyContent: "flex-start",
-            width: width,
-            marginTop: 75,
-            marginLeft: 25,
-          }}
+         style={{ color: theme.colors.neutral[0],
+    fontSize: 18,
+    fontWeight: "bold", textAlign:"center", marginLeft: 25, marginRight: -25}}
         >
           Settings
         </Text>
       </View>
+     
+      
       <View style={{ height: 200, marginTop: 100 }}>
         <Pressable
           style={{
@@ -211,5 +195,14 @@ const styles = StyleSheet.create({
   container: {
     width: width,
     height: height,
+  },
+  header: {
+    flexDirection: "row",
+    alignItems:"center",
+    justifyContent: "space-evenly",
+    width: width -30,
+    height: 90,
+    position:"absolute",
+    left: -60
   },
 });

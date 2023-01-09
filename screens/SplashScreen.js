@@ -73,7 +73,7 @@ const SplashScreen = ({ navigation }) => {
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[10], theme.colors.blue[8]]}
+        colors={[theme.colors.blue[8], theme.colors.blue[10]]}
         style={styles.gradient}
       >
         <Image
@@ -200,27 +200,42 @@ imageAssetsFolder={'../assets/lottie-files'}
                 <Text style={styles.text}>{item.text}</Text>
                 <View style={styles.buttonsContainer}>
                   <Pressable
-                    style={[styles.button, { backgroundColor: index === 0 ? theme.colors.neutral[8] : theme.colors.neutral[4]}]}
+                    style={[
+                      styles.button,
+                      {
+                        backgroundColor:
+                          index === 0
+                            ? theme.colors.neutral[8]
+                            : theme.colors.neutral[4],
+                      },
+                    ]}
                     onPress={() => goToSlide(index - 1)}
                   >
-                    <Text style={{color:theme.colors.neutral[0]}}>Previous</Text>
+                    <Text style={{ color: theme.colors.neutral[0] }}>
+                      Previous
+                    </Text>
                   </Pressable>
-                  {index === 4 ? 
-                    (
+                  {index === 4 ? (
                     <Pressable
-                    style={[styles.button, {backgroundColor: theme.colors.lightblue[3]}]}
-                    onPress={() => navigation.navigate("LoginScreen")}
-                  >
-                    <Text>Continue</Text>
-                  </Pressable> 
-                  ) :
-                  (
+                      style={[
+                        styles.button,
+                        { backgroundColor: theme.colors.lightblue[3] },
+                      ]}
+                      onPress={() => navigation.navigate("LoginScreen")}
+                    >
+                      <Text>Continue</Text>
+                    </Pressable>
+                  ) : (
                     <Pressable
-                    style={[styles.button, {backgroundColor: theme.colors.lightblue[3]}]}
-                    onPress={() =>   goToSlide(index + 1)}
-                  >
-                    <Text>Next</Text>
-                  </Pressable>)}
+                      style={[
+                        styles.button,
+                        { backgroundColor: theme.colors.lightblue[3] },
+                      ]}
+                      onPress={() => goToSlide(index + 1)}
+                    >
+                      <Text>Next</Text>
+                    </Pressable>
+                  )}
                 </View>
               </View>
             )}
@@ -260,12 +275,11 @@ const styles = StyleSheet.create({
     zIndex: 0,
   },
   image: {
-   
     resizeMode: "contain",
     height: 350,
     position: "relative",
     marginTop: -30,
-  },  
+  },
   imageContainer: {
     width: width - 30,
     height: 100,
@@ -295,7 +309,7 @@ const styles = StyleSheet.create({
     width: width,
     zIndex: 1,
     position: "relative",
-    height: 180
+    height: 180,
   },
   button: {
     width: width - 30,

@@ -29,18 +29,20 @@ const HomeScreen = ({ navigation, ...props }) => {
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[10], theme.colors.blue[8]]}
+        colors={[theme.colors.blue[8], theme.colors.blue[10]]}
         style={styles.container}
       >
         <Image
           source={require("../assets/images/fade-logo.png")}
           style={styles.logo}
         />
-        <View style={{ 
-          backgroundColor: "transparent", 
-          alignSelf:"flex-start",
-          paddingLeft: 15
-        }}>
+        <View
+          style={{
+            backgroundColor: "transparent",
+            alignSelf: "flex-start",
+            paddingLeft: 15,
+          }}
+        >
           <Text style={styles.text1}>
             Welcome, {props.isEnabled === true ? "Driver" : "Rider"}!
           </Text>
@@ -116,7 +118,7 @@ const styles = StyleSheet.create({
     marginTop: 0,
     marginBottom: 0,
     padding: 15,
-    alignSelf:"flex-start"
+    alignSelf: "flex-start",
   },
   text1: {
     color: theme.colors.neutral[0],

@@ -6,6 +6,8 @@ import HomeScreen from "../screens/HomeScreen";
 import MapScreen from "../screens/MapScreen";
 import CommuteListingScreen from "../screens/CommuteListingScreen";
 import EatsScreen from "../screens/EatsScreen";
+import MessagesScreen from "../screens/MessagesScreen";
+import MessageScreen from "../screens/MessageScreen";
 import SuccessScreen from "../screens/SuccessScreen";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
@@ -84,9 +86,19 @@ const MainNavigator = () => {
         screenOptions={{ headerShown: false }}
       />
       <Stack.Screen
-      name="ScheduleScreen"
-      component={ScheduleScreen}
-      screenOptions={{ headerShown: false }}
+        name="ScheduleScreen"
+        component={ScheduleScreen}
+        screenOptions={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="MessagesScreen"
+        component={MessagesScreen}
+        screenOptions={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="MessageScreen"
+        component={MessageScreen}
+        screenOptions={{ headerShown: false }}
       />
       <Stack.Screen
         name="SuccessScreen"

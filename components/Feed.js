@@ -8,6 +8,7 @@ import {
   Text,
   FlatList,
   Pressable,
+  SafeAreaView,
   View,
   TouchableOpacity,
   Dimensions,
@@ -247,7 +248,7 @@ const Feed = () => {
   const destination = useSelector(selectDestination);
 
   return (
-    <View style={{ width: width, height: 100, alignSelf: "center", marginTop: 5}}>
+    <SafeAreaView style={{ width: width, height: 100, alignSelf: "center", marginTop: 5}}>
         <Text
           style={{
             color: theme.colors.neutral[0],
@@ -267,7 +268,7 @@ const Feed = () => {
           onPress={() => navigation.navigate("CommuteListingScreen")}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -552,8 +553,4 @@ const styles = StyleSheet.create({
   },
 });
 
-<<<<<<< HEAD
 export default Feed;
-=======
-export default Feed;
->>>>>>> cfe434d91cfb39db6b80f7b096a5e36fe3d51e33
