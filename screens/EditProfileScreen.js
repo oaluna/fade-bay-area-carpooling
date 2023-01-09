@@ -6,14 +6,13 @@ import {
   StyleSheet,
   Pressable,
   Easing,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
 import { Button, Layout, Text, Divider, Avatar } from "@ui-kitten/components";
 import { ProfileAvatar } from "../components/ProfileAvatar";
 import { theme } from "../global/styles";
-
 
 const { width, height } = Dimensions.get("screen");
 const oscarLuna = [
@@ -71,14 +70,13 @@ const EditProfileScreen = ({ navigation }) => {
               name="arrowleft"
               color="white"
               size={20}
-             
               onPress={() => navigation.goBack()}
             />
             <Text
               style={{
                 color: theme.colors.neutral[0],
                 fontSize: 20,
-                right: 0
+                right: 0,
               }}
             >
               Edit Profile
@@ -90,21 +88,49 @@ const EditProfileScreen = ({ navigation }) => {
           />
 
           <View style={styles.nameSection}>
-          <View style={[styles.setting, { width: width / 2, marginVertical: 45}]}>
-          <Text style={styles.sectionLabel} appearance="hint">First name</Text>
-            <Text style={{marginRight: 15, width: width/2, textAlign:'right', alignSelf:"center"}}>Oscar</Text>
+            <View
+              style={[styles.setting, { width: width / 2, marginVertical: 45 }]}
+            >
+              <Text style={styles.sectionLabel} appearance="hint">
+                First name
+              </Text>
+              <Text
+                style={{
+                  marginRight: 15,
+                  width: width / 2,
+                  textAlign: "right",
+                  alignSelf: "center",
+                }}
+              >
+                Oscar
+              </Text>
             </View>
-            <Divider
-              style={styles.divider}
-            />
-            <View style={[styles.setting, { width: width / 2, marginVertical: 45}]}>
-            <Text style={styles.sectionLabel} appearance="hint">Last name</Text>
-            <Text style={{marginRight: 15, width: width/2, textAlign:'right', alignSelf:"center"}}>Luna</Text>
+            <Divider style={styles.divider} />
+            <View
+              style={[styles.setting, { width: width / 2, marginVertical: 45 }]}
+            >
+              <Text style={styles.sectionLabel} appearance="hint">
+                Last name
+              </Text>
+              <Text
+                style={{
+                  marginRight: 15,
+                  width: width / 2,
+                  textAlign: "right",
+                  alignSelf: "center",
+                }}
+              >
+                Luna
+              </Text>
             </View>
-            <Divider
-              style={styles.divider}
-            />
-            <Text style={[styles.description,{width: width, alignSelf:"flex-end", marginTop: 60}]} appearance="hint">
+            <Divider style={styles.divider} />
+            <Text
+              style={[
+                styles.description,
+                { width: width, alignSelf: "flex-end", marginTop: 60 },
+              ]}
+              appearance="hint"
+            >
               Hi! My name is Oscar. I’m 31 and I live in San Francisco. I’m
               interested in dance, software, music, and art.
             </Text>
@@ -116,37 +142,40 @@ const EditProfileScreen = ({ navigation }) => {
             <Text style={styles.settingValue}>oscarluna.webdev@gmail.com</Text>
           </View>
           <Divider
-              style={[styles.divider, { width: width, alignSelf:"center", right: 0}]}
-            />
+            style={[
+              styles.divider,
+              { width: width, alignSelf: "center", right: 0 },
+            ]}
+          />
           <View style={styles.setting}>
             <Text style={styles.settingLabel}>Gender</Text>
             <Text style={styles.settingValue}>Male</Text>
           </View>
           <Divider
-              style={[styles.divider, { width: width, alignSelf:"center", right: 0}]}
-            />
+            style={[
+              styles.divider,
+              { width: width, alignSelf: "center", right: 0 },
+            ]}
+          />
           <View style={styles.setting}>
             <Text style={styles.settingLabel}>Age</Text>
             <Text style={styles.settingValue}> 31</Text>
           </View>
           <Divider
-              style={[styles.divider, { width: width, alignSelf:"center", right: 0}]}
-            />
-             <LinearGradient
-                  start={{ x: 0.5, y: 1 }}
-                  end={{ x: 0.75, y: 1 }}
-                  colors={[
-                    theme.colors.lightblue[4],
-                    theme.colors.lightblue[6],
-                  ]}
-                  style={styles.doneButton}
-                >
-          <Pressable
-            
-            onPress={() => navigation.goBack()}
+            style={[
+              styles.divider,
+              { width: width, alignSelf: "center", right: 0 },
+            ]}
+          />
+          <LinearGradient
+            start={{ x: 0.5, y: 1 }}
+            end={{ x: 0.75, y: 1 }}
+            colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
+            style={styles.doneButton}
           >
-            <Text style={styles.buttonText}>Done</Text>
-          </Pressable>
+            <Pressable onPress={() => navigation.goBack()}>
+              <Text style={styles.buttonText}>Done</Text>
+            </Pressable>
           </LinearGradient>
         </View>
       </View>
@@ -171,16 +200,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-evenly",
     marginTop: 20,
-    marginLeft: -90
+    marginLeft: -90,
   },
   contentContainer: {
-    flexDirection:"column",
+    flexDirection: "column",
     top: 0,
     position: "absolute",
     paddingBottom: 24,
     height: height,
     width: width,
-    
+
     alignItems: "flex-start",
     justifyContent: "space-evenly",
   },
@@ -194,14 +223,14 @@ const styles = StyleSheet.create({
     width: width,
     height: 300,
     backgroundColor: "rgba(255,255,255,.11)",
-    elevation: 10
+    elevation: 10,
   },
   divider: {
     width: width * 0.64,
     alignSelf: "flex-end",
     marginVertical: 10,
     marginRight: 25,
-    backgroundColor: theme.colors.lightblue[4]
+    backgroundColor: theme.colors.lightblue[4],
   },
   photo: {
     alignSelf: "flex-start",
@@ -211,7 +240,7 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     backgroundColor: theme.colors.lightblue[4],
     top: 15,
-    marginRight:5
+    marginRight: 5,
   },
   photoButton: {
     width: 32,
@@ -228,7 +257,7 @@ const styles = StyleSheet.create({
     textAlign: "right",
     width: width,
     height: 100,
-    elevation: 2
+    elevation: 2,
   },
   description: {
     padding: 24,
@@ -244,7 +273,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 15,
-    elevation: 2
+    elevation: 2,
   },
   buttonText: {
     fontSize: 20,
@@ -268,13 +297,13 @@ const styles = StyleSheet.create({
     height: 300,
     alignSelf: "center",
     alignItems: "center",
-    backgroundColor:"rgba(255,255,255,.11)",
-    elevation: 10
+    backgroundColor: "rgba(255,255,255,.11)",
+    elevation: 10,
   },
   settingValue: {
     fontSize: 16,
     textAlign: "right",
-    paddingBottom: 0
+    paddingBottom: 0,
   },
 });
 

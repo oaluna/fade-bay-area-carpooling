@@ -552,4 +552,8 @@ const styles = StyleSheet.create({
   },
 });
 
+<<<<<<< HEAD
 export default Feed;
+=======
+export default Feed;
+>>>>>>> cfe434d91cfb39db6b80f7b096a5e36fe3d51e33

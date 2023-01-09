@@ -12,6 +12,32 @@
       "visible": "immersive",
       "backgroundColor": "#000030"
     }
+  },
+  "splash": {
+    "image": "./assets/images/splash.png",
+    "resizeMode": "cover",
+    "icon": "./assets/images/app-icon.png",
+    "backgroundColor": "#000030"
+  },
+
+  "updates": {
+    "fallbackToCacheTimeout": 0
+  },
+  "assetBundlePatterns": ["**/*"],
+  "ios": {
+    "supportsTablet": true,
+    "infoPlist": {
+      "NSCalendarsUsageDescription": "This app needs access to your calendar to set reminders."
+    }
+  },
+  "android": {
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/images/app-icon.png"
+    },
+    "config": {
+      "googleMaps": {
+        "apiKey": "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk"
+      }
     },
     "splash": {
       "image": "./assets/images/splash.png",
@@ -19,47 +45,18 @@
       "icon": "./assets/images/app-icon.png",
       "backgroundColor": "#000030"
     },
-    
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true,
-      "infoPlist": {
-        "NSCalendarsUsageDescription": "This app needs access to your calendar to set reminders."
+    "package": "com.oscarlunadotdev.FadeApp",
+    "permissions": ["READ_CALENDAR", "WRITE_CALENDAR"]
+  },
+  "web": {
+    "favicon": "./assets/favicon.png"
+  },
+  "plugins": [
+    [
+      "react-native-auth0",
+      {
+        "domain": "luna-reactdev.auth0.com"
       }
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/app-icon.png"
-      },
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk",
-          
-        }
-      },
-      "splash": {
-        "image": "./assets/images/splash.png",
-        "resizeMode": "cover",
-        "icon": "./assets/images/app-icon.png",
-        "backgroundColor": "#000030"
-      },
-      "package": "com.oscarlunadotdev.FadeApp",
-      "permissions": [
-        "READ_CALENDAR", "WRITE_CALENDAR"
-      ]
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      [
-        "react-native-auth0",
-        {
-          "domain": "luna-reactdev.auth0.com"
-        }
-      ]
     ]
-  }
+  ]
+}
