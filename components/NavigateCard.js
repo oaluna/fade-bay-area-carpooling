@@ -22,9 +22,8 @@ const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 
 const { width, height } = Dimensions.get("screen");
 
-const NavigateCard = ({ isEnabled, getInputData, data }) => {
+const NavigateCard = ({ isEnabled, getInputData, data, navigation }) => {
   const dispatch = useDispatch();
-  const navigation = useNavigation();
 
   React.useEffect(() => {
     function handleInput(key, val) {
@@ -40,37 +39,35 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
 
   return (
     <Screen
-      style={[
-        toInputBoxStyles,
-        {
-          flex: 1,
-          position: "relative",
-          alignSelf: "center",
-          alignItems: "center",
-          marginTop: -15,
-          elevation: 2,
-          width: width,
-          padding: 0,
-        },
-      ]}
+      style={{marginTop: 0, borderTopLeftRadius: 15, borderTopRightRadius: 15, height: height/ 2, width: width - 30, alignItems:"center", alignSelf:"center", justifyContent:"space-between"}}
     >
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
         colors={[theme.colors.blue[8], theme.colors.blue[10]]}
         style={{
+          position: "absolute",
+          top: -40,
+          
+          paddingTop: 20,
+height: height / 2,
           width: width,
-          height: height,
-          borderTopLeftRadius: 15,
-          borderTopRightRadius: 15,
-          paddingLeft: 20,
+          elevation: 2,
+          justifyContent:"space-between"
         }}
       >
+       <View
+          style={{
+            alignItems: "center",
+            flexDirection: "column",
+            justifyContent: "space-evenly",
+            marginBottom: 3,
+          }}
+        >
         <Text
           style={{
             alignSelf: "center",
             textAlign: "left",
-            paddingVertical: 20,
             marginTop: 15,
             fontSize: 32,
             fontWeight: "bold",
@@ -150,6 +147,7 @@ const NavigateCard = ({ isEnabled, getInputData, data }) => {
               <Text style={styles.buttonText}>Start A Carpool</Text>
             </TouchableOpacity>
           </LinearGradient>
+        </View>
         </View>
       </LinearGradient>
     </Screen>

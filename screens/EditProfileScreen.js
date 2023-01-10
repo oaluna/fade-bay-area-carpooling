@@ -5,6 +5,7 @@ import {
   Dimensions,
   StyleSheet,
   Pressable,
+  FlatList,
   Easing,
   TouchableWithoutFeedback,
 } from "react-native";
@@ -26,6 +27,40 @@ const oscarLuna = [
     age: 31,
     email: "oscarluna.webdev@gmail.com",
     phone: "+1 415 508 7194",
+  },
+];
+
+const data = [
+  {
+    id: 1,
+    title: "First Name",
+    value: "Oscar",
+  },
+  {
+    id: 2,
+    title: "Last Name",
+    value: "Luna",
+  },
+  {
+    id: 3,
+    title: "Email",
+    value: "oscarluna.webdev@gmail.com",
+  },
+  {
+    id: 4,
+    title: "Gender",
+    value: "male",
+  },
+ 
+  {
+    id: 6,
+    title: "Age",
+    value: 31,
+  },
+  {
+    id: 7,
+    title: "Phone",
+    value: "+1 (415) 508-7194",
   },
 ];
 
@@ -136,49 +171,51 @@ const EditProfileScreen = ({ navigation }) => {
             </Text>
           </View>
         </Layout>
-        <View style={styles.settingsSections}>
-          <View style={styles.setting}>
-            <Text style={styles.settingLabel}>Email</Text>
-            <Text style={styles.settingValue}>oscarluna.webdev@gmail.com</Text>
-          </View>
-          <Divider
-            style={[
-              styles.divider,
-              { width: width, alignSelf: "center", right: 0 },
-            ]}
+        <View style={styles.settingsSection}>
+          
+          <FlatList
+            data={data}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <View>
+                <View style={styles.setting}>
+                  <Text style={styles.settingLabel}>{item.title}</Text>
+                  <Text style={styles.settingValue}>{item.value}</Text>
+                </View>
+             
+               </View>
+                )}
+            ItemSeparatorComponent={() => (
+              <View
+                style={{
+                  height: 0.5,
+                  width: width - 30,
+                  borderColor: theme.colors.blue[2],
+                  borderWidth: 0.5,
+                  alignItems: "center",
+                  marginVertical: 5,
+                  marginHorizontal: 15,
+                }}
+              />
+            )}
           />
-          <View style={styles.setting}>
-            <Text style={styles.settingLabel}>Gender</Text>
-            <Text style={styles.settingValue}>Male</Text>
-          </View>
-          <Divider
-            style={[
-              styles.divider,
-              { width: width, alignSelf: "center", right: 0 },
-            ]}
-          />
-          <View style={styles.setting}>
-            <Text style={styles.settingLabel}>Age</Text>
-            <Text style={styles.settingValue}> 31</Text>
-          </View>
-          <Divider
-            style={[
-              styles.divider,
-              { width: width, alignSelf: "center", right: 0 },
-            ]}
-          />
-          <LinearGradient
-            start={{ x: 0.5, y: 1 }}
-            end={{ x: 0.75, y: 1 }}
-            colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
-            style={styles.doneButton}
-          >
-            <Pressable onPress={() => navigation.goBack()}>
-              <Text style={styles.buttonText}>Done</Text>
-            </Pressable>
-          </LinearGradient>
+                <LinearGradient
+                  start={{ x: 0.5, y: 1 }}
+                  end={{ x: 0.75, y: 1 }}
+                  colors={[
+                    theme.colors.lightblue[4],
+                    theme.colors.lightblue[6],
+                  ]}
+                  style={styles.doneButton}
+                >
+                  <Pressable onPress={() => navigation.goBack()}>
+                    <Text style={styles.buttonText}>Done</Text>
+                  </Pressable>
+                </LinearGradient>
+              </View>
+           
         </View>
-      </View>
+      
     </LinearGradient>
   );
 };
@@ -194,13 +231,11 @@ const styles = StyleSheet.create({
   },
   editHeader: {
     flexDirection: "row",
-    width: width,
-    height: 120,
-    alignSelf: "center",
-    alignItems: "center",
+    alignItems:"center",
     justifyContent: "space-evenly",
-    marginTop: 20,
-    marginLeft: -90,
+    width: width,
+    height: 90,
+    marginLeft: -95
   },
   contentContainer: {
     flexDirection: "column",
@@ -222,8 +257,8 @@ const styles = StyleSheet.create({
     top: 0,
     width: width,
     height: 300,
-    backgroundColor: "rgba(255,255,255,.11)",
-    elevation: 10,
+    backgroundColor: "rgba(255,255,255,0.11)",
+    elevation: 2,
   },
   divider: {
     width: width * 0.64,
@@ -291,14 +326,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: theme.colors.neutral[5],
   },
-  settingsSections: {
-    marginTop: 0,
+  settingsSection: {
+    marginTop: 150,
     width: width,
-    height: 300,
+    height: 500,
     alignSelf: "center",
     alignItems: "center",
-    backgroundColor: "rgba(255,255,255,.11)",
-    elevation: 10,
+    backgroundColor: "rgba(255,255,255,0.11)",
+    elevation: 2,
+    paddingVertical: 15
   },
   settingValue: {
     fontSize: 16,

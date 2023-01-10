@@ -4,22 +4,22 @@
     "slug": "FadeApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/app-icon.png",
+    "icon": "./assets/app-icon/favicon.png",
     "backgroundColor": "#000030",
     "userInterfaceStyle": "dark",
     "androidNavigationBar": {
       "barStyle": "light-content",
-      "visible": "immersive",
+      "visible": "sticky-immersive",
+      "backgroundColor": "#000030"
+      
+    },
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "icon": "./assets/app-icon/favicon.png",
       "backgroundColor": "#000030"
     }
-  },
-  "splash": {
-    "image": "./assets/images/splash.png",
-    "resizeMode": "cover",
-    "icon": "./assets/images/app-icon.png",
-    "backgroundColor": "#000030"
-  },
-
+    },
   "updates": {
     "fallbackToCacheTimeout": 0
   },
@@ -32,24 +32,19 @@
   },
   "android": {
     "adaptiveIcon": {
-      "foregroundImage": "./assets/images/app-icon.png"
+      "foregroundImage": "./assets/app-icon/splash.png",
+      "backgroundColor": "#000030"
     },
     "config": {
       "googleMaps": {
         "apiKey": "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk"
       }
     },
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "cover",
-      "icon": "./assets/images/app-icon.png",
-      "backgroundColor": "#000030"
-    },
     "package": "com.oscarlunadotdev.FadeApp",
     "permissions": ["READ_CALENDAR", "WRITE_CALENDAR"]
   },
   "web": {
-    "favicon": "./assets/favicon.png"
+    "favicon": "./assets/app-icon/favicon.png"
   },
   "plugins": [
     [

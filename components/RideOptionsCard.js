@@ -44,6 +44,7 @@ const data = [
 
 const RideOptionsCard = () => {
   const navigation = useNavigation();
+
   const [selected, setSelected] = useState(null);
   const travelTimeInformation = useSelector(selectTravelTimeInformation);
   const origin = useSelector(selectOrigin);
@@ -65,20 +66,20 @@ const RideOptionsCard = () => {
   };
 
   return (
-    <Screen style={{ marginTop: 0, height: height / 2 }}>
+    <Screen style={{ marginTop: 0, borderTopLeftRadius: 15, borderTopRightRadius: 15, height: height, width: width - 30, alignItems:"center", alignSelf:"center", justifyContent:"space-between" }}>
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
         colors={[theme.colors.blue[8], theme.colors.blue[10]]}
         style={{
           position: "absolute",
-          top: 0,
-          borderTopLeftRadius: 15,
-          borderTopRightRadius: 15,
+          top: -40,
+          
           paddingTop: 20,
-
+height: height,
           width: width,
           elevation: 2,
+          justifyContent:"space-between"
         }}
       >
         <View

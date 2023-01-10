@@ -78,7 +78,7 @@ const data = [
 ];
 
 const NavOptions = () => {
-  const navigation = useNavigation();
+const navigation = useNavigation();
   const origin = useSelector(selectOrigin);
 
   return (
@@ -89,17 +89,20 @@ const NavOptions = () => {
           width: width,
           alignSelf: "flex-start",
           alignItems: "flex-end",
-          height: 170,
-          elevation:10
+          height: 130,
+          elevation:20,
+         
         }}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={() => navigation.push(item.screen)}
+            onPress={() => navigation.navigate(item.screen)}
             disabled={!origin && item.id === "0"}
             style={
               !origin && item.id === "0"
-                ? [styles.card, { backgroundColor: theme.colors.neutral[8] }]
-                : styles.card
+                ? [styles.card, { backgroundColor: theme.colors.lightblue[4],  borderLeftColor: theme.colors.neutral[10],
+          borderLeftWidth: 1 }]
+                : [styles.card, { borderHorizontalColor: theme.colors.neutral[7],
+          borderLeftWidth: 1 }]
             }
           >
             <View>
@@ -126,7 +129,7 @@ export default NavOptions;
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "rgba(255,255,255,.11)",
+    backgroundColor: theme.colors.neutral[7],
    flexDirection:"row",
     alignItems:"center",
     justifyContent:"center",

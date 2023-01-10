@@ -115,9 +115,8 @@ const styles = StyleSheet.create({
     height: 50,
     width: 100,
     resizeMode: "contain",
-    marginTop: 0,
-    marginBottom: 0,
-    padding: 15,
+   
+    margin: 15,
     alignSelf: "flex-start",
   },
   text1: {

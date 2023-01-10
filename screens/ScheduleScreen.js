@@ -74,7 +74,9 @@ const ScheduleScreen = ({ navigation }) => {
           onPress={() => navigation.goBack()}
           color={"white"}
         />
-        <Text style={{ color: theme.colors.neutral[0], fontSize: 20 }}>
+        <Text style={{color: theme.colors.neutral[0],
+    fontSize: 18,
+    fontWeight: "bold", textAlign:"center", marginLeft: 25, marginRight: -25}}>
           My Upcoming Carpools
         </Text>
       </View>
@@ -99,9 +101,11 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems:"center",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     width: width -30,
-    height: 90
+    height: 90,
+    position:"absolute",
+    left: -60
   },
 })
 

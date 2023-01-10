@@ -82,6 +82,34 @@ const userData = [
     message: "Good Morning Sir..",
     dp: require("../assets/images/icon-account-alt.png"),
   },
+  {
+    id: 10,
+    name: "Lisa",
+    time: "6:00 AM",
+    message: "Good Morning Sir..",
+    dp: require("../assets/images/icon-account-alt.png"),
+  },
+  {
+    id: 11,
+    name: "Jisoo",
+    time: "1:30 PM",
+    message: "Noice",
+    dp: require("../assets/images/icon-account-alt.png"),
+  },
+  {
+    id: 12,
+    name: "Rose",
+    time: "2:30 PM",
+    message: "wow..",
+    dp: require("../assets/images/icon-account-alt.png"),
+  },
+  {
+    id: 13,
+    name: "Jennie",
+    time: "6:00 AM",
+    message: "Good Morning Sir..",
+    dp: require("../assets/images/icon-account-alt.png"),
+  },
 ];
 
 const Messages = ({ data }) => {

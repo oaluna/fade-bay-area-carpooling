@@ -1,6 +1,6 @@
 import React from "react";
 import { parameters, theme } from "../global/styles";
-import { View, StyleSheet, Image, Text, Dimensions } from "react-native";
+import { View, StyleSheet, Image, Text, Dimensions, SafeAreaView } from "react-native";
 import { Icon, Avatar } from "react-native-elements";
 import { Badge } from "react-native-paper";
 import Screen from "../components/Screen";
@@ -12,6 +12,7 @@ const { width, height } = Dimensions.get("screen");
 const CommuteListingScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   return (
+    <SafeAreaView style={{height: height, width: width}}>
     <Screen style={styles.screen}>
       <LinearGradient
         start={{ x: 1, y: 0 }}
@@ -21,14 +22,13 @@ const CommuteListingScreen = ({ navigation }) => {
       >
         <View
           style={{
-            width: width / 1.5,
-            marginLeft: 15,
-            marginVertical: 25,
-            marginRight: 0,
             flexDirection: "row",
-            alignItems: "flex-start",
-            alignItems: "center",
-            justifyContent: "space-between",
+            alignSelf:"center",
+    alignItems:"center",
+    justifyContent: "space-evenly",
+    width: width,
+    height: 90,
+    marginLeft: -95
           }}
         >
           <Icon
@@ -47,8 +47,9 @@ const CommuteListingScreen = ({ navigation }) => {
             style={[
               styles.header,
               {
+                fontSize: 18,
                 color: theme.colors.neutral[0],
-                marginBottom: 25,
+              
                 alignItems: "center",
               },
             ]}
@@ -67,6 +68,7 @@ const CommuteListingScreen = ({ navigation }) => {
               justifyContent: "space-evenly",
               width: width,
               height: 300,
+              marginTop: 15
             },
           ]}
         >
@@ -217,12 +219,13 @@ const CommuteListingScreen = ({ navigation }) => {
           style={{
             resizeMode: "contain",
             width: width,
-            height: height - 50,
-            top: -220,
+            height: height - 400,
+            bottom: 0
           }}
         />
       </LinearGradient>
     </Screen>
+    </SafeAreaView>
   );
 };
 
@@ -233,6 +236,7 @@ const styles = StyleSheet.create({
     height: height,
     position: "absolute",
     elevation: 10,
+    top: -15
   },
   icon: {
     resizeMode: "contain",
@@ -260,6 +264,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.blue[9],
     paddingBottom: 30,
     paddingTop: parameters.statusBarHeight,
+    
   },
   header: {
     color: theme.colors.neutral[0],

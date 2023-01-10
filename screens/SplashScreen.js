@@ -81,6 +81,9 @@ const SplashScreen = ({ navigation }) => {
           style={styles.gradient}
         />
         <View style={styles.body}>
+        <Pressable onPress={() => navigation.navigate("LoginScreen")} style={{ position:"absolute", right: 15, top: 15, backgroundColor: theme.colors.neutral[7], 
+        width: 75, height: 25, justifyContent:"center", alignItems:"center", borderRadius: 15, elevation: 10}}>
+        <Text style={{ color: theme.colors.neutral[0], fontSize: 18}}>Skip</Text></Pressable>
           <Image
             source={require("../assets/images/fade-logo-alt.png")}
             style={{

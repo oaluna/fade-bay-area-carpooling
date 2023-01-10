@@ -1,9 +1,10 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import NavigateCard from '../components/NavigateCard';
 import RideOptionsCard from '../components/RideOptionsCard';
+import NavOptions from "../components/NavOptions";
 
-const Tab = createBottomTabNavigator();
+const Tab = createStackNavigator();
 
 const MapNavigator = () => {
     return (
@@ -13,6 +14,7 @@ const MapNavigator = () => {
         }}>
             <Tab.Screen name="NavigateCard" component={NavigateCard} />
             <Tab.Screen name="RideOptionsCard" component={RideOptionsCard} />
+    
         </Tab.Navigator>
     );
 }
