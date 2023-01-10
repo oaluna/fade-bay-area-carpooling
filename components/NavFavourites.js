@@ -65,8 +65,8 @@ const NavFavourites = () => {
                     flexDirection: "row",
                     alignSelf:"center",
                     alignItems: "center",
-                    justifyContent: "space-between",
-                    width: width - 30,
+                    justifyContent: "space-evenly",
+                    width: 270,
                     marginHorizontal: 15,
                     height: 180,
                    
@@ -77,25 +77,26 @@ const NavFavourites = () => {
                     source={{ uri: item.image }}
                     style={{ 
                       resizeMode:"cover", 
-                      width: width - 30, 
+                      width: width * 0.75, 
                       height: 180, 
                       borderRadius: 20, 
                       position:"absolute",
+                      left: 0,
                       
                       }}
                   />
-                <View style={{height: 180, width: width - 30, backgroundColor: "rgba(0,0,0,0.25)", position: "absolute"}}>
-                </View>
+                <View style={{height: 180, width: width * 0.75, backgroundColor: "rgba(0,0,0,0.25)", position: "absolute", left: 0}}>
                   <View
                     style={{
-                      marginVertical: 0,
+                      marginVertical: 45,
+                      alignSelf:"center",
                       justifyContent: "space-evenly",
                       height: 60,
                       paddingHorizontal: 15
                     }}
                   >
                     <Text
-                      style={{ color: theme.colors.neutral[1], fontSize: 24}}
+                      style={{ color: theme.colors.neutral[2], fontSize: 24}}
                     >
                       {item.location}
                     </Text>
@@ -105,6 +106,7 @@ const NavFavourites = () => {
                       {item.destination}
                     </Text>
                   </View>
+                </View>
                 </TouchableOpacity>
               </View>
     

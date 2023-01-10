@@ -1,6 +1,13 @@
 import React from "react";
 import { parameters, theme } from "../global/styles";
-import { View, StyleSheet, Image, Text, Dimensions, SafeAreaView } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Image,
+  Text,
+  Dimensions,
+  SafeAreaView,
+} from "react-native";
 import { Icon, Avatar } from "react-native-elements";
 import { Badge } from "react-native-paper";
 import Screen from "../components/Screen";
@@ -12,231 +19,233 @@ const { width, height } = Dimensions.get("screen");
 const CommuteListingScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   return (
-    <SafeAreaView style={{height: height, width: width}}>
-    <Screen style={styles.screen}>
-      <LinearGradient
-        start={{ x: 1, y: 0 }}
-        end={{ x: 0.5, y: 1 }}
-        colors={[theme.colors.blue[8], theme.colors.blue[10]]}
-        style={styles.screen}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            alignSelf:"center",
-    alignItems:"center",
-    justifyContent: "space-evenly",
-    width: width,
-    height: 90,
-    marginLeft: -95
-          }}
-        >
-          <Icon
-            type="antdesign"
-            name="arrowleft"
-            color="white"
-            size={30}
-            style={{
-              alignSelf: "flex-start",
-
-              position: "relative",
-            }}
-            onPress={() => navigation.goBack()}
-          />
-          <Text
-            style={[
-              styles.header,
-              {
-                fontSize: 18,
-                color: theme.colors.neutral[0],
-              
-                alignItems: "center",
-              },
-            ]}
-          >
-            Commute Details
-          </Text>
-        </View>
-
-        <View
-          style={[
-            styles.contentContainer,
-            {
-              height: height / 2,
-              flexDirection: "column",
-              alignItems: "flex-start",
-              justifyContent: "space-evenly",
-              width: width,
-              height: 300,
-              marginTop: 15
-            },
-          ]}
+    <SafeAreaView style={{ height: height, width: width }}>
+      <Screen style={styles.screen}>
+        <LinearGradient
+          start={{ x: 1, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          colors={[theme.colors.blue[8], theme.colors.blue[10]]}
+          style={styles.screen}
         >
           <View
             style={{
               flexDirection: "row",
+              alignSelf: "center",
               alignItems: "center",
-              paddingHorizontal: 15,
-              marginVertical: 25,
-              top: -45,
+              justifyContent: "space-evenly",
+              width: width,
+              height: 90,
+              marginLeft: -95,
             }}
           >
-            <Avatar
-              source={require("../assets/images/oscarluna.png")}
-              rounded
-              size="medium"
-              containerStyle={styles.avatar}
-            />
-            <Badge
-              size={12}
-              style={{ backgroundColor: theme.colors.green[4], left: -15 }}
+            <Icon
+              type="antdesign"
+              name="arrowleft"
+              color="white"
+              size={30}
+              style={{
+                alignSelf: "flex-start",
+
+                position: "relative",
+              }}
+              onPress={() => navigation.goBack()}
             />
             <Text
-              style={{
-                color: theme.colors.neutral[0],
-                marginLeft: 25,
-                fontSize: 20,
-              }}
+              style={[
+                styles.header,
+                {
+                  fontSize: 18,
+                  color: theme.colors.neutral[0],
+
+                  alignItems: "center",
+                },
+              ]}
             >
-              oscarluna
+              Commute Details
             </Text>
-            <View style={{ top: 20, left: -70, flexDirection: "row" }}>
-              <Text style={{ color: theme.colors.lightblue[3], fontSize: 10 }}>
-                Driver
-              </Text>
-              <Image
-                source={require("../assets/images/icon-driver.png")}
-                style={[styles.icon, { marginLeft: 15 }]}
-              />
-            </View>
           </View>
 
-          <View style={styles.footerContainer}>
+          <View
+            style={[
+              styles.contentContainer,
+              {
+                height: height / 2,
+                flexDirection: "column",
+                alignItems: "flex-start",
+                justifyContent: "space-evenly",
+                width: width,
+                height: 300,
+                marginTop: 15,
+              },
+            ]}
+          >
             <View
               style={{
                 flexDirection: "row",
                 alignItems: "center",
-                marginTop: -105,
-                marginLeft: 20,
+                paddingHorizontal: 15,
+                marginVertical: 25,
+                top: -45,
               }}
             >
-              <Image
-                source={require("../assets/images/icon-to-from.png")}
-                style={{
-                  flexDirection: "column",
-                  resizeMode: "contain",
-                  width: 50,
-                  height: 120,
-                  marginTop: 50,
-                }}
+              <Avatar
+                source={require("../assets/images/oscarluna.png")}
+                rounded
+                size="medium"
+                containerStyle={styles.avatar}
               />
-              <View
+              <Badge
+                size={12}
+                style={{ backgroundColor: theme.colors.green[4], left: -15 }}
+              />
+              <Text
                 style={{
-                  flexDirection: "column",
-                  justifyContent: "space-evenly",
-                  height: 150,
+                  color: theme.colors.neutral[0],
+                  marginLeft: 25,
+                  fontSize: 20,
                 }}
               >
-                <Text style={{ color: theme.colors.neutral[0] }}>
-                  701 London Street, San Francisco, CA 94110
+                oscarluna
+              </Text>
+              <View style={{ top: 20, left: -70, flexDirection: "row" }}>
+                <Text
+                  style={{ color: theme.colors.lightblue[3], fontSize: 10 }}
+                >
+                  Driver
                 </Text>
-                <Text style={{ color: theme.colors.neutral[0] }}>
-                  415 Mission Street, San Francisco, CA 94105
-                </Text>
+                <Image
+                  source={require("../assets/images/icon-driver.png")}
+                  style={[styles.icon, { marginLeft: 15 }]}
+                />
               </View>
             </View>
-            <View />
+
+            <View style={styles.footerContainer}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  marginTop: -105,
+                  marginLeft: 20,
+                }}
+              >
+                <Image
+                  source={require("../assets/images/icon-to-from.png")}
+                  style={{
+                    flexDirection: "column",
+                    resizeMode: "contain",
+                    width: 50,
+                    height: 120,
+                    marginTop: 50,
+                  }}
+                />
+                <View
+                  style={{
+                    flexDirection: "column",
+                    justifyContent: "space-evenly",
+                    height: 150,
+                  }}
+                >
+                  <Text style={{ color: theme.colors.neutral[0] }}>
+                    701 London Street, San Francisco, CA 94110
+                  </Text>
+                  <Text style={{ color: theme.colors.neutral[0] }}>
+                    415 Mission Street, San Francisco, CA 94105
+                  </Text>
+                </View>
+              </View>
+              <View />
+              <View
+                style={[
+                  styles.rightSideContainer,
+                  { width: 200, alignItems: "flex-start" },
+                ]}
+              >
+                <View
+                  style={{
+                    marginLeft: 15,
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    marginBottom: 15,
+                  }}
+                >
+                  <Image
+                    source={require("../assets/images/icon-clock.png")}
+                    style={{ resizeMode: "contain", width: 24, height: 24 }}
+                  />
+                  <Text
+                    style={{
+                      color: theme.colors.neutral[0],
+                      fontSize: 20,
+                      marginLeft: 15,
+                    }}
+                  >
+                    9:00 AM
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    marginLeft: 15,
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                  }}
+                >
+                  <Image
+                    source={require("../assets/images/icon-seat.png")}
+                    style={{ resizeMode: "contain", width: 24, height: 24 }}
+                  />
+                  <Text
+                    style={{
+                      color: theme.colors.neutral[0],
+                      fontSize: 20,
+                      marginLeft: 15,
+                    }}
+                  >
+                    3
+                  </Text>
+                </View>
+              </View>
+            </View>
             <View
-              style={[
-                styles.rightSideContainer,
-                { width: 200, alignItems: "flex-start" },
-              ]}
+              style={{
+                backgroundColor: theme.colors.blue[8],
+                padding: 5,
+                width: 150,
+                height: 80,
+                left: 180,
+                top: -45,
+                elevation: 2,
+              }}
             >
-              <View
-                style={{
-                  marginLeft: 15,
-                  flexDirection: "row",
-                  justifyContent: "space-evenly",
-                  marginBottom: 15,
-                }}
-              >
-                <Image
-                  source={require("../assets/images/icon-clock.png")}
-                  style={{ resizeMode: "contain", width: 24, height: 24 }}
-                />
-                <Text
-                  style={{
-                    color: theme.colors.neutral[0],
-                    fontSize: 20,
-                    marginLeft: 15,
-                  }}
-                >
-                  9:00 AM
-                </Text>
-              </View>
-              <View
-                style={{
-                  marginLeft: 15,
-                  flexDirection: "row",
-                  justifyContent: "space-evenly",
-                }}
-              >
-                <Image
-                  source={require("../assets/images/icon-seat.png")}
-                  style={{ resizeMode: "contain", width: 24, height: 24 }}
-                />
-                <Text
-                  style={{
-                    color: theme.colors.neutral[0],
-                    fontSize: 20,
-                    marginLeft: 15,
-                  }}
-                >
-                  3
-                </Text>
-              </View>
+              <Text style={{ color: theme.colors.neutral[0] }}>
+                Notes from Driver:
+              </Text>
+              <Text style={{ color: theme.colors.neutral[3] }}>none</Text>
             </View>
           </View>
-          <View
+          <Image
+            source={require("../assets/images/mapSnapshot.jpg")}
             style={{
-              backgroundColor: theme.colors.blue[8],
-              padding: 5,
-              width: 150,
-              height: 80,
-              left: 180,
-              top: -45,
-              elevation: 2,
+              resizeMode: "contain",
+              width: width,
+              height: height - 400,
+              bottom: 0,
             }}
-          >
-            <Text style={{ color: theme.colors.neutral[0] }}>
-              Notes from Driver:
-            </Text>
-            <Text style={{ color: theme.colors.neutral[3] }}>none</Text>
-          </View>
-        </View>
-        <Image
-          source={require("../assets/images/mapSnapshot.jpg")}
-          style={{
-            resizeMode: "contain",
-            width: width,
-            height: height - 400,
-            bottom: 0
-          }}
-        />
-      </LinearGradient>
-    </Screen>
+          />
+        </LinearGradient>
+      </Screen>
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   screen: {
     marginHorizontal: 0,
     width: width,
     height: height,
     position: "absolute",
     elevation: 10,
-    top: -15
+    top: -15,
   },
   icon: {
     resizeMode: "contain",
@@ -264,7 +273,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.blue[9],
     paddingBottom: 30,
     paddingTop: parameters.statusBarHeight,
-    
   },
   header: {
     color: theme.colors.neutral[0],

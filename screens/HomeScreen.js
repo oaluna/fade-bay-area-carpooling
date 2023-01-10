@@ -9,6 +9,7 @@ import {
   Text,
   Dimensions,
 } from "react-native";
+import { Icon } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
 import Screen from "../components/Screen";
 import NavFavourites from "../components/NavFavourites";
@@ -51,6 +52,7 @@ const HomeScreen = ({ navigation, ...props }) => {
         <View>
           <GooglePlacesAutocomplete
             placeholder="Where from?"
+            
             nearbyPlacesAPI="GooglePlacesSearch"
             debounce={400}
             onPress={(data, details = null) => {
@@ -77,14 +79,16 @@ const HomeScreen = ({ navigation, ...props }) => {
                 width: width - 30,
               },
               textInput: {
+                elevation: 1,
                 fontSize: 15,
-                borderRadius: 15,
+                borderRadius: 50,
                 height: 50,
                 borderColor: theme.colors.neutral[4],
                 borderWidth: 1,
                 backgroundColor: theme.colors.neutral[0],
               },
             }}
+           
             enablePoweredByContainer={true}
           />
         </View>

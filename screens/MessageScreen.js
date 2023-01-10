@@ -17,9 +17,11 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const { width, height } = Dimensions.get("screen");
 
-const DetailsChat = ({ route, navigation }) => {
+const DetailsChat = ({ route, navigation, props}) => {
 
   const { data } = route.params;
+ 
+
   return (
 
       <SafeAreaView>
@@ -42,7 +44,7 @@ const DetailsChat = ({ route, navigation }) => {
           />
         
           </TouchableWithoutFeedback>
-          <Image style={styles.dp} source={data.dp} />
+          <Image style={[styles.dp, { backgroundColor: data.iconColor}]} source={data.dp} />
           <Text style={styles.Name}>{data.name}</Text>
         <View style={styles.leftIcons}>
           <Icon type="ionicons" name='videocam' size={24} color='#fff' />
@@ -110,8 +112,8 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "bold",
-    marginRight: 45,
-    marginLeft: -45
+    marginRight: 65,
+    marginLeft: -65
       },
   dp: {
     height: 35,

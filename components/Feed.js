@@ -388,7 +388,7 @@ CardContainer.defaultProps = {
   rightSideValue: "3",
   rightSideTitle: "Seats",
   subtitleColor: "#dbdbdb",
-  backgroundColor: "rgba(255,255,255,.11)",
+  backgroundColor:"#303c4b",
   leftSideValueColor: "white",
   rightSideValueColor: "white",
 };
@@ -423,7 +423,7 @@ const styles = StyleSheet.create({
     height: 477
   },
   bg: {
-    backgroundColor: theme.colors.blue[8],
+    backgroundColor: theme.colors.neutral[8],
     borderRadius:15,
     flexWrap: "wrap",
     height: 100,

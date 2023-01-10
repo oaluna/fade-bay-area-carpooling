@@ -257,7 +257,7 @@ const styles = StyleSheet.create({
     top: 0,
     width: width,
     height: 300,
-    backgroundColor: "rgba(255,255,255,0.11)",
+    backgroundColor: theme.colors.neutral[8],
     elevation: 2,
   },
   divider: {
@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
     width: 84,
     borderRadius: 50,
     resizeMode: "cover",
-    backgroundColor: theme.colors.lightblue[4],
+    backgroundColor: theme.colors.lightblue[0],
     top: 15,
     marginRight: 5,
   },
@@ -332,7 +332,7 @@ const styles = StyleSheet.create({
     height: 500,
     alignSelf: "center",
     alignItems: "center",
-    backgroundColor: "rgba(255,255,255,0.11)",
+    backgroundColor: theme.colors.neutral[8],
     elevation: 2,
     paddingVertical: 15
   },

@@ -14,6 +14,7 @@ import RegisterScreen from "../screens/RegisterScreen";
 import DemoScreen from "../components/demo/DemoScreen";
 import LocationAccessScreen from "../screens/LocationAccessScreen";
 import ScheduleScreen from "../screens/ScheduleScreen";
+import SubscribedScreen from "../screens/SubscribedScreen";
 import SplashScreen from "../screens/SplashScreen";
 import RequestScreen from "../screens/RequestScreen";
 import DestinationScreen from "../screens/DestinationScreen";
@@ -88,6 +89,11 @@ const MainNavigator = () => {
       <Stack.Screen
         name="ScheduleScreen"
         component={ScheduleScreen}
+        screenOptions={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SubscribedScreen"
+        component={SubscribedScreen}
         screenOptions={{ headerShown: false }}
       />
       <Stack.Screen

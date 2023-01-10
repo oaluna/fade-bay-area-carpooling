@@ -39,7 +39,16 @@ const NavigateCard = ({ isEnabled, getInputData, data, navigation }) => {
 
   return (
     <Screen
-      style={{marginTop: 0, borderTopLeftRadius: 15, borderTopRightRadius: 15, height: height/ 2, width: width - 30, alignItems:"center", alignSelf:"center", justifyContent:"space-between"}}
+      style={{
+        marginTop: 0,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        height: height / 2,
+        width: width - 30,
+        alignItems: "center",
+        alignSelf: "center",
+        justifyContent: "space-between",
+      }}
     >
       <LinearGradient
         start={{ x: 1, y: 0 }}
@@ -48,15 +57,15 @@ const NavigateCard = ({ isEnabled, getInputData, data, navigation }) => {
         style={{
           position: "absolute",
           top: -40,
-          
+
           paddingTop: 20,
-height: height / 2,
+          height: height / 2,
           width: width,
           elevation: 2,
-          justifyContent:"space-between"
+          justifyContent: "space-between",
         }}
       >
-       <View
+        <View
           style={{
             alignItems: "center",
             flexDirection: "column",
@@ -64,90 +73,90 @@ height: height / 2,
             marginBottom: 3,
           }}
         >
-        <Text
-          style={{
-            alignSelf: "center",
-            textAlign: "left",
-            marginTop: 15,
-            fontSize: 32,
-            fontWeight: "bold",
-            color: theme.colors.neutral[0],
-            width: width,
-          }}
-        >
-          Good morning, {isEnabled ? "Driver" : "Rider"}
-        </Text>
-        <View
-          style={{
-            borderTopColor: theme.colors.blue[5],
-            flexShrink: 1,
-            position: "relative",
-            zIndex: 20,
-            width: width - 30,
-          }}
-        >
-          <View style={{ paddingBottom: 2 }}>
-            <GooglePlacesAutocomplete
-              placeholder="Where to?"
-              nearbyPlacesAPI="GooglePlacesSearch"
-              debounce={400}
-              onPress={(data, details = null) => {
-                dispatch(
-                  setDestination({
-                    loaction: details.geometry.location,
-                    description: data.description,
-                  })
-                );
-              }}
-              minLength={2}
-              fetchDetails={true}
-              returnKeyType={"search"}
-              onFail={(error) => console.error(error)}
-              query={{
-                key: GOOGLE_MAP_APIKEY,
-                language: "en",
-              }}
-              styles={toInputBoxStyles}
-              enablePoweredByContainer={false}
-            />
+          <Text
+            style={{
+              alignSelf: "center",
+              textAlign: "left",
+              marginTop: 15,
+              fontSize: 32,
+              fontWeight: "bold",
+              color: theme.colors.neutral[0],
+              width: width,
+            }}
+          >
+            Good morning, {isEnabled ? "Driver" : "Rider"}
+          </Text>
+          <View
+            style={{
+              borderTopColor: theme.colors.blue[5],
+              flexShrink: 1,
+              position: "relative",
+              zIndex: 20,
+              width: width - 30,
+            }}
+          >
+            <View style={{ paddingBottom: 2 }}>
+              <GooglePlacesAutocomplete
+                placeholder="Where to?"
+                nearbyPlacesAPI="GooglePlacesSearch"
+                debounce={400}
+                onPress={(data, details = null) => {
+                  dispatch(
+                    setDestination({
+                      loaction: details.geometry.location,
+                      description: data.description,
+                    })
+                  );
+                }}
+                minLength={2}
+                fetchDetails={true}
+                returnKeyType={"search"}
+                onFail={(error) => console.error(error)}
+                query={{
+                  key: GOOGLE_MAP_APIKEY,
+                  language: "en",
+                }}
+                styles={toInputBoxStyles}
+                enablePoweredByContainer={false}
+              />
+            </View>
           </View>
-        </View>
-        <View
-          style={{
-            alignSelf: "center",
-            alignItems: "flex-start",
-            zIndex: 10,
-            justifyContent: "center",
-            height: 250,
-            width: width,
-          }}
-        >
-          <NavFavourites />
-        </View>
-        <View style={styles.buttonContainer}>
-          <LinearGradient
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            colors={[theme.colors.red[4], theme.colors.red[6]]}
-            style={styles.navOption}
+          <View
+            style={{
+              alignSelf: "center",
+              alignItems: "flex-start",
+              zIndex: 10,
+              justifyContent: "center",
+              height: 250,
+              width: width,
+            }}
           >
-            <TouchableOpacity onPress={() => navigation.push("EatsScreen")}>
-              <Text style={styles.buttonText}>Join A Carpool</Text>
-            </TouchableOpacity>
-          </LinearGradient>
-          <LinearGradient
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
-            style={styles.navOption}
-          >
-            <TouchableOpacity
-              onPress={() => navigation.push("RideOptionsCard")}
+            <NavFavourites />
+          </View>
+          <View style={styles.buttonContainer}>
+            <LinearGradient
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              colors={[theme.colors.red[4], theme.colors.red[6]]}
+              style={styles.navOption}
             >
-              <Text style={styles.buttonText}>Start A Carpool</Text>
-            </TouchableOpacity>
-          </LinearGradient>
-        </View>
+              <TouchableOpacity onPress={() => navigation.push("EatsScreen")}>
+                <Text style={styles.buttonText}>Join A Carpool</Text>
+              </TouchableOpacity>
+            </LinearGradient>
+            <LinearGradient
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
+              style={styles.navOption}
+            >
+              <TouchableOpacity
+                onPress={() => navigation.push("RideOptionsCard")}
+              >
+                <Text style={styles.buttonText}>Start A Carpool</Text>
+              </TouchableOpacity>
+            </LinearGradient>
+          </View>
         </View>
       </LinearGradient>
     </Screen>

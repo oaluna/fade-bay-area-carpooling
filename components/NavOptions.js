@@ -59,7 +59,7 @@ const data = [
     title: "Subscribed",
     image:
       require("../assets/images/icon-plus-alt.png"),
-    screen: "ScheduleScreen",
+    screen: "SubscribedScreen",
   },
   {
     id: "3",

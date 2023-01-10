@@ -21,6 +21,7 @@ const { height, width } = Dimensions.get("screen");
 const userData = [
   {
     id: 1,
+    iconColor: "black",
     name: "Taeyeon",
     time: "1:30 PM",
     message: "Noice",
@@ -28,6 +29,7 @@ const userData = [
   },
   {
     id: 2,
+    iconColor: "pink",
     name: "Sunny",
     time: "2:30 PM",
     message: "wow..",
@@ -35,6 +37,7 @@ const userData = [
   },
   {
     id: 3,
+    iconColor: "black",
     name: "Jessica",
     time: "6:00 AM",
     message: "Good Morning Sir..",
@@ -42,6 +45,7 @@ const userData = [
   },
   {
     id: 4,
+    iconColor: "pink",
     name: "Tiffany",
     time: "1:30 PM",
     message: "Noice",
@@ -49,6 +53,7 @@ const userData = [
   },
   {
     id: 5,
+    iconColor: "black",
     name: "Seohyun",
     time: "2:30 PM",
     message: "wow..",
@@ -56,6 +61,7 @@ const userData = [
   },
   {
     id: 6,
+    iconColor: "pink",
     name: "Sooyoung",
     time: "6:00 AM",
     message: "Good Morning Sir..",
@@ -63,6 +69,7 @@ const userData = [
   },
   {
     id: 7,
+    iconColor: "black",
     name: "Yoona",
     time: "1:30 PM",
     message: "Noice",
@@ -70,6 +77,7 @@ const userData = [
   },
   {
     id: 8,
+    iconColor: "pink",
     name: "Yuri",
     time: "2:30 PM",
     message: "wow..",
@@ -77,6 +85,7 @@ const userData = [
   },
   {
     id: 9,
+    iconColor: "black",
     name: "Hyoyeon",
     time: "6:00 AM",
     message: "Good Morning Sir..",
@@ -84,6 +93,7 @@ const userData = [
   },
   {
     id: 10,
+    iconColor: "pink",
     name: "Lisa",
     time: "6:00 AM",
     message: "Good Morning Sir..",
@@ -91,6 +101,7 @@ const userData = [
   },
   {
     id: 11,
+    iconColor: "black",
     name: "Jisoo",
     time: "1:30 PM",
     message: "Noice",
@@ -98,13 +109,15 @@ const userData = [
   },
   {
     id: 12,
-    name: "Rose",
+    iconColor: "pink",
+    name: "Rosé",
     time: "2:30 PM",
     message: "wow..",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
     id: 13,
+    iconColor: "black",
     name: "Jennie",
     time: "6:00 AM",
     message: "Good Morning Sir..",
@@ -116,7 +129,7 @@ const Messages = ({ data }) => {
   return (
     <View style={styles.chatmain}>
       <View style={styles.chatcontent}>
-        <Image style={styles.profilepic} source={data.dp} />
+        <Image style={[styles.profilepic, { backgroundColor: data.iconColor}]} source={data.dp} />
         <View style={styles.info}>
           <Text style={styles.name}>{data.name}</Text>
           <Text style={styles.messages}>{data.message}</Text>
@@ -172,7 +185,9 @@ const MessagesScreen = () => {
           {userData.map((e, i) => {
             return (
               <TouchableOpacity
-                onPress={() => navigation.navigate("MessageScreen", { data: e })}
+                onPress={() =>
+                  navigation.navigate("MessageScreen", { data: e })
+                }
                 key={e.id}
                 style={styles.message}
               >
@@ -201,7 +216,7 @@ const styles = StyleSheet.create({
   chatMain: {
     width: width,
     paddingHorizontal: 15,
-    marginVertical: 15
+    marginVertical: 15,
   },
   screen: {
     flex: 1,
@@ -241,11 +256,11 @@ const styles = StyleSheet.create({
   profilepic: {
     height: 50,
     width: 50,
-    backgroundColor: "gray",
+   
     borderRadius: 100,
     marginRight: 17,
     marginTop: 15,
-    alignItems:"center"
+    alignItems: "center",
   },
   info: {},
   name: {
@@ -256,26 +271,25 @@ const styles = StyleSheet.create({
   messages: {
     color: theme.colors.neutral[3],
     fontSize: 14,
-    alignItems:"center"
+    alignItems: "center",
   },
   message: {
     height: 80,
-    marginVertical:2,
-    backgroundColor: "rgba(255,255,255,0.11)",
-    borderColor: "rgba(255,255,255,0.25)",
+    marginVertical: 2,
+    backgroundColor: theme.colors.neutral[8],
     borderWidth: 0.5,
     borderRadius: 50,
     elevation: 2,
     padding: 15,
-    flexDirection:"row",
-    alignItems:"center"
+    flexDirection: "row",
+    alignItems: "center",
   },
   timeStamp: {
     alignSelf: "flex-end",
     width: width,
     left: width - 100,
     top: -25,
-    alignItems:"flex-start"
+    alignItems: "flex-start",
   },
   time: {
     color: theme.colors.neutral[2],
@@ -311,8 +325,8 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 40,
-    alignItems:"center",
-    justifyContent:"center",
-    elevation: 10
-  }
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 10,
+  },
 });
