@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Pressable,
   Image,
   Dimensions,
 } from "react-native";
@@ -73,6 +74,16 @@ const NavigateCard = ({ isEnabled, getInputData, data, navigation }) => {
             marginBottom: 3,
           }}
         >
+         <View style={{flexDirection:"row", justifyContent: "space-between", width: width, alignItems:"center", height: 64}}>
+            <Pressable onPress={() => navigation.goBack()}>
+              <Icon
+                type="antdesign"
+                name="arrowleft"
+                color="white"
+                size={20}
+                style={{ marginRight: 25, marginLeft: 15, alignItems:"center" }}
+              />
+            </Pressable>
           <Text
             style={{
               alignSelf: "center",
@@ -86,6 +97,7 @@ const NavigateCard = ({ isEnabled, getInputData, data, navigation }) => {
           >
             Good morning, {isEnabled ? "Driver" : "Rider"}
           </Text>
+          </View>
           <View
             style={{
               borderTopColor: theme.colors.blue[5],
