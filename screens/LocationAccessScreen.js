@@ -10,7 +10,7 @@ import {
   Dimensions,
 } from "react-native";
 import Lottie from "lottie-react-native";
-import { colors, theme } from "../global/styles";
+import { theme } from "../global/styles";
 import { FontAwesome, AntDesign } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Location from "expo-location";

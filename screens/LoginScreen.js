@@ -7,6 +7,7 @@ import {
   Animated,
   ScrollView,
   StatusBar,
+  Button,
   SafeAreaView,
   Dimensions,
   ImageBackground,
@@ -21,11 +22,16 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import * as LocalAuthentication from "expo-local-authentication";
+var credentials = require('../auth0.config');
+import Auth0, {useAuth0} from 'react-native-auth0';
+const auth0 = new Auth0(credentials);
 
 const { width, height } = Dimensions.get("screen");
 
 const LoginScreen = ({ navigation }) => {
-  const [isChecked, setChecked] = useState(true);
+  let [accessToken, setAccessToken] = React.useState(null);
+  const {authorize, clearSession, user} = useAuth0();
+  const [isChecked, setChecked] = React.useState(true);
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
   const [isBiometricSupported, setIsBiometricSupported] = React.useState(false);
 
@@ -88,6 +94,27 @@ const LoginScreen = ({ navigation }) => {
     }).start();
   });
 
+
+
+
+
+  const onLogin = async () => {
+    try {
+      await authorize({scope: 'openid profile email'});
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const onLogout = async () => {
+    try {
+      await clearSession();
+    } catch (e) {
+      console.log('Log out cancelled');
+    }
+  };
+
+  const loggedIn = user !== undefined && user !== null;
   return (
     <SafeAreaView
       style={{
@@ -454,17 +481,10 @@ const LoginScreen = ({ navigation }) => {
                           marginBottom: 15,
                           elevation: 2,
                         }}
-                      >
-                        <TouchableOpacity onPress={handleSubmit}>
-                          <Text
-                            style={{
-                              color: theme.colors.neutral[0],
-                              fontSize: 20,
-                            }}
-                          >
-                            Login
-                          </Text>
-                        </TouchableOpacity>
+                      
+                   onPress={loggedIn ? onLogout : onLogin}
+              ><Text style={{fontSize: 20, color: theme.colors.neutral[0]}}>
+              {loggedIn ? 'Log Out' : 'Log In'}</Text>
                       </LinearGradient>
                     </View>
                   </View>

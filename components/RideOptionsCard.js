@@ -15,7 +15,7 @@ import { Icon } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
 import Screen from "./Screen";
 import { useSelector } from "react-redux";
-import { colors, theme } from "../global/styles";
+import { theme } from "../global/styles";
 
 import {
   selectDestination,
@@ -66,7 +66,18 @@ const RideOptionsCard = () => {
   };
 
   return (
-    <Screen style={{ marginTop: 0, borderTopLeftRadius: 15, borderTopRightRadius: 15, height: height, width: width - 30, alignItems:"center", alignSelf:"center", justifyContent:"space-between" }}>
+    <Screen
+      style={{
+        marginTop: 0,
+        borderTopLeftRadius: 15,
+        borderTopRightRadius: 15,
+        height: height,
+        width: width - 30,
+        alignItems: "center",
+        alignSelf: "center",
+        justifyContent: "space-between",
+      }}
+    >
       <LinearGradient
         start={{ x: 1, y: 0 }}
         end={{ x: 0.5, y: 1 }}
@@ -74,12 +85,12 @@ const RideOptionsCard = () => {
         style={{
           position: "absolute",
           top: -40,
-          
+
           paddingTop: 20,
-height: height,
+          height: height,
           width: width,
           elevation: 2,
-          justifyContent:"space-between"
+          justifyContent: "space-between",
         }}
       >
         <View
@@ -169,6 +180,7 @@ height: height,
             marginLeft: 25,
           }}
         >
+         {selected?.id === item.id ? (
           <LinearGradient
             start={{ x: 0, y: 1 }}
             end={{ x: 1, y: 1 }}
@@ -196,7 +208,36 @@ height: height,
                 Choose {selected?.title}
               </Text>
             </TouchableOpacity>
+          </LinearGradient>) :(
+            <LinearGradient
+            start={{ x: 0, y: 1 }}
+            end={{ x: 1, y: 1 }}
+            colors={[theme.colors.neutral[4], theme.colors.neutral[6]]}
+            style={{
+              color: theme.colors.neutral[0],
+
+              paddingVertical: 10,
+              marginTop: 50,
+              borderRadius: 15,
+              width: width - 30,
+              height: 50,
+            }}
+          >
+            <TouchableOpacity disabled={!selected} onPress={onChoose}>
+              <Text
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  textAlign: "center",
+                  color: theme.colors.neutral[0],
+                  fontSize: 24,
+                }}
+              >
+                Choose {selected?.title}
+              </Text>
+            </TouchableOpacity>
           </LinearGradient>
+          )}
         </View>
       </LinearGradient>
     </Screen>

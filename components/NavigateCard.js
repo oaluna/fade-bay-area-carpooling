@@ -11,7 +11,7 @@ import {
 import Screen from "./Screen";
 import { LinearGradient } from "expo-linear-gradient";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { colors, theme } from "../global/styles";
+import { theme } from "../global/styles";
 //import { GOOGLE_MAP_APIKEY } from '@env'
 import { setDestination } from "../redux/slices/navSlice";
 import { useDispatch } from "react-redux";
@@ -19,6 +19,7 @@ import { useNavigation } from "@react-navigation/native";
 import NavFavourites from "./NavFavourites";
 import { Icon } from "react-native-elements";
 
+//hide this for production
 const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 
 const { width, height } = Dimensions.get("screen");
@@ -74,29 +75,41 @@ const NavigateCard = ({ isEnabled, getInputData, data, navigation }) => {
             marginBottom: 3,
           }}
         >
-         <View style={{flexDirection:"row", justifyContent: "space-between", width: width, alignItems:"center", height: 64}}>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              width: width,
+              alignItems: "center",
+              height: 64,
+            }}
+          >
             <Pressable onPress={() => navigation.goBack()}>
               <Icon
                 type="antdesign"
                 name="arrowleft"
                 color="white"
                 size={20}
-                style={{ marginRight: 25, marginLeft: 15, alignItems:"center" }}
+                style={{
+                  marginRight: 25,
+                  marginLeft: 15,
+                  alignItems: "center",
+                }}
               />
             </Pressable>
-          <Text
-            style={{
-              alignSelf: "center",
-              textAlign: "left",
-              marginTop: 15,
-              fontSize: 32,
-              fontWeight: "bold",
-              color: theme.colors.neutral[0],
-              width: width,
-            }}
-          >
-            Good morning, {isEnabled ? "Driver" : "Rider"}
-          </Text>
+            <Text
+              style={{
+                alignSelf: "center",
+                textAlign: "left",
+                marginTop: 15,
+                fontSize: 32,
+                fontWeight: "bold",
+                color: theme.colors.neutral[0],
+                width: width,
+              }}
+            >
+              Good morning, {isEnabled ? "Driver" : "Rider"}
+            </Text>
           </View>
           <View
             style={{

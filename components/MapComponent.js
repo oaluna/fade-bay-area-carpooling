@@ -83,6 +83,13 @@ export default class MapComponent extends Component {
                 latitudeDelta: 0.008,
                 longitudeDelta: 0.008,
               }}
+            
+              onReady={(result) => {
+                this._map.current.fitToCoordinates(result.coordinates, {
+                  edgePadding: { top: 450, right: 50, left: 50, bottom: 350 },
+                  animated: true,
+                });
+              }}
             />
           )}
         </MapView>

@@ -20,15 +20,15 @@ const SubscribedScreen = ({ data }) => {
         colors={[theme.colors.blue[8], theme.colors.blue[10]]}
         style={{width: width, height: height}}
       >
-    <View>
+    <View style={{height: height / 2}}>
     <HomeHeader />
     </View>
-    
-   <View style={{width: width, height: 400, top: -75}}>
-   <SubscriptionCard />
-   </View>
+    <View style={{marginTop: -320}}>
+    <SubscriptionCard/>
+    </View>
+    <View style={{flex: 1, width: width, height: 100, top: 300}}>
      <Feed />
-
+</View>
 
      </LinearGradient>
     </View>

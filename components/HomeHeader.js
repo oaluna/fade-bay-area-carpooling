@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   TextInput,
   StyleSheet,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { theme } from "../global/styles";
@@ -31,14 +31,14 @@ const HomeHeader = (props) => {
     return (
       <View style={styles.topBarContainer}>
         <TouchableOpacity style={styles.floatLeft} onPress={onMenuImagePress}>
-        <Icon
-              type="antdesign"
-              name="arrowleft"
-              color="white"
-              size={20}
-             
-              onPress={() => navigation.goBack()}
-            />
+          <Icon
+            type="antdesign"
+            name="arrowleft"
+            color="white"
+            size={20}
+            onPress={() => navigation.goBack()}
+            style={{width: 25, height: 25, padding: 0, margin: 0}}
+          />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.floatRight}
@@ -71,7 +71,12 @@ const HomeHeader = (props) => {
           {subtitle}
         </Text>
         <View style={[styles.searchBarStyle, searchBarStyle]}>
-          <Icon type="material-community" name="map-search" style={styles.searchImageStyle} color="black" />
+          <Icon
+            type="material-community"
+            name="map-search"
+            style={styles.searchImageStyle}
+            color="black"
+          />
           <TextInput
             style={[styles.searchInputStyle, searchInputStyle]}
             placeholder="Search something"
@@ -82,72 +87,70 @@ const HomeHeader = (props) => {
     );
   };
 
+  return (
+    <View style={[styles.container, props.style]}>
+      {renderTopBar()}
+      {renderContent()}
+    </View>
+  );
+};
 
-    return (
-      <View style={[styles.container, props.style]}>
-        {renderTopBar()}
-        {renderContent()}
-      </View>
-    );
-  }
+const styles = StyleSheet.create({
+  container: {
+    padding: 15,
 
-  const styles = StyleSheet.create({
-    container: {
- padding: 15,
-    
-      width: width,
-      height: 250,
-    },
-    topBarContainer: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    floatLeft: {
-      marginRight: "auto",
-    },
-    floatRight: {
-      marginLeft: "auto",
-    },
-    menuImageStyle: {
-      width: 20,
-      height: 20,
-    },
-    profileImageStyle: {
-      width: 40,
-      height: 40,
-      borderRadius: 20,
-    },
-    contentContainer: {
-      marginTop: 12,
-    },
-    titleTextStyle: {
-      fontSize: 46,
-      color: theme.colors.neutral[0],
-      fontWeight: "bold",
-    },
-    subtitleTextStyle: {
-      fontSize: 13,
-      marginTop: 5,
-      fontWeight: "400",
-      color:theme.colors.neutral[2]
-    },
-    searchBarStyle: {
-      padding: 16,
-      marginTop: 24,
-      borderRadius: 50,
-      flexDirection: "row",
-      backgroundColor: theme.colors.neutral[0],
-     
-    },
-    searchImageStyle: {
-      width: 20,
-      height: 20,
-    },
-    searchInputStyle: {
-      marginLeft: 12,
-      fontWeight: "500",
-    },
-  });
+    width: width,
+    height: 250,
+  },
+  topBarContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  floatLeft: {
+    marginRight: "auto",
+  },
+  floatRight: {
+    marginLeft: "auto",
+  },
+  menuImageStyle: {
+    width: 20,
+    height: 20,
+  },
+  profileImageStyle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
+  contentContainer: {
+    marginTop: 12,
+  },
+  titleTextStyle: {
+    fontSize: 46,
+    color: theme.colors.neutral[0],
+    fontWeight: "bold",
+  },
+  subtitleTextStyle: {
+    fontSize: 13,
+    marginTop: 5,
+    fontWeight: "400",
+    color: theme.colors.neutral[2],
+  },
+  searchBarStyle: {
+    padding: 16,
+    marginTop: 24,
+    borderRadius: 50,
+    flexDirection: "row",
+    backgroundColor: theme.colors.neutral[0],
+  },
+  searchImageStyle: {
+    width: 20,
+    height: 20,
+  },
+  searchInputStyle: {
+    marginLeft: 12,
+    fontWeight: "500",
+  },
+});
 
 export default HomeHeader;

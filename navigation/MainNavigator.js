@@ -20,6 +20,7 @@ import RequestScreen from "../screens/RequestScreen";
 import DestinationScreen from "../screens/DestinationScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import EditProfileScreen from "../screens/EditProfileScreen";
+import SafetySettingsScreen from "../screens/SafetySettingsScreen";
 
 const Stack = createStackNavigator();
 
@@ -129,6 +130,11 @@ const MainNavigator = () => {
       <Stack.Screen
         name="EditProfileScreen"
         component={EditProfileScreen}
+        screenOptions={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SafetySettingsScreen"
+        component={SafetySettingsScreen}
         screenOptions={{ headerShown: false }}
       />
     </Stack.Navigator>

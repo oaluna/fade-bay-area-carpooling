@@ -8,7 +8,7 @@ import {
   StyleSheet,
   Dimensions,
 } from "react-native";
-import { colors, theme } from "../../global/styles";
+import { theme } from "../../global/styles";
 import { LinearGradient } from "expo-linear-gradient";
 
 import CustomSlider from "./CustomSlider";
@@ -20,7 +20,7 @@ const DemoScreen = ({ navigation, route }) => {
   return (
     <ImageBackground
       source={require("../../assets/images/gradient.png")}
-      style={[styles.container, { opacity: 0.11}]}
+      style={[styles.container, { opacity: 0.11 }]}
       blurRadius={8}
     >
       {/* slider */}

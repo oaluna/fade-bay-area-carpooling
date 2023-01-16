@@ -17,7 +17,7 @@ import Carousel from "react-native-intro-carousel";
 import Lottie from "lottie-react-native";
 import { theme } from "../global/styles";
 
-const { width, height } = Dimensions.get("window");
+const { width, height } = Dimensions.get("screen");
 
 const SplashScreen = ({ navigation }) => {
   const delay = 5000;
@@ -81,9 +81,25 @@ const SplashScreen = ({ navigation }) => {
           style={styles.gradient}
         />
         <View style={styles.body}>
-        <Pressable onPress={() => navigation.navigate("LoginScreen")} style={{ position:"absolute", right: 15, top: 15, backgroundColor: theme.colors.neutral[7], 
-        width: 75, height: 25, justifyContent:"center", alignItems:"center", borderRadius: 15, elevation: 10}}>
-        <Text style={{ color: theme.colors.neutral[0], fontSize: 18}}>Skip</Text></Pressable>
+          <Pressable
+            onPress={() => navigation.navigate("LoginScreen")}
+            style={{
+              position: "absolute",
+              right: 15,
+              top: 15,
+              backgroundColor: theme.colors.neutral[7],
+              width: 75,
+              height: 25,
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: 15,
+              elevation: 10,
+            }}
+          >
+            <Text style={{ color: theme.colors.neutral[0], fontSize: 18 }}>
+              Skip
+            </Text>
+          </Pressable>
           <Image
             source={require("../assets/images/fade-logo-alt.png")}
             style={{
@@ -193,7 +209,7 @@ imageAssetsFolder={'../assets/lottie-files'}
               disabled: true,
             }}
             renderItem={({ item, index }, goToSlide) => (
-              <View style={styles.content}>
+              <View style={styles.content} key={index + 1}>
                 <Lottie
                   source={{ uri: item.image }}
                   style={styles.image}

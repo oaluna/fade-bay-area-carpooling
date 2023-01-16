@@ -13,7 +13,7 @@ import {
   Dimensions,
 } from "react-native";
 import Lottie from "lottie-react-native";
-import { colors, theme } from "../global/styles";
+import { theme } from "../global/styles";
 import { LinearGradient } from "expo-linear-gradient";
 const { width, height } = Dimensions.get("screen");
 
@@ -31,7 +31,7 @@ const ProfileTypeScreen = ({ navigation }) => {
         alignSelf: "center",
         alignItems: "center",
         justifyContent: "space-evenly",
-        paddingBottom: 40,
+        paddingBottom: 15,
       }}
       blurRadius={8}
     >
@@ -41,15 +41,17 @@ const ProfileTypeScreen = ({ navigation }) => {
         colors={[theme.colors.blue[8], theme.colors.blue[10]]}
         style={styles.gradient}
       >
+      <Image source={require("../assets/images/fade-logo.png")} style={{resizeMode:"contain", width: 120, height: 100, position:'absolute', top: 15, left: 30}} />
         <View
           style={{ marginTop: 100, paddingHorizontal: 15, alignSelf: "center" }}
         >
           <Text
             style={{
               color: theme.colors.neutral[0],
-              fontSize: 28,
+              fontSize: 20,
               textAlign: "center",
               marginVertical: 25,
+              paddingHorizontal: 15,
             }}
           >
             Switch between passenger and rider at any time!
@@ -57,11 +59,12 @@ const ProfileTypeScreen = ({ navigation }) => {
 
           <Text
             style={{
-              fontSize: 22,
+              fontSize: 16,
               color: theme.colors.neutral[2],
               fontWeight: "400",
               textAlign: "center",
               marginVertical: 25,
+              paddingHorizontal: 15,
             }}
           >
             Anyone who has a verified Fade Driver account can switch to use the
@@ -70,21 +73,23 @@ const ProfileTypeScreen = ({ navigation }) => {
           <Text
             style={{
               color: theme.colors.neutral[0],
-              fontSize: 28,
+              fontSize: 20,
               textAlign: "center",
               lineHeight: 28,
               marginVertical: 25,
+              paddingHorizontal: 15,
             }}
           >
             How does it work?
           </Text>
           <Text
             style={{
-              fontSize: 22,
+              fontSize: 16,
               color: theme.colors.neutral[2],
               fontWeight: "400",
               textAlign: "center",
               marginVertical: 25,
+              paddingHorizontal: 15,
             }}
           >
             Simple, just look for a switch, like the one below. Switch to white
@@ -263,6 +268,10 @@ const styles = StyleSheet.create({
     width: width - 30,
     height: 50,
 
+    flexDirection: "row",
+  alignItems:"center",
+  alignSelf:"center",
+    justifyContent:"center",
     borderRadius: 15,
     shadowColor: theme.colors.blue[9],
     shadowOffset: {

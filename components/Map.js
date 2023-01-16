@@ -20,6 +20,7 @@ import { theme } from "../global/styles";
 
 import { useNavigation } from "@react-navigation/native";
 
+//hide this for production
 const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 
 const { width, height } = Dimensions.get("screen");
@@ -50,8 +51,6 @@ const Map = () => {
     dispatch(setTravelTimeInformation(data.rows[0].elements[0]));
   };
 
-
-  
   return (
     <View style={{ flex: 1, position: "relative" }}>
       <TouchableOpacity
@@ -137,7 +136,6 @@ const Map = () => {
             }}
             title="Your Destination"
             description={destination.description}
-
             identifier="destination"
             tracksViewChanges={true}
             animateMarkerToCoordinate={{
@@ -165,6 +163,6 @@ const styles = StyleSheet.create({
     position: "relative",
     zIndex: 10,
     height: height,
-    marginVertical:0
+    marginVertical: 0,
   },
 });
