@@ -22,36 +22,37 @@ class MapDirections extends Component {
       coordinates: [
         {
           latitude: 37.3317876,
-          longitude: -122.0054812
+          longitude: -122.0054812,
         },
         {
           latitude: 37.771707,
-          longitude: -122.4053769
-        }
-      ]
+          longitude: -122.4053769,
+        },
+      ],
     };
 
     this.mapView = null;
   }
 
-  onMapPress = e => {
+  onMapPress = (e) => {
     this.setState({
-      coordinates: [...this.state.coordinates, e.nativeEvent.coordinate]
+      coordinates: [...this.state.coordinates, e.nativeEvent.coordinate],
     });
   };
 
   render() {
-		const  {userLocation} = this.props;
+    const { userLocation } = this.props;
     return (
       <MapView
         initialRegion={{
           latitude: this.props.userLocation.latitude,
           longitude: this.props.userLocation.latitude,
           latitudeDelta: this.props.userLocation.LATITUDE_DELTA,
-          longitudeDelta: this.props.userLocation.LONGITUDE_DELTA
+          longitudeDelta: this.props.userLocation.LONGITUDE_DELTA,
         }}
+       
         style={StyleSheet.absoluteFill}
-        ref={c => (this.mapView = c)}
+        ref={(c) => (this.mapView = c)}
         onPress={this.onMapPress}
       >
         {this.state.coordinates.map((coordinate, index) => (
@@ -72,28 +73,26 @@ class MapDirections extends Component {
             strokeWidth={3}
             strokeColor={"hotpink"}
             optimizeWaypoints={true}
-            onStart={params => {
+            onStart={(params) => {
               console.log(
-                `Started routing between "${params.origin}" and "${
-                  params.destination
-                }"`
+                `Started routing between "${params.origin}" and "${params.destination}"`
               );
             }}
-            onReady={result => {
+            onReady={(result) => {
               console.log("Distance: ${result.distance} km");
               console.log("Duration: ${result.duration} min.");
 
               this.mapView.fitToCoordinates(result.coordinates, {
                 edgePadding: {
-                  right: width / 20,
-                  bottom: height / 20,
+                  right: width,
+                  bottom: height,
                   left: width / 20,
-                  top: height / 20
-                }
+                  top: height / 20,
+                },
               });
             }}
-            onError={errorMessage => {
-               console.log('GOT AN ERROR');
+            onError={(errorMessage) => {
+              console.log("GOT AN ERROR");
             }}
           />
         )}

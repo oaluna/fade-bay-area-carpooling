@@ -2,7 +2,7 @@ import React from "react";
 import { SafeAreaView, StyleSheet, View, Dimensions } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Constants from "expo-constants";
-import { colors, theme } from "../global/styles";
+import { theme } from "../global/styles";
 
 const { width, height } = Dimensions.get("screen");
 

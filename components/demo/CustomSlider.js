@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from "react-native";
 import Lottie from "lottie-react-native";
-import { colors, theme } from "../../global/styles";
+import { theme } from "../../global/styles";
 import { FontAwesome } from "@expo/vector-icons";
 import GestureRecognizer from "react-native-swipe-gestures";
 import useInterval from "./useInterval";
@@ -51,7 +51,12 @@ const customSlider = ({ sliderContent }) => {
             justifyContent: "center",
           }}
         >
-          <Lottie autoPlay={true} source={{uri: activeContent.imageURL}} loop={true} style={styles.image}/>
+          <Lottie
+            autoPlay={true}
+            source={{ uri: activeContent.imageURL }}
+            loop={true}
+            style={styles.image}
+          />
           <Text style={styles.logoTitle}>{activeContent.text}</Text>
         </View>
       </GestureRecognizer>

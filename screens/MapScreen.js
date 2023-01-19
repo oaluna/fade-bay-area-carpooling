@@ -5,11 +5,8 @@ import { useSelector } from "react-redux";
 import MapContainer from "../components/MapContainer";
 import MapNavigatorContainer from "../navigation/MapNavigatorContainer";
 import { selectOrigin } from "../redux/slices/navSlice";
-import { colors, theme } from "../global/styles";
+import { theme } from "../global/styles";
 const { width, height } = Dimensions.get("screen");
-
-
-
 
 const MapScreen = () => {
   const origin = useSelector(selectOrigin);

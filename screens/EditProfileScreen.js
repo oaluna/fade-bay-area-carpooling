@@ -51,7 +51,7 @@ const data = [
     title: "Gender",
     value: "male",
   },
- 
+
   {
     id: 6,
     title: "Age",
@@ -172,7 +172,6 @@ const EditProfileScreen = ({ navigation }) => {
           </View>
         </Layout>
         <View style={styles.settingsSection}>
-          
           <FlatList
             data={data}
             keyExtractor={(item) => item.id}
@@ -182,9 +181,8 @@ const EditProfileScreen = ({ navigation }) => {
                   <Text style={styles.settingLabel}>{item.title}</Text>
                   <Text style={styles.settingValue}>{item.value}</Text>
                 </View>
-             
-               </View>
-                )}
+              </View>
+            )}
             ItemSeparatorComponent={() => (
               <View
                 style={{
@@ -199,23 +197,18 @@ const EditProfileScreen = ({ navigation }) => {
               />
             )}
           />
-                <LinearGradient
-                  start={{ x: 0.5, y: 1 }}
-                  end={{ x: 0.75, y: 1 }}
-                  colors={[
-                    theme.colors.lightblue[4],
-                    theme.colors.lightblue[6],
-                  ]}
-                  style={styles.doneButton}
-                >
-                  <Pressable onPress={() => navigation.goBack()}>
-                    <Text style={styles.buttonText}>Done</Text>
-                  </Pressable>
-                </LinearGradient>
-              </View>
-           
+          <LinearGradient
+            start={{ x: 0.5, y: 1 }}
+            end={{ x: 0.75, y: 1 }}
+            colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
+            style={styles.doneButton}
+          >
+            <Pressable onPress={() => navigation.goBack()}>
+              <Text style={styles.buttonText}>Done</Text>
+            </Pressable>
+          </LinearGradient>
         </View>
-      
+      </View>
     </LinearGradient>
   );
 };
@@ -231,11 +224,11 @@ const styles = StyleSheet.create({
   },
   editHeader: {
     flexDirection: "row",
-    alignItems:"center",
+    alignItems: "center",
     justifyContent: "space-evenly",
     width: width,
     height: 90,
-    marginLeft: -95
+    marginLeft: -95,
   },
   contentContainer: {
     flexDirection: "column",
@@ -327,14 +320,14 @@ const styles = StyleSheet.create({
     color: theme.colors.neutral[5],
   },
   settingsSection: {
-    marginTop: 150,
+    marginTop: 220,
     width: width,
     height: 500,
     alignSelf: "center",
     alignItems: "center",
     backgroundColor: theme.colors.neutral[8],
     elevation: 2,
-    paddingVertical: 15
+    paddingVertical: 15,
   },
   settingValue: {
     fontSize: 16,

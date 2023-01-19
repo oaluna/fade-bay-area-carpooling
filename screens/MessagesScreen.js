@@ -32,8 +32,7 @@ const userData = [
     iconColor: "#D62598",
     name: "Sunny",
     time: "2:30 PM",
-    message:
-      "Hey, I'm going to need to cancel my ride on Monday. Is that cool?",
+    message: "Hey, I'm going to need to cancel my ride on Monday. Is that cool?",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
@@ -57,8 +56,7 @@ const userData = [
     iconColor: "#FF6D00",
     name: "Seohyun",
     time: "2:30 PM",
-    message:
-      "Hey, I'm going to need to cancel my ride on Monday. Is that cool?",
+    message: "Hey, I'm going to need to cancel my ride on Monday. Is that cool?",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
@@ -82,8 +80,7 @@ const userData = [
     iconColor: "#D69A2D",
     name: "Yuri",
     time: "2:30 PM",
-    message:
-      "Hey, I'm going to need to cancel my ride on Monday. Is that cool?",
+    message: "Hey, I'm going to need to cancel my ride on Monday. Is that cool?",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
@@ -115,8 +112,7 @@ const userData = [
     iconColor: "#D62598",
     name: "Rosé",
     time: "2:30 PM",
-    message:
-      "Hey, I'm going to need to cancel my ride on Monday. Is that cool?",
+    message: "Hey, I'm going to need to cancel my ride on Monday. Is that cool?",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
@@ -279,7 +275,7 @@ const styles = StyleSheet.create({
     color: theme.colors.neutral[3],
     fontSize: 14,
     alignItems: "center",
-    width: 180,
+    width: 180
   },
   message: {
     height: 80,
@@ -296,8 +292,8 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     width: width,
     left: width * 0.7,
-    textAlign: "left",
-    top: -35,
+    textAlign:'left',
+    top:-35,
     alignItems: "flex-start",
   },
   time: {

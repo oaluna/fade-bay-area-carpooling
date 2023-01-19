@@ -10,7 +10,7 @@ import {
   Divider,
 } from "react-native";
 import { Icon } from "react-native-elements";
-import { colors, theme } from "../global/styles";
+import { theme } from "../global/styles";
 import { LinearGradient } from "expo-linear-gradient";
 import useFileUpload, { UploadItem } from "react-native-use-file-upload";
 
@@ -25,9 +25,9 @@ const data = [
   },
   {
     id: 1,
-    title: "Privacy Settings",
+    title: "Safety Settings",
     icon: "lock",
-    target: "HomeScreen",
+    target: "SafetySettingsScreen",
   },
   {
     id: 2,
@@ -76,19 +76,23 @@ export default function SettingsScreen({ navigation }) {
             name="arrowleft"
             color="white"
             size={20}
-          style={{alignSelf:"flex-start"}}
+            style={{ alignSelf: "flex-start" }}
           />
         </Pressable>
         <Text
-         style={{ color: theme.colors.neutral[0],
-    fontSize: 18,
-    fontWeight: "bold", textAlign:"center", marginLeft: 25, marginRight: -25}}
+          style={{
+            color: theme.colors.neutral[0],
+            fontSize: 18,
+            fontWeight: "bold",
+            textAlign: "center",
+            marginLeft: 25,
+            marginRight: -25,
+          }}
         >
           Settings
         </Text>
       </View>
-     
-      
+
       <View style={{ height: 200, marginTop: 100 }}>
         <Pressable
           style={{
@@ -198,11 +202,11 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: "row",
-    alignItems:"center",
+    alignItems: "center",
     justifyContent: "space-evenly",
-    width: width -30,
+    width: width - 30,
     height: 90,
-    position:"absolute",
-    left: -60
+    position: "absolute",
+    left: -60,
   },
 });

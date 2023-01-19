@@ -9,7 +9,7 @@ import {
   Text,
   Dimensions,
 } from "react-native";
-import { Icon } from "react-native-elements";
+import { Icon, Avatar } from "react-native-elements";
 import { LinearGradient } from "expo-linear-gradient";
 import Screen from "../components/Screen";
 import NavFavourites from "../components/NavFavourites";
@@ -19,6 +19,7 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../redux/slices/navSlice";
 
+//hide this for production
 const GOOGLE_MAP_APIKEY = "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk";
 
 const { width, height } = Dimensions.get("screen");
@@ -33,10 +34,38 @@ const HomeScreen = ({ navigation, ...props }) => {
         colors={[theme.colors.blue[8], theme.colors.blue[10]]}
         style={styles.container}
       >
-        <Image
-          source={require("../assets/images/fade-logo.png")}
-          style={styles.logo}
-        />
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: width,
+            padding: 15,
+          }}
+        >
+          <Image
+            source={require("../assets/images/fade-logo.png")}
+            style={styles.logo}
+          />
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              width: width / 3.6,
+            }}
+          >
+            <Text style={{ color: theme.colors.neutral[2] }}>Oscar Luna</Text>
+            <Avatar
+              rounded
+              source={require("../assets/images/oscarluna.png")}
+              containerStyle={{
+                backgroundColor: theme.colors.lightblue[1],
+                elevation: 1,
+              }}
+            />
+          </View>
+        </View>
         <View
           style={{
             backgroundColor: "transparent",
@@ -52,7 +81,6 @@ const HomeScreen = ({ navigation, ...props }) => {
         <View>
           <GooglePlacesAutocomplete
             placeholder="Where from?"
-            
             nearbyPlacesAPI="GooglePlacesSearch"
             debounce={400}
             onPress={(data, details = null) => {
@@ -88,7 +116,6 @@ const HomeScreen = ({ navigation, ...props }) => {
                 backgroundColor: theme.colors.neutral[0],
               },
             }}
-           
             enablePoweredByContainer={true}
           />
         </View>
@@ -119,8 +146,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: 100,
     resizeMode: "contain",
-   
-    margin: 15,
+
     alignSelf: "flex-start",
   },
   text1: {

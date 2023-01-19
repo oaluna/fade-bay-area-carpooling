@@ -318,7 +318,10 @@ const RegisterScreen = ({ navigation }) => {
                         color={theme.colors.neutral[3]}
                       />
                       <TextInput
-                        style={{ marginLeft: 10 }}
+                        style={{
+                          marginLeft: 10,
+                          color: theme.colors.neutral[0],
+                        }}
                         onChangeText={handleChange("email")}
                         onBlur={handleBlur("email")}
                         value={values.email}
@@ -350,7 +353,10 @@ const RegisterScreen = ({ navigation }) => {
                         color={theme.colors.neutral[3]}
                       />
                       <TextInput
-                        style={{ marginLeft: 10 }}
+                        style={{
+                          marginLeft: 10,
+                          color: theme.colors.neutral[0],
+                        }}
                         placeholder="Password"
                         onChangeText={handleChange("password")}
                         onBlur={handleBlur("password")}
@@ -511,17 +517,13 @@ const RegisterScreen = ({ navigation }) => {
                         marginBottom: 15,
                         elevation: 2,
                       }}
+                      onPress={authenticate}
                     >
-                      <TouchableOpacity onPress={handleSubmit}>
-                        <Text
-                          style={{
-                            fontSize: 20,
-                            color: theme.colors.neutral[0],
-                          }}
-                        >
-                          Register
-                        </Text>
-                      </TouchableOpacity>
+                      <Text
+                        style={{ fontSize: 20, color: theme.colors.neutral[0] }}
+                      >
+                        Register
+                      </Text>
                     </LinearGradient>
                   </View>
                 )}

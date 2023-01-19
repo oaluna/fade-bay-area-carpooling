@@ -4,7 +4,7 @@ import { HomeStack, SettingsStack } from "./StackNavigator";
 import { Dimensions } from "react-native";
 
 import { Icon } from "react-native-elements";
-import { colors, theme } from "../global/styles";
+import { theme } from "../global/styles";
 
 const { width, height } = Dimensions.get("screen");
 const Drawer = createDrawerNavigator();

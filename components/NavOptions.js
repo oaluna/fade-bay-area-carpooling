@@ -13,7 +13,7 @@ import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import { selectOrigin } from "../redux/slices/navSlice";
 import { useSelector } from "react-redux";
-import { colors, theme } from "../global/styles";
+import { theme } from "../global/styles";
 
 const PickupIcon = () => (
   <Image source={require("../assets/images/icon-car-alt.png")} />
@@ -43,42 +43,37 @@ const data = [
   {
     id: "0",
     title: "Carpool",
-    image:
-      require("../assets/images/icon-carpool-alt.png"),
+    image: require("../assets/images/icon-carpool-alt.png"),
     screen: "MapScreen",
   },
   {
     id: "1",
     title: "Scheduled",
-    image:
-      require("../assets/images/icon-calendar-alt.png"),
+    image: require("../assets/images/icon-calendar-alt.png"),
     screen: "ScheduleScreen",
   },
   {
     id: "2",
     title: "Subscribed",
-    image:
-      require("../assets/images/icon-plus-alt.png"),
+    image: require("../assets/images/icon-plus-alt.png"),
     screen: "SubscribedScreen",
   },
   {
     id: "3",
     title: "Messages",
-    image:
-      require("../assets/images/icon-inbox-alt.png"),
+    image: require("../assets/images/icon-inbox-alt.png"),
     screen: "MessagesScreen",
   },
   {
     id: "4",
     title: "Settings",
-    image:
-      require("../assets/images/icon-settings-alt.png"),
+    image: require("../assets/images/icon-settings-alt.png"),
     screen: "SettingsScreen",
   },
 ];
 
 const NavOptions = () => {
-const navigation = useNavigation();
+  const navigation = useNavigation();
   const origin = useSelector(selectOrigin);
 
   return (
@@ -89,9 +84,8 @@ const navigation = useNavigation();
           width: width,
           alignSelf: "flex-start",
           alignItems: "flex-end",
-          height: 130,
-          elevation:20,
-         
+          height: 150,
+          elevation: 20,
         }}
         renderItem={({ item }) => (
           <TouchableOpacity
@@ -99,19 +93,25 @@ const navigation = useNavigation();
             disabled={!origin && item.id === "0"}
             style={
               !origin && item.id === "0"
-                ? [styles.card, { backgroundColor: theme.colors.lightblue[4],  borderLeftColor: theme.colors.neutral[10],
-          borderLeftWidth: 1 }]
-                : [styles.card, { borderHorizontalColor: theme.colors.neutral[7],
-          borderLeftWidth: 1 }]
+                ? [
+                    styles.card,
+                    {
+                      backgroundColor: theme.colors.lightblue[4],
+                      borderLeftColor: theme.colors.neutral[10],
+                      borderLeftWidth: 1,
+                    },
+                  ]
+                : [
+                    styles.card,
+                    {
+                      borderHorizontalColor: theme.colors.neutral[7],
+                      borderLeftWidth: 1,
+                    },
+                  ]
             }
           >
             <View>
-              <Image
-                source={
-                  item.image
-                }
-                style={styles.image}
-              />
+              <Image source={item.image} style={styles.image} />
               <View style={styles.cardText}>
                 <Text style={styles.text}>{item.title}</Text>
               </View>
@@ -130,17 +130,15 @@ export default NavOptions;
 const styles = StyleSheet.create({
   card: {
     backgroundColor: theme.colors.neutral[7],
-   flexDirection:"row",
-    alignItems:"center",
-    justifyContent:"center",
-    height:75,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    height: 75,
     width: 75,
     zIndex: 20,
     padding: 5,
     overflowX: "scroll",
-    marginBottom: 0
-  
-  
+    marginBottom: 0,
   },
   image: {
     width: 32,
@@ -160,7 +158,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     height: 12,
     paddingVertical: 0,
-    
   },
   cardText: {
     display: "flex",

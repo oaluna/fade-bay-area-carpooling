@@ -13,9 +13,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import MapContainer from "../components/MapContainer";
 import { useSelector } from "react-redux";
 import { selectOrigin } from "../redux/slices/navSlice";
-import Constants from "expo-constants";
-import { Icon } from "react-native-elements";
-import { colors, theme } from "../global/styles";
+import {theme} from "../global/styles";
 import { useNavigation } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get("screen");

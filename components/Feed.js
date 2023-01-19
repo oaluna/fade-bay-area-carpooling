@@ -167,9 +167,9 @@ const CardContainer = ({ navigation, ...props }) => {
     <FlatList
       data={data}
       keyExtractor={(item) => item.id}
-      style={{justifyContent:"space-between"}}
-      renderItem={(item) => (
-        <View
+      style={{ justifyContent: "space-between" }}
+      renderItem={({item, index}) => (
+        <View key={index}
           style={[
             container(width, height, borderRadius, backgroundColor),
             { height: 140 },
@@ -232,7 +232,12 @@ const ImagedCardView = (props) => {
     <FlatList
       data={data}
       keyExtractor={(item) => item.id}
-      style={{height: 200, resizeMode:"contain", marginBottom: 15, marginTop: 0}}
+      style={{
+        height: 150,
+        resizeMode: "contain",
+        marginBottom: 15,
+        marginTop: 0,
+      }}
       renderItem={({ item }) => (
         <TouchableOpacity onPress={onPress} style={styles.imagedCardView}>
           <CardContainer {...props} />
@@ -248,21 +253,22 @@ const Feed = () => {
   const destination = useSelector(selectDestination);
 
   return (
-    <SafeAreaView style={{ width: width, height: 100, alignSelf: "center", marginTop: 5}}>
-        <Text
-          style={{
-            color: theme.colors.neutral[0],
-            fontSize: 16,
-            alignSelf:"flex-start",
-            paddingLeft: 15,
-          }}
-        >
-          Join A Carpool
-        </Text>
+    <SafeAreaView
+      style={{ width: width, height: 100, alignSelf: "center", marginTop: 5 }}
+    >
+      <Text
+        style={{
+          color: theme.colors.neutral[0],
+          fontSize: 16,
+          alignSelf: "flex-start",
+          paddingLeft: 15,
+        }}
+      >
+        Join A Carpool
+      </Text>
       <View
         style={{ flex: 1, alignSelf: "center", marginLeft: 35, height: 150 }}
-      >
-      </View>
+      ></View>
       <View style={styles.feed}>
         <ImagedCardView
           onPress={() => navigation.navigate("CommuteListingScreen")}
@@ -388,7 +394,7 @@ CardContainer.defaultProps = {
   rightSideValue: "3",
   rightSideTitle: "Seats",
   subtitleColor: "#dbdbdb",
-  backgroundColor:"#303c4b",
+  backgroundColor: "#303c4b",
   leftSideValueColor: "white",
   rightSideValueColor: "white",
 };
@@ -418,13 +424,13 @@ const styles = StyleSheet.create({
   feed: {
     height: height * 2,
     marginLeft: 0,
-    marginTop:-10,
+    marginTop: -10,
     paddingTop: 10,
-    height: 477
+    height: 477,
   },
   bg: {
     backgroundColor: theme.colors.neutral[8],
-    borderRadius:15,
+    borderRadius: 15,
     flexWrap: "wrap",
     height: 100,
 
@@ -542,7 +548,6 @@ const styles = StyleSheet.create({
     width: 100,
     height: 130,
     position: "absolute",
-    
   },
   imagedCardViewContainer: {
     height: 100,
