@@ -172,7 +172,7 @@ height: height,
           <LinearGradient
             start={{ x: 0, y: 1 }}
             end={{ x: 1, y: 1 }}
-            colors={[theme.colors.lightblue[4], theme.colors.lightblue[6]]}
+            colors={selected ? [theme.colors.lightblue[4], theme.colors.lightblue[6]] : [theme.colors.neutral[4], theme.colors.neutral[6]]}
             style={{
               color: theme.colors.neutral[0],
 

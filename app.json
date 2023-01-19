@@ -53,5 +53,10 @@
         "domain": "luna-reactdev.auth0.com"
       }
     ]
-  ]
+  ],
+  "env": {
+    "production": {
+      "plugins": ["react-native-paper/babel"],
+    },
+  },
 }

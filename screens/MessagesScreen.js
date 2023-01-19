@@ -16,111 +16,115 @@ import { theme } from "../global/styles";
 import { LinearGradient } from "expo-linear-gradient";
 
 //Screen Height and width
-const { height, width } = Dimensions.get("screen");
+const { height, width } = Dimensions.get("window");
 
 const userData = [
   {
     id: 1,
-    iconColor: "black",
+    iconColor: "#B71C1C",
     name: "Taeyeon",
     time: "1:30 PM",
-    message: "Noice",
+    message: "Hi, how can I subscribe to your daily commute?",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
     id: 2,
-    iconColor: "pink",
+    iconColor: "#D62598",
     name: "Sunny",
     time: "2:30 PM",
-    message: "wow..",
+    message:
+      "Hey, I'm going to need to cancel my ride on Monday. Is that cool?",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
     id: 3,
-    iconColor: "black",
+    iconColor: "#311B92",
     name: "Jessica",
     time: "6:00 AM",
-    message: "Good Morning Sir..",
+    message: "Good Morning! ^^",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
     id: 4,
-    iconColor: "pink",
+    iconColor: "#00897B",
     name: "Tiffany",
     time: "1:30 PM",
-    message: "Noice",
+    message: "Thanks for the ride! How can I make this a regular thing?",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
     id: 5,
-    iconColor: "black",
+    iconColor: "#FF6D00",
     name: "Seohyun",
     time: "2:30 PM",
-    message: "wow..",
+    message:
+      "Hey, I'm going to need to cancel my ride on Monday. Is that cool?",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
     id: 6,
-    iconColor: "pink",
+    iconColor: "#E1523D",
     name: "Sooyoung",
     time: "6:00 AM",
-    message: "Good Morning Sir..",
+    message: "Good Morning! ^^",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
     id: 7,
-    iconColor: "black",
+    iconColor: "#971B2F",
     name: "Yoona",
     time: "1:30 PM",
-    message: "Noice",
+    message: "Hi, how can I subscribe to your daily commute?",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
     id: 8,
-    iconColor: "pink",
+    iconColor: "#D69A2D",
     name: "Yuri",
     time: "2:30 PM",
-    message: "wow..",
+    message:
+      "Hey, I'm going to need to cancel my ride on Monday. Is that cool?",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
     id: 9,
-    iconColor: "black",
+    iconColor: "#004C97",
     name: "Hyoyeon",
     time: "6:00 AM",
-    message: "Good Morning Sir..",
+    message: "Good Morning! ^^",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
     id: 10,
-    iconColor: "pink",
+    iconColor: "#44D62C",
     name: "Lisa",
     time: "6:00 AM",
-    message: "Good Morning Sir..",
+    message: "Good Morning! ^^",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
     id: 11,
-    iconColor: "black",
+    iconColor: "#F93822",
     name: "Jisoo",
     time: "1:30 PM",
-    message: "Noice",
+    message: "Hi, how can I subscribe to your daily commute?",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
     id: 12,
-    iconColor: "pink",
+    iconColor: "#D62598",
     name: "Rosé",
     time: "2:30 PM",
-    message: "wow..",
+    message:
+      "Hey, I'm going to need to cancel my ride on Monday. Is that cool?",
     dp: require("../assets/images/icon-account-alt.png"),
   },
   {
     id: 13,
-    iconColor: "black",
+    iconColor: "#4E008E",
     name: "Jennie",
     time: "6:00 AM",
-    message: "Good Morning Sir..",
+    message: "Good Morning! ^^",
     dp: require("../assets/images/icon-account-alt.png"),
   },
 ];
@@ -129,7 +133,10 @@ const Messages = ({ data }) => {
   return (
     <View style={styles.chatmain}>
       <View style={styles.chatcontent}>
-        <Image style={[styles.profilepic, { backgroundColor: data.iconColor}]} source={data.dp} />
+        <Image
+          style={[styles.profilepic, { backgroundColor: data.iconColor }]}
+          source={data.dp}
+        />
         <View style={styles.info}>
           <Text style={styles.name}>{data.name}</Text>
           <Text style={styles.messages}>{data.message}</Text>
@@ -256,7 +263,7 @@ const styles = StyleSheet.create({
   profilepic: {
     height: 50,
     width: 50,
-   
+
     borderRadius: 100,
     marginRight: 17,
     marginTop: 15,
@@ -272,6 +279,7 @@ const styles = StyleSheet.create({
     color: theme.colors.neutral[3],
     fontSize: 14,
     alignItems: "center",
+    width: 180,
   },
   message: {
     height: 80,
@@ -287,12 +295,13 @@ const styles = StyleSheet.create({
   timeStamp: {
     alignSelf: "flex-end",
     width: width,
-    left: width - 100,
-    top: -25,
+    left: width * 0.7,
+    textAlign: "left",
+    top: -35,
     alignItems: "flex-start",
   },
   time: {
-    color: theme.colors.neutral[2],
+    color: theme.colors.neutral[3],
     fontSize: 12,
     paddingTop: 5,
   },
