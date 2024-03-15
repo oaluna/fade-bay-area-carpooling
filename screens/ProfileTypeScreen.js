@@ -161,7 +161,7 @@ const ProfileTypeScreen = ({ navigation }) => {
                     You are a{" "}
                   </Text>
                   <Image
-                    source={require("../assets/images/fade-logo-alt.png")}
+                    source={require("../assets/new-logo.png")}
                     style={{
                       resizeMode: "contain",
                       height: 60,

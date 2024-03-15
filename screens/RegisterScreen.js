@@ -154,7 +154,7 @@ const RegisterScreen = ({ navigation }) => {
                 }}
               >
                 <Image
-                  source={require("../assets/images/fade-logo-alt.png")}
+                  source={require("../assets/images/new-logo.png")}
                   style={{
                     rezsizeMode: "contain",
                     alignSelf: "center",

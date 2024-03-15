@@ -105,7 +105,7 @@ export default function RequestScreen({ navigation, route }) {
                 Ride with{" "}
               </Text>
               <Image
-                source={require("../assets/images/fade-logo-alt.png")}
+                source={require('../assets/new-logo.png')}
                 style={{ resizeMode: "contain", width: 60 }}
               />
             </View>

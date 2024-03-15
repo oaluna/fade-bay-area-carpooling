@@ -5,30 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be8ea893-fc60-4ed3-8290-cd4b4f4c49e9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/new-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eas.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/icon-hidden.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/icon-hidden.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/icon-visible.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/icon-visible.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Feed.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Feed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/NavFavourites.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/NavFavourites.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/NavOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/NavOptions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/NavigateCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/NavigateCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/RideOptionsCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/RideOptionsCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/demo/CustomSlider.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/demo/CustomSlider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/demo/DemoScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/demo/DemoScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/metro.config.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/CommuteListingScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CommuteListingScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/EatsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/EatsScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/LocationAccessScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LocationAccessScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LoginScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/MapScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/MapScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/ProfileTypeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProfileTypeScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/RegisterScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/RegisterScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/RequestScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/RequestScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SettingsScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SettingsScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/SuccessScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SuccessScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SplashScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SplashScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,21 +32,41 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2JEyTekDbxvlPZAYB6EM3VrpDR0" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
-    <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Capor/Desktop/repo/FadeApp/assets",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "emulator",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Capor\Desktop\repo\FadeApp\assets" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Shell Script.start">
     <configuration name="start" type="ShConfigurationType">
       <option name="SCRIPT_TEXT" value="npx expo start" />
       <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
@@ -71,6 +82,16 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -80,7 +101,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1671657547196</updated>
+      <workItem from="1700615505192" duration="1799000" />
+      <workItem from="1700712475795" duration="733000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

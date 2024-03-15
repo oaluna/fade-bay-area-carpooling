@@ -101,7 +101,7 @@ const SplashScreen = ({ navigation }) => {
             </Text>
           </Pressable>
           <Image
-            source={require("../assets/images/fade-logo-alt.png")}
+            source={require("../assets/new-logo.png")}
             style={{
               resizeMode: "contain",
               width: 350,

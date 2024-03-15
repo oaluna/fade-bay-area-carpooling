@@ -181,7 +181,7 @@ const LoginScreen = ({ navigation }) => {
                 }}
               >
                 <Image
-                  source={require("../assets/images/fade-logo-alt.png")}
+                  source={require("../assets/new-logo.png")}
                   style={{
                     rezsizeMode: "contain",
                     alignSelf: "center",

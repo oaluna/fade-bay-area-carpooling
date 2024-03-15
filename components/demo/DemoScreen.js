@@ -25,7 +25,7 @@ const DemoScreen = ({ navigation, route }) => {
     >
       {/* slider */}
       <Image
-        source={require("../../assets/images/fade-logo-alt.png")}
+        source={require("../../assets/new-logo.png")}
         style={{ width: 200, height: 200, resizeMode: "contain" }}
       />
       <CustomSlider sliderContent={sliderContent} />

@@ -20,51 +20,12 @@
     },
     "android": {
       "package": "com.oscarlunadotdev.FadeApp"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ffc25bfd-4bcb-4c74-8384-e31c26fffcca"
+      }
     }
-  },
-  "updates": {
-    "fallbackToCacheTimeout": 0
-  },
-  "assetBundlePatterns": [
-    "**/*"
-  ],
-  "ios": {
-    "supportsTablet": true,
-    "infoPlist": {
-      "NSCalendarsUsageDescription": "This app needs access to your calendar to set reminders."
-    },
-    "bundleIdentifier": "com.oscarlunadotdev.FadeApp"
-  },
-  "android": {
-    "adaptiveIcon": {
-      "foregroundImage": "./assets/app-icon/splash.png",
-      "backgroundColor": "#000030"
-    },
-    "config": {
-      "googleMaps": {
-        "apiKey": "AIzaSyBBvc0PY-q9bEQIxlAPzmv_wp1RQsfyaLk"
-      }
-    },
-    "package": "com.oscarlunadotdev.FadeApp",
-    "permissions": [
-      "READ_CALENDAR",
-      "WRITE_CALENDAR"
-    ]
-  },
-  "web": {
-    "favicon": "./assets/app-icon/favicon.png"
-  },
-  "plugins": [
-    [
-      "react-native-auth0",
-      {
-        "domain": "luna-reactdev.auth0.com"
-      }
-    ]
-  ],
-  "env": {
-    "production": {
-      "plugins": ["react-native-paper/babel"],
-    },
-  },
+  }
+
 }
